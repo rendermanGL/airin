@@ -112,20 +112,14 @@ export default function Footer() {
         
         <div className="border-t border-white/20 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <div className="flex space-x-6 mb-6 md:mb-0">
-            <a href="#" className="text-white hover:text-accent transition-colors">
+            <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="text-white hover:text-accent transition-colors">
               <i className="fab fa-linkedin-in"></i>
             </a>
             <a href="#" className="text-white hover:text-accent transition-colors">
-              <i className="fab fa-dribbble"></i>
+              <i className="fab fa-instagram"></i>
             </a>
             <a href="#" className="text-white hover:text-accent transition-colors">
-              <i className="fab fa-github"></i>
-            </a>
-            <a href="#" className="text-white hover:text-accent transition-colors">
-              <i className="fab fa-twitter"></i>
-            </a>
-            <a href="#" className="text-white hover:text-accent transition-colors">
-              <i className="fab fa-behance"></i>
+              <i className="fab fa-facebook"></i>
             </a>
           </div>
           

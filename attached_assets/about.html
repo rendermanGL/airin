@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn about Airin John, a passionate and versatile marketing professional with expertise in content writing, brand strategy, and strategic campaigns. Discover a journey of creativity and impactful storytelling." />
+  <title>About</title>
+  <!-- <link rel="stylesheet" href="./dist/output.css"> -->
+  <link rel="stylesheet" href="./build.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <style>
+    /* Fade-in animation for the image*/
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body class="bg-customBg text-white pt-10">
+
+  <header class="fixed top-0 left-0 w-full z-50 bg-customBg shadow-lg">
+    <!-- Main Header -->
+    <div id="main-header" class="flex items-center justify-between py-4 px-8">
+      <!-- Logo -->
+      <a href="/" class="text-3xl font-name-font">AIRIN JOHN</a>
+      <!-- Navigation -->
+      <nav>
+        <ul class="flex space-x-8">
+          <!-- ABOUT -->
+          <li class="relative group">
+            <a href="/about.html" class="block relative overflow-hidden h-6">
+              <span
+                class="block transform transition-transform duration-300 group-hover:-translate-y-full"
+              >
+                ABOUT
+              </span>
+              <span
+                class="absolute inset-0 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0"
+              >
+                ABOUT
+              </span>
+            </a>
+          </li>
+          <!-- PORTFOLIO -->
+          <li class="menu-item relative group">
+            <div class="overflow-hidden text-center navbar-font">
+              <a href="#" class="block relative">
+                <span
+                  class="qodef-nav-item-initial block transform transition-all duration-500 delay-200 opacity-100 group-hover:opacity-0 group-hover:-translate-y-full"
+                >
+                  PORTFOLIO
+                </span>
+                <span
+                  class="qodef-nav-item-duplicate block absolute inset-0 transform translate-y-full transition-all duration-500 delay-200 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"
+                >
+                  PORTFOLIO
+                </span>
+              </a>
+              <!-- Dropdown -->
+              <div
+                class="absolute top-full left-0 mt-2 w-48 bg-dropdownBg text-white shadow-lg rounded-lg opacity-0 transform scale-95 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:scale-100"
+              >
+                <ul class="py-2">
+                  <li>
+                    <a
+                      href="/experience.html"
+                      class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300"
+                    >
+                      Work Experiences
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/projects.html"
+                      class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300"
+                    >
+                      Featured Projects
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href="/contentWriting.html"
+                      class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300"
+                    >
+                      Content Writing Samples
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+          <!-- CONTACT -->
+          <li class="menu-item relative group">
+            <div class="overflow-hidden text-right navbar-font">
+                <a href="/pdfs/Airin John_Brand Marketing Manager_Core42_G2.pdf" class="block relative">
+                <span class="qodef-nav-item-initial block transform transition-all duration-500 delay-200 opacity-100 group-hover:opacity-0 group-hover:-translate-y-full"> RESUME </span>
+                <span class="qodef-nav-item-duplicate block absolute inset-0 transform translate-y-full transition-all duration-500 delay-200 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"> RESUME </span>
+                </a>
+            </div>
+        </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
+      
+  <!-- Full-Size Image Section -->
+  <section class="relative h-screen">
+    <!-- Background Image -->
+    <div class="absolute top-0 left-0 w-full h-full fade-in z-0">
+      <img src="./img/profile.png" alt="Full Image" class="w-full h-full object-cover">
+    </div>
+    <!-- Optional Overlay -->
+    <div class="absolute top-0 left-0 w-full h-full bg-black bg-opacity-10 z-10"></div>
+  </section>
+
+
+<!-- About section -->
+<section class="w-full bg-white py-16">
+  <div class="mx-auto px-20 max-w-[90%] flex flex-col md:flex-row items-start">
+    <!-- Left Column: Education -->
+    <div class="w-full md:w-1/3 pr-6">
+      <h5 class="text-customBg text-2xl font-bold uppercase mb-4">Education</h5>
+      <p class="text-black font-medium leading-relaxed mb-8">
+        M.A. (Hons) International Business Management<br>
+        With specialization in Marketing. 3.7 GPA<br>
+        Heriot-Watt University, Dubai | UAE
+      </p>
+      
+      <!-- Skills Section -->
+      <div>
+        <h5 class="text-customBg text-2xl font-bold uppercase mb-4">Skills</h5>
+        <div class="flex flex-wrap gap-3">
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">360-Degree Marketing</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Strategic Brand Management</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Brand Storytelling</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Multi-Channel Marketing</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Integrated Campaign Management</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Creative Direction & Content Creation</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Performance Marketing</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">PR & Media Strategy</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Stakeholder Management</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Cross-Functional Collaboration</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Social Media Management</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Influencer Marketing</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Performance Reporting & Analysis</span>
+          <span class="bg-greyAj text-whiteAj font-medium px-4 py-2 rounded-lg text-sm">Budget Management</span>
+        </div>
+      </div>
+    </div>
+    <!-- Right Column: About Me -->
+    <div class="w-full md:w-2/3">
+      <h5 class="text-customBg text-2xl font-bold uppercase mb-4">About Me</h5>
+      <p class="text-justify leading-relaxed text-accentAj font-medium mb-4">
+        <strong>A passionate marketing professional with over five years of experience in building and scaling brands through data-driven brand strategies, multi-channel marketing, and impactful storytelling. With experience spanning industries, including Law, F&B, Lifestyle and Wellness, I have led integrated campaigns, enhanced brand presence, and fostered meaningful connections with diverse audiences.</strong>
+      </p>
+      <p class="text-justify leading-relaxed text-black font-medium mb-4">
+        Raised in Dubai, I have worked with both emerging and established brands across the GCC and beyond. From crafting dynamic digital campaigns to developing compelling brand narratives, my approach emphasises aligning marketing efforts with business objectives while strengthening brand equity.
+      </p>
+      <p class="text-justify leading-relaxed text-black font-medium mb-4">
+        Proficient in 360-degree marketing, I specialise in creating impactful brand messaging, executing multi-channel campaigns—including digital, social media, PR, and influencer collaborations—and leveraging analytics to optimise performance. My expertise extends to strategic brand management, enhancing customer engagement, and delivering cohesive experiences across digital, social, and in-store platforms.
+      </p>
+      <p class="text-justify leading-relaxed text-black font-medium mb-4">
+        Throughout my career, I have successfully launched high-impact campaigns, fostering strategic brand partnerships, and spearheaded creative projects, including brand video campaigns and curated brand jingle. By blending authentic storytelling with actionable insights, I have consistently driven brand equity, strengthened customer relationships, and achieved measurable results.
+      </p>
+      <p class="text-justify leading-relaxed text-black font-medium">
+        Whether building a brand from the ground up or refining existing strategies, I thrive on collaboration, innovation, and data-driven problem-solving. With a proven track record of leading cross-functional teams, managing stakeholder relationships, and delivering customer-focused solutions, I aim to empower brands through meaningful marketing and sustainable growth strategies.
+      </p>
+    </div>
+  </div>
+</section>
+
+  
+  
+ <!-- Footer Section -->
+ <footer class="bg-customBg shadow mt-8">
+  <div class="container mx-auto p-4 flex flex-wrap justify-between items-center text-gray-400">
+      <!-- All Rights Reserved -->
+      <div class="text-left w-full md:w-auto mb-4 md:mb-0">
+          © 2024 Airin John Portfolio, All Rights Reserved
+      </div>
+
+      <!-- Contact Information -->
+      <div class="flex flex-col items-start text-left w-full md:w-auto space-y-4">
+          <h4 class="text-white font-bold mb-2">CONTACT INFORMATION</h4>
+          <!-- Email -->
+          <div>
+              <a href="mailto:elsa.airin@gmail.com" class="text-white underline italic hover:text-accentAj transition">
+                  Email: elsa.airin@gmail.com
+              </a>
+          </div>
+          <!-- Phone -->
+          <div>
+              <a href="tel:+1234567890" class="text-white underline italic hover:text-accentAj transition">
+                  Phone: +971 55 981 3969
+              </a>
+          </div>
+          <!-- LinkedIn -->
+          <div>
+              <a href="www.linkedin.com/in/airinjohn" target="_blank" class="text-white underline italic hover:text-accentAj transition">
+                  LinkedIn
+              </a>
+          </div>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+  <script>
+  
+  </script>
+</body>
+</html>

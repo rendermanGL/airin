@@ -39,31 +39,31 @@ export default function About() {
           >
             <h3 className="font-playfair text-2xl text-primary font-semibold mb-4">My Journey</h3>
             <p className="text-foreground mb-6 leading-relaxed">
-              With over 8 years of experience in UX design and frontend development, I've helped companies across various industries create user-centered digital products that drive business growth.
+              With over 5 years of experience in brand marketing and communications, I've helped companies across F&B, wellness, and hospitality sectors create impactful marketing strategies that drive business growth and enhance brand visibility.
             </p>
             <p className="text-foreground mb-6 leading-relaxed">
-              My approach combines strategic thinking with technical execution. I believe in starting with user needs, crafting intuitive experiences, and implementing them with clean, efficient code.
+              My approach combines strategic thinking with creative execution. I specialize in developing brand messaging and executing multi-channel campaigns, including digital, social media, PR, and influencer partnerships. I'm adept at leveraging data-driven insights to boost brand equity and enhance customer engagement.
             </p>
             <p className="text-foreground mb-8 leading-relaxed">
-              When I'm not designing or coding, you can find me exploring hiking trails, experimenting with new recipes, or contributing to open-source projects.
+              Currently managing a $20 million brand portfolio, I've led campaigns resulting in significant growth, including a 30% year-over-year increase in sales and strategic collaborations that increased brand visibility by 33%.
             </p>
             
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <h4 className="font-medium text-primary mb-2">Education</h4>
-                <p className="text-sm">MFA in Interaction Design<br/>Rhode Island School of Design</p>
+                <p className="text-sm">M.A. Honors in International Business Management with Marketing<br/>Heriot-Watt University, Dubai</p>
               </div>
               <div>
                 <h4 className="font-medium text-primary mb-2">Location</h4>
-                <p className="text-sm">San Francisco, California<br/>Available for remote work</p>
+                <p className="text-sm">Dubai, United Arab Emirates<br/>Available for remote work</p>
               </div>
               <div>
-                <h4 className="font-medium text-primary mb-2">Languages</h4>
-                <p className="text-sm">English (Native)<br/>Spanish (Conversational)</p>
+                <h4 className="font-medium text-primary mb-2">Contact</h4>
+                <p className="text-sm">elsa.airin@gmail.com<br/>(+971) 55 981 3969</p>
               </div>
               <div>
-                <h4 className="font-medium text-primary mb-2">Interests</h4>
-                <p className="text-sm">Hiking, Photography<br/>Open Source, Cooking</p>
+                <h4 className="font-medium text-primary mb-2">Professional Focus</h4>
+                <p className="text-sm">Digital Strategy<br/>Multi-Channel Marketing<br/>Brand Storytelling</p>
               </div>
             </div>
           </motion.div>

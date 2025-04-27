@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Welcome to Airin John's portfolio. Explore diverse projects, including content writing, press releases, brand storytelling, and strategic marketing campaigns. Discover the creativity and precision behind each piece." />
+  <title>Airin John</title>
+  <!-- <link rel="stylesheet" href="./dist/output.css"> -->
+  <link rel="stylesheet" href="./build.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <style>
+    .no-scrollbar {
+      -ms-overflow-style: none; /* Internet Explorer 10+ */
+      scrollbar-width: none; /* Firefox */
+    }
+  
+    .no-scrollbar::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, and Opera */
+    }
+
+    /* Auto-scrolling animation */
+    @keyframes scroll {
+      0% {
+        transform: translateX(0%);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+
+    #brands-carousel {
+      display: flex;
+      white-space: nowrap;
+      animation: scroll 20s linear infinite; 
+    }
+
+    /* Ensure no scrollbar */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* Internet Explorer 10+ */ 
+      scrollbar-width: none; /* Firefox */
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+
+     /* Timeline container */
+     .timeline-container {
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px 0;
+    }
+    
+    /* The vertical timeline line */
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background: #444444; /* Gray accent */
+      transform: translateX(-50%);
+    }
+    
+    /* Timeline items */
+    .timeline-item {
+      display: flex;
+      width: 100%;
+      margin: 30px 0;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    
+    .timeline-item:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* Alternate sides */
+    .timeline-item:nth-child(odd) {
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+    
+    .timeline-item:nth-child(even) {
+      flex-direction: row;
+      text-align: left;
+    }
+    
+    /* Timeline cards */
+    .timeline-item .card {
+      border-radius: 8px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+    
+    /* Year label */
+    .timeline-item .year {
+      font-weight: bold;
+      font-size: 0.8rem;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+    
+    /* Timeline dots */
+    .timeline-item:before {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #121212;
+      border: 3px solid #444444;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+      transition: background-color 0.3s ease;
+    }
+    
+    .timeline-item:hover:before {
+      background-color: #ffffff;
+    }
+    
+    /* Timeline item styling */
+    .timeline-item[data-key="kitopi"] .card {
+      background: #1a1326; /* Darker purple */
+      border-left: 4px solid #9333ea;
+    }
+    
+    .timeline-item[data-key="wild"] .card {
+      background: #1e1018; /* Darker pink */
+      border-left: 4px solid #ec4899;
+    }
+    
+    .timeline-item[data-key="letswork"] .card {
+      background: #0e1f14; /* Darker green */
+      border-left: 4px solid #22c55e;
+    }
+    
+    .timeline-item[data-key="tamimi"] .card {
+      background: #1f1a0c; /* Darker yellow */
+      border-left: 4px solid #eab308;
+    }
+    
+    .timeline-item[data-key="fitze"] .card {
+      background: #0e1726; /* Darker blue */
+      border-left: 4px solid #3b82f6;
+    }
+    
+    /* Fix border position for right-side items */
+    .timeline-item:nth-child(odd) .card {
+      border-left: none;
+      border-right: 4px solid;
+    }
+    
+    .timeline-item[data-key="kitopi"]:nth-child(odd) .card {
+      border-right-color: #9333ea;
+    }
+    
+    .timeline-item[data-key="wild"]:nth-child(odd) .card {
+      border-right-color: #ec4899;
+    }
+    
+    .timeline-item[data-key="letswork"]:nth-child(odd) .card {
+      border-right-color: #22c55e;
+    }
+    
+    .timeline-item[data-key="tamimi"]:nth-child(odd) .card {
+      border-right-color: #eab308;
+    }
+    
+    .timeline-item[data-key="fitze"]:nth-child(odd) .card {
+      border-right-color: #3b82f6;
+    }
+    
+    /* Spacing between timeline items and line */
+    .timeline-item:nth-child(odd) .card {
+      margin-right: 40px;
+    }
+    
+    .timeline-item:nth-child(even) .card {
+      margin-left: 40px;
+    }
+    
+    /* Animation */
+    .timeline-container {
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    
+    .timeline-item {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideIn 0.6s ease forwards;
+      animation-delay: calc(var(--item-index) * 0.2s);
+    }
+    
+    @keyframes slideIn {
+      from { 
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to { 
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .timeline-line {
+        left: 20px;
+      }
+      
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        flex-direction: row;
+        text-align: left;
+        padding-left: 45px;
+      }
+      
+      .timeline-item:before {
+        left: 20px;
+      }
+      
+      .timeline-item .card {
+        width: calc(100% - 60px);
+        margin-left: 40px !important;
+        margin-right: 0 !important;
+      }
+      
+      .timeline-item:nth-child(odd) .card {
+        border-right: none;
+        border-left: 4px solid;
+      }
+      
+      .timeline-item[data-key="kitopi"]:nth-child(odd) .card {
+        border-left-color: #9333ea;
+      }
+      
+      .timeline-item[data-key="wild"]:nth-child(odd) .card {
+        border-left-color: #ec4899;
+      }
+      
+      .timeline-item[data-key="letswork"]:nth-child(odd) .card {
+        border-left-color: #22c55e;
+      }
+      
+      .timeline-item[data-key="tamimi"]:nth-child(odd) .card {
+        border-left-color: #eab308;
+      }
+      
+      .timeline-item[data-key="fitze"]:nth-child(odd) .card {
+        border-left-color: #3b82f6;
+      }
+    }
+
+     /* Hide left side (timeline & hover sections) on mobile and center titles. */
+    @media (max-width: 767px) {
+      /* Hide the entire left side. */
+      #left-side {
+        display: none;
+      }
+      /* Make the right side full width, center text, remove right padding. */
+      #right-side {
+        width: 100%;
+        padding-right: 0;
+        align-items: center !important; /* center the items horizontally */
+      }
+      /* Center the text for each link. */
+      #right-side ul {
+        text-align: center;
+      }
+      /* Remove hover events on mobile by disabling pointer events on them
+        OR you can remove them via a quick JS snippet (below). */
+      .nav-link {
+        /* If you'd like, you can override the hover style so no visual change on mobile:
+          but typically mobile doesn't trigger :hover anyway.
+          We'll set hover text to none for clarity. */
+        transition: none;
+      }
+      .nav-link:hover {
+        color: #fff; /* no hover color change on mobile */
+      }
+      /* We can also remove the onmouseenter / onmouseleave via JS if you want. */
+    }
+
+
+    .fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  }
+
+  .fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .section-dark {
+    /* background: rgba(18, 18, 18, 0.9); Darker tint for contrast */
+    background: #292929;
+  }
+
+  .content-padding{
+    padding: 6px 6px 6px 6px;
+  }
+
+  </style>
+  <!-- Firebase Configuration -->
+  <script type="module" src="./firebase-config.js"></script>
+</head>
+
+<body class="bg-customBg text-white pt-10">
+  
+  <!-- Header Section -->
+  <header class="fade-in-section bg-customBg text-white">
+    <!-- Horizontal Line -->
+    <div class="border-t border-white-400 w-full"></div>
+    <!-- Navigation Menu -->
+    <nav class="container mx-auto flex justify-between items-center py-6">
+      <ul class="flex w-full justify-between px-12">
+        <!-- ABOUT -->
+        <li class="menu-item relative group">
+          <div class="overflow-hidden text-left navbar-font">
+            <a href="/about.html" class="block relative">
+              <span class="qodef-nav-item-initial block transform transition-all duration-500 delay-200 opacity-100 group-hover:opacity-0 group-hover:-translate-y-full"> ABOUT </span>
+              <span class="qodef-nav-item-duplicate block absolute inset-0 transform translate-y-full transition-all duration-500 delay-200 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"> ABOUT </span>
+            </a>
+          </div>
+        </li>
+
+        <!-- PORTFOLIO -->
+        <li class="menu-item relative group">
+          <div class="overflow-hidden text-center navbar-font">
+            <a href="#" class="block relative">
+                <span class="qodef-nav-item-initial block transform transition-all duration-500 delay-200 opacity-100 group-hover:opacity-0 group-hover:-translate-y-full"> PORTFOLIO </span>
+                <span class="qodef-nav-item-duplicate block absolute inset-0 transform translate-y-full transition-all duration-500 delay-200 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"> PORTFOLIO </span>
+            </a>
+            <!-- Dropdown -->
+            <div class="absolute top-full left-0 mt-2 w-48 bg-dropdownBg text-white shadow-lg rounded-lg opacity-0 transform scale-95 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:scale-100">
+              <ul class="py-2">
+                  <li>
+                      <a href="/experience.html" class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300">Work Experiences</a>
+                  </li>
+                  <li>
+                      <a href="/projects.html" class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300">Featured Projects</a>
+                  </li>
+                  <li>
+                    <a href="/contentWriting.html" class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300">Content Writing Samples</a>
+                  </li>
+              </ul>
+          </div>
+          </div>
+        </li>
+
+        <!-- CONTACT -->
+        <li class="menu-item relative group">
+            <div class="overflow-hidden text-right navbar-font">
+                <a href="/pdfs/Airin John_Brand Marketing Manager_Core42_G2.pdf" class="block relative">
+                <span class="qodef-nav-item-initial block transform transition-all duration-500 delay-200 opacity-100 group-hover:opacity-0 group-hover:-translate-y-full"> RESUME </span>
+                <span class="qodef-nav-item-duplicate block absolute inset-0 transform translate-y-full transition-all duration-500 delay-200 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"> RESUME </span>
+                </a>
+            </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Section -->
+  <main class="container mx-auto p-8">
+    <section class="fade-in-section w-full flex items-start justify-center">
+        <div class="text-center">
+            <h1 class="name-title text-[200px] leading-[200px] tracking-[-3px] uppercase text-[#DCD7D2]" style="font-weight: 600;"> AIRIN JOHN </h1>
+        </div>
+    </section>
+      
+    <section class="fade-in-section w-full mt-[10px] py-6 bg-customBg text-white">
+      <div class="container mx-auto flex flex-wrap justify-between items-center">
+        <div class="flex-1 text-sm font-thin navbar-font text-left">
+          <p>Based in Dubai, United Arab Emirates</p>
+        </div>
+        <div class="flex-1 text-sm font-thin navbar-font text-center">
+          <p>DIGITAL STRATEGY | MULTI-CHANNEL MARKETING | BRAND STORYTELLING</p>
+        </div>
+        <div class="flex-1 text-sm font-thin navbar-font text-right">
+        <p>
+          <a
+          href="https://www.linkedin.com/in/airinjohn"
+          target="_blank"
+          rel="noopener"
+          class="underline hover:text-gray-400 transition-colors">
+
+          LINKEDIN
+          </a>
+        </p>
+      </div>
+      </div>
+    </section>
+      
+
+    <section class="fade-in-section w-full bg-cover bg-center h-[300px]">
+      <img
+        src="img/home-image.jpg"
+        alt="Stretched Image Banner"
+        class="w-full h-full object-cover"
+      />
+    </section>
+      
+    <section class="fade-in-section w-full py-8 bg-customBg text-white">
+      <div class="container mx-auto text-center">
+        <p class="text-base font-light">
+          <p><span class="text-[#c2aeb1]">SCALING BRANDS AND</span> DRIVING MEANINGFUL CONNECTIONS <span class="text-[#c2aeb1]">THROUGH</span> DATA-DRIVEN STRATEGIES <span class="text-[#c2aeb1]">AND</span> COMPELLING STORYTELLING</p>
+          <!-- Creating <span class="text-[#c2aeb1]">data-driven</span> strategies and immersive content for <span class="text-[#c2aeb1]">meaningful</span> communities. -->
+        </p>
+      </div>
+    </section>
+
+
+    <section class="fade-in-section w-full bg-customBg text-white py-12">
+      <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start text-center">
+        <!-- Column 1 -->
+        <div class="flex flex-col items-center">
+          <img
+            src="./img/indexPage/index_strategic_marketing_icon.png"
+            alt="Digital Strategy Icon"
+            class="object-contain mx-auto"
+            style="width: 50px; height: 50px;"
+          />
+          <h5 class="mt-6 text-lg font-bold text-[#DCD7D2]">
+            Strategic Marketing
+          </h5>
+          <p class="mt-4 text-sm font-light text-[#DCD7D2]">
+            Holistic solutions that blend customer insights, competitive analysis,
+            and innovative strategies to position brands for long-term growth.
+            Build meaningful connections and achieve sustainable impact.
+          </p>
+        </div>
+    
+        <!-- Column 2 -->
+        <div class="flex flex-col items-center">
+          <img
+            src="./img/indexPage/index_multi_channel_marketing_icon.png"
+            alt="Social Media Icon"
+            class="object-contain mx-auto"
+            style="width: 50px; height: 50px;"
+          />
+          <h5 class="mt-6 text-lg font-bold text-[#DCD7D2]">
+            Multi-Channel Marketing
+          </h5>
+          <p class="mt-4 text-sm font-light text-[#DCD7D2]">
+            Integrated campaigns that harmonize digital, social, and offline
+            touchpoints to deliver consistent, impactful brand experiences.
+            Engage your audience wherever and whoever they are.
+          </p>
+        </div>
+    
+        <!-- Column 3 -->
+        <div class="flex flex-col items-center">
+          <img
+            src="./img/indexPage/index_content_direction_creation_icon.png"
+            alt="Content Icon"
+            class="object-contain mx-auto"
+            style="width: 50px; height: 50px;"
+          />
+          <h5 class="mt-6 text-lg font-bold text-[#DCD7D2]">
+            Content Direction & Creation
+          </h5>
+          <p class="mt-4 text-sm font-light text-[#DCD7D2]">
+            Creative, data-driven content that tells your brand’s story with
+            authenticity and purpose. Craft narratives that captivate, inform,
+            and inspire action across all platforms.
+          </p>
+        </div>
+    
+        <!-- Column 4 -->
+        <div class="flex flex-col items-center">
+          <img
+            src="./img/indexPage/index_collaboration_leadership_icon.png"
+            alt="Collaboration & Leadership Icon"
+            class="object-contain mx-auto"
+            style="width: 50px; height: 50px;"
+          />
+          <h5 class="mt-6 text-lg font-bold text-[#DCD7D2]">
+            Collaboration & Leadership
+          </h5>
+          <p class="mt-4 text-sm font-light text-[#DCD7D2]">
+            Cross-collaborative across diverse teams and expertise to achieve
+            shared objectives, fostering synergy between departments such as sales,
+            operations, and product marketing while effectively managing
+            stakeholders, agencies, and vendors.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Updated Work Experience Section -->
+    <section id="work-experience" class="fade-in-section w-full h-screen bg-customBg text-white items-center justify-center shadow-xl shadow-gray-800">
+      <div class="timeline-container text-center">
+        <!-- <h2 class="text-4xl font-bold mb-6">Work Experience</h2> -->
+        <div class="timeline-line"></div>
+        <div class="timeline-item" data-key="kitopi">
+          <div class="card"><span class="year">2023 - Present</span><h3>Brand Marketing Manager</h3><p>Kitopi LLC</p></div>
+        </div>
+        <div class="timeline-item" data-key="wild">
+          <div class="card"><span class="year">2020 - 2023</span><h3>Brand & Communications Manager</h3><p>Wild & The Moon</p></div>
+        </div>
+        <div class="timeline-item" data-key="letswork">
+          <div class="card"><span class="year">2020</span><h3>Community Manager</h3><p>Letswork</p></div>
+        </div>
+        <div class="timeline-item" data-key="tamimi">
+          <div class="card"><span class="year">2019 - 2020</span><h3>Management Trainee</h3><p>Al Tamimi & Company</p></div>
+        </div>
+        <div class="timeline-item" data-key="fitze">
+          <div class="card"><span class="year">2017 - 2019</span><h3>Events Intern</h3><p>Fitze</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Updated Featured Projects Section -->
+    <section id="featured-projects" class="fade-in-section w-full h-screen bg-customBg text-white flex">
+      <!-- Left Side: Title & Description -->
+      <div class="w-1/2 flex flex-col justify-center">
+        <h2 class="text-4xl font-bold mb-4">Featured Projects</h2>
+        <p class="text-lg">Explore case studies and successful brand activations showcasing multi-channel marketing, digital strategies, and content storytelling.</p>
+      </div>
+
+      <!-- Right Side: Image Tiles -->
+      <div class="w-1/2 flex flex-col justify-center">
+        <div class="grid grid-cols-2 gap-2">
+          <!-- Tile 1 -->
+          <a href="/projects.html" class="block content-padding">
+            <div class="relative w-full h-[300px] bg-gray-700 rounded-lg overflow-hidden">
+              <img src="/img/featuredProjects/Strategic Marketing.jpg" alt="Strategic Marketing"
+                class="w-full h-full object-cover opacity-60 transition hover:opacity-80" />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <h4 class="text-xl font-bold text-white text-center">Strategic Marketing</h4>
+              </div>
+            </div>
+          </a>
+
+          <!-- Tile 2 -->
+          <a href="/projects.html" class="block content-padding">
+            <div class="relative w-full h-[300px] bg-gray-700 rounded-lg overflow-hidden">
+              <img src="/img/featuredProjects/Customer Experience & Community Engagement.png" alt="Customer Experience & Engagement"
+                class="w-full h-full object-cover opacity-60 transition hover:opacity-80" />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <h4 class="text-xl font-bold text-white text-center">Customer Experience & Community Engagement</h4>
+              </div>
+            </div>
+          </a>
+
+          <!-- Tile 3 -->
+          <a href="/projects.html" class="block content-padding">
+            <div class="relative w-full h-[300px] bg-gray-700 rounded-lg overflow-hidden">
+              <img src="/img/featuredProjects/Brand Storytelling & Multi-Channel Marketing.png" alt="Brand Storytelling & Multi-Channel Marketing"
+                class="w-full h-full object-cover opacity-60 transition hover:opacity-80" />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <h4 class="text-xl font-bold text-white text-center">Brand Storytelling & Multi-Channel Marketing</h4>
+              </div>
+            </div>
+          </a>
+
+          <!-- Tile 4 -->
+          <a href="/projects.html" class="block content-padding">
+            <div class="relative w-full h-[300px] bg-gray-700 rounded-lg overflow-hidden">
+              <img src="/img/featuredProjects/Awards & Recognition.jpg" alt="Awards & Recognition"
+                class="w-full h-full object-cover opacity-60 transition hover:opacity-80" />
+              <div class="absolute inset-0 flex items-center justify-center">
+                <h4 class="text-xl font-bold text-white text-center">Awards & Recognition</h4>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Updated Content Writing Samples Section -->
+    <section id="content-writing" class="fade-in-section w-full min-h-screen bg-customBg text-white flex flex-col items-center py-12">
+      <!-- Title -->
+      <h2 class="text-4xl font-bold mb-8">Content Writing Samples</h2>
+
+      <!-- Image Tiles -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full max-w-5xl px-6">
+        <!-- Box 1 -->
+        <a href="/contentWriting.html" class="relative block w-full h-[300px] py-2">
+          <img src="/img/contentWritingSamples/Press Release.jpg" alt="Press Releases"
+            class="w-full h-full object-cover rounded-lg opacity-60 transition hover:opacity-80" />
+          <div class="absolute inset-0 flex items-center justify-center">
+            <h4 class="text-xl sm:text-2xl font-bold text-white text-center">Press Releases</h4>
+          </div>
+        </a>
+
+        <!-- Box 2 -->
+        <a href="/contentWriting.html" class="relative block w-full h-[300px] py-2">
+          <img src="/img/contentWritingSamples/Award Ap.jpg" alt="Award Applications & Writeups"
+            class="w-full h-full object-cover rounded-lg opacity-60 transition hover:opacity-80" />
+          <div class="absolute inset-0 flex items-center justify-center">
+            <h4 class="text-xl sm:text-2xl font-bold text-white text-center">Award Applications & Writeups</h4>
+          </div>
+        </a>
+
+        <!-- Box 3 -->
+        <a href="/contentWriting.html" class="relative block w-full h-[300px] py-2">
+          <img src="/img/contentWritingSamples/Email Marketing.jpg" alt="Email Marketing"
+            class="w-full h-full object-cover rounded-lg opacity-60 transition hover:opacity-80" />
+          <div class="absolute inset-0 flex items-center justify-center">
+            <h4 class="text-xl sm:text-2xl font-bold text-white text-center">Email Marketing</h4>
+          </div>
+        </a>
+      </div>
+    </section>
+
+
+
+    <!-- Recommendations Section -->
+<section id="recommendations" class="fade-in-section w-full h-screen bg-customBg text-white flex flex-col items-center justify-center relative">
+  <!-- Heading at the Top -->
+  <h2 class="text-4xl font-bold mb-8">Recommendations</h2>
+  <!-- Carousel Wrapper -->
+  <div class="relative w-3/4 h-3/5 flex items-center justify-center overflow-hidden">
+      <!-- Left Navigation Button -->
+      <button id="prev-recommendation" class="absolute left-4 text-3xl px-4 py-2 bg-gray-800 rounded-full z-10">
+          <span class="sr-only">Previous</span>
+          &larr;
+      </button>
+      <!-- Slider Container -->
+      <div id="recommendation-slider" class="w-full flex">
+          <!-- Each Recommendation Slide -->
+          <div class="recommendation-slide min-w-full px-12 text-center">
+              <p class="text-lg italic">"Airin and I worked together at Kitopi for more than a year, and I was really impressed by her marketing knowledge, creativity, and ownership!"</p>
+              <p class="text-sm mt-4 font-semibold">- Fabienne Naggear, Senior Brand Manager | Kitopi</p>
+          </div>
+          <div class="recommendation-slide min-w-full px-12 text-center">
+              <p class="text-lg italic">"Working with Airin over the last few months has been great. Her passion and effort to elevate work at hand have been inspiring!"</p>
+              <p class="text-sm mt-4 font-semibold">- Tania Bilani, Global Marketing Director | Kitopi</p>
+          </div>
+          <div class="recommendation-slide min-w-full px-12 text-center">
+              <p class="text-lg italic">"Airin consistently took full ownership of her marketing projects, always ensuring meticulous execution with a creative touch."</p>
+              <p class="text-sm mt-4 font-semibold">- Imad El Fay, VP, Growth | Kitopi</p>
+          </div>
+          <div class="recommendation-slide min-w-full px-12 text-center">
+              <p class="text-lg italic">"Airin's creativity in social media, influencer marketing, and PR has elevated Wild & The Moon UAE to the next level!"</p>
+              <p class="text-sm mt-4 font-semibold">- Lucile Jan Robin, Marketing & Communications Director | Wild & The Moon</p>
+          </div>
+      </div>
+      <!-- Right Navigation Button -->
+      <button id="next-recommendation" class="absolute right-4 text-3xl px-4 py-2 bg-gray-800 rounded-full z-10">
+          <span class="sr-only">Next</span>
+          &rarr;
+      </button>
+      
+      <!-- Indicators -->
+      <div class="absolute bottom-4 flex space-x-2">
+          <div class="indicator w-3 h-3 rounded-full bg-white opacity-50"></div>
+          <div class="indicator w-3 h-3 rounded-full bg-white opacity-50"></div>
+          <div class="indicator w-3 h-3 rounded-full bg-white opacity-50"></div>
+          <div class="indicator w-3 h-3 rounded-full bg-white opacity-50"></div>
+      </div>
+  </div>
+</section>
+
+
+    <!-- Brands -->
+    <section class="fade-in-section w-full bg-customBg text-white py-12 overflow-hidden">
+      <div class="container mx-auto">
+        <!-- Section Title -->
+        <h2 class="text-center text-4xl font-bold mb-8 font-anton">Brands</h2>
+    
+        <!-- Brands Carousel -->
+        <div class="relative">
+          <div id="brands-carousel" class="flex space-x-8 animate-scroll">
+            <!-- Brand 1 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/kitopi.jpg" alt="kitopi" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 2 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/chin-chin.jpg" alt="chin chin" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 3 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/box-it.jpg" alt="box it" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 4 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/midomie.jpg" alt="midomie" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 5 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/wokkong.jpg" alt="wokkong" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 6 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/ob.jpg" alt="oriental box" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 7 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/kava-and-chai.jpg" alt="kava and chai" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 8 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/circle-cafe.jpg" alt="circle cafe" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 9 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/tbs.jpg" alt="the breakfast shop" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 10 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/little-dippers.jpg" alt="little dippers" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 11 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/wild-and-the-moon.jpg" alt="wild and the moon" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 12 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/compt.jpg" alt="Comptoir 102" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 13 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/respect.jpg" alt="respect" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 14 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/letswork.jpg" alt="letswork" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 15 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/tamimi.png" alt="tamini" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 16 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/osn.png" alt="OSN" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Brand 17 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/fitze.jpg" alt="fitze" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+
+            <!-- Duplicate Brand 1 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/kitopi.jpg" alt="kitopi" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 2 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/chin-chin.jpg" alt="chin chin" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 3 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/box-it.jpg" alt="box it" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+             <!-- Duplicate Brand 4 -->
+             <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/midomie.jpg" alt="midomie" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 5 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/wokkong.jpg" alt="wokkong" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 6 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/ob.jpg" alt="oriental box" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 7 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/kava-and-chai.jpg" alt="kava and chai" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 8 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/circle-cafe.jpg" alt="circle cafe" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 9 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/tbs.jpg" alt="the breakfast shop" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 10 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/little-dippers.jpg" alt="little dippers" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 11 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/wild-and-the-moon.jpg" alt="wild and the moon" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 12 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/compt.jpg" alt="Comptoir 102" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 13 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/respect.jpg" alt="respect" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 14 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/letswork.jpg" alt="letswork" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 15 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/tamimi.png" alt="tamini" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 16 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/osn.png" alt="OSN" class="w-full h-full object-cover rounded-full">
+              </div>
+            </div>
+            <!-- Duplicate Brand 17 -->
+            <div class="flex flex-col items-center flex-shrink-0">
+              <div class="w-[100px] h-[100px] bg-gray-700 rounded-full">
+                <img src="/img/brands/fitze.jpg" alt="fitze" class="w-full h-full rounded-full">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      
+  
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="fade-in-section bg-customBg shadow mt-8">
+    <div class="container mx-auto p-4 flex flex-wrap justify-between items-center text-gray-400">
+        <!-- All Rights Reserved -->
+        <div class="text-left w-full md:w-auto mb-4 md:mb-0">
+            © 2025 Airin John Portfolio, All Rights Reserved
+        </div>
+
+        <!-- Contact Information -->
+        <div class="flex flex-col items-start text-left w-full md:w-auto space-y-4">
+            <h4 class="text-white font-bold mb-2">CONTACT INFORMATION</h4>
+            <!-- Email -->
+            <div>
+                <a href="mailto:elsa.airin@gmail.com" class="text-white underline italic hover:text-accentAj transition">
+                    Email: elsa.airin@gmail.com
+                </a>
+            </div>
+            <!-- Phone -->
+            <div>
+                <a href="tel:+1234567890" class="text-white underline italic hover:text-accentAj transition">
+                    Phone: +971 55 981 3969
+                </a>
+            </div>
+            <!-- LinkedIn -->
+            <div>
+                <a href="https://www.linkedin.com/in/airinjohn" target="_blank" class="text-white underline italic hover:text-accentAj transition">
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+  </footer>
+
+
+  <script>
+  // Recommendations Data
+  // const recommendations = [
+  //   {
+  //     text: "Airin and I worked together at Kitopi for more than a year, and I was really impressed by her marketing knowledge, creativity and ownership! In all the projects that she led, she always aimed for perfection in every detail and went above and beyond to make things happen on time successfully. Her ability to track and report the success metrics were also very helpful to help grow the business. Airin is a big team player and very caring person which adds a lot to a team’s dynamics.",
+  //     author: "- Fabienne Naggear",
+  //     position: "Senior Brand Mananger | Kitopi"
+  //   },
+  //   {
+  //     text: "Working with Airin over the last few months has been great. Her passion for the role and her constant effort to elevate the work at hand has been inspiring. Airin never let any roadblocks get in her way, instead always had a pro-active problem solving approach to any task to ensure it was completed. I’m positive you’ll do amazing wherever you go next Airin!",
+  //     author: "- Tania Bilani",
+  //     position: "Global Marketing Director | Kitopi"
+  //   },
+  //   {
+  //     text: "Airin consistently took full ownership of her marketing projects on big brands such as Chinchin and Kava & Chai, from conception to execution. She has an innate ability to see the bigger picture while ensuring every detail is meticulously managed. Her creativity shines through in every campaign she leads, always finding innovative ways to engage our target audience and elevate our brand. Her ability to think outside the box has resulted in numerous successful campaigns that have significantly contributed to our company's growth.",
+  //     author: "- Imad El Fay",
+  //     position: "VP, Growth | Kitopi"
+  //   },
+  //   {
+  //     text: "HAirin is an outstanding marketing leader. Her vast marketing portfolio skills and experience is a game changer to the organization, as she always brings a fresh and creative approach. Her innovative and creative approach, particularly in the areas of social media management, influencer management & marketing, as well as events management and PR, has taken Wild & The Moon UAE to the next level. Her attention to detail is extremely valuable in all aspects of her work, internally within the organization, but also with partners, clients, and other stakeholders. She focuses on delivering customer and service excellence through detailed out-of-the-box strategic thinking. Inspiring, hardworking, risk taker, enthusiastic personality, and always a real team player. It is a pleasure to work with Airin, on a daily basis.",
+  //     author: "- Lucile Jan Robin",
+  //     position: "Marketing & Communications Director | Wild & The Moon"
+  //   },
+  // ];
+
+    // Slow fade in section
+    document.addEventListener("DOMContentLoaded", function () {
+      const sections = document.querySelectorAll(".fade-in-section");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            } else {
+              entry.target.classList.remove("visible");
+            }
+          });
+        },
+        {
+          threshold: 0.2, // Trigger when 20% of the element is visible
+        }
+      );
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+    const slider = document.getElementById("recommendation-slider");
+    const slides = document.querySelectorAll(".recommendation-slide");
+    const indicators = document.querySelectorAll(".indicator");
+    const prevBtn = document.getElementById("prev-recommendation");
+    const nextBtn = document.getElementById("next-recommendation");
+    
+    let currentIndex = 0;
+    let autoSlideInterval;
+    
+    // Initialize slider
+    function initializeSlider() {
+        // Set initial positions
+        updateSliderPosition();
+        updateIndicators();
+        
+        // Start auto sliding
+        startAutoSlide();
+    }
+    
+    // Update slider position based on current index
+    function updateSliderPosition() {
+        slider.style.transition = "transform 0.6s ease-in-out";
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+    
+    // Update active indicator
+    function updateIndicators() {
+        indicators.forEach((indicator, index) => {
+            if (index === currentIndex) {
+                indicator.classList.remove("opacity-50");
+                indicator.classList.add("opacity-100");
+            } else {
+                indicator.classList.remove("opacity-100");
+                indicator.classList.add("opacity-50");
+            }
+        });
+    }
+    
+    // Next slide function
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateSliderPosition();
+        updateIndicators();
+        resetAutoSlide();
+    }
+    
+    // Previous slide function
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateSliderPosition();
+        updateIndicators();
+        resetAutoSlide();
+    }
+    
+    // Start auto slide
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(nextSlide, 5000); // Auto-slide every 5 seconds
+    }
+    
+    // Reset auto slide timer
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+    
+    // Event listeners
+    nextBtn.addEventListener("click", nextSlide);
+    prevBtn.addEventListener("click", prevSlide);
+    
+    // Allow clicking on indicators to jump to specific slides
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener("click", () => {
+            currentIndex = index;
+            updateSliderPosition();
+            updateIndicators();
+            resetAutoSlide();
+        });
+    });
+    
+    // Touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    slider.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+    
+    slider.addEventListener("touchend", (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        if (touchStartX - touchEndX > 50) {
+            nextSlide(); // Swipe left
+        } else if (touchEndX - touchStartX > 50) {
+            prevSlide(); // Swipe right
+        }
+    });
+    
+    // Initialize
+    initializeSlider();
+});
+
+
+  </script>
+  <script type="module">
+    import { getApps } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js';
+    import { getAnalytics } from 'https://www.gstatic.com/firebasejs/9.21.0/firebase-analytics.js';
+  
+    const apps = getApps();
+    if (apps.length > 0) {
+      const analytics = getAnalytics(apps[0]);
+    }
+  </script>
+</body>
+</html>

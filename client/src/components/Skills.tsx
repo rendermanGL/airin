@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { designSkills, developmentSkills, tools } from "@/lib/skills";
+import { marketingSkills, leadershipSkills, tools } from "@/lib/skills";
 
 export default function Skills() {
   const ref = useRef(null);
@@ -25,20 +25,20 @@ export default function Skills() {
         >
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-primary mb-4">My Skills</h2>
           <div className="w-24 h-1 bg-accent mx-auto"></div>
-          <p className="mt-6 max-w-2xl mx-auto text-foreground">A combination of design and development expertise that allows me to create end-to-end solutions.</p>
+          <p className="mt-6 max-w-2xl mx-auto text-foreground">A combination of marketing expertise and leadership skills that drives impactful brand strategies and successful multi-channel campaigns.</p>
         </motion.div>
         
         <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          {/* Design Skills */}
+          {/* Marketing Skills */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">Design</h3>
+            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">Marketing Expertise</h3>
             
-            {designSkills.map((skill, index) => (
+            {marketingSkills.map((skill, index) => (
               <div className="mb-6" key={skill.name}>
                 <div className="flex justify-between mb-2">
                   <span className="font-medium">{skill.name}</span>
@@ -57,16 +57,16 @@ export default function Skills() {
             ))}
           </motion.div>
           
-          {/* Development Skills */}
+          {/* Leadership Skills */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">Development</h3>
+            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">Leadership & Management</h3>
             
-            {developmentSkills.map((skill, index) => (
+            {leadershipSkills.map((skill, index) => (
               <div className="mb-6" key={skill.name}>
                 <div className="flex justify-between mb-2">
                   <span className="font-medium">{skill.name}</span>

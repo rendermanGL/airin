@@ -82,7 +82,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium text-primary">Location</h4>
-                  <p className="text-gray-600">San Francisco, California</p>
+                  <p className="text-gray-600">Dubai, United Arab Emirates</p>
                 </div>
               </div>
               
@@ -92,7 +92,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium text-primary">Email</h4>
-                  <p className="text-gray-600">hello@airinjohn.com</p>
+                  <p className="text-gray-600">elsa.airin@gmail.com</p>
                 </div>
               </div>
               
@@ -102,7 +102,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium text-primary">Phone</h4>
-                  <p className="text-gray-600">(123) 456-7890</p>
+                  <p className="text-gray-600">(+971) 55 981 3969</p>
                 </div>
               </div>
               
@@ -111,8 +111,8 @@ export default function Contact() {
                   <i className="fas fa-globe text-xl"></i>
                 </div>
                 <div>
-                  <h4 className="font-medium text-primary">Website</h4>
-                  <p className="text-gray-600">www.airinjohn.com</p>
+                  <h4 className="font-medium text-primary">LinkedIn</h4>
+                  <p className="text-gray-600">linkedin.com/in/airinjohn</p>
                 </div>
               </div>
             </div>
@@ -120,20 +120,14 @@ export default function Contact() {
             <div className="mt-12">
               <h4 className="font-medium text-primary mb-4">Connect With Me</h4>
               <div className="flex space-x-4">
-                <a href="#" className="text-primary hover:text-accent social-icon">
+                <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent social-icon">
                   <i className="fab fa-linkedin-in text-xl"></i>
                 </a>
                 <a href="#" className="text-primary hover:text-accent social-icon">
-                  <i className="fab fa-dribbble text-xl"></i>
+                  <i className="fab fa-instagram text-xl"></i>
                 </a>
                 <a href="#" className="text-primary hover:text-accent social-icon">
-                  <i className="fab fa-github text-xl"></i>
-                </a>
-                <a href="#" className="text-primary hover:text-accent social-icon">
-                  <i className="fab fa-twitter text-xl"></i>
-                </a>
-                <a href="#" className="text-primary hover:text-accent social-icon">
-                  <i className="fab fa-behance text-xl"></i>
+                  <i className="fab fa-facebook text-xl"></i>
                 </a>
               </div>
             </div>

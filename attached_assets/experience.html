@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Explore the professional journey of Airin John, featuring diverse work experiences across marketing, brand strategy, and creative campaigns. Discover impactful achievements and a history of delivering measurable results." />
+  <title>Work Experiences</title>
+  <link rel="stylesheet" href="./build.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <style>
+    .timeline-container {
+        display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      margin: auto;
+    }
+    .timeline-line {
+      position: absolute;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      background: gray;
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+        display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      text-align: left;
+      width: 100%;
+      margin: 20px 0;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.3s ease-in-out;
+    }
+    .timeline-item:nth-child(odd){
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+    .timeline-item:nth-child(even){
+      flex-direction: row;
+      text-align: left;
+    }
+    .timeline-item .year {
+      font-weight: bold;
+      font-size: 1.2rem;
+      color: #333;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .timeline-item .content {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      width: 300px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .timeline-item.expanded {
+      position: absolute;
+      left: 0;
+      z-index: 10;
+      width: 100%;
+    }
+    @media (max-width: 768px) {
+      .timeline-line {
+        display: none;
+      }
+
+      .timeline-item:nth-child(odd){
+        flex-direction: column;
+        text-align: center;
+      }
+      .timeline-item:nth-child(even){
+        flex-direction: column;
+        text-align: center;
+      }
+      .timeline-item .content {
+        text-align: center;
+        width: 90%;
+      }
+      /* .timeline-line {
+        left: 5%;
+      } */
+      .timeline-item .year {
+        /* left: 10%; */
+        display: none;
+      }
+    }
+
+  </style>
+</head>
+<body class="bg-customBg text-white pt-10 min-h-screen">
+    <header class="fixed top-0 left-0 w-full z-50 bg-customBg shadow-lg">
+        <!-- Main Header -->
+        <div id="main-header" class="flex items-center justify-between py-4 px-8">
+        <!-- Logo -->
+        <a href="/" class="text-3xl font-name-font">AIRIN JOHN</a>
+        <!-- Navigation -->
+        <nav>
+            <ul class="flex space-x-8">
+            <!-- ABOUT -->
+            <li class="relative group">
+                <a href="/about.html" class="block relative overflow-hidden h-6">
+                <span
+                    class="block transform transition-transform duration-300 group-hover:-translate-y-full"
+                >
+                    ABOUT
+                </span>
+                <span
+                    class="absolute inset-0 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0"
+                >
+                    ABOUT
+                </span>
+                </a>
+            </li>
+            <!-- PORTFOLIO -->
+            <li class="menu-item relative group">
+                <div class="overflow-hidden text-center navbar-font">
+                <a href="#" class="block relative">
+                    <span
+                    class="qodef-nav-item-initial block transform transition-all duration-500 delay-200 opacity-100 group-hover:opacity-0 group-hover:-translate-y-full"
+                    >
+                    PORTFOLIO
+                    </span>
+                    <span
+                    class="qodef-nav-item-duplicate block absolute inset-0 transform translate-y-full transition-all duration-500 delay-200 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"
+                    >
+                    PORTFOLIO
+                    </span>
+                </a>
+                <!-- Dropdown -->
+                <div
+                    class="absolute top-full left-0 mt-2 w-48 bg-dropdownBg text-white shadow-lg rounded-lg opacity-0 transform scale-95 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:scale-100"
+                >
+                    <ul class="py-2">
+                    <li>
+                        <a
+                        href="/experience.html"
+                        class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300"
+                        >
+                        Work Experiences
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                        href="/projects.html"
+                        class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300"
+                        >
+                        Featured Projects
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                        href="/contentWriting.html"
+                        class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300"
+                        >
+                        Content Writing Samples
+                        </a>
+                    </li>
+                    </ul>
+                </div>
+                </div>
+            </li>
+            <!-- CONTACT -->
+            <li class="relative group">
+                <a href="/pdfs/Airin John_Brand Marketing Manager_Core42_G2.pdf" class="block relative overflow-hidden h-6"><span class="block transform transition-transform duration-300 group-hover:-translate-y-full"> RESUME </span> <span class="absolute inset-0 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0"> RESUME </span> </a>
+            </li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+    <!-- Header Section -->
+    <section class="w-full bg-customBg py-20">
+        <div class="max-w-[80%] mx-auto">
+        <div class="flex flex-col">
+            <!-- Title -->
+            <h1 class="text-4xl font-bold text-white mb-4">
+            WORK EXPERIENCES
+            </h1>
+            <!-- Breadcrumbs -->
+            <div class="text-white text-sm flex items-center space-x-2">
+                <a href="/" class="underline">Home</a>
+                <span class="text-gray-300">/</span>
+                <span class="text-gray-100">Work Experiences</span>
+            </div>
+        </div>
+        </div>
+    </section>
+    <section class="w-full bg-white py-10 flex flex-col items-center">
+        <div class="timeline-container">
+        <div class="timeline-line"></div>
+            <div class="timeline-item" data-key="kitopi">
+                <div class="bg-purple-600 rounded-lg p-4 w-80">
+                    <span class="year">2023 - Present</span>
+                    <h3 class="font-bold text-lg">Brand Marketing Manager</h3>
+                    <p class="text-sm">Kitopi LLC</p>
+                    <p class="text-sm">2023 - Present</p>
+                </div>
+            </div>
+            <div class="timeline-item" data-key="wild">
+                <div class="bg-pink-500 rounded-lg p-4 w-80">
+                    <span class="year">2020 - 2023</span>
+                    <h3 class="font-bold text-lg">Brand & Communications Manager</h3>
+                    <p class="text-sm">Wild & The Moon</p>
+                    <p class="text-sm">2020 - 2023</p>
+                </div>
+            </div>
+        <div class="timeline-item" data-key="letswork">
+            <div class="bg-green-500 rounded-lg p-4 w-80">
+                <span class="year">2020</span>
+                <h3 class="font-bold text-lg">Community Manager</h3>
+                <p class="text-sm">Letswork</p>
+                <p class="text-sm">2020</p>
+                </div>
+        </div>
+        <div class="timeline-item" data-key="tamimi">
+            <div class="bg-yellow-500 rounded-lg p-4 w-80">
+                <span class="year">2019 - 2020</span>
+                <h3 class="font-bold text-lg">Management Trainee</h3>
+                <p class="text-sm">Al Tamimi & Company</p>
+                <p class="text-sm">2019 - 2020</p>
+            </div>
+        </div>
+        <div class="timeline-item" data-key="fitze">
+            <div class="bg-blue-500 rounded-lg p-4 w-80">
+                <span class="year">2017 - 2019</span>
+                <h3 class="font-bold text-lg">Events Intern</h3>
+                <p class="text-sm">Fitze</p>
+                <p class="text-sm">2017 - 2019</p>
+            </div>
+        </div>
+        </div>
+        <div class="w-full md:w-2/3 p-6 text-gray-700 bg-gray-100 rounded-lg mt-6" id="experience-details">
+        Click on a job to see details here.
+        </div>
+    </section>
+    <!-- Footer Section -->
+    <footer class="bg-customBg shadow mt-8">
+        <div class="container mx-auto p-4 flex flex-wrap justify-between items-center text-gray-400">
+            <!-- All Rights Reserved -->
+            <div class="text-left w-full md:w-auto mb-4 md:mb-0">
+                © 2024 Airin John Portfolio, All Rights Reserved
+            </div>
+    
+            <!-- Contact Information -->
+            <div class="flex flex-col items-start text-left w-full md:w-auto space-y-4">
+                <h4 class="text-white font-bold mb-2">CONTACT INFORMATION</h4>
+                <!-- Email -->
+                <div>
+                    <a href="mailto:elsa.airin@gmail.com" class="text-white underline italic hover:text-accentAj transition">
+                        Email: elsa.airin@gmail.com
+                    </a>
+                </div>
+                <!-- Phone -->
+                <div>
+                    <a href="tel:+1234567890" class="text-white underline italic hover:text-accentAj transition">
+                        Phone: +971 55 981 3969
+                    </a>
+                </div>
+                <!-- LinkedIn -->
+                <div>
+                    <a href="www.linkedin.com/in/airinjohn" target="_blank" class="text-white underline italic hover:text-accentAj transition">
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+            // Experience text data
+        const experienceDetails = {
+        "kitopi": `
+        <strong>Brand Marketing Manager | Kitopi LLC | 2023 – Present</strong><br><br>
+        Leading strategic marketing activations and data-driven multi-channel campaigns across a $20M brand portfolio</strong> in GCC markets. Leading high-impact collaborations, optimizing budget efficiency, and aligning marketing efforts with overarching business objectives to deliver measurable results.<br><br>
+
+        <strong>Key Achievements:</strong><br>
+        <li class="ml-5">Revenue Growth: Spearheaded campaigns contributing to a <strong>30% YoY sales increase</strong> across the brand portfolio.</li>
+        <li class="ml-5">Pioneered Communication Channels: Introduced WhatsApp as a communication medium for tactical campaigns, landing <strong>ROAS of 27</strong> and above, setting a benchmark across brands.</li>
+        <li class="ml-5">Creative Direction & Content Creation: Conceptualized, led creative direction and creation for a brand-defining campaign, including a custom jingle and high-impact video content.</li><br>
+
+        <strong>Highlights:</strong><br>
+        1. Campaign Excellence:<br>
+        <li class="ml-5">Drove marketing activations and multichannel campaigns across digital, social, and in-store platforms, driving measurable results.</li>
+        <li class="ml-5">Achieved outstanding <strong>ROAS</strong>, including <strong>2.89</strong> for <strong>brand campaigns</strong>, <strong>12.9</strong> for <strong>tactical campaigns</strong>, and <strong>1.7</strong> for <strong>OOH campaigns</strong> through tailored creative strategies.</li><br>
+        2. Brand Activations & Engagement:<br>
+        <li class="ml-5">Fostered key brand collaborations, elevating brand visibility and achieving a </strong>33% increase</strong> in consumer engagement.</li>
+        <li class="ml-5">Elevated <strong>in-store</strong> consumer engagement by creating interactive and memorable brand <strong>experiences</strong>.</li>
+        <li class="ml-5">Implemented cohesive <strong>visual merchandising</strong> strategies that enhanced the brand's identity and in-store customer journey.</li><br>
+        3. Cross-functional Collaboration:<br>
+        <li class="ml-5">Led a <strong>team of specialists</strong>, overseeing various functions, budget allocation, campaign execution, and optimization across GCC markets to ensure seamless delivery.</li>
+        <li class="ml-5"><strong>Collaborated with cross-functional teams</strong> to align creative and strategic objectives for impactful campaigns.</li><br>
+        4. Performance and Optimization:<br>
+        <li class="ml-5">Effectively <strong>allocated budgets</strong> and resources across campaigns to maximize cost-efficiency and performance across markets.</li>
+        <li class="ml-5">Delivered <strong>timely and consistent reporting</strong> of campaign performance, providing the C-suite with data-driven insights and strategic recommendations.</li><br>
+
+        <strong>Key Skills:</strong><br>
+        Multi-Channel Marketing | Digital Marketing Strategies | Brand Strategy & Positioning | Content Creation & Storytelling | Visual Merchandising | Copywriting | PR | Data-Driven Marketing | Cross-Functional Collaboration | Vendor & Agency Management | Stakeholder Engagement | Leadership & Team Management | Performance Optimization | Project Management | Budget Management<br><br>
+
+        <strong>Technical Skills:</strong><br>
+        Meta Business Suite | Google Business Profile | Asana | Figma | PowerBi | Microsoft Office | Miro | Yellow.ai
+    `,
+        "wild": `
+        <strong>Brand & Communications Manager (Apr 2022 - May 2023)</strong><br><br>
+        Spearheaded growth and building brand excellence through innovative 360-degree marketing strategies, impactful collaborations, and seamless cross-functional execution. Played a pivotal role in achieving award-winning recognition and expanding the brand across multiple markets.<br><br>
+
+        <strong>Key Achievements:</strong><br>
+        <li class="ml-5">Revenue Growth: Led marketing initiatives that contributed to a <strong>23% YoY sales increase</strong>, driving impactful results across <strong>17+ stores</strong>.</li>
+        <li class="ml-5">Digital Presence and Community Engagement: Established the brand’s regional digital footprint, growing <strong>social media followers</strong> to <strong>12k</strong> and achieving a <strong>40% engagement boost</strong> through targeted influencer campaigns.</li>
+        <li class="ml-5">Awards & Recognition: Played a pivotal role in <strong>winning prestigious awards</strong>, including Fact Magazine, WhatsOn, PETA, and Leaders F&B.</li><br>
+
+        <strong>Highlights:</strong><br>
+        1. Campaign Excellence:<br>
+        <li class="ml-5">Spearheaded marketing campaigns, promotional activations, and product calendars, delivering <strong>ROAS of 13</strong> for core product promotions.</li>
+        <li class="ml-5">Aligned campaigns with strategic objectives to drive engagement and sales.</li><br>
+        2. Market Expansion & Visibility:<br>
+        <li class="ml-5">Executed key marketing strategies for UAE and France while driving <strong>market entries</strong> into the Netherlands and KSA.</li>
+        <li class="ml-5">Boosted brand visibility through tailored strategies across diverse markets, <strong>expanding presence across 17+ stores</strong>.</li>
+        <li class="ml-5">Secured <strong>media features</strong> in major outlets, including WhatsOn, Emirates Women, and Harper’s Bazaar.</li><br>
+        3. Cross-functional Collaboration:<br>
+        <li class="ml-5">Fostered <strong>collaboration between</strong> design, strategy, and production teams, and built robust systems between <strong>brand teams</strong> to deliver cohesive brand experiences in-store and online.</li>
+        <li class="ml-5">Produced in-house <strong>food and product photography</strong> to support brand communications, activations, and product launches, ensuring consistent visual storytelling.</li><br>
+        4. Digital Strategy & Engagement:<br>
+        <li class="ml-5">Grew the brand’s social media presence regionally by driving <strong>influencer partnerships</strong> and impactful <strong>digital storytelling</strong>.</li>
+        <li class="ml-5">Created and executed a unified brand <strong>identity manual</strong> and <strong>visual merchandising strategies</strong>, strengthening brand identity while improving the in-store customer journey.</li><br>
+
+        <strong>Professional Skills:</strong><br>
+        Digital Marketing | Social Media Management | Content Strategy & Creation | Copywriting | Multi-Market Campaign Execution | Integrated Campaign Management | PR & Media Strategy | Performance Analysis & Reporting | Photography | Cross-Functional Collaboration | Strategic Partnerships | Agency & Vendor Management | PR & Awards<br><br>
+
+        <strong>Technical Skills:</strong><br>
+        Meta Business Suite | Facebook Creator Studio | Google Business Profile | Canva | Trello | MailChimp | Microsoft Office | Iconosquare
+    `,
+        "letswork": `
+        <strong>Community Manager<br>Letswork | 2020</strong><br><br>
+        Partnered with hospitality brands and influencers to enhance brand visibility, develop strategic social media initiatives, and elevate customer-centric operations, driving business growth.<br><br>
+
+        <strong>Key Achievements:</strong><br>
+        <li class="ml-5">Revenue Growth: Designed and implemented a brand ambassador program with social media influencers, achieving a <strong>35% increase in sales</strong>.</li>
+        <li class="ml-5">Collaborations & Partnerships: Strengthened brand alignment and fostered collaborative success by cultivating <strong>strategic relationships with</strong> key hospitality <strong>partners</strong> and influencers.</li>
+        <li class="ml-5">Branding & Identity: Directed the <strong>creation of marketing collaterals</strong>, ensuring cohesive and impactful brand representation across all communication channels.</li><br>
+
+        <strong>Highlights:</strong><br>
+        1. Social Media Management:<br>
+        <li class="ml-5">Spearheaded content strategy and creation for Instagram, Facebook, and LinkedIn, <strong>boosting social media followers by 17%</strong> and driving digital engagement.</li>
+        <li class="ml-5">Initiated <strong>collaborations</strong> with like-minded brands to expand brand visibility and engagement.</li><br>
+        2. Brand Advocacy:<br>
+        <li class="ml-5">Designed and executed <strong>social media marketing initiatives</strong> with influencers and other opinion leaders.</li>
+        <li class="ml-5">Managed <strong>customer-centric operations</strong> to ensure a seamless service experience.</li><br>
+        3. Collaborations & Account Management:<br>
+        <li class="ml-5">Fostered positive <strong>relationships with stakeholders</strong> and key clients, supporting event planning and driving partnership expansion.</li><br>
+
+        <strong>Professional Skills:</strong><br>
+        Social Media Management | Influencer Marketing | Strategic Partnerships | Customer-Centric Operations | Content Creation | Brand Advocacy | Marketing Collaterals | Stakeholder Engagement | Collaboration & Event Planning | Account Management<br><br>
+
+        <strong>Technical Skills:</strong><br>
+        Meta Business Suite | Canva | Microsoft Office | Google Workspace
+    `,
+        "tamimi": `
+        <strong>Management Trainee<br>Al Tamimi & Company | 2019 – 2020</strong><br><br>
+        Supported business strategy, compliance, marketing teams, and other stakeholders through research, CRM implementation, corporate social responsibility (CSR) activities, and software integration exercises.<br><br>
+
+        <strong>Key Achievements:</strong><br>
+        <li class="ml-5">CRM & Marketing: Coordinated the development and maintenance of the firm’s </strong>CRM</strong> database <strong>(Salesforce/OnePlace)</strong>, streamlining client and internal operations.</li>
+        <li class="ml-5"><strong>CSR</strong> Initiatives: Co-planned and organized CSR initiatives, enhancing community engagement and brand visibility.</li>
+        <li class="ml-5">Compliance Support: Conducted conflict checks, <strong>KYC procedures</strong>, and World-Check screenings to support the Compliance Department.</li><br>
+
+        <strong>Highlights:</strong><br>
+        1. Business Development & Strategy:<br>
+        <li class="ml-5">Conducted in-depth research and <strong>due diligence to</strong> support <strong>management projects</strong>, delivering actionable insights for strategic planning.</li>
+        <li class="ml-5">Contributed to <strong>strategic planning</strong> for business growth and market positioning.</li><br>
+        2. CRM & Software Optimization:<br>
+        <li class="ml-5">Led the <strong>integration of</strong> new <strong>CRM software (OnePlace)</strong>, fostering cross-functional collaboration and improving client engagement processes.</li>
+        <li class="ml-5">Maintained and updated organizational databases, ensuring data accuracy and alignment with compliance requirements.</li><br>
+        3. CSR & Community Engagement:<br>
+        <li class="ml-5">Designed and communicated <strong>CSR initiatives</strong>, enhancing community engagement and positioning the firm as a socially responsible organization.</li>
+        <li class="ml-5">Developed pro bono application forms and reinforced CSR policies across the organization.</li><br>
+        4. Legal, Compliance, and Administrative Support:<br>
+        <li class="ml-5">Supported the Compliance Department by conducting conflict checks, <strong>KYC procedures</strong>, and World-Check screenings to ensure regulatory compliance.</li>
+        <li class="ml-5">Facilitated <strong>legal automation projects</strong> by collaborating with stakeholders to digitize documentation processes.</li>
+        <li class="ml-5">Streamlined operations by managing updates to HR, Legal, and Administrative databases.</li><br>
+
+        <strong>Professional Skills:</strong><br>
+        CRM Integration | Business Strategy | CSR Strategy | Legal Automation | Compliance Support | Research & Due Diligence | Stakeholder Communication | Community Engagement | Process Optimization | Brand Enhancement<br><br>
+
+        <strong>Technical Skills:</strong><br>
+        Microsoft Office | Salesforce | One Place | WordPress | Elite | Rifinitiv | World-check One | Contract works
+    `,
+        "fitze": `
+        <strong>Events Intern (Seasonal Role)<br>Fitze | 2017 – 2019</strong><br><br>
+        Assisted in event planning and coordination to deliver seamless experiences for clients and stakeholders.<br><br>
+
+        <strong>Key Achievements:</strong><br>
+        <li class="ml-5">Event Management: Supported the planning and execution of key events, including collaborations with DEWA, ECC, Daiken, and Versatech.</li>
+        <li class="ml-5">Client Relations: Assisted client members during events to ensure satisfaction and successful engagement.</li><br>
+
+        <strong>Highlights:</strong><br>
+        1. Event Coordination:<br>
+        <li class="ml-5">Worked closely with teams to plan venues and manage event logistics, ensuring smooth execution.</li>
+        <li class="ml-5">Played a key role in on-ground event supervision and client interaction.</li><br>
+        2. Collaboration:<br>
+        <li class="ml-5">Supported event partnerships and ensured alignment with brand objectives.</li><br>
+
+        <strong>Professional Skills:</strong><br>
+        Event Planning | Client Relationship Management | Team Collaboration | Brand Representation | Logistical Coordination<br><br>
+
+        <strong>Technical Skills:</strong><br>
+        Microsoft Office
+    `,
+        };
+
+        document.querySelectorAll(".timeline-item").forEach(item => {
+        item.addEventListener("click", () => {
+            document.querySelectorAll(".timeline-item").forEach(t => t.classList.remove("selected"));
+            item.classList.add("selected");
+            document.getElementById("experience-details").innerHTML = experienceDetails[item.dataset.key];
+        });
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const timelineItems = document.querySelectorAll(".timeline-item");
+        const targetX = -250; // Fixed position on the left
+        const targetY = -100; // Move up before translating left
+
+        timelineItems.forEach((item, index) => {
+            item.addEventListener("click", function () {
+            const rect = item.getBoundingClientRect();
+            const moveUp = rect.top > window.innerHeight / 2 ? targetY : 0; 
+
+            anime({
+                targets: item,
+                translateY: [0, moveUp], // Moves up if lower, else stays
+                easing: "easeInOutQuad",
+                duration: 500,
+                complete: function () {
+                anime({
+                    targets: item,
+                    translateX: [0, targetX], // Moves to fixed left position
+                    easing: "easeInOutQuad",
+                    duration: 800,
+                });
+                },
+            });
+
+            item.classList.add("expanded");
+            });
+        });
+        });
+    </script>
+</body>
+</html>

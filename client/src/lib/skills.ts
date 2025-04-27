@@ -3,55 +3,63 @@ export interface Skill {
   percentage: number;
 }
 
-export const designSkills: Skill[] = [
+export const marketingSkills: Skill[] = [
   {
-    name: "User Experience Design",
+    name: "Multi-Channel Marketing",
     percentage: 95,
   },
   {
-    name: "UI/Visual Design",
+    name: "Brand Strategy & Storytelling",
+    percentage: 92,
+  },
+  {
+    name: "Campaign Management",
     percentage: 90,
   },
   {
-    name: "Prototyping",
-    percentage: 85,
+    name: "Digital Marketing",
+    percentage: 88,
   },
   {
-    name: "User Research",
-    percentage: 80,
+    name: "Performance Marketing",
+    percentage: 85,
   },
 ];
 
-export const developmentSkills: Skill[] = [
+export const leadershipSkills: Skill[] = [
   {
-    name: "HTML/CSS",
-    percentage: 95,
+    name: "Project Management",
+    percentage: 90,
   },
   {
-    name: "JavaScript",
+    name: "Team Leadership",
     percentage: 85,
   },
   {
-    name: "React",
-    percentage: 80,
+    name: "Budget Management",
+    percentage: 88,
   },
   {
-    name: "Responsive Design",
-    percentage: 90,
+    name: "Performance Reporting",
+    percentage: 92,
+  },
+  {
+    name: "Stakeholder Management",
+    percentage: 85,
   },
 ];
 
 export const tools = [
+  "Meta Business Suite",
+  "Asana",
+  "Canva",
   "Figma",
-  "Adobe XD",
-  "Sketch",
-  "Photoshop",
-  "Illustrator",
-  "React",
-  "Vue",
-  "Tailwind CSS",
-  "SASS",
-  "Git",
-  "Webpack",
-  "Node.js",
+  "PowerBi",
+  "Mailchimp",
+  "Microsoft Office",
+  "Salesforce",
+  "Google Business Profile",
+  "Iconosquare",
+  "Social Media Management Tools",
+  "CRM Systems",
 ];

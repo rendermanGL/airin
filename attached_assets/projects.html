@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Featured Projects</title>
+  <!-- <link rel="stylesheet" href="./dist/output.css"> -->
+  <link rel="stylesheet" href="./build.css">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <style>
+    /* Fade-in animation for the image*/
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn 1.5s ease-in-out forwards;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .hidden {
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+    }
+
+    .hidden:not(.hidden) {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+
+
+  </style>
+</head>
+<body class="bg-customBg text-white pt-10">
+
+    <header class="fixed top-0 left-0 w-full z-50 bg-customBg shadow-lg">
+        <!-- Main Header -->
+        <div id="main-header" class="flex items-center justify-between py-4 px-8">
+        <!-- Logo -->
+        <a href="/" class="text-3xl font-name-font">AIRIN JOHN</a>
+        <!-- Navigation -->
+        <nav>
+            <ul class="flex space-x-8">
+            <!-- ABOUT -->
+            <li class="relative group">
+                <a href="/about.html" class="block relative overflow-hidden h-6">
+                <span
+                    class="block transform transition-transform duration-300 group-hover:-translate-y-full"
+                >
+                    ABOUT
+                </span>
+                <span
+                    class="absolute inset-0 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0"
+                >
+                    ABOUT
+                </span>
+                </a>
+            </li>
+            <!-- PORTFOLIO -->
+            <li class="menu-item relative group">
+                <div class="overflow-hidden text-center navbar-font">
+                <a href="#" class="block relative">
+                    <span
+                    class="qodef-nav-item-initial block transform transition-all duration-500 delay-200 opacity-100 group-hover:opacity-0 group-hover:-translate-y-full"
+                    >
+                    PORTFOLIO
+                    </span>
+                    <span
+                    class="qodef-nav-item-duplicate block absolute inset-0 transform translate-y-full transition-all duration-500 delay-200 opacity-0 group-hover:opacity-100 group-hover:translate-y-0"
+                    >
+                    PORTFOLIO
+                    </span>
+                </a>
+                <!-- Dropdown -->
+                <div
+                    class="absolute top-full left-0 mt-2 w-48 bg-dropdownBg text-white shadow-lg rounded-lg opacity-0 transform scale-95 transition-all duration-300 ease-in-out group-hover:opacity-100 group-hover:scale-100"
+                >
+                    <ul class="py-2">
+                    <li>
+                        <a
+                        href="/experience.html"
+                        class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300"
+                        >
+                        Work Experiences
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                        href="/projects.html"
+                        class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300"
+                        >
+                        Featured Projects
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                        href="/contentWriting.html"
+                        class="block px-4 py-2 hover:text-blackAj hover:bg-whiteAj rounded-md transition duration-300"
+                        >
+                        Content Writing Samples
+                        </a>
+                    </li>
+                    </ul>
+                </div>
+                </div>
+            </li>
+            <!-- CONTACT -->
+            <li class="relative group">
+                <a href="/pdfs/Airin John_Brand Marketing Manager_Core42_G2.pdf" class="block relative overflow-hidden h-6"> <span class="block transform transition-transform duration-300 group-hover:-translate-y-full" >RESUME</span> <span class="absolute inset-0 transform translate-y-full transition-transform duration-300 group-hover:translate-y-0">RESUME</span> </a>
+            </li>
+            </ul>
+        </nav>
+        </div>
+    </header>
+
+    <!-- Header Section for Featured Projects -->
+    <section id="featured-header" class="hidden w-full bg-white py-16">
+        <div class="container mx-auto px-10">
+        <!-- Title -->
+        <h1 class="text-customBg font-bold uppercase mb-4">Featured Projects</h1>
+        <!-- Breadcrumb -->
+        <div class="text-gray-500">
+            <span>Home</span> /
+            <a href="/projects.html"><span class="hover:text-accentAj">Featured Projects</span></a> /
+            <span id="project-title" class="font-bold text-black"></span>
+        </div>
+        </div>
+    </section>
+    
+
+
+    <section id="image-grid" class="w-full bg-white py-16">
+        <div class="container mx-auto grid grid-cols-2 gap-8">
+          <!-- Image 1 -->
+          <div class="relative w-full h-[700px] mx-auto group"
+            onclick="showFeaturedSection('Strategic Marketing')">
+            <img
+              src="/img/featuredProjects/Strategic Marketing.jpg"
+              alt="strategic marketing"
+              class="w-full h-full object-cover rounded-md shadow-lg group-hover:ring-4 group-hover:ring-black transition-all duration-500"
+            />
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white font-bold text-2xl">
+              <span class="relative group">
+                Strategic Marketing
+                <span
+                  class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full"
+                ></span>
+              </span>
+            </div>
+          </div>
+          <!-- Image 2 -->
+          <div class="relative w-full h-[700px] mx-auto group"
+          onclick="showFeaturedSection('Customer Experience & Community Engagement')">
+            <img
+              src="/img/featuredProjects/Customer Experience & Community Engagement.png"
+              alt="customer experience and community engagement"
+              class="w-full h-full object-cover rounded-md shadow-lg group-hover:ring-4 group-hover:ring-black transition-all duration-500"
+            />
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white font-bold text-2xl">
+              <span class="relative group">
+                Customer Experience & Community Engagement
+                <span
+                  class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full"
+                ></span>
+              </span>
+            </div>
+          </div>
+          <!-- Image 3 -->
+          <div class="relative w-full h-[700px] mx-auto group"
+          onclick="showFeaturedSection('Brand Storytelling & Multi-channel Marketing')">
+            <img
+              src="/img/featuredProjects/Brand Storytelling & Multi-Channel Marketing.png"
+              alt="brand storytelling and multi-channel marketing"
+              class="w-full h-full object-cover rounded-md shadow-lg group-hover:ring-4 group-hover:ring-black transition-all duration-500"
+            />
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white font-bold text-2xl">
+              <span class="relative group">
+                Brand Storytelling & Multi-channel Marketing
+                <span
+                  class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full"
+                ></span>
+              </span>
+            </div>
+          </div>
+          <!-- Image 4 -->
+          <div class="relative w-full h-[700px] mx-auto group"
+          onclick="showFeaturedSection('Awards & Recognition')">
+            <img
+              src="/img/featuredProjects/Awards & Recognition.jpg"
+              alt="award recognition"
+              class="w-full h-full object-cover rounded-md shadow-lg group-hover:ring-4 group-hover:ring-black transition-all duration-500"
+            />
+            <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white font-bold text-2xl">
+              <span class="relative group">
+                Awards & Recognition
+                <span
+                  class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-500 group-hover:w-full"
+                ></span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+        
+      <!-- Pillar 1 -->
+      <section id="section-strategic-marketing" class="hidden w-full bg-gray-100 py-16">
+        <div class="container mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Left Column: Scrollable Images -->
+          <div class="relative overflow-hidden h-[118vh]">
+            <div class="absolute inset-0 overflow-y-scroll no-scrollbar space-y-4">
+              <!-- Images -->
+              <img src="img/featuredProjects/pillar1/1.jpg" alt="Image 1" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar1/2.jpg" alt="Image 2" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar1/3.JPG" alt="Image 3" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar1/4.jpg" alt="Image 4" class="w-full h-600 object-cover rounded-md shadow-lg">
+            </div>
+          </div>
+      
+          <!-- Right Column: Campaign Details -->
+          <div class="flex flex-col justify-center space-y-12">
+            <!-- Campaign 1 -->
+            <div>
+              <h3 class="text-3xl font-bold text-gray-900 mb-4">Brand Product Campaign</h3>
+              <h4 class="text-2xl font-semibold text-gray-700 mb-2">Kava & Chai: Summer Matcha Bliss</h4>
+              <p class="text-lg text-gray-600 mb-4">
+                Developed and launched two limited-edition summer drinks—Iced Coco Matcha and Mango Matcha—to add new offerings and maintain customer excitement.
+              </p>
+              <ul class="list-disc ml-5 text-gray-600 space-y-2">
+                <h3><strong>Products:</strong> Iced Coco Matcha & Mango Matcha</h3>
+                <h3><strong>Objectives:</strong></h3>
+                    <li class="ml-5">Increase traffic during off-season with LTO offerings.</li>
+                    <li class="ml-5">Uplift brand perception through trend-driven and innovative offerings that align with market dynamics and customer preferences.</li>
+                <h3><strong>Results:</strong></h3>
+                    <li class="ml-5">Contributed <strong>6% of</strong> overall <strong>sales mix.</strong></li>
+                    <li class="ml-5">Performance marketing and influencer collaborations drove a <strong>23% increase in digital engagement.</strong></li>
+                    <li class="ml-5">Enhanced the brand's reputation for innovation and trend alignment, fostering a stronger connection with its target audience.</li>
+              </ul>
+            </div>
+      
+            <!-- Campaign 2 -->
+            <div>
+              <h3 class="text-3xl font-bold text-gray-900 mb-4">Seasonal Product Campaign</h3>
+              <h4 class="text-2xl font-semibold text-gray-700 mb-2">Wild & The Moon: Hit Reset with the Best!</h4>
+              <p class="text-lg text-gray-600 mb-4">
+                Introduced a Summer Detox Range offered at a 20% discount for a limited period to increase engagement during the summer downtime.
+              </p>
+              <ul class="list-disc ml-5 text-gray-600 space-y-2">
+                <h3><strong>Products:</strong> Summer Detox Range at 20% off for a limited time only!</h3>
+                <h3><strong>Objectives:</strong></h3> 
+                <li class="ml-5">Support sales traffic during summer downtime.</li>
+                <li class="ml-5">Increased customer engagement on digital platforms and traffic on the website (e-shop).</li>
+                <h3><strong>Results:</strong></h3> 
+                <li class="ml-5">Attained a striking <strong>ROAS of 38</strong> through targeted performance marketing campaigns.</li>
+                <li class="ml-5">Increased <strong>website traffic by 27%</strong>, driving higher engagement and conversion.</li>
+              </ul>
+            </div>
+      
+            <!-- Campaign 3 -->
+            <div>
+              <h3 class="text-3xl font-bold text-gray-900 mb-4">Tactical Campaigning Methods and Successes</h3>
+              <h4 class="text-2xl font-semibold text-gray-700 mb-2">Chin Chin</h4>
+              <p class="text-lg text-gray-600 mb-4">
+                Utilized WhatsApp as a new communication medium for tactical campaigns to boost impact and drive sales.
+              </p>
+              <ul class="list-disc ml-5 text-gray-600 space-y-2">
+                <h3 class="text-gray-600"><strong>Objectives:</strong></h3> 
+                  <li class="ml-5 text-gray-600">Introduce and test a new medium of communication to attain more impact around the campaign.</li>
+                  <li class="ml-5 text-gray-600">Support sales traffic during summer downtime.</li>
+                  <li class="ml-5 text-gray-600">Drive customer orders through delivery platforms and other aggregators.</li>
+                <h3><strong>Channel:</strong> WhatsApp</h3>
+                <h3><strong>Measures:</strong> Customers are split into categories - First Time Users, Frequent Customers and Churned Customers - then targeted based on results during the trial phase.</h3>
+                <h3><strong>Results:</strong></h3> 
+                  <li class="ml-5">Tactical campaigns acquired the highest <strong>ROAS</strong>, ranging from <strong>27</strong> and above per campaign.</li>
+                  <li class="ml-5">Improved <strong>menu views by 42%</strong> across aggregators and delivery platforms.</li>
+                  <li class="ml-5">Identified and implemented WhatsApp as an effective communication medium, setting a replicable model across brand campaigns.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      
+      <!-- Pillar 2 -->
+      <section id="section-customer-experience" class="hidden w-full bg-gray-100 py-16">
+        <div class="container mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Left Column: Scrollable Images -->
+          <div class="relative overflow-hidden h-[118vh]">
+            <div class="absolute inset-0 overflow-y-scroll no-scrollbar space-y-4">
+              <!-- Images -->
+              <img src="img/featuredProjects/pillar2/1.jpg" alt="Image 1" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar2/2.png" alt="Image 2" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar2/3.jpg" alt="Image 3" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar2/4.jpg" alt="Image 4" class="w-full h-600 object-cover rounded-md shadow-lg">
+            </div>
+          </div>
+      
+          <!-- Right Column: Community Workshops Details -->
+          <div class="flex flex-col justify-center space-y-12">
+            <!-- Community Workshops & Events -->
+            <div>
+              <h3 class="text-3xl font-bold text-gray-900 mb-4">Community Workshops & Events</h3>
+              <h4 class="text-2xl font-semibold text-gray-700 mb-2">Wild & The Moon</h4>
+              <p class="text-lg text-gray-600 mb-4">
+                Designed and spearheaded a series of wellness-centric workshops and events, reinforcing the brand's position as a thought leader and a go-to hub for health-conscious communities.
+              </p>
+              <ul class="list-disc ml-5 text-gray-600 space-y-2">
+                <h3><strong>Objectives:</strong></h3>
+                <li class="ml-5">Strengthen brand loyalty by fostering community engagement.</li>
+                <li class="ml-5">Boost visibility in the region through cross-marketing, digital channels, word-of-mouth, and other organic measures.</li>
+                <h3><strong>Results:</strong></h3>
+                <li class="ml-5">Increased event <strong>attendance by 45% YoY</strong>, positioning the brand as a leader in health-conscious communities.</li>
+                <li class="ml-5">Boosted <strong>social media engagement by 13%</strong> through event-related posts and interactive campaigns.</li>
+              </ul>
+            </div>
+
+            <div>
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">In-store Experience</h3>
+                <h4 class="text-2xl font-semibold text-gray-700 mb-2">Kava & Chai</h4>
+                <p class="text-lg text-gray-600 mb-4">
+                    Organized multiple PR campaigns and in-store activations, including collaboration with a local artist to draw portraits in-store.
+                </p>
+                <ul class="list-disc ml-5 text-gray-600 space-y-2">
+                    <h3><strong>Objectives:</strong></h3>
+                    <li class="ml-5">Elevate brand image and establish brand as a local go-to cafe chain.</li>
+                    <li class="ml-5">Generate a “digital buzz” to drive traffic in-store and boost online engagement.</li>
+                    <h3><strong>Results:</strong></h3>
+                    <li class="ml-5">Secured organic media coverage in top publications, including Time Out Dubai and WhatsOn, enhancing brand credibility and reach.</li>
+                    <li class="ml-5">Boosted social media <strong>engagement by 45%</strong> through targeted digital strategies - UGC and organic PR.</li>
+                    <li class="ml-5">Increased <strong>in-store foot traffic by 65%</strong> during activations, driving both sales and customer engagement.</li>
+                    <li class="ml-5">Partnered with over <strong>50 local influencers</strong> on a barter basis, from food bloggers to lifestyle creators, significantly expanding brand exposure and created UGC.</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+
+
+    <!-- Brand & storytelling -->
+      <section id="section-brand-storytelling" class="hidden w-full bg-gray-100 py-16">
+        <div class="container mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Left Column: Scrollable Images -->
+          <div class="relative overflow-hidden h-[118vh]">
+            <div class="absolute inset-0 overflow-y-scroll no-scrollbar space-y-4">
+              <!-- Images -->
+              <img src="img/featuredProjects/pillar3/1.jpg" alt="Image 1" class="w-full h-600 object-cover rounded-md shadow-lg"> <!-- Replace the image here -->
+              <img src="img/featuredProjects/pillar3/2.JPG" alt="Image 2" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar3/3.jpg" alt="Image 3" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar3/4.jpg" alt="Image 4" class="w-full h-600 object-cover rounded-md shadow-lg">
+            </div>
+          </div>
+      
+          <!-- Right Column: Community Workshops Details -->
+          <div class="flex flex-col justify-center space-y-12">
+            <!-- Community Workshops & Events -->
+            <div>
+              <h3 class="text-3xl font-bold text-gray-900 mb-4">Brand Campaign</h3>
+              <h4 class="text-2xl font-semibold text-gray-700 mb-2">Chin Chin</h4>
+              <p class="text-lg text-gray-600 mb-4">
+                Conceptualized and executed a vibrant marketing campaign featuring the tagline, “Chin Chin, So Nice, You Gotta Say it Twice!”, brought to life through engaging content - brand video campaigns and curated brand jingle - and media strategies. <strong>To be launched in 2025</strong>.
+              </p>
+              <ul class="list-disc ml-5 text-gray-600 space-y-2">
+                <h3><strong>Objectives:</strong></h3>
+                <li class="ml-5">Drive brand awareness and engagement through unique, memorable brand campaigns.</li>
+                <li class="ml-5">⁠Elevate brand presence by using creative and media-driven strategies.</li>
+                <li class="ml-5">⁠Improve reach and impact of the campaign through communication mediums that are new to the brand.</li>
+                <h3><strong>Channels:</strong></h3>
+                <li class="ml-5">Radio Jingle</li>
+                <li class="ml-5">Video Campaign & Paid Ads</li>
+                <li class="ml-5">Social Media</li>
+                <li class="ml-5">Influencer Marketing</li>
+                <li class="ml-5">WhatsApp Campaign</li>
+                <li class="ml-5">Press Release</li>
+                <li class="ml-5">In-store Collaterals</li>
+              </ul>
+            </div>
+
+            <div>
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Chin Chin</h3>
+                <h4 class="text-2xl font-semibold text-gray-700 mb-2">CSR: Ramadan Campaign</h4>
+                <p class="text-lg text-gray-600 mb-4">
+                    Launched a Ramadan initiative encouraging aimed at fostering community engagement, featuring a curated Ramadan Box accompanied with a voucher redeemable at select stores, integrating social impact with customer value.
+                </p>
+                <ul class="list-disc ml-5 text-gray-600 space-y-2">
+                    <h3><strong>Objectives:</strong></h3>
+                    <li class="ml-5">Align the brand with the spirit of the season through meaningful CSR activities.</li>
+                    <li class="ml-5">Strengthen brand image and visibility through targeted social media campaigns, influencer partnerships, and robust PR efforts.</li>
+                    <h3><strong>Channels:</strong></h3>
+                    <li class="ml-5">Video Campaign & Paid Ads</li>
+                    <li class="ml-5">Social Media </li>
+                    <li class="ml-5">Influencer Marketing</li>
+                    <li class="ml-5">WhatsApp Campaign</li>
+                    <li class="ml-5">Press Release</li>
+                    <li class="ml-5">In-store Collaterals</li>
+                    <h3><strong>Results:</strong></h3>
+                    <li class="ml-5">Over <strong>23k vouchers</strong> distributed, with over <strong>2% conversion</strong> (redemptions in-stores).</li>
+                    <li class="ml-5">⁠More than <strong>9 million impressions</strong> across digital platforms.</li>
+                    <li class="ml-5">Attained <strong>11</strong> press and <strong>media coverages</strong>.</li>
+                    <li class="ml-5">⁠⁠Over <strong>600 stories</strong> on social media.</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Awards & Recognition -->
+      <section id="section-awards-recognition" class="hidden w-full bg-gray-100 py-16">
+        <div class="container mx-auto px-6 lg:px-10 grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Left Column: Scrollable Images -->
+          <div class="relative overflow-hidden h-[118vh]">
+            <div class="absolute inset-0 overflow-y-scroll no-scrollbar space-y-4">
+              <!-- Images -->
+              <img src="img/featuredProjects/pillar4/1.jpg" alt="Image 1" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar4/2.jpg" alt="Image 2" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar4/3.jpg" alt="Image 3" class="w-full h-600 object-cover rounded-md shadow-lg">
+              <img src="img/featuredProjects/pillar4/4.jpg" alt="Image 4" class="w-full h-600 object-cover rounded-md shadow-lg">
+            </div>
+          </div>
+      
+          <!-- Right Column: Community Workshops Details -->
+          <div class="flex flex-col justify-center space-y-12">
+            <!-- Community Workshops & Events -->
+            <div>
+              <h3 class="text-3xl font-bold text-gray-900 mb-4">Wild & The Moon</h3>
+              <p class="text-lg text-gray-600 mb-4">
+                Played a pivotal role in winning multiple awards and secured PR placements in leading publications, enhancing the brand’s regional credibility.
+              </p>
+              <ul class="list-disc ml-5 text-gray-600 space-y-2">
+                <h3><strong>Awards:</strong></h3>
+                <h4><strong>2020:</strong></h4>
+                    <li class="ml-5">FACT Magazine - Favorite Vegan Friendly Cafe</li>
+                <h4><strong>2021:</strong></h4>
+                    <li class="ml-5">FACT Magazine - Best Vegan Friendly Cafe Dubai</li>
+                    <li class="ml-5">WhatsOn Dubai - Favorite Healthy Eating Restaurant</li>
+                    <li class="ml-5">WhatsOn Abu Dhabi - Favorite Healthy Eating Restaurant</li>
+                    <li class="ml-5">Leaders F&B - Leading Cafe</li>
+                <h4><strong>2022:</strong></h4>
+                    <li class="ml-5">Dubai Green Star Awards</li>
+                    <li class="ml-5">PETA Awards</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+      
+      
+    
+
+
+  
+ <!-- Footer Section -->
+ <footer class="bg-customBg shadow mt-8">
+    <div class="container mx-auto p-4 flex flex-wrap justify-between items-center text-gray-400">
+        <!-- All Rights Reserved -->
+        <div class="text-left w-full md:w-auto mb-4 md:mb-0">
+            © 2024 Airin John Portfolio, All Rights Reserved
+        </div>
+  
+        <!-- Contact Information -->
+        <div class="flex flex-col items-start text-left w-full md:w-auto space-y-4">
+            <h4 class="text-white font-bold mb-2">CONTACT INFORMATION</h4>
+            <!-- Email -->
+            <div>
+                <a href="mailto:elsa.airin@gmail.com" class="text-white underline italic hover:text-accentAj transition">
+                    Email: elsa.airin@gmail.com
+                </a>
+            </div>
+            <!-- Phone -->
+            <div>
+                <a href="tel:+1234567890" class="text-white underline italic hover:text-accentAj transition">
+                    Phone: +971 55 981 3969
+                </a>
+            </div>
+            <!-- LinkedIn -->
+            <div>
+                <a href="www.linkedin.com/in/airinjohn" target="_blank" class="text-white underline italic hover:text-accentAj transition">
+                    LinkedIn
+                </a>
+            </div>
+        </div>
+    </div>
+  </footer>
+  
+
+
+
+    <script>
+        function showFeaturedSection(title) {
+        // Hide the image grid section
+        const imageGrid = document.getElementById("image-grid");
+        imageGrid.classList.add("hidden");
+
+        // Show the featured projects header section
+        const featuredHeader = document.getElementById("featured-header");
+        featuredHeader.classList.remove("hidden");
+
+        // Update the breadcrumb with the title of the clicked image
+        const projectTitle = document.getElementById("project-title");
+        projectTitle.textContent = title;
+
+        // Hide all project sections
+        const sections = document.querySelectorAll('[id^="section-"]');
+        sections.forEach((section) => section.classList.add("hidden"));
+
+        // Show the specific section based on the title
+        if (title === "Strategic Marketing") {
+            document.getElementById("section-strategic-marketing").classList.remove("hidden");
+        } else if (title === "Customer Experience & Community Engagement") {
+            document.getElementById("section-customer-experience").classList.remove("hidden");
+        } else if (title === "Brand Storytelling & Multi-channel Marketing") {
+            document.getElementById("section-brand-storytelling").classList.remove("hidden");
+        } else if (title === "Awards & Recognition") {
+            document.getElementById("section-awards-recognition").classList.remove("hidden");
+        }
+        }
+
+    </script>
+</body>
+</html>

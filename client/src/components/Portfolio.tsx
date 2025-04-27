@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { portfolioItems } from "@/lib/portfolio";
 
-type FilterCategory = "all" | "design" | "development" | "branding";
+type FilterCategory = "all" | "strategy" | "campaign" | "branding";
 
 export default function Portfolio() {
   const [filter, setFilter] = useState<FilterCategory>("all");
@@ -23,7 +23,7 @@ export default function Portfolio() {
         >
           <h2 className="font-playfair text-3xl md:text-4xl font-bold text-primary mb-4">My Portfolio</h2>
           <div className="w-24 h-1 bg-accent mx-auto"></div>
-          <p className="mt-6 max-w-2xl mx-auto text-foreground">A selection of my recent projects showcasing my skills in design and development.</p>
+          <p className="mt-6 max-w-2xl mx-auto text-foreground">A showcase of strategic marketing initiatives, brand campaigns, and creative collaborations that have driven measurable business results.</p>
         </motion.div>
         
         {/* Portfolio Filter */}
@@ -45,19 +45,19 @@ export default function Portfolio() {
             </button>
             <button 
               className={`px-4 py-2 rounded-md font-medium focus:outline-none transition-colors ${
-                filter === "design" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
+                filter === "strategy" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
               }`}
-              onClick={() => setFilter("design")}
+              onClick={() => setFilter("strategy")}
             >
-              Design
+              Strategy
             </button>
             <button 
               className={`px-4 py-2 rounded-md font-medium focus:outline-none transition-colors ${
-                filter === "development" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
+                filter === "campaign" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
               }`}
-              onClick={() => setFilter("development")}
+              onClick={() => setFilter("campaign")}
             >
-              Development
+              Campaigns
             </button>
             <button 
               className={`px-4 py-2 rounded-md font-medium focus:outline-none transition-colors ${
@@ -98,7 +98,7 @@ export default function Portfolio() {
                   />
                   <div className="absolute inset-0 bg-primary/70 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <a href={item.projectUrl} className="text-white font-medium px-4 py-2 border border-white rounded-lg hover:bg-white hover:text-primary transition-colors">
-                      View Project
+                      View Details
                     </a>
                   </div>
                 </div>

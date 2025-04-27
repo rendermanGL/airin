@@ -16,10 +16,10 @@ export default function Hero() {
               Hi, I'm Airin John
             </h1>
             <h2 className="text-xl md:text-2xl text-secondary font-medium mb-6">
-              UX Designer & Frontend Developer
+              Brand Marketing Manager
             </h2>
             <p className="text-lg text-foreground mb-8 max-w-xl leading-relaxed">
-              I craft immersive digital experiences through thoughtful design and clean code. My passion lies in creating intuitive interfaces that solve real problems.
+              Passionate marketing professional with over 5 years of experience in digital strategy, multi-channel marketing, and brand storytelling across F&B, wellness, and hospitality sectors.
             </p>
             <div className="flex space-x-4">
               <Button 
