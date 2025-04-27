@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 98%;
+  --foreground: 210 29% 24%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 210 29% 24%;
+  --card: 0 0% 100%;
+  --card-foreground: 210 29% 24%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 232 19% 22%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 160 41% 36%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 36 74% 61%;
+  --accent-foreground: 210 29% 24%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 210 29% 24%;
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 232 19% 22%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 160 41% 36%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 36 74% 61%;
+  --accent-foreground: 210 29% 24%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer components {
+  .skill-bar {
+    @apply relative h-[6px] rounded-sm bg-primary/20 overflow-hidden;
+  }
+
+  .skill-progress {
+    @apply h-full bg-secondary rounded-sm transition-all duration-1000 ease-in-out;
+  }
+
+  .nav-link {
+    @apply relative;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute w-0 h-0.5 bottom-[-4px] left-0 bg-accent transition-all duration-300 ease-in-out;
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .social-icon {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .social-icon:hover {
+    @apply transform -translate-y-1 text-accent;
+  }
+
+  .portfolio-item {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .portfolio-item:hover {
+    @apply transform -translate-y-1 shadow-lg;
+  }
+}
