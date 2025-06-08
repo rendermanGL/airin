@@ -98,14 +98,10 @@ export default function ContentWritingSamples() {
                     asChild 
                     className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
                   >
-                    <a 
-                      href={`/api/documents/${doc.id}/file`} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                    >
+                    <Link href={`/portfolio/content-writing/${doc.id}`}>
                       View Document
                       <ExternalLink className="w-4 h-4 ml-2" />
-                    </a>
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
