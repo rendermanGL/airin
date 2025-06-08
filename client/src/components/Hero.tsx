@@ -21,9 +21,7 @@ export default function Hero() {
               Brand Marketing Manager
             </h2>
             <p className="text-lg text-foreground mb-8 max-w-xl leading-relaxed">
-              Passionate marketing professional with over 5 years of experience
-              in digital strategy, multi-channel marketing, and brand
-              storytelling across F&B, wellness, and hospitality sectors.
+              Strategic marketing professional with over 5 years of experience   leading multi-channel campaigns and brand storytelling across F&B, hospitality, and tech-enabled services. Proven track record in developing brand strategies and executing integrated campaigns that drive digital growth and visibility. Skilled in data-driven decision-making, cross-functional collaboration, and stakeholder alignment to deliver high-impact marketing outcomes.
             </p>
             <div className="flex space-x-4">
               <Button

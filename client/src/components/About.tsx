@@ -39,15 +39,11 @@ export default function About() {
           >
             <h3 className="font-playfair text-2xl text-primary font-semibold mb-4">My Journey</h3>
             <p className="text-foreground mb-6 leading-relaxed">
-              With over 5 years of experience in brand marketing and communications, I've helped companies across F&B, wellness, and hospitality sectors create impactful marketing strategies that drive business growth and enhance brand visibility.
+              With over 5 years of experience in brand marketing and communications, I’ve partnered with leading brands across the F&B and hospitality sectors to develop impactful strategies that drive business growth and elevate brand visibility.
             </p>
             <p className="text-foreground mb-6 leading-relaxed">
-              My approach combines strategic thinking with creative execution. I specialize in developing brand messaging and executing multi-channel campaigns, including digital, social media, PR, and influencer partnerships. I'm adept at leveraging data-driven insights to boost brand equity and enhance customer engagement.
+              My approach combines strategic thinking with creative execution. I specialize in developing brand messaging and executing multi-channel campaigns across digital, social, PR, and brand partnerships. I’m adept at leveraging data-driven insights to strengthen brand equity and deepen customer engagement.
             </p>
-            <p className="text-foreground mb-8 leading-relaxed">
-              Currently managing a $20 million brand portfolio, I've led campaigns resulting in significant growth, including a 30% year-over-year increase in sales and strategic collaborations that increased brand visibility by 33%.
-            </p>
-            
             <div className="grid grid-cols-2 gap-6">
               <div>
                 <h4 className="font-medium text-primary mb-2">Education</h4>
@@ -63,7 +59,7 @@ export default function About() {
               </div>
               <div>
                 <h4 className="font-medium text-primary mb-2">Professional Focus</h4>
-                <p className="text-sm">Digital Strategy<br/>Multi-Channel Marketing<br/>Brand Storytelling</p>
+                <p className="text-sm">Multi-Channel Marketing<br/>Digital Strategy<br/>Brand Storytelling</p>
               </div>
             </div>
           </motion.div>
