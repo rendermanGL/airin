@@ -23,6 +23,16 @@ export const subscribers = pgTable("subscribers", {
   createdAt: text("created_at").notNull(),
 });
 
+export const documents = pgTable("documents", {
+  id: serial("id").primaryKey(),
+  title: text("title").notNull(),
+  description: text("description").notNull(),
+  filename: text("filename").notNull(),
+  contentType: text("content_type").notNull(),
+  fileData: text("file_data").notNull(), // Base64 encoded PDF data
+  createdAt: text("created_at").notNull(),
+});
+
 export const insertUserSchema = createInsertSchema(users).pick({
   username: true,
   password: true,
@@ -39,6 +49,14 @@ export const insertSubscriberSchema = createInsertSchema(subscribers).pick({
   email: true,
 });
 
+export const insertDocumentSchema = createInsertSchema(documents).pick({
+  title: true,
+  description: true,
+  filename: true,
+  contentType: true,
+  fileData: true,
+});
+
 export type InsertUser = z.infer<typeof insertUserSchema>;
 export type User = typeof users.$inferSelect;
 
@@ -47,3 +65,6 @@ export type Contact = typeof contacts.$inferSelect;
 
 export type InsertSubscriber = z.infer<typeof insertSubscriberSchema>;
 export type Subscriber = typeof subscribers.$inferSelect;
+
+export type InsertDocument = z.infer<typeof insertDocumentSchema>;
+export type Document = typeof documents.$inferSelect;

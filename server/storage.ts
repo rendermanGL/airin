@@ -1,4 +1,4 @@
-import { users, contacts, subscribers, type User, type InsertUser, type Contact, type InsertContact, type Subscriber, type InsertSubscriber } from "@shared/schema";
+import { users, contacts, subscribers, documents, type User, type InsertUser, type Contact, type InsertContact, type Subscriber, type InsertSubscriber, type Document, type InsertDocument } from "@shared/schema";
 import { db } from "./db";
 import { eq } from "drizzle-orm";
 
@@ -10,6 +10,9 @@ export interface IStorage {
   createSubscriber(subscriber: InsertSubscriber): Promise<Subscriber>;
   getContacts(): Promise<Contact[]>;
   getSubscribers(): Promise<Subscriber[]>;
+  createDocument(document: InsertDocument): Promise<Document>;
+  getDocuments(): Promise<Document[]>;
+  getDocument(id: number): Promise<Document | undefined>;
 }
 
 export class DatabaseStorage implements IStorage {
