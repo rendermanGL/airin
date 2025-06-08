@@ -31,6 +31,13 @@ const portfolioCategories = [
     description: "Industry recognition and award-winning campaigns that showcase excellence in brand marketing and communications.",
     imageUrl: "https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80",
     route: "/portfolio/awards-recognition"
+  },
+  {
+    id: "content-writing",
+    title: "Content Writing Samples",
+    description: "Professional content writing portfolio including press releases, event materials, and brand communications that generated significant media coverage.",
+    imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80",
+    route: "/portfolio/content-writing"
   }
 ];
 
@@ -67,7 +74,7 @@ export default function Portfolio() {
       {/* Portfolio Categories Grid */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {portfolioCategories.map((category, index) => (
               <motion.div
                 key={category.id}
