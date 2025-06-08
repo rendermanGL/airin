@@ -10,6 +10,7 @@ import StrategicMarketing from "@/pages/StrategicMarketing";
 import CustomerEngagement from "@/pages/CustomerEngagement";
 import BrandStorytelling from "@/pages/BrandStorytelling";
 import AwardsRecognition from "@/pages/AwardsRecognition";
+import ContentWritingSamples from "@/pages/ContentWritingSamples";
 import { motion, AnimatePresence } from "framer-motion";
 
 function Router() {
@@ -22,6 +23,7 @@ function Router() {
         <Route path="/portfolio/customer-engagement" component={CustomerEngagement} />
         <Route path="/portfolio/brand-storytelling" component={BrandStorytelling} />
         <Route path="/portfolio/awards-recognition" component={AwardsRecognition} />
+        <Route path="/portfolio/content-writing" component={ContentWritingSamples} />
         <Route component={NotFound} />
       </Switch>
     </AnimatePresence>

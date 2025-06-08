@@ -2,7 +2,7 @@ import express from "express";
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSchema, insertSubscriberSchema } from "@shared/schema";
+import { insertContactSchema, insertSubscriberSchema, insertDocumentSchema } from "@shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   const apiRouter = express.Router();
@@ -56,6 +56,57 @@ export async function registerRoutes(app: Express): Promise<Server> {
       res.status(200).json(subscribers);
     } catch (error) {
       res.status(500).json({ message: "Error fetching subscribers", error });
+    }
+  });
+
+  // Document endpoints
+  apiRouter.post("/documents", async (req, res) => {
+    try {
+      const documentData = insertDocumentSchema.parse(req.body);
+      const document = await storage.createDocument(documentData);
+      res.status(201).json(document);
+    } catch (error) {
+      res.status(400).json({ message: "Error creating document", error });
+    }
+  });
+
+  apiRouter.get("/documents", async (req, res) => {
+    try {
+      const documents = await storage.getDocuments();
+      res.status(200).json(documents);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching documents", error });
+    }
+  });
+
+  apiRouter.get("/documents/:id", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const document = await storage.getDocument(id);
+      if (!document) {
+        return res.status(404).json({ message: "Document not found" });
+      }
+      res.status(200).json(document);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching document", error });
+    }
+  });
+
+  // Serve PDF files
+  apiRouter.get("/documents/:id/file", async (req, res) => {
+    try {
+      const id = parseInt(req.params.id);
+      const document = await storage.getDocument(id);
+      if (!document) {
+        return res.status(404).json({ message: "Document not found" });
+      }
+      
+      const buffer = Buffer.from(document.fileData, 'base64');
+      res.setHeader('Content-Type', document.contentType);
+      res.setHeader('Content-Disposition', `inline; filename="${document.filename}"`);
+      res.send(buffer);
+    } catch (error) {
+      res.status(500).json({ message: "Error serving document", error });
     }
   });
 

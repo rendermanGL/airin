@@ -1,7 +1,7 @@
 export interface PortfolioItem {
   id: number;
   title: string;
-  category: "strategic_marketing" | "customer_engagement" | "brand_storytelling" | "awards" | "writing_samples";
+  category: "strategic_marketing" | "customer_engagement" | "brand_storytelling" | "awards" | "writing_samples" | "content_writing";
   categoryLabel: string;
   description: string;
   imageUrl: string;
@@ -89,5 +89,14 @@ export const portfolioItems: PortfolioItem[] = [
     description: "Strategic award submissions that successfully positioned brands for industry recognition and thought leadership.",
     imageUrl: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80",
     projectUrl: "#"
+  },
+  {
+    id: 10,
+    title: "Content Writing Samples",
+    category: "content_writing",
+    categoryLabel: "Content Writing Samples",
+    description: "Professional content writing portfolio including press releases, event materials, and brand communications that generated significant media coverage.",
+    imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80",
+    projectUrl: "/portfolio/content-writing"
   }
 ];
