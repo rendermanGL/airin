@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { portfolioItems } from "@/lib/portfolio";
 
-type FilterCategory = "all" | "strategy" | "campaign" | "branding";
+type FilterCategory = "all" | "strategic_marketing" | "customer_engagement" | "brand_storytelling" | "awards" | "writing_samples";
 
 export default function Portfolio() {
   const [filter, setFilter] = useState<FilterCategory>("all");
@@ -34,9 +34,9 @@ export default function Portfolio() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.1 }}
         >
-          <div className="inline-flex flex-wrap justify-center space-x-2 bg-gray-100 rounded-lg p-1">
+          <div className="inline-flex flex-wrap justify-center gap-2 bg-gray-100 rounded-lg p-1">
             <button 
-              className={`px-4 py-2 rounded-md font-medium focus:outline-none transition-colors ${
+              className={`px-3 py-2 rounded-md font-medium focus:outline-none transition-colors text-sm ${
                 filter === "all" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
               }`}
               onClick={() => setFilter("all")}
@@ -44,28 +44,44 @@ export default function Portfolio() {
               All
             </button>
             <button 
-              className={`px-4 py-2 rounded-md font-medium focus:outline-none transition-colors ${
-                filter === "strategy" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
+              className={`px-3 py-2 rounded-md font-medium focus:outline-none transition-colors text-sm ${
+                filter === "strategic_marketing" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
               }`}
-              onClick={() => setFilter("strategy")}
+              onClick={() => setFilter("strategic_marketing")}
             >
-              Strategy
+              Strategic Marketing
             </button>
             <button 
-              className={`px-4 py-2 rounded-md font-medium focus:outline-none transition-colors ${
-                filter === "campaign" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
+              className={`px-3 py-2 rounded-md font-medium focus:outline-none transition-colors text-sm ${
+                filter === "customer_engagement" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
               }`}
-              onClick={() => setFilter("campaign")}
+              onClick={() => setFilter("customer_engagement")}
             >
-              Campaigns
+              Customer Engagement
             </button>
             <button 
-              className={`px-4 py-2 rounded-md font-medium focus:outline-none transition-colors ${
-                filter === "branding" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
+              className={`px-3 py-2 rounded-md font-medium focus:outline-none transition-colors text-sm ${
+                filter === "brand_storytelling" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
               }`}
-              onClick={() => setFilter("branding")}
+              onClick={() => setFilter("brand_storytelling")}
             >
-              Branding
+              Brand Storytelling
+            </button>
+            <button 
+              className={`px-3 py-2 rounded-md font-medium focus:outline-none transition-colors text-sm ${
+                filter === "awards" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
+              }`}
+              onClick={() => setFilter("awards")}
+            >
+              Awards
+            </button>
+            <button 
+              className={`px-3 py-2 rounded-md font-medium focus:outline-none transition-colors text-sm ${
+                filter === "writing_samples" ? "bg-secondary text-white" : "text-primary hover:bg-gray-200"
+              }`}
+              onClick={() => setFilter("writing_samples")}
+            >
+              Writing Samples
             </button>
           </div>
         </motion.div>

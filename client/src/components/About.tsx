@@ -24,7 +24,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
           >
             <img 
-              src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+              src="https://www.dropbox.com/scl/fi/ydqnkmb163f58u9lb92la/DSC_7759-copy.jpg?rlkey=fx3anq9bl42xxpgsa4u7xxfpf&st=5inc7vlo&dl=0&raw=1" 
               alt="Airin working"
               className="rounded-lg shadow-xl w-full h-auto object-cover"
             />
