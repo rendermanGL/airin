@@ -1,10 +1,12 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import ParticleSystem from "./ParticleSystem";
 
 export default function Hero() {
   return (
-    <section id="hero" className="min-h-screen flex items-center pt-24 pb-16">
-      <div className="container mx-auto px-6">
+    <section id="hero" className="min-h-screen flex items-center pt-24 pb-16 relative overflow-hidden">
+      <ParticleSystem />
+      <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-center">
           <motion.div
             className="lg:w-1/2"
