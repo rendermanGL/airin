@@ -12,15 +12,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const contactData = insertContactSchema.parse(req.body);
       
-      // Add timestamp
-      const contactWithTimestamp = {
-        ...contactData,
-        createdAt: new Date().toISOString(),
-      };
+      const contact = await storage.createContact(contactData);
       
-      // In a real app, this would save to a database and possibly send an email
-      // For now, just return success
-      res.status(200).json({ message: "Message received! Thank you for your submission." });
+      res.status(200).json({ 
+        message: "Message received! Thank you for your submission.",
+        contact: { id: contact.id }
+      });
     } catch (error) {
       res.status(400).json({ message: "Invalid form data", error });
     }
@@ -29,19 +26,36 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Newsletter subscription
   apiRouter.post("/subscribe", async (req, res) => {
     try {
-      const { email } = insertSubscriberSchema.parse(req.body);
+      const subscriberData = insertSubscriberSchema.parse(req.body);
       
-      // Add timestamp
-      const subscriberData = {
-        email,
-        createdAt: new Date().toISOString(),
-      };
+      const subscriber = await storage.createSubscriber(subscriberData);
       
-      // In a real app, this would save to a database and possibly trigger a welcome email
-      // For now, just return success
-      res.status(200).json({ message: "Successfully subscribed to the newsletter!" });
+      res.status(200).json({ 
+        message: "Successfully subscribed to the newsletter!",
+        subscriber: { id: subscriber.id }
+      });
     } catch (error) {
       res.status(400).json({ message: "Invalid email address", error });
+    }
+  });
+
+  // Get contacts (admin endpoint)
+  apiRouter.get("/contacts", async (req, res) => {
+    try {
+      const contacts = await storage.getContacts();
+      res.status(200).json(contacts);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching contacts", error });
+    }
+  });
+
+  // Get subscribers (admin endpoint)
+  apiRouter.get("/subscribers", async (req, res) => {
+    try {
+      const subscribers = await storage.getSubscribers();
+      res.status(200).json(subscribers);
+    } catch (error) {
+      res.status(500).json({ message: "Error fetching subscribers", error });
     }
   });
 
