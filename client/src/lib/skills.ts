@@ -52,15 +52,14 @@ export const leadershipSkills: Skill[] = [
 
 export const tools = [
   "Meta Business Suite",
+  "PowerBi",
+  "Salesforce",
+  "Mailchimp",
   "Asana",
+  "Google Business Profile",
+  "CRM Systems",
+  "Social Media Management Tools",
   "Canva",
   "Figma",
-  "PowerBi",
-  "Mailchimp",
   "Microsoft Office",
-  "Salesforce",
-  "Google Business Profile",
-  "Iconosquare",
-  "Social Media Management Tools",
-  "CRM Systems",
 ];
