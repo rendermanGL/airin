@@ -77,21 +77,76 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
       depths[i] = Math.random() * 0.6 + 0.2; // 0.2 to 0.8 range
     }
 
-    // Particle geometry and material
+    // Create circular particle texture
+    const canvas = document.createElement('canvas');
+    canvas.width = 32;
+    canvas.height = 32;
+    const context = canvas.getContext('2d')!;
+    
+    // Draw circle
+    context.beginPath();
+    context.arc(16, 16, 14, 0, Math.PI * 2);
+    context.fillStyle = '#ffffff';
+    context.fill();
+    
+    const circleTexture = new THREE.CanvasTexture(canvas);
+
+    // Regular particles
     const particleGeometry = new THREE.BufferGeometry();
     particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
     const particleMaterial = new THREE.PointsMaterial({
       color: 0x666666,
-      size: isMobile ? 1.2 : 1.8,
+      size: isMobile ? 2.5 : 3.5,
       transparent: true,
       opacity: 0.3,
-      sizeAttenuation: true
+      sizeAttenuation: true,
+      map: circleTexture
     });
 
     const particles = new THREE.Points(particleGeometry, particleMaterial);
     scene.add(particles);
     particlesRef.current = particles;
+
+    // Special red glowing particle
+    const redCanvas = document.createElement('canvas');
+    redCanvas.width = 64;
+    redCanvas.height = 64;
+    const redContext = redCanvas.getContext('2d')!;
+    
+    // Create glow effect
+    const gradient = redContext.createRadialGradient(32, 32, 0, 32, 32, 32);
+    gradient.addColorStop(0, 'rgba(255, 100, 100, 0.8)');
+    gradient.addColorStop(0.3, 'rgba(255, 50, 50, 0.6)');
+    gradient.addColorStop(0.7, 'rgba(255, 0, 0, 0.3)');
+    gradient.addColorStop(1, 'rgba(255, 0, 0, 0)');
+    
+    redContext.fillStyle = gradient;
+    redContext.fillRect(0, 0, 64, 64);
+    
+    const glowTexture = new THREE.CanvasTexture(redCanvas);
+
+    // Random red particle index
+    const redParticleIndex = Math.floor(Math.random() * particleCount);
+    const redParticleGeometry = new THREE.BufferGeometry();
+    const redPosition = new Float32Array(3);
+    redPosition[0] = positions[redParticleIndex * 3];
+    redPosition[1] = positions[redParticleIndex * 3 + 1];
+    redPosition[2] = positions[redParticleIndex * 3 + 2];
+    
+    redParticleGeometry.setAttribute('position', new THREE.BufferAttribute(redPosition, 3));
+
+    const redParticleMaterial = new THREE.PointsMaterial({
+      color: 0xff3333,
+      size: isMobile ? 4 : 6,
+      transparent: true,
+      opacity: 0.4,
+      sizeAttenuation: true,
+      map: glowTexture
+    });
+
+    const redParticle = new THREE.Points(redParticleGeometry, redParticleMaterial);
+    scene.add(redParticle);
 
     // Line system for connections
     const lineGeometry = new THREE.BufferGeometry();
@@ -118,8 +173,14 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
 
-    // Animation loop with performance optimizations
+    // Animation loop with red glow traveling
     let frameCount = 0;
+    let currentRedIndex = redParticleIndex;
+    let nextRedIndex = redParticleIndex;
+    let glowTransition = 0;
+    let transitionSpeed = 0.02;
+    let connectionGraph: number[][] = [];
+    
     const animate = () => {
       frameRef.current = requestAnimationFrame(animate);
       frameCount++;
@@ -171,10 +232,11 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
         }
       }
 
-      // Update connections (optimize by checking fewer combinations)
+      // Update connections and build connection graph
       if (frameCount % (isMobile ? 3 : 2) === 0) {
         const linePositions: number[] = [];
         const maxDistance = isMobile ? 12 : 15;
+        connectionGraph = Array(particleCount).fill(null).map(() => []);
 
         for (let i = 0; i < particleCount; i++) {
           for (let j = i + 1; j < particleCount; j++) {
@@ -191,6 +253,8 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
                 positions[i3], positions[i3 + 1], positions[i3 + 2],
                 positions[j3], positions[j3 + 1], positions[j3 + 2]
               );
+              connectionGraph[i].push(j);
+              connectionGraph[j].push(i);
             }
           }
         }
@@ -204,6 +268,37 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
           lines.geometry.attributes.position.needsUpdate = true;
         }
       }
+
+      // Animate red glow movement
+      glowTransition += transitionSpeed;
+      
+      if (glowTransition >= 1) {
+        currentRedIndex = nextRedIndex;
+        // Find next connected particle
+        const connections = connectionGraph[currentRedIndex] || [];
+        if (connections.length > 0) {
+          nextRedIndex = connections[Math.floor(Math.random() * connections.length)];
+        } else {
+          nextRedIndex = Math.floor(Math.random() * particleCount);
+        }
+        glowTransition = 0;
+      }
+
+      // Interpolate red particle position
+      const currentI3 = currentRedIndex * 3;
+      const nextI3 = nextRedIndex * 3;
+      const t = glowTransition;
+      
+      const redPositionArray = redParticle.geometry.attributes.position.array as Float32Array;
+      redPositionArray[0] = positions[currentI3] * (1 - t) + positions[nextI3] * t;
+      redPositionArray[1] = positions[currentI3 + 1] * (1 - t) + positions[nextI3 + 1] * t;
+      redPositionArray[2] = positions[currentI3 + 2] * (1 - t) + positions[nextI3 + 2] * t;
+      
+      // Add pulsing effect to red glow
+      const pulseIntensity = 0.5 + 0.3 * Math.sin(time * 3);
+      redParticleMaterial.opacity = 0.4 * pulseIntensity;
+      
+      redParticle.geometry.attributes.position.needsUpdate = true;
 
       // Update particle positions
       positionAttribute.needsUpdate = true;
@@ -234,6 +329,10 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
       particleMaterial.dispose();
       lineGeometry.dispose();
       lineMaterial.dispose();
+      redParticleGeometry.dispose();
+      redParticleMaterial.dispose();
+      circleTexture.dispose();
+      glowTexture.dispose();
     };
   }, []);
 
