@@ -115,12 +115,6 @@ export default function Footer() {
             <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="text-white hover:text-accent transition-colors">
               <i className="fab fa-linkedin-in"></i>
             </a>
-            <a href="#" className="text-white hover:text-accent transition-colors">
-              <i className="fab fa-instagram"></i>
-            </a>
-            <a href="#" className="text-white hover:text-accent transition-colors">
-              <i className="fab fa-facebook"></i>
-            </a>
           </div>
           
           <p className="text-gray-400 text-sm">

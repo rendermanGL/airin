@@ -123,12 +123,6 @@ export default function Contact() {
                 <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent social-icon">
                   <i className="fab fa-linkedin-in text-xl"></i>
                 </a>
-                <a href="#" className="text-primary hover:text-accent social-icon">
-                  <i className="fab fa-instagram text-xl"></i>
-                </a>
-                <a href="#" className="text-primary hover:text-accent social-icon">
-                  <i className="fab fa-facebook text-xl"></i>
-                </a>
               </div>
             </div>
           </motion.div>
