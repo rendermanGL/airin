@@ -1,3 +1,4 @@
+
 export interface Skill {
   name: string;
   percentage: number;
@@ -5,46 +6,46 @@ export interface Skill {
 
 export const marketingSkills: Skill[] = [
   {
-    name: "Multi-Channel Marketing",
+    name: "Integrated Campaign Management",
     percentage: 95,
   },
   {
     name: "Brand Strategy & Storytelling",
-    percentage: 92,
-  },
-  {
-    name: "Campaign Management",
-    percentage: 90,
+    percentage: 93,
   },
   {
     name: "Digital Marketing",
+    percentage: 90,
+  },
+  {
+    name: "PR & Media Relations",
     percentage: 88,
   },
   {
-    name: "Performance Marketing",
-    percentage: 85,
+    name: "Content Strategy",
+    percentage: 87,
   },
 ];
 
 export const leadershipSkills: Skill[] = [
   {
-    name: "Project Management",
+    name: "Performance Reporting",
+    percentage: 91,
+  },
+  {
+    name: "Stakeholder Alignment",
     percentage: 90,
   },
   {
-    name: "Team Leadership",
-    percentage: 85,
-  },
-  {
-    name: "Budget Management",
+    name: "Project Management",
     percentage: 88,
   },
   {
-    name: "Performance Reporting",
-    percentage: 92,
+    name: "Strategic Partnerships",
+    percentage: 86,
   },
   {
-    name: "Stakeholder Management",
+    name: "Budget Management",
     percentage: 85,
   },
 ];
