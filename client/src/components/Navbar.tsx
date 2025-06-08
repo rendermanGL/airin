@@ -13,8 +13,9 @@ export default function Navbar() {
       const scrollPosition = window.scrollY + 100;
 
       sections.forEach((section) => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
+        const element = section as HTMLElement;
+        const sectionTop = element.offsetTop;
+        const sectionHeight = element.offsetHeight;
         const sectionId = section.getAttribute("id") || "";
 
         if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
