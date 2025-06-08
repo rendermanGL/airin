@@ -15,12 +15,12 @@ interface ContentWritingSample {
 }
 
 export default function ContentWritingSamples() {
-  const { data: documents, isLoading } = useQuery({
+  const { data: documents, isLoading } = useQuery<ContentWritingSample[]>({
     queryKey: ['/api/documents'],
     queryFn: async () => {
       const response = await fetch('/api/documents');
       if (!response.ok) throw new Error('Failed to fetch documents');
-      return response.json() as ContentWritingSample[];
+      return response.json();
     }
   });
 
