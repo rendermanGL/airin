@@ -21,7 +21,7 @@ export default function Hero() {
               Brand Marketing Manager
             </h2>
             <p className="text-lg text-foreground mb-8 max-w-xl leading-relaxed">
-              As a marketing strategist with 5+ years of experience, I’ve led multi-channel campaigns and shaped brand stories that connect. I’ve worked with brands across F&B, lifestyle, and tech-enabled services to launch brand activations, influencer partnerships, and product rollouts. My approach blends strategy with soul – building marketing that’s insight-driven, purpose-led, and made to resonate.
+              As a marketing strategist with over five years of experience, I have led multi-channel campaigns and shaped brand stories that connect. I work on activations, partnerships, and product rollouts for brands across F&B, lifestyle, and tech-enabled services. My approach blends strategy with soul – building marketing that’s insight-driven, purpose-led, and made to resonate.
             </p>
             <div className="flex space-x-4">
               <Button
