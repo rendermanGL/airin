@@ -48,7 +48,7 @@ export default function Hero() {
             <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-accent/20 absolute top-4 left-4"></div>
               <img
-                src="https://www.dropbox.com/scl/fi/ydqnkmb163f58u9lb92la/DSC_7759-copy.jpg?rlkey=fx3anq9bl42xxpgsa4u7xxfpf&st=5inc7vlo&dl=0&raw=1"
+                src="https://www.dropbox.com/scl/fi/n0yvq47kjbut8x5x9931m/airin-john-website.jpg?rlkey=aw7zepv90hq4wpkprpimp2g5a&st=0v4vpze4&raw=1"
                 alt="Airin John"
                 className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover relative z-10 border-4 border-white shadow-lg"
               />
