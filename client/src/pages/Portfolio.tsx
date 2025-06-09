@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
@@ -8,35 +9,35 @@ const portfolioCategories = [
     id: "strategic-marketing",
     title: "Strategic Marketing",
     description: "Multi-channel brand portfolio management and innovative marketing strategies that drive measurable business growth.",
-    imageUrl: "../attached_assets/Strategic Marketing_1749427174294.jpg",
+    imageUrl: "/attached_assets/Strategic Marketing_1749427174294.jpg",
     route: "/portfolio/strategic-marketing"
   },
   {
     id: "customer-engagement",
     title: "Customer Experience & Community Engagement",
     description: "Building meaningful community connections and enhancing customer experiences through innovative engagement strategies.",
-    imageUrl: "attached_assets/Customer Experience & Community Engagement_1749427174294.png",
+    imageUrl: "/attached_assets/Customer Experience & Community Engagement_1749427174294.png",
     route: "/portfolio/customer-engagement"
   },
   {
     id: "brand-storytelling",
     title: "Brand Storytelling & Multi-Channel Marketing",
     description: "Creating compelling brand narratives and executing integrated campaigns across multiple touchpoints.",
-    imageUrl: "attached_assets/Brand Storytelling & Multi-Channel Marketing_1749427174294.png",
+    imageUrl: "/attached_assets/Brand Storytelling & Multi-Channel Marketing_1749427174294.png",
     route: "/portfolio/brand-storytelling"
   },
   {
     id: "awards-recognition",
     title: "Awards & Recognition",
     description: "Industry recognition and award-winning campaigns that showcase excellence in brand marketing and communications.",
-    imageUrl: "attached_assets/Awards & Recognition_1749427174294.jpg",
+    imageUrl: "/attached_assets/Awards & Recognition_1749427174294.jpg",
     route: "/portfolio/awards-recognition"
   },
   {
     id: "content-writing",
     title: "Content Writing Samples",
     description: "Professional content writing portfolio including press releases, event materials, and brand communications that generated significant media coverage.",
-    imageUrl: "attached_assets/Press Release_1749427252000.jpg",
+    imageUrl: "/attached_assets/Press Release_1749427252000.jpg",
     route: "/portfolio/content-writing"
   }
 ];
