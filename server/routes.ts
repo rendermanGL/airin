@@ -1,117 +1,55 @@
-import express from "express";
 import type { Express } from "express";
-import { createServer, type Server } from "http";
-import { storage } from "./storage";
-import { insertContactSchema, insertSubscriberSchema, insertDocumentSchema } from "@shared/schema";
+import { db } from "@/server/db";
+import { eq } from "drizzle-orm";
+import { documents } from "@shared/schema";
+import path from "path";
+import fs from "fs";
 
-export async function registerRoutes(app: Express): Promise<Server> {
-  const apiRouter = express.Router();
-  
-  // Contact form submission
-  apiRouter.post("/contact", async (req, res) => {
+export function registerRoutes(app: Express) {
+  app.get("/api/documents/:id/file", async (req, res) => {
     try {
-      const contactData = insertContactSchema.parse(req.body);
-      
-      const contact = await storage.createContact(contactData);
-      
-      res.status(200).json({ 
-        message: "Message received! Thank you for your submission.",
-        contact: { id: contact.id }
-      });
-    } catch (error) {
-      res.status(400).json({ message: "Invalid form data", error });
-    }
-  });
-  
-  // Newsletter subscription
-  apiRouter.post("/subscribe", async (req, res) => {
-    try {
-      const subscriberData = insertSubscriberSchema.parse(req.body);
-      
-      const subscriber = await storage.createSubscriber(subscriberData);
-      
-      res.status(200).json({ 
-        message: "Successfully subscribed to the newsletter!",
-        subscriber: { id: subscriber.id }
-      });
-    } catch (error) {
-      res.status(400).json({ message: "Invalid email address", error });
-    }
-  });
+      const document = await db.select()
+        .from(documents)
+        .where(eq(documents.id, parseInt(req.params.id)))
+        .limit(1);
 
-  // Get contacts (admin endpoint)
-  apiRouter.get("/contacts", async (req, res) => {
-    try {
-      const contacts = await storage.getContacts();
-      res.status(200).json(contacts);
-    } catch (error) {
-      res.status(500).json({ message: "Error fetching contacts", error });
-    }
-  });
-
-  // Get subscribers (admin endpoint)
-  apiRouter.get("/subscribers", async (req, res) => {
-    try {
-      const subscribers = await storage.getSubscribers();
-      res.status(200).json(subscribers);
-    } catch (error) {
-      res.status(500).json({ message: "Error fetching subscribers", error });
-    }
-  });
-
-  // Document endpoints
-  apiRouter.post("/documents", async (req, res) => {
-    try {
-      const documentData = insertDocumentSchema.parse(req.body);
-      const document = await storage.createDocument(documentData);
-      res.status(201).json(document);
-    } catch (error) {
-      res.status(400).json({ message: "Error creating document", error });
-    }
-  });
-
-  apiRouter.get("/documents", async (req, res) => {
-    try {
-      const documents = await storage.getDocuments();
-      res.status(200).json(documents);
-    } catch (error) {
-      res.status(500).json({ message: "Error fetching documents", error });
-    }
-  });
-
-  apiRouter.get("/documents/:id", async (req, res) => {
-    try {
-      const id = parseInt(req.params.id);
-      const document = await storage.getDocument(id);
-      if (!document) {
-        return res.status(404).json({ message: "Document not found" });
+      if (document.length === 0) {
+        return res.status(404).json({ error: "Document not found" });
       }
-      res.status(200).json(document);
+
+      const doc = document[0];
+      res.setHeader('Content-Type', doc.contentType);
+      res.setHeader('Content-Disposition', `attachment; filename="${doc.filename}"`);
+      res.send(Buffer.from(doc.content));
     } catch (error) {
-      res.status(500).json({ message: "Error fetching document", error });
+      console.error('Error downloading document:', error);
+      res.status(500).json({ error: "Failed to download document" });
     }
   });
 
-  // Serve PDF files
-  apiRouter.get("/documents/:id/file", async (req, res) => {
+  // Serve award submission PDFs
+  app.get("/api/awards/:filename", (req, res) => {
     try {
-      const id = parseInt(req.params.id);
-      const document = await storage.getDocument(id);
-      if (!document) {
-        return res.status(404).json({ message: "Document not found" });
+      const filename = req.params.filename;
+      const filePath = path.join(process.cwd(), 'attached_assets', filename);
+
+      if (!fs.existsSync(filePath)) {
+        return res.status(404).json({ error: "File not found" });
       }
-      
-      const buffer = Buffer.from(document.fileData, 'base64');
-      res.setHeader('Content-Type', document.contentType);
-      res.setHeader('Content-Disposition', `inline; filename="${document.filename}"`);
-      res.send(buffer);
+
+      const fileExtension = path.extname(filename).toLowerCase();
+      if (fileExtension !== '.pdf') {
+        return res.status(400).json({ error: "Only PDF files are allowed" });
+      }
+
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `inline; filename="${filename}"`);
+
+      const fileStream = fs.createReadStream(filePath);
+      fileStream.pipe(res);
     } catch (error) {
-      res.status(500).json({ message: "Error serving document", error });
+      console.error('Error serving award PDF:', error);
+      res.status(500).json({ error: "Failed to serve PDF" });
     }
   });
-
-  app.use("/api", apiRouter);
-  
-  const httpServer = createServer(app);
-  return httpServer;
 }

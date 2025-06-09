@@ -12,6 +12,7 @@ interface ContentSample {
   imageUrl: string;
   category: 'press_release' | 'award_submission' | 'email_marketing';
   documentId?: number;
+  pdfFile?: string;
 }
 
 const contentSamples: ContentSample[] = [
@@ -53,29 +54,33 @@ const contentSamples: ContentSample[] = [
     id: 'award-1',
     title: 'F&B Entrepreneur(s) of the Year',
     description: 'Strategic award submission highlighting Wild & The Moon\'s entrepreneurial leadership and innovation in the F&B industry.',
-    imageUrl: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
-    category: 'award_submission'
+    imageUrl: '/portfolio-images/awards-recognition.jpg',
+    category: 'award_submission',
+    pdfFile: '1. Wild & The Moon_ F&B Entrepreneur(s) of the Year_1749427936886.pdf'
   },
   {
     id: 'award-2',
     title: 'Leading Cafe',
     description: 'Comprehensive submission showcasing Wild & The Moon\'s excellence in cafe operations and customer experience.',
-    imageUrl: 'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
-    category: 'award_submission'
+    imageUrl: '/portfolio-images/awards-recognition.jpg',
+    category: 'award_submission',
+    pdfFile: '2. Wild & The Moon_ Leading Cafe_1749427936886.pdf'
   },
   {
     id: 'award-3',
     title: 'Leading Healthy Restaurant',
     description: 'Award submission demonstrating Wild & The Moon\'s commitment to healthy, plant-based dining excellence.',
-    imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
-    category: 'award_submission'
+    imageUrl: '/portfolio-images/awards-recognition.jpg',
+    category: 'award_submission',
+    pdfFile: '3. Wild & The Moon_ Leading Healthy Restaurant_1749427936886.pdf'
   },
   {
     id: 'award-4',
     title: 'Leading Sustainable Restaurant Category',
     description: 'Strategic submission highlighting Wild & The Moon\'s pioneering sustainability initiatives and environmental leadership.',
-    imageUrl: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
-    category: 'award_submission'
+    imageUrl: '/portfolio-images/awards-recognition.jpg',
+    category: 'award_submission',
+    pdfFile: '4. Wild & The Moon_ Leading Sustainable Restaurant Category_1749427936886.pdf'
   },
   // Email Marketing
   {
@@ -245,6 +250,20 @@ export default function ContentWritingSamples() {
                             View Document
                             <ExternalLink className="w-4 h-4 ml-2" />
                           </Link>
+                        </Button>
+                      ) : sample.pdfFile ? (
+                        <Button 
+                          asChild
+                          className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
+                        >
+                          <a 
+                            href={`/api/awards/${encodeURIComponent(sample.pdfFile)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            View PDF
+                            <ExternalLink className="w-4 h-4 ml-2" />
+                          </a>
                         </Button>
                       ) : (
                         <Button 
