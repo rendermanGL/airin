@@ -76,7 +76,7 @@ export default function Footer() {
               <li><a href="#hero" className="text-gray-300 hover:text-white transition-colors">Home</a></li>
               <li><a href="#about" className="text-gray-300 hover:text-white transition-colors">About</a></li>
               <li><a href="#skills" className="text-gray-300 hover:text-white transition-colors">Skills</a></li>
-              <li><a href="#portfolio" className="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
+              <li><a href="/portfolio" className="text-gray-300 hover:text-white transition-colors">Portfolio</a></li>
               <li><a href="#contact" className="text-gray-300 hover:text-white transition-colors">Contact</a></li>
             </ul>
           </motion.div>

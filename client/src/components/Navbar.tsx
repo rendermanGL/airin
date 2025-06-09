@@ -37,10 +37,10 @@ export default function Navbar() {
   };
 
   const navItems = [
-    { href: "#about", label: "About", type: "anchor" },
-    { href: "#skills", label: "Skills", type: "anchor" },
+    { href: "/#about", label: "About", type: "anchor" },
+    { href: "/#skills", label: "Skills", type: "anchor" },
     { href: "/portfolio", label: "Portfolio", type: "route" },
-    { href: "#contact", label: "Contact", type: "anchor" },
+    { href: "/#contact", label: "Contact", type: "anchor" },
   ];
 
   return (
@@ -77,7 +77,7 @@ export default function Navbar() {
                 key={item.href}
                 href={item.href}
                 className={`nav-link text-primary hover:text-secondary font-medium ${
-                  activeSection === item.href.substring(1) ? "active" : ""
+                  activeSection === item.href.substring(2) ? "active" : ""
                 }`}
               >
                 {item.label}
