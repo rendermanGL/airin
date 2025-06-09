@@ -1,8 +1,8 @@
-import strategicMarketingImg from "@assets/Strategic Marketing_1749427174294.jpg";
-import customerEngagementImg from "@assets/Customer Experience & Community Engagement_1749427174294.png";
-import brandStorytellingImg from "@assets/Brand Storytelling & Multi-Channel Marketing_1749427174294.png";
-import awardsRecognitionImg from "@assets/Awards & Recognition_1749427174294.jpg";
-import pressReleaseImg from "@assets/Press Release_1749427252000.jpg";
+import strategicMarketingImg from "@assets/strategic-marketing.jpg";
+import customerEngagementImg from "@assets/customer-engagement.png";
+import brandStorytellingImg from "@assets/brand-storytelling.png";
+import awardsRecognitionImg from "@assets/awards-recognition.jpg";
+import pressReleaseImg from "@assets/press-release.jpg";
 
 export interface PortfolioItem {
   id: number;
