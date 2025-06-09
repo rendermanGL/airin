@@ -222,16 +222,6 @@ export default function ContentWritingSamples() {
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {categorySamples.map((sample, index) => (
                   <Card key={sample.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                    {/* Image */}
-                    <div className="relative h-48 overflow-hidden rounded-t-lg">
-                      <img 
-                        src={sample.imageUrl}
-                        alt={sample.title}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    </div>
-                    
                     {/* Content */}
                     <CardContent className="p-6">
                       <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
@@ -247,8 +237,7 @@ export default function ContentWritingSamples() {
                           className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
                         >
                           <Link href={`/portfolio/content-writing/${sample.documentId}`}>
-                            View Document
-                            <ExternalLink className="w-4 h-4 ml-2" />
+                            Read
                           </Link>
                         </Button>
                       ) : sample.pdfFile ? (
@@ -261,8 +250,7 @@ export default function ContentWritingSamples() {
                             target="_blank"
                             rel="noopener noreferrer"
                           >
-                            View PDF
-                            <ExternalLink className="w-4 h-4 ml-2" />
+                            Read
                           </a>
                         </Button>
                       ) : (
@@ -271,8 +259,7 @@ export default function ContentWritingSamples() {
                           className="w-full" 
                           disabled
                         >
-                          Coming Soon
-                          <FileText className="w-4 h-4 ml-2" />
+                          Read
                         </Button>
                       )}
                     </CardContent>
