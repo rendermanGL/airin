@@ -1,0 +1,2823 @@
+Delivered-To: elsa.airin@gmail.com
+Received: by 2002:a5d:6808:0:b0:37c:cc92:7189 with SMTP id w8csp2863022wru;
+        Tue, 3 Dec 2024 14:05:47 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHAUDhUxrBLN5AZrOYujO4VBtY/Datq1Gg597Q0/q/UcAw5CJ0Q8cMvC7srpFDBd55yDXn6
+X-Received: by 2002:a05:690c:6e0c:b0:6ef:366e:a6a3 with SMTP id 00721157ae682-6eface06f5dmr55881587b3.9.1733263547121;
+        Tue, 03 Dec 2024 14:05:47 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1733263547; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Oc5HvMXGMKNQ4JVmmxdgbrFegLW5QdmtOD7tfbVO5268lyC5rsjqfSVxzOia5BU6DX
+         kTIg46OSdh48685qElU69ClXvSU/sM2nlE37c3/pRGTU7tBEgoRNBH/i+lrrTen8thBE
+         ooWGcI5JQf1/8Y/GKRPH28blsHeWuohEx2Xh3qCgYAASz7AgA/OB2K9EogcAErsQ7xxq
+         68X6he2724lyfQqECMJlNMhlCQvle8tWTi9TE+AvVmZokZDQk1MBDwmWOtASp0Ss7wyQ
+         WY/kKuDTxGT+I8XgNHKLIGPXpfZTepdxNYTuEM7Ea53Y7QliabvqtNTBhF/pl/ItoaCy
+         plzQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=mime-version:subject:list-unsubscribe-post:list-unsubscribe:list-id
+         :feedback-id:message-id:date:to:reply-to:from:dkim-signature
+         :dkim-signature;
+        bh=q2OylMq9yhb9JLShT8S4ihms/9l6+D15uPuZlRRunjY=;
+        fh=/vJE36Li3tY7ULUjdAYjGs/U0lt9DBgtJgQa2N3RbIk=;
+        b=juyurs6slz3sQIVBvlzwColC7wvyeXCRy45SSZySB9sI6kYeeV6jIooTC9C0O9dUmM
+         heZchm6A9YI+iTxx3cM/Nqiu/RyWHrxUeCBqaZJPqw+8bJqR94a2qkbsghcwSW6EWMZp
+         /GyP0UZmlgn/lvNbrZNJbOrG8g7/r7E2krXp+IrYFMXTcTYM/jcIvHM+0fwKJOvsk3o6
+         MCt5FlNzrTWEvHMk1lhZKEl04nmOlT6zP2vCCKDkLf/6lJH7xRcRwnjhZauCNSUBhL4O
+         vttgyecct9XT/yGNNI+VvNtQj0mvgiXIEvjeheiy3DzTjuF349QEqB7z1dA3oO1CH+6E
+         iVNA==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k2 header.b=nK74sOlU;
+       dkim=pass header.i=@mailchimpapp.net header.s=k3 header.b=RdE0XTx9;
+       spf=pass (google.com: domain of bounce-mc.us5_163795350.10142458-__test_email__@mail205.atl121.mcsv.net designates 198.2.131.205 as permitted sender) smtp.mailfrom=bounce-mc.us5_163795350.10142458-__test_email__@mail205.atl121.mcsv.net
+Return-Path: <bounce-mc.us5_163795350.10142458-__test_email__@mail205.atl121.mcsv.net>
+Received: from mail205.atl121.mcsv.net (mail205.atl121.mcsv.net. [198.2.131.205])
+        by mx.google.com with ESMTPS id 3f1490d57ef6-e3976cc9f66si11905076276.371.2024.12.03.14.05.46
+        for <elsa.airin@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Dec 2024 14:05:47 -0800 (PST)
+Received-SPF: pass (google.com: domain of bounce-mc.us5_163795350.10142458-__test_email__@mail205.atl121.mcsv.net designates 198.2.131.205 as permitted sender) client-ip=198.2.131.205;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.mcsv.net header.s=k2 header.b=nK74sOlU;
+       dkim=pass header.i=@mailchimpapp.net header.s=k3 header.b=RdE0XTx9;
+       spf=pass (google.com: domain of bounce-mc.us5_163795350.10142458-__test_email__@mail205.atl121.mcsv.net designates 198.2.131.205 as permitted sender) smtp.mailfrom=bounce-mc.us5_163795350.10142458-__test_email__@mail205.atl121.mcsv.net
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=gmail.mcsv.net;
+	s=k2; t=1733263546; x=1733349946;
+	bh=q2OylMq9yhb9JLShT8S4ihms/9l6+D15uPuZlRRunjY=;
+	h=From:Reply-To:To:Date:Message-ID:X-MC-User:Feedback-ID:List-ID:
+	 List-Unsubscribe:List-Unsubscribe-Post:Subject:Content-Type:
+	 MIME-Version:CC:Date:Subject:From;
+	b=nK74sOlUVxhtxuL2lMSfVuCgSUNo56iu0iOdt0W3MGoljoI65BS3c7fXbvxSZooeW
+	 G2qWPK8brSDZ6YX1/YhE51zwMQx2AF7RFfaYaRzaXXnhUANzfB9XrvZ5AxrfU7Wv0k
+	 8meHi/FHjcm3jL2Pgtv/PWSfs2F0CQ9nWrUUM5VMh4xjo6gQAiDHgPMWpwSzIV927f
+	 L0v0nlQwj9OtczEWjn3GFshNbycImHKmk5zn1KdL5wz9OeGf8ZEqKkiu90eUWP8SVd
+	 wNXN7MVwEeQA/ZSJ894NIBqmuDvSUcXZQD5mAoCULw8pX3e80Zb1+Hz1fN6g77J0Oq
+	 hPYvKG99LrwvA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailchimpapp.net;
+	s=k3; t=1733263546; x=1733524046;
+	i=contactdxb=3Dwildandthemoon.com@mailchimpapp.net;
+	bh=q2OylMq9yhb9JLShT8S4ihms/9l6+D15uPuZlRRunjY=;
+	h=From:Reply-To:To:Date:Message-ID:X-MC-User:Feedback-ID:List-ID:
+	 List-Unsubscribe:List-Unsubscribe-Post:Subject:Content-Type:
+	 MIME-Version:CC:Date:Subject:From;
+	b=RdE0XTx9zNzKaqnkjobUeQDCcKTMoJnLufu0Yqt70V2E6YBrudBSqPJgOiNs8er3q
+	 T1PAcZPigoVW6vxnhV8mv52r1dYT09tyeFKMHVTsB33NlmdF3Nd5eVyx+fatNebvrv
+	 hWtrAFcaye0HHZuUry8Z+59L07/WPHNKM3dCXzsre+vTA4GtuoA5hKnpZYzyNwO1b4
+	 CNC06kUiB1qWeJkwXQgDAafIaRy+Vu/O8mNvqArgQFdNSfs3DbUDR58OnaWu/czaxb
+	 P6LNtamYOxCfX0FXOU0SerZZiGV/IiEoTuOiVP+v/GjCDDcbbAP3005mC/bKncvzCf
+	 B8O0Gy6ZYKGqQ==
+Received: from localhost (localhost [127.0.0.1])
+	by mail205.atl121.mcsv.net (Mailchimp) with ESMTP id 4Y2vqG6CTTz6Ckgq3
+	for <elsa.airin@gmail.com>; Tue,  3 Dec 2024 22:05:46 +0000 (GMT)
+From: Wild & the Moon <contactdxb@wildandthemoon.com>
+Reply-To:  <us5-9bf5fecc71-e3d9748b85@inbound.mailchimp.com>
+To: =?utf-8?Q?*|FNAME|*?= <elsa.airin@gmail.com>
+Date: Tue,  3 Dec 2024 22:05:45 +0000
+Message-ID: <a418adf6d83c83f35428ea87a.__test_email__.20241203220542.084198c643.c68bda5f@mail205.atl121.mcsv.net>
+X-Mailer: Mailchimp Mailer - **CID084198c643=5F=5Ftest=5Femail=5F=5F**
+X-Campaign: mailchimpa418adf6d83c83f35428ea87a.084198c643
+X-campaignid: mailchimpa418adf6d83c83f35428ea87a.084198c643
+X-Report-Abuse: Please report abuse for this campaign here: https://mailchimp.com/contact/abuse/?u=a418adf6d83c83f35428ea87a&id=084198c643&e==5F=5Ftest=5Femail=5F=5F
+X-MC-User: a418adf6d83c83f35428ea87a
+Feedback-ID: 163795350:163795350.10142458:us5:mc
+List-ID: a418adf6d83c83f35428ea87amc list <a418adf6d83c83f35428ea87a.501049.list-id.mcsv.net>
+X-Accounttype: pd
+List-Unsubscribe: <https://wildandthemoon.us5.list-manage.com/unsubscribe?u=a418adf6d83c83f35428ea87a&id=c1fe5cf9da&t=h&e=__test_email__&c=084198c643>, <mailto:unsubscribe-mc.us5_a418adf6d83c83f35428ea87a.084198c643-=5F=5Ftest=5Femail=5F=5F@unsubscribe.mailchimpapp.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+x-istest: yes
+Subject: =?utf-8?Q?=5BTest=5D=20Enter=20superfood=20heaven=20with=20us=21=20Wild=20&=20The=20Moon=20x=20Respect=20Health=20x=20Comptoir102?=
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_1654080161"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_1654080161
+Content-Type: text/plain; charset="utf-8"; format="fixed"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+Voir cet email dans votre navigateur Web (https://us5.campaign-archive.com=
+/?e=3D__test_email__&u=3Da418adf6d83c83f35428ea87a&id=3D084198c643)
+"RESPECT" SUPERFOOD WORKSHOP
+February 12th at Wild & The Moon
+February 19th at Comptoir102
+https://www.wildandthemoon.ae/product/supperfood-with-respect/?mc_cid=3D08=
+4198c643&mc_eid=3DUNIQID
+
+Do you know about superfoods and what they can do for you and your health?=
+ This is your answer! Wild & The Moon and Comptoir 102 are joining hands w=
+ith leading=2C superfood brand Respect Health=2C to bring you an exclusive=
+ Superfood Workshop.
+Know More (https://www.wildandthemoon.ae/product/supperfood-with-respect/?=
+mc_cid=3D084198c643&mc_eid=3DUNIQID)
+
+CEO and founding member of Respect=2C Robin Hebras will give you the ultim=
+ate chance to dive into 100% plant-based and organic superfoods and teach=
+ you how you can incorporate them into your everyday life.
+
+During the Workshop=2C Robin will delve into the various superfood blends=
+=2C health facts and nutritional benefits=2C as well as tips and tricks on=
+ how they can be added to everyday meals.
+
+We will demonstrate how to balance rich flavours=2C while being creative w=
+ith preparing and plating recipes like a pro! Enjoy creating a healthy fro=
+zen bowl and a superfood toast that can be enjoyed all day=2C everyday.
+https://www.wildandthemoon.ae/product/supperfood-with-respect/?mc_cid=3D08=
+4198c643&mc_eid=3DUNIQID
+
+https://www.wildandthemoon.ae/product/supperfood-with-respect/?mc_cid=3D08=
+4198c643&mc_eid=3DUNIQID
+
+Book your spot for the 12th February (https://www.wildandthemoon.ae/produc=
+t/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID)
+Book your spot for the 19th February (http://comptoir102.com/shop/respect-=
+superfood-workshop/?mc_cid=3D084198c643&mc_eid=3DUNIQID)
+This highly interactive and educational session will be led by Robin Hebra=
+s=2C superfood expert and co-founder of Respect Health. During the worksho=
+p=2C Robin will guide you through the most common superfoods. You will kno=
+w everything on every superfood! Robin is a fun lively spirit with a passi=
+on for wellness=2C healthy living and good food. He is also a big advocate=
+ of responsible consumption and production of healthy food.
+https://www.respect-health.com?mc_cid=3D084198c643&mc_eid=3DUNIQID
+
+https://www.respect-health.com?mc_cid=3D084198c643&mc_eid=3DUNIQID
+
+This workshop is for you if you want to:
+* Understand all about superfoods and the different superfood blends
+* Learn ways to incorporate superfoods to everyday life
+* Level up your breakfast game and flavour creating skills
+* Learn how to create nutritious meals like a superfood expert at your hom=
+e kitchen
+* Connect with yourself and nature improve your journey towards a healthie=
+r lifestyle
+* Understand how to get your daily dose of proteins while embracing a plan=
+t-based diet.
+
+This workshop is not to be missed. Limited spots only!
+
+Offering:
+* Engaging content and informative discussions all about superfoods
+* Hands-on activity and supercharged superfood dishes to enjoy (Superfood=
+ Frozen bowl & Spirulina toast)
+* Goodies to take away.
+
+https://www.wildandthemoon.ae/product/supperfood-with-respect/?mc_cid=3D08=
+4198c643&mc_eid=3DUNIQID
+
+Respect Superfood Workshop:
+
+Wild & The Moon
+H77=2C Alserkal Avenue=2C Al Quoz=2C UAE
+Saturday=2C 12th February
+10 am to 12 pm
+
+Comptoir102
+102 Beach Road=2C Jumeirah 1=2C DubaI=2C UAE
+Saturday=2C 19th February
+10 am to 12 pm
+
+Price: AED 125
+Book Now for Workshop at Wild & The Moon (https://www.wildandthemoon.ae/pr=
+oduct/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID)
+Book Now for Workshop at Comptoir102 (http://comptoir102.com/shop/respect-=
+superfood-workshop/?mc_cid=3D084198c643&mc_eid=3DUNIQID)
+https://www.wildandthemoon.ae/product/supperfood-with-respect/?mc_cid=3D08=
+4198c643&mc_eid=3DUNIQID
+
+https://www.wildandthemoon.ae/product/supperfood-with-respect/?mc_cid=3D08=
+4198c643&mc_eid=3DUNIQID
+
+About Respect:
+
+Good health is at the centre of everything we do.
+That's why we=E2=80=99ve created a range of plant-based food supplements t=
+o make nutrition easy=2C so you can pursue good health without compromise.
+
+We do it by crafting products that are just as effective as they are delig=
+htful.
+We want to do good to the planet=2C so we source a maximum from local orga=
+nic certified farms.
+
+Healthy lifestyle
+Good health is at the centre of everything we do. We love an active lifest=
+yle; we enjoy the beauty of nature and we like to treat our body well.
+
+Quality driven
+We don't compromise on quality. We are certified and we control our qualit=
+y. We source consciously and make sure our products are processed minimall=
+y.
+
+Innovation
+Our products our easy to use and we created some unique blends of superfoo=
+ds to nourish your body.
+https://www.respect-health.com?mc_cid=3D084198c643&mc_eid=3DUNIQID
+
+https://www.wildandthemoon.ae/product/supperfood-with-respect/?mc_cid=3D08=
+4198c643&mc_eid=3DUNIQID
+
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+FOLLOW US
+** Instagram (https://www.instagram.com/wildandthemoonuae/?mc_cid=3D084198=
+c643&mc_eid=3DUNIQID)
+** Facebook (https://www.facebook.com/WildAndTheMoonUAE?mc_cid=3D084198c64=
+3&mc_eid=3DUNIQID)
+CONTACT US
+On phone at + 971 54 581 0728
+On email contactdxb@wildandthemoon.com
+COME SEE US
+Wild & The Moon=2C Alserkal Avenue
+Warehouse 77=2C Street 8=2C Al Qouz
+Wild & The Moon=2C Dubai international Financial Center
+Gate Avenue=2C U-1495
+Wild & The Moon Downtown Dubai
+Palance hotel n5=2C Sheikh Mohammed Bin Rashid Boulevard
+Wild & The Moon Abu Dhabi
+Abu Dhabi Cultural Foundation
+Copyright =C2=A9 Wild & The Moon - 2021. All rights reserved.
+
+This email was sent to elsa.airin@gmail.com (mailto:elsa.airin@gmail.com)
+why did I get this? (https://wildandthemoon.us5.list-manage.com/about?u=3D=
+a418adf6d83c83f35428ea87a&id=3Dc1fe5cf9da&e=3D__test_email__&c=3D084198c643)   =
+  unsubscribe from this list (https://wildandthemoon.us5.list-manage.com/u=
+nsubscribe?u=3Da418adf6d83c83f35428ea87a&id=3Dc1fe5cf9da&t=3Db&e=3D__test_email__&c=3D084198c643)     update subscription preferences (https://wildandthem=
+oon.us5.list-manage.com/profile?u=3Da418adf6d83c83f35428ea87a&id=3Dc1fe5cf=
+9da&e=3D__test_email__&c=3D084198c643)
+Wild & The Moon . Street 8=2C Al Qouz Alserkal Avenue . Dubai=2C United Ar=
+ab Emirates 99247 . United Arab Emirates
+--_----------=_MCPart_1654080161
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html>
+<html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-micros=
+oft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+    <head>
+        <!-- NAME: ANNOUNCE -->
+        <!--[if gte mso 15]>
+        <xml>
+            <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+            </o:OfficeDocumentSettings>
+        </xml>
+        <![endif]-->
+        <meta charset=3D"UTF-8">
+        <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+        <meta name=3D"viewport" content=3D"width=3Ddevice-width=2C initial=
+-scale=3D1">
+        <title>Enter superfood heaven with us! Wild & The Moon x Respect H=
+ealth x Comptoir102</title>
+
+    <style type=3D"text/css">
+=09=09p{
+=09=09=09margin:10px 0;
+=09=09=09padding:0;
+=09=09}
+=09=09table{
+=09=09=09border-collapse:collapse;
+=09=09}
+=09=09h1=2Ch2=2Ch3=2Ch4=2Ch5=2Ch6{
+=09=09=09display:block;
+=09=09=09margin:0;
+=09=09=09padding:0;
+=09=09}
+=09=09img=2Ca img{
+=09=09=09border:0;
+=09=09=09height:auto;
+=09=09=09outline:none;
+=09=09=09text-decoration:none;
+=09=09}
+=09=09body=2C#bodyTable=2C#bodyCell{
+=09=09=09height:100%;
+=09=09=09margin:0;
+=09=09=09padding:0;
+=09=09=09width:100%;
+=09=09}
+=09=09.mcnPreviewText{
+=09=09=09display:none !important;
+=09=09}
+=09=09#outlook a{
+=09=09=09padding:0;
+=09=09}
+=09=09img{
+=09=09=09-ms-interpolation-mode:bicubic;
+=09=09}
+=09=09table{
+=09=09=09mso-table-lspace:0pt;
+=09=09=09mso-table-rspace:0pt;
+=09=09}
+=09=09.ReadMsgBody{
+=09=09=09width:100%;
+=09=09}
+=09=09.ExternalClass{
+=09=09=09width:100%;
+=09=09}
+=09=09p=2Ca=2Cli=2Ctd=2Cblockquote{
+=09=09=09mso-line-height-rule:exactly;
+=09=09}
+=09=09a[href^=3Dtel]=2Ca[href^=3Dsms]{
+=09=09=09color:inherit;
+=09=09=09cursor:default;
+=09=09=09text-decoration:none;
+=09=09}
+=09=09p=2Ca=2Cli=2Ctd=2Cbody=2Ctable=2Cblockquote{
+=09=09=09-ms-text-size-adjust:100%;
+=09=09=09-webkit-text-size-adjust:100%;
+=09=09}
+=09=09.ExternalClass=2C.ExternalClass p=2C.ExternalClass td=2C.ExternalCla=
+ss div=2C.ExternalClass span=2C.ExternalClass font{
+=09=09=09line-height:100%;
+=09=09}
+=09=09a[x-apple-data-detectors]{
+=09=09=09color:inherit !important;
+=09=09=09text-decoration:none !important;
+=09=09=09font-size:inherit !important;
+=09=09=09font-family:inherit !important;
+=09=09=09font-weight:inherit !important;
+=09=09=09line-height:inherit !important;
+=09=09}
+=09=09table[align=3Dleft]{
+=09=09=09float:left;
+=09=09}
+=09=09table[align=3Dright]{
+=09=09=09float:right;
+=09=09}
+=09=09.templateContainer{
+=09=09=09max-width:600px !important;
+=09=09}
+=09=09a.mcnButton{
+=09=09=09display:block;
+=09=09}
+=09=09.mcnImage=2C.mcnRetinaImage{
+=09=09=09vertical-align:bottom;
+=09=09}
+=09=09.mcnTextContent{
+=09=09=09word-break:break-word;
+=09=09}
+=09=09.mcnTextContent img{
+=09=09=09height:auto !important;
+=09=09}
+=09=09.mcnDividerBlock{
+=09=09=09table-layout:fixed !important;
+=09=09}
+=09=09h1{
+=09=09=09color:#222222;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:40px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:150%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:center;
+=09=09}
+=09=09h2{
+=09=09=09color:#222222;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:34px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:150%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:left;
+=09=09}
+=09=09h3{
+=09=09=09color:#444444;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:22px;
+=09=09=09font-style:normal;
+=09=09=09font-weight:bold;
+=09=09=09line-height:150%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:left;
+=09=09}
+=09=09h4{
+=09=09=09color:#949494;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:20px;
+=09=09=09font-style:italic;
+=09=09=09font-weight:normal;
+=09=09=09line-height:125%;
+=09=09=09letter-spacing:normal;
+=09=09=09text-align:center;
+=09=09}
+=09=09#templateHeader{
+=09=09=09background-color:#ffffff;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:50% 50%;
+=09=09=09background-size:auto;
+=09=09=09border-top:1px solid #ffffff;
+=09=09=09border-bottom:1px solid #ffffff;
+=09=09=09padding-top:10px;
+=09=09=09padding-bottom:10px;
+=09=09}
+=09=09.headerContainer{
+=09=09=09background-color:#ffffff;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:1px solid #ffffff;
+=09=09=09border-bottom:1px solid #ffffff;
+=09=09=09padding-top:0;
+=09=09=09padding-bottom:0;
+=09=09}
+=09=09.headerContainer .mcnTextContent=2C.headerContainer .mcnTextContent=
+ p{
+=09=09=09color:#757575;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:16px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09.headerContainer .mcnTextContent a=2C.headerContainer .mcnTextConten=
+t p a{
+=09=09=09color:#007C89;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09=09#templateBody{
+=09=09=09background-color:#ffffff;
+=09=09=09background-image:none;
+=09=09=09background-repeat:repeat;
+=09=09=09background-position:top;
+=09=09=09background-size:auto;
+=09=09=09border-top:1px inset ;
+=09=09=09border-bottom:1px inset ;
+=09=09=09padding-top:0px;
+=09=09=09padding-bottom:0px;
+=09=09}
+=09=09.bodyContainer{
+=09=09=09background-color:#ffffff;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:0;
+=09=09=09border-bottom:0;
+=09=09=09padding-top:0;
+=09=09=09padding-bottom:0;
+=09=09}
+=09=09.bodyContainer .mcnTextContent=2C.bodyContainer .mcnTextContent p{
+=09=09=09color:#222222;
+=09=09=09font-family:'Helvetica Neue'=2C Helvetica=2C Arial=2C Verdana=2C=
+ sans-serif;
+=09=09=09font-size:16px;
+=09=09=09line-height:150%;
+=09=09=09text-align:left;
+=09=09}
+=09=09.bodyContainer .mcnTextContent a=2C.bodyContainer .mcnTextContent p=
+ a{
+=09=09=09color:#222222;
+=09=09=09font-weight:bold;
+=09=09=09text-decoration:none;
+=09=09}
+=09=09#templateFooter{
+=09=09=09background-color:#ffffff;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:1px solid #ffffff;
+=09=09=09border-bottom:1px solid #ffffff;
+=09=09=09padding-top:0px;
+=09=09=09padding-bottom:0px;
+=09=09}
+=09=09.footerContainer{
+=09=09=09background-color:#ffffff;
+=09=09=09background-image:none;
+=09=09=09background-repeat:no-repeat;
+=09=09=09background-position:center;
+=09=09=09background-size:cover;
+=09=09=09border-top:1px solid #ffffff;
+=09=09=09border-bottom:1px solid #ffffff;
+=09=09=09padding-top:0;
+=09=09=09padding-bottom:0;
+=09=09}
+=09=09.footerContainer .mcnTextContent=2C.footerContainer .mcnTextContent=
+ p{
+=09=09=09color:#FFFFFF;
+=09=09=09font-family:Helvetica;
+=09=09=09font-size:12px;
+=09=09=09line-height:150%;
+=09=09=09text-align:center;
+=09=09}
+=09=09.footerContainer .mcnTextContent a=2C.footerContainer .mcnTextConten=
+t p a{
+=09=09=09color:#222222;
+=09=09=09font-weight:normal;
+=09=09=09text-decoration:underline;
+=09=09}
+=09@media only screen and (min-width:768px){
+=09=09.templateContainer{
+=09=09=09width:600px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09body=2Ctable=2Ctd=2Cp=2Ca=2Cli=2Cblockquote{
+=09=09=09-webkit-text-size-adjust:none !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09body{
+=09=09=09width:100% !important;
+=09=09=09min-width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnRetinaImage{
+=09=09=09max-width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImage{
+=09=09=09width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnCartContainer=2C.mcnCaptionTopContent=2C.mcnRecContentContainer=
+=2C.mcnCaptionBottomContent=2C.mcnTextContentContainer=2C.mcnBoxedTextCont=
+entContainer=2C.mcnImageGroupContentContainer=2C.mcnCaptionLeftTextContent=
+Container=2C.mcnCaptionRightTextContentContainer=2C.mcnCaptionLeftImageCon=
+tentContainer=2C.mcnCaptionRightImageContentContainer=2C.mcnImageCardLeftT=
+extContentContainer=2C.mcnImageCardRightTextContentContainer=2C.mcnImageCa=
+rdLeftImageContentContainer=2C.mcnImageCardRightImageContentContainer{
+=09=09=09max-width:100% !important;
+=09=09=09width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnBoxedTextContentContainer{
+=09=09=09min-width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageGroupContent{
+=09=09=09padding:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnCaptionLeftContentOuter .mcnTextContent=2C.mcnCaptionRightConten=
+tOuter .mcnTextContent{
+=09=09=09padding-top:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageCardTopImageContent=2C.mcnCaptionBottomContent:last-child .=
+mcnCaptionBottomImageContent=2C.mcnCaptionBlockInner .mcnCaptionTopContent=
+:last-child .mcnTextContent{
+=09=09=09padding-top:18px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageCardBottomImageContent{
+=09=09=09padding-bottom:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageGroupBlockInner{
+=09=09=09padding-top:0 !important;
+=09=09=09padding-bottom:0 !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageGroupBlockOuter{
+=09=09=09padding-top:9px !important;
+=09=09=09padding-bottom:9px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnTextContent=2C.mcnBoxedTextContentColumn{
+=09=09=09padding-right:18px !important;
+=09=09=09padding-left:18px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnImageCardLeftImageContent=2C.mcnImageCardRightImageContent{
+=09=09=09padding-right:18px !important;
+=09=09=09padding-bottom:0 !important;
+=09=09=09padding-left:18px !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcpreview-image-uploader{
+=09=09=09display:none !important;
+=09=09=09width:100% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h1{
+=09=09=09font-size:30px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h2{
+=09=09=09font-size:26px !important;
+=09=09=09line-height:125% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h3{
+=09=09=09font-size:20px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09h4{
+=09=09=09font-size:18px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.mcnBoxedTextContentContainer .mcnTextContent=2C.mcnBoxedTextContent=
+Container .mcnTextContent p{
+=09=09=09font-size:14px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.headerContainer .mcnTextContent=2C.headerContainer .mcnTextContent=
+ p{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.bodyContainer .mcnTextContent=2C.bodyContainer .mcnTextContent p{
+=09=09=09font-size:16px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}=09@media only screen and (max-width: 480px){
+=09=09.footerContainer .mcnTextContent=2C.footerContainer .mcnTextContent=
+ p{
+=09=09=09font-size:14px !important;
+=09=09=09line-height:150% !important;
+=09=09}
+
+}</style></head>
+    <body style=3D"height: 100%;margin: 0;padding: 0;width: 100%;-ms-text-=
+size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+        <!--
+-->
+        <center>
+            <table align=3D"center" border=3D"0" cellpadding=3D"0" cellspa=
+cing=3D"0" height=3D"100%" width=3D"100%" id=3D"bodyTable" style=3D"border=
+-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-s=
+ize-adjust: 100%;-webkit-text-size-adjust: 100%;height: 100%;margin: 0;pad=
+ding: 0;width: 100%;">
+                <tr>
+                    <td align=3D"center" valign=3D"top" id=3D"bodyCell" st=
+yle=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-te=
+xt-size-adjust: 100%;height: 100%;margin: 0;padding: 0;width: 100%;">
+                        <!-- BEGIN TEMPLATE // -->
+                        <table border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%" style=3D"border-collapse: collapse;mso-table-lspace:=
+ 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-ad=
+just: 100%;">
+                            <tr>
+                                <td align=3D"center" valign=3D"top" id=3D"=
+templateHeader" data-template-container=3D"" style=3D"background:#ffffff n=
+one no-repeat 50% 50%/auto;mso-line-height-rule: exactly;-ms-text-size-adj=
+ust: 100%;-webkit-text-size-adjust: 100%;background-color: #ffffff;backgro=
+und-image: none;background-repeat: no-repeat;background-position: 50% 50%;=
+background-size: auto;border-top: 1px solid #ffffff;border-bottom: 1px sol=
+id #ffffff;padding-top: 10px;padding-bottom: 10px;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align=3D"center" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0" width=3D"600" style=3D"width:600px;">
+                                    <tr>
+                                    <td align=3D"center" valign=3D"top" wi=
+dth=3D"600" style=3D"width:600px;">
+                                    <![endif]-->
+                                    <table align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"templateContain=
+er" style=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rsp=
+ace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;max-wid=
+th: 600px !important;">
+                                        <tr>
+                                            <td valign=3D"top" class=3D"he=
+aderContainer" style=3D"background:#ffffff none no-repeat center/cover;mso=
+-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-ad=
+just: 100%;background-color: #ffffff;background-image: none;background-rep=
+eat: no-repeat;background-position: center;background-size: cover;border-t=
+op: 1px solid #ffffff;border-bottom: 1px solid #ffffff;padding-top: 0;padd=
+ing-bottom: 0;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collap=
+se: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adj=
+ust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #757575;font-family: 'Helv=
+etica Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px=
+;line-height: 150%;text-align: left;">
+
+                            <div style=3D"text-align: center;"><span style=
+=3D"font-size:11px"><a href=3D"https://us5.campaign-archive.com/?e=3D__test_email__&u=3Da418adf6d83c83f35428ea87a&id=3D084198c643" target=3D"_blank" style=
+=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;color: #007C89;font-weight: normal;text-decoration: unde=
+rline;"><span style=3D"color:#A9A9A9">Voir cet email dans votre navigateur=
+ Web</span></a></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                                        </tr>
+                                    </table>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align=3D"center" valign=3D"top" id=3D"=
+templateBody" data-template-container=3D"" style=3D"background:#ffffff non=
+e repeat top/auto;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%=
+;-webkit-text-size-adjust: 100%;background-color: #ffffff;background-image=
+: none;background-repeat: repeat;background-position: top;background-size:=
+ auto;border-top: 1px inset;border-bottom: 1px inset;padding-top: 0px;padd=
+ing-bottom: 0px;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align=3D"center" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0" width=3D"600" style=3D"width:600px;">
+                                    <tr>
+                                    <td align=3D"center" valign=3D"top" wi=
+dth=3D"600" style=3D"width:600px;">
+                                    <![endif]-->
+                                    <table align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"templateContain=
+er" style=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rsp=
+ace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;max-wid=
+th: 600px !important;">
+                                        <tr>
+                                            <td valign=3D"top" class=3D"bo=
+dyContainer" style=3D"background:#ffffff none no-repeat center/cover;mso-l=
+ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adju=
+st: 100%;background-color: #ffffff;background-image: none;background-repea=
+t: no-repeat;background-position: center;background-size: cover;border-top=
+: 0;border-bottom: 0;padding-top: 0;padding-bottom: 0;"><table border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"mcnImageBloc=
+k" style=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0p=
+t;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjus=
+t: 100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+float: left;">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" s=
+tyle=3D"padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom=
+: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+
+
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://mcusercontent.com/a418adf6d83c83f35428ea87a/images/f84a47a2-55=
+3e-af6a-e30e-ae8cbfe67dc0.png" width=3D"541.4399999999999" style=3D"max-wi=
+dth: 2119px;padding-bottom: 0;display: inline !important;vertical-align: b=
+ottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-inter=
+polation-mode: bicubic;" class=3D"mcnImage">
+
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #000000;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;line-height: 150%;ms=
+o-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-a=
+djust: 100%;word-break: break-word;font-size: 16px;text-align: left;">
+
+                            <div style=3D"text-align: center;"><span style=
+=3D"font-size:20px"><strong><span style=3D"color:#008000">"RESPECT"</span>=
+ SUPERFOOD WORKSHOP</strong></span><br>
+<span style=3D"color:#000000"><span style=3D"font-size:16px">February&nbsp=
+;12th&nbsp;at Wild &amp; The Moon<br>
+February 19th&nbsp;at Comptoir102</span></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageBlock" style=3D"min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+float: left;">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" s=
+tyle=3D"padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom=
+: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+
+                                    <a href=3D"https://www.wildandthemoon.=
+ae/product/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID" t=
+itle=3D"" class=3D"" target=3D"_blank" style=3D"mso-line-height-rule: exac=
+tly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://mcusercontent.com/a418adf6d83c83f35428ea87a/images/57d3e25d-df=
+28-47d9-60e6-3f5170df477e.gif" width=3D"496.32" style=3D"max-width: 964px;=
+padding-bottom: 0;display: inline !important;vertical-align: bottom;border=
+: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mod=
+e: bicubic;" class=3D"mcnImage">
+                                    </a>
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #000000;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;line-height: 150%;ms=
+o-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-a=
+djust: 100%;word-break: break-word;font-size: 16px;text-align: left;">
+
+                            <div style=3D"text-align: center;">
+<p dir=3D"ltr" style=3D"text-align: justify;color: #000000;font-family: &q=
+uot;Helvetica Neue&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;li=
+ne-height: 150%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-m=
+s-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 16px;">=
+<span style=3D"font-size:16px">Do you know about superfoods and what they=
+ can do for you and your health?&nbsp;This is your answer!&nbsp;<strong>Wi=
+ld &amp; The Moon </strong>and<strong> Comptoir 102</strong> are joining h=
+ands with leading=2C&nbsp;superfood brand&nbsp;<strong>Respect Health</str=
+ong>=2C to bring you an&nbsp;exclusive <strong>Superfood Workshop</strong>=
+=2E</span></p>
+</div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op-width: 1px;border-top-style: dotted;border-top-color: #222222;border-co=
+llapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size=
+-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnButtonBlock" style=3D"min-width: 100%;border-collapse: co=
+llapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnButtonBlockOuter">
+        <tr>
+            <td style=3D"padding-top: 0;padding-right: 18px;padding-bottom=
+: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adju=
+st: 100%;-webkit-text-size-adjust: 100%;" valign=3D"top" align=3D"center"=
+ class=3D"mcnButtonBlockInner">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mcnButtonContentContainer" style=3D"border-collapse: separate !impo=
+rtant;border: 1px solid;border-top-left-radius: 0px;border-top-right-radiu=
+s: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;back=
+ground-color: #FFFFFF;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text=
+-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody>
+                        <tr>
+                            <td align=3D"center" valign=3D"middle" class=
+=3D"mcnButtonContent" style=3D"font-family: Arial;font-size: 16px;padding:=
+ 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-tex=
+t-size-adjust: 100%;">
+                                <a class=3D"mcnButton " title=3D"Know More=
+" href=3D"https://www.wildandthemoon.ae/product/supperfood-with-respect/?m=
+c_cid=3D084198c643&mc_eid=3DUNIQID" target=3D"_blank" style=3D"font-weight=
+: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-de=
+coration: none;color: #000000;mso-line-height-rule: exactly;-ms-text-size-=
+adjust: 100%;-webkit-text-size-adjust: 100%;display: block;">Know More</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #000000;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;line-height: 150%;ms=
+o-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-a=
+djust: 100%;word-break: break-word;font-size: 16px;text-align: left;">
+
+                            <div style=3D"text-align: center;">
+<p dir=3D"ltr" style=3D"text-align: justify;color: #000000;font-family: &q=
+uot;Helvetica Neue&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;li=
+ne-height: 150%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-m=
+s-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 16px;">=
+<span style=3D"font-size:16px">CEO and founding member of&nbsp;<strong>Res=
+pect=2C Robin Hebras</strong>&nbsp;will give you the ultimate chance to di=
+ve into 100% plant-based and organic superfoods&nbsp;and teach you how you=
+ can incorporate them into your everyday life.<br>
+<br>
+During the Workshop=2C Robin will delve into the various superfood blends=
+=2C health facts and nutritional benefits=2C as well as tips and tricks on=
+ how they can be added to everyday meals.&nbsp;<br>
+<br>
+We will&nbsp;demonstrate&nbsp;how to balance rich flavours=2C while&nbsp;b=
+eing creative with preparing and plating recipes&nbsp;like a pro! Enjoy cr=
+eating a healthy frozen bowl and a superfood toast that can be enjoyed all=
+ day=2C everyday.</span></p>
+</div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageGroupBlock" style=3D"border-collapse: collapse;mso-t=
+able-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-=
+text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageGroupBlockOuter">
+
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageGroupBlockInner">
+
+                    <table align=3D"left" width=3D"273" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" class=3D"mcnImageGroupContentContainer" sty=
+le=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0p=
+t;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;float: left;">
+                            <tbody><tr>
+                                <td class=3D"mcnImageGroupContent" valign=
+=3D"top" style=3D"padding-left: 9px;padding-top: 0;padding-bottom: 0;mso-l=
+ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adju=
+st: 100%;">
+
+                                    <a href=3D"https://www.wildandthemoon.=
+ae/product/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID" t=
+itle=3D"" class=3D"" target=3D"_blank" style=3D"mso-line-height-rule: exac=
+tly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                        <img alt=3D"" src=3D"https://mcuse=
+rcontent.com/a418adf6d83c83f35428ea87a/_compresseds/dfe49034-e6d7-cebe-4b5=
+a-0189fa1222b2.jpg" width=3D"264" style=3D"max-width: 4000px;padding-botto=
+m: 0;border: 0;height: auto;outline: none;text-decoration: none;-ms-interp=
+olation-mode: bicubic;vertical-align: bottom;" class=3D"mcnImage">
+                                    </a>
+
+                                </td>
+                            </tr>
+                        </tbody></table>
+
+                    <table align=3D"right" width=3D"273" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageGroupContentContainer" st=
+yle=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0=
+pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;float: right;=
+">
+                            <tbody><tr>
+                                <td class=3D"mcnImageGroupContent" valign=
+=3D"top" style=3D"padding-right: 9px;padding-top: 0;padding-bottom: 0;mso-=
+line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adj=
+ust: 100%;">
+
+                                    <a href=3D"https://www.wildandthemoon.=
+ae/product/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID" t=
+itle=3D"" class=3D"" target=3D"_blank" style=3D"mso-line-height-rule: exac=
+tly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                        <img alt=3D"" src=3D"https://mcuse=
+rcontent.com/a418adf6d83c83f35428ea87a/images/cc5eecb2-665c-9851-f4af-7e45=
+72c771af.jpg" width=3D"264" style=3D"max-width: 1000px;padding-bottom: 0;b=
+order: 0;height: auto;outline: none;text-decoration: none;-ms-interpolatio=
+n-mode: bicubic;vertical-align: bottom;" class=3D"mcnImage">
+                                    </a>
+
+                                </td>
+                            </tr>
+                        </tbody></table>
+
+                </td>
+            </tr>
+
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op-width: 1px;border-top-style: dotted;border-top-color: #222222;border-co=
+llapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size=
+-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnButtonBlock" style=3D"min-width: 100%;border-collapse: co=
+llapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnButtonBlockOuter">
+        <tr>
+            <td style=3D"padding-top: 0;padding-right: 18px;padding-bottom=
+: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adju=
+st: 100%;-webkit-text-size-adjust: 100%;" valign=3D"top" align=3D"center"=
+ class=3D"mcnButtonBlockInner">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mcnButtonContentContainer" style=3D"border-collapse: separate !impo=
+rtant;border: 1px solid;border-top-left-radius: 0px;border-top-right-radiu=
+s: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;back=
+ground-color: #FFFFFF;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text=
+-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody>
+                        <tr>
+                            <td align=3D"center" valign=3D"middle" class=
+=3D"mcnButtonContent" style=3D"font-family: Arial;font-size: 16px;padding:=
+ 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-tex=
+t-size-adjust: 100%;">
+                                <a class=3D"mcnButton " title=3D"Book your=
+ spot for the 12th February" href=3D"https://www.wildandthemoon.ae/product=
+/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID" target=3D"_=
+blank" style=3D"font-weight: bold;letter-spacing: normal;line-height: 100%=
+;text-align: center;text-decoration: none;color: #000000;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;dis=
+play: block;">Book your spot for the 12th February</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnButtonBlock" style=3D"min-width: 100%;border-collapse: co=
+llapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnButtonBlockOuter">
+        <tr>
+            <td style=3D"padding-top: 0;padding-right: 18px;padding-bottom=
+: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adju=
+st: 100%;-webkit-text-size-adjust: 100%;" valign=3D"top" align=3D"center"=
+ class=3D"mcnButtonBlockInner">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mcnButtonContentContainer" style=3D"border-collapse: separate !impo=
+rtant;border: 1px solid;border-top-left-radius: 0px;border-top-right-radiu=
+s: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;back=
+ground-color: #FFFFFF;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text=
+-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody>
+                        <tr>
+                            <td align=3D"center" valign=3D"middle" class=
+=3D"mcnButtonContent" style=3D"font-family: Arial;font-size: 16px;padding:=
+ 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-tex=
+t-size-adjust: 100%;">
+                                <a class=3D"mcnButton " title=3D"Book your=
+ spot for the 19th February" href=3D"http://comptoir102.com/shop/respect-s=
+uperfood-workshop/?mc_cid=3D084198c643&mc_eid=3DUNIQID" target=3D"_blank"=
+ style=3D"font-weight: bold;letter-spacing: normal;line-height: 100%;text-=
+align: center;text-decoration: none;color: #000000;mso-line-height-rule: e=
+xactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display:=
+ block;">Book your spot for the 19th February</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #222222;font-family: 'Helv=
+etica Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px=
+;line-height: 150%;text-align: left;">
+
+                            <div style=3D"text-align: justify;"><span styl=
+e=3D"font-size:16px">This&nbsp;highly interactive and educational session=
+ will be led by Robin Hebras=2C&nbsp;superfood expert and&nbsp;co-founder=
+ of&nbsp;Respect Health. During the workshop=2C Robin&nbsp;will guide you=
+ through the most common superfoods. You will know&nbsp;everything on ever=
+y superfood!&nbsp;Robin is a&nbsp;fun lively spirit&nbsp;with a passion fo=
+r wellness=2C healthy living and good food. He&nbsp;is also a&nbsp;big adv=
+ocate of&nbsp;responsible consumption and production&nbsp;of healthy food.=
+</span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageGroupBlock" style=3D"border-collapse: collapse;mso-t=
+able-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-=
+text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageGroupBlockOuter">
+
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageGroupBlockInner">
+
+                    <table align=3D"left" width=3D"273" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" class=3D"mcnImageGroupContentContainer" sty=
+le=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0p=
+t;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;float: left;">
+                            <tbody><tr>
+                                <td class=3D"mcnImageGroupContent" valign=
+=3D"top" style=3D"padding-left: 9px;padding-top: 0;padding-bottom: 0;mso-l=
+ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adju=
+st: 100%;">
+
+                                    <a href=3D"https://www.respect-health.=
+com?mc_cid=3D084198c643&mc_eid=3DUNIQID" title=3D"" class=3D"" target=3D"_=
+blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-=
+webkit-text-size-adjust: 100%;">
+                                        <img alt=3D"" src=3D"https://mcuse=
+rcontent.com/a418adf6d83c83f35428ea87a/images/2cc1d4d4-a1cf-f957-4fd2-526a=
+2586047a.jpg" width=3D"264" style=3D"max-width: 2160px;padding-bottom: 0;b=
+order: 0;height: auto;outline: none;text-decoration: none;-ms-interpolatio=
+n-mode: bicubic;vertical-align: bottom;" class=3D"mcnImage">
+                                    </a>
+
+                                </td>
+                            </tr>
+                        </tbody></table>
+
+                    <table align=3D"right" width=3D"273" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageGroupContentContainer" st=
+yle=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0=
+pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;float: right;=
+">
+                            <tbody><tr>
+                                <td class=3D"mcnImageGroupContent" valign=
+=3D"top" style=3D"padding-right: 9px;padding-top: 0;padding-bottom: 0;mso-=
+line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adj=
+ust: 100%;">
+
+                                    <a href=3D"https://www.respect-health.=
+com?mc_cid=3D084198c643&mc_eid=3DUNIQID" title=3D"" class=3D"" target=3D"_=
+blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-=
+webkit-text-size-adjust: 100%;">
+                                        <img alt=3D"" src=3D"https://mcuse=
+rcontent.com/a418adf6d83c83f35428ea87a/images/c3528d1b-e9b7-d980-2504-b1c1=
+08667e96.jpg" width=3D"264" style=3D"max-width: 1080px;padding-bottom: 0;b=
+order: 0;height: auto;outline: none;text-decoration: none;-ms-interpolatio=
+n-mode: bicubic;vertical-align: bottom;" class=3D"mcnImage">
+                                    </a>
+
+                                </td>
+                            </tr>
+                        </tbody></table>
+
+                </td>
+            </tr>
+
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #222222;font-family: 'Helv=
+etica Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px=
+;line-height: 150%;text-align: left;">
+
+                            <p dir=3D"ltr" style=3D"text-align: center;mar=
+gin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetic=
+a Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;lin=
+e-height: 150%;"><span style=3D"font-size:16px"><strong>This workshop is f=
+or you&nbsp;if you want to:</strong></span></p>
+
+<ul>
+=09<li aria-level=3D"1" dir=3D"ltr" style=3D"mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+=09<p dir=3D"ltr" role=3D"presentation" style=3D"text-align: justify;margi=
+n: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetica=
+ Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;line=
+-height: 150%;"><span style=3D"font-size:16px">Understand all about superf=
+oods and the different superfood blends</span></p>
+=09</li>
+=09<li aria-level=3D"1" dir=3D"ltr" style=3D"mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+=09<p dir=3D"ltr" role=3D"presentation" style=3D"text-align: justify;margi=
+n: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetica=
+ Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;line=
+-height: 150%;"><span style=3D"font-size:16px">Learn ways to incorporate s=
+uperfoods to everyday life</span></p>
+=09</li>
+=09<li aria-level=3D"1" dir=3D"ltr" style=3D"mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+=09<p dir=3D"ltr" role=3D"presentation" style=3D"text-align: justify;margi=
+n: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetica=
+ Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;line=
+-height: 150%;"><span style=3D"font-size:16px">Level up your breakfast gam=
+e and flavour creating skills</span></p>
+=09</li>
+=09<li aria-level=3D"1" dir=3D"ltr" style=3D"mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+=09<p dir=3D"ltr" role=3D"presentation" style=3D"text-align: justify;margi=
+n: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetica=
+ Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;line=
+-height: 150%;"><span style=3D"font-size:16px">Learn how to create nutriti=
+ous meals like a superfood expert at your home kitchen</span></p>
+=09</li>
+=09<li aria-level=3D"1" dir=3D"ltr" style=3D"mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+=09<p dir=3D"ltr" role=3D"presentation" style=3D"text-align: justify;margi=
+n: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetica=
+ Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;line=
+-height: 150%;"><span style=3D"font-size:16px">Connect with yourself and n=
+ature improve your journey towards a healthier lifestyle</span></p>
+=09</li>
+=09<li aria-level=3D"1" dir=3D"ltr" style=3D"mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+=09<p dir=3D"ltr" role=3D"presentation" style=3D"text-align: justify;margi=
+n: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetica=
+ Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;line=
+-height: 150%;"><span style=3D"font-size:16px">Understand how to get your=
+ daily dose of proteins while embracing a plant-based diet.</span></p>
+=09</li>
+</ul>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #222222;font-family: 'Helv=
+etica Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px=
+;line-height: 150%;text-align: left;">
+
+                            <div style=3D"text-align: center;">This worksh=
+op is not to be missed. Limited spots only!</div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #222222;font-family: 'Helv=
+etica Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px=
+;line-height: 150%;text-align: left;">
+
+                            <p dir=3D"ltr" style=3D"text-align: center;mar=
+gin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetic=
+a Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;lin=
+e-height: 150%;"><br>
+<span style=3D"font-size:16px"><strong>Offering:</strong></span></p>
+
+<ul>
+=09<li aria-level=3D"1" dir=3D"ltr" style=3D"mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+=09<p dir=3D"ltr" role=3D"presentation" style=3D"text-align: justify;margi=
+n: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetica=
+ Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;line=
+-height: 150%;"><span style=3D"font-size:16px">Engaging content and inform=
+ative discussions all about superfoods&nbsp;</span></p>
+=09</li>
+=09<li aria-level=3D"1" dir=3D"ltr" style=3D"mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+=09<p dir=3D"ltr" role=3D"presentation" style=3D"text-align: justify;margi=
+n: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetica=
+ Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;line=
+-height: 150%;"><span style=3D"font-size:16px">Hands-on activity and super=
+charged superfood dishes to enjoy (Superfood&nbsp;Frozen bowl &amp; Spirul=
+ina toast)</span></p>
+=09</li>
+=09<li aria-level=3D"1" dir=3D"ltr" style=3D"mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+=09<p dir=3D"ltr" role=3D"presentation" style=3D"text-align: justify;margi=
+n: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;color: #222222;font-family: 'Helvetica=
+ Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px;line=
+-height: 150%;"><span style=3D"font-size:16px">Goodies to take away.</span=
+></p>
+=09</li>
+</ul>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageBlock" style=3D"min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+float: left;">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" s=
+tyle=3D"padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom=
+: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+
+                                    <a href=3D"https://www.wildandthemoon.=
+ae/product/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID" t=
+itle=3D"" class=3D"" target=3D"_blank" style=3D"mso-line-height-rule: exac=
+tly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://mcusercontent.com/a418adf6d83c83f35428ea87a/images/963758b1-e3=
+f0-0fcc-0b78-7e60ce8cd738.jpg" width=3D"564" style=3D"max-width: 3296px;pa=
+dding-bottom: 0;display: inline !important;vertical-align: bottom;border:=
+ 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode=
+: bicubic;" class=3D"mcnImage">
+                                    </a>
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #000000;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;line-height: 150%;ms=
+o-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-a=
+djust: 100%;word-break: break-word;font-size: 16px;text-align: left;">
+
+                            <div style=3D"text-align: center;">
+<p dir=3D"ltr" style=3D"text-align: center;color: #000000;font-family: &qu=
+ot;Helvetica Neue&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;lin=
+e-height: 150%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms=
+-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 16px;"><=
+strong><span style=3D"font-size:18px"><font color=3D"#000000" face=3D"helv=
+etica neue=2C helvetica=2C arial=2C verdana=2C sans-serif">Respect Superfo=
+od&nbsp;Workshop:</font></span></strong><br>
+<br>
+<font color=3D"#000000" face=3D"helvetica neue=2C helvetica=2C arial=2C ve=
+rdana=2C sans-serif"><u>Wild &amp; The Moon</u><br>
+H77=2C Alserkal Avenue=2C Al Quoz=2C UAE</font><br>
+<font color=3D"#000000" face=3D"helvetica neue=2C helvetica=2C arial=2C ve=
+rdana=2C sans-serif">Saturday=2C&nbsp;12th February<br>
+10 am to 12 pm<br>
+<br>
+<u>Comptoir102</u><br>
+102 Beach Road=2C Jumeirah 1=2C DubaI=2C UAE</font><br>
+<font color=3D"#000000" face=3D"helvetica neue=2C helvetica=2C arial=2C ve=
+rdana=2C sans-serif">Saturday=2C&nbsp;19th February<br>
+10 am to 12 pm<br>
+<br>
+Price: AED 125</font></p>
+</div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op-width: 1px;border-top-style: dotted;border-top-color: #222222;border-co=
+llapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size=
+-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnButtonBlock" style=3D"min-width: 100%;border-collapse: co=
+llapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnButtonBlockOuter">
+        <tr>
+            <td style=3D"padding-top: 0;padding-right: 18px;padding-bottom=
+: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adju=
+st: 100%;-webkit-text-size-adjust: 100%;" valign=3D"top" align=3D"center"=
+ class=3D"mcnButtonBlockInner">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mcnButtonContentContainer" style=3D"border-collapse: separate !impo=
+rtant;border: 1px solid;border-top-left-radius: 0px;border-top-right-radiu=
+s: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;back=
+ground-color: #FFFFFF;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text=
+-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody>
+                        <tr>
+                            <td align=3D"center" valign=3D"middle" class=
+=3D"mcnButtonContent" style=3D"font-family: Arial;font-size: 16px;padding:=
+ 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-tex=
+t-size-adjust: 100%;">
+                                <a class=3D"mcnButton " title=3D"Book Now=
+ for Workshop at Wild & The Moon" href=3D"https://www.wildandthemoon.ae/pr=
+oduct/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID" target=
+=3D"_blank" style=3D"font-weight: bold;letter-spacing: normal;line-height:=
+ 100%;text-align: center;text-decoration: none;color: #000000;mso-line-hei=
+ght-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100=
+%;display: block;">Book Now for Workshop at Wild &amp; The Moon</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnButtonBlock" style=3D"min-width: 100%;border-collapse: co=
+llapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnButtonBlockOuter">
+        <tr>
+            <td style=3D"padding-top: 0;padding-right: 18px;padding-bottom=
+: 18px;padding-left: 18px;mso-line-height-rule: exactly;-ms-text-size-adju=
+st: 100%;-webkit-text-size-adjust: 100%;" valign=3D"top" align=3D"center"=
+ class=3D"mcnButtonBlockInner">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" cl=
+ass=3D"mcnButtonContentContainer" style=3D"border-collapse: separate !impo=
+rtant;border: 1px solid;border-top-left-radius: 0px;border-top-right-radiu=
+s: 0px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;back=
+ground-color: #FFFFFF;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text=
+-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody>
+                        <tr>
+                            <td align=3D"center" valign=3D"middle" class=
+=3D"mcnButtonContent" style=3D"font-family: Arial;font-size: 16px;padding:=
+ 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-tex=
+t-size-adjust: 100%;">
+                                <a class=3D"mcnButton " title=3D"Book Now=
+ for Workshop at Comptoir102" href=3D"http://comptoir102.com/shop/respect-=
+superfood-workshop/?mc_cid=3D084198c643&mc_eid=3DUNIQID" target=3D"_blank"=
+ style=3D"font-weight: bold;letter-spacing: normal;line-height: 100%;text-=
+align: center;text-decoration: none;color: #000000;mso-line-height-rule: e=
+xactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;display:=
+ block;">Book Now for Workshop at Comptoir102</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageGroupBlock" style=3D"border-collapse: collapse;mso-t=
+able-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-=
+text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageGroupBlockOuter">
+
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageGroupBlockInner">
+
+                    <table align=3D"left" width=3D"273" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0" class=3D"mcnImageGroupContentContainer" sty=
+le=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0p=
+t;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;float: left;">
+                            <tbody><tr>
+                                <td class=3D"mcnImageGroupContent" valign=
+=3D"top" style=3D"padding-left: 9px;padding-top: 0;padding-bottom: 0;mso-l=
+ine-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adju=
+st: 100%;">
+
+                                    <a href=3D"https://www.wildandthemoon.=
+ae/product/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID" t=
+itle=3D"" class=3D"" target=3D"_blank" style=3D"mso-line-height-rule: exac=
+tly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                        <img alt=3D"" src=3D"https://mcuse=
+rcontent.com/a418adf6d83c83f35428ea87a/images/d239cab9-0f77-816d-3f05-e485=
+da37b1a1.jpg" width=3D"264" style=3D"max-width: 3841px;padding-bottom: 0;b=
+order: 0;height: auto;outline: none;text-decoration: none;-ms-interpolatio=
+n-mode: bicubic;vertical-align: bottom;" class=3D"mcnImage">
+                                    </a>
+
+                                </td>
+                            </tr>
+                        </tbody></table>
+
+                    <table align=3D"right" width=3D"273" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageGroupContentContainer" st=
+yle=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0=
+pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;float: right;=
+">
+                            <tbody><tr>
+                                <td class=3D"mcnImageGroupContent" valign=
+=3D"top" style=3D"padding-right: 9px;padding-top: 0;padding-bottom: 0;mso-=
+line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adj=
+ust: 100%;">
+
+                                    <a href=3D"https://www.wildandthemoon.=
+ae/product/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID" t=
+itle=3D"" class=3D"" target=3D"_blank" style=3D"mso-line-height-rule: exac=
+tly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                        <img alt=3D"" src=3D"https://mcuse=
+rcontent.com/a418adf6d83c83f35428ea87a/images/9618668f-4f90-e9d4-661a-fdb6=
+e71b3bad.jpg" width=3D"264" style=3D"max-width: 4000px;padding-bottom: 0;b=
+order: 0;height: auto;outline: none;text-decoration: none;-ms-interpolatio=
+n-mode: bicubic;vertical-align: bottom;" class=3D"mcnImage">
+                                    </a>
+
+                                </td>
+                            </tr>
+                        </tbody></table>
+
+                </td>
+            </tr>
+
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #000000;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;line-height: 150%;ms=
+o-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-a=
+djust: 100%;word-break: break-word;font-size: 16px;text-align: left;">
+
+                            <div style=3D"text-align: center;">
+<p dir=3D"ltr" style=3D"text-align: center;color: #000000;font-family: &qu=
+ot;Helvetica Neue&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;lin=
+e-height: 150%;margin: 10px 0;padding: 0;mso-line-height-rule: exactly;-ms=
+-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;font-size: 16px;"><=
+strong><span style=3D"font-size:18px"><font color=3D"#000000" face=3D"helv=
+etica neue=2C helvetica=2C arial=2C verdana=2C sans-serif">About Respect:<=
+/font></span></strong><br>
+<br>
+<span style=3D"color:#696969"><span style=3D"font-size:16px"><strong>Good=
+ health is at the centre of everything we do. &nbsp;</strong><br>
+That's why we=E2=80=99ve created a range of plant-based food supplements t=
+o make nutrition easy=2C so you can pursue good health without compromise.=
+&nbsp;<br>
+<br>
+We do it by crafting products that are just as effective as they are delig=
+htful.&nbsp;<br>
+We want to do good to the planet=2C so we source a maximum from local orga=
+nic certified farms.<br>
+<br>
+<strong>Healthy lifestyle&nbsp;</strong><br>
+Good health is at the centre of everything we do. We love an active lifest=
+yle; we enjoy the beauty of nature and we like to treat our body well.<br>
+<br>
+<strong>Quality driven&nbsp;</strong><br>
+We don't compromise on quality. We are certified and we control our qualit=
+y.&nbsp;We source consciously and make sure our products are processed min=
+imally.<br>
+<br>
+<strong>Innovation&nbsp;</strong><br>
+Our products our easy to use and we created some unique blends of superfoo=
+ds to nourish your body.</span></span></p>
+</div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageBlock" style=3D"min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+float: left;">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" s=
+tyle=3D"padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom=
+: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+
+                                    <a href=3D"https://www.respect-health.=
+com?mc_cid=3D084198c643&mc_eid=3DUNIQID" title=3D"" class=3D"" target=3D"_=
+blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-=
+webkit-text-size-adjust: 100%;">
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://mcusercontent.com/a418adf6d83c83f35428ea87a/_compresseds/61c4a=
+f95-a2f8-61ac-32d1-e5e809c72d3f.jpg" width=3D"564" style=3D"max-width: 590=
+6px;padding-bottom: 0;display: inline !important;vertical-align: bottom;bo=
+rder: 0;height: auto;outline: none;text-decoration: none;-ms-interpolation=
+-mode: bicubic;" class=3D"mcnImage">
+                                    </a>
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #222222;font-family: 'Helv=
+etica Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px=
+;line-height: 150%;text-align: left;">
+
+                            <br>
+&nbsp;
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding-top: 0;padding-right: 18px;padding-bottom: 9px;padding-left: 1=
+8px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;word-break: break-word;color: #222222;font-family: 'Helv=
+etica Neue'=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;font-size: 16px=
+;line-height: 150%;text-align: left;">
+
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnImageBlock" style=3D"min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+float: left;">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" s=
+tyle=3D"padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom=
+: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+
+                                    <a href=3D"https://www.wildandthemoon.=
+ae/product/supperfood-with-respect/?mc_cid=3D084198c643&mc_eid=3DUNIQID" t=
+itle=3D"" class=3D"" target=3D"_blank" style=3D"mso-line-height-rule: exac=
+tly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://mcusercontent.com/a418adf6d83c83f35428ea87a/images/605f151e-c3=
+34-d83f-6fbf-b6396a847188.png" width=3D"564" style=3D"max-width: 1961px;pa=
+dding-bottom: 0;display: inline !important;vertical-align: bottom;border:=
+ 0;height: auto;outline: none;text-decoration: none;-ms-interpolation-mode=
+: bicubic;" class=3D"mcnImage">
+                                    </a>
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op-width: 1px;border-top-style: dotted;border-top-color: #222222;border-co=
+llapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size=
+-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                                        </tr>
+                                    </table>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                            <tr>
+                                <td align=3D"center" valign=3D"top" id=3D"=
+templateFooter" data-template-container=3D"" style=3D"background:#ffffff n=
+one no-repeat center/cover;mso-line-height-rule: exactly;-ms-text-size-adj=
+ust: 100%;-webkit-text-size-adjust: 100%;background-color: #ffffff;backgro=
+und-image: none;background-repeat: no-repeat;background-position: center;b=
+ackground-size: cover;border-top: 1px solid #ffffff;border-bottom: 1px sol=
+id #ffffff;padding-top: 0px;padding-bottom: 0px;">
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    <table align=3D"center" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0" width=3D"600" style=3D"width:600px;">
+                                    <tr>
+                                    <td align=3D"center" valign=3D"top" wi=
+dth=3D"600" style=3D"width:600px;">
+                                    <![endif]-->
+                                    <table align=3D"center" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" width=3D"100%" class=3D"templateContain=
+er" style=3D"border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rsp=
+ace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;max-wid=
+th: 600px !important;">
+                                        <tr>
+                                            <td valign=3D"top" class=3D"fo=
+oterContainer" style=3D"background:#ffffff none no-repeat center/cover;mso=
+-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-ad=
+just: 100%;background-color: #ffffff;background-image: none;background-rep=
+eat: no-repeat;background-position: center;background-size: cover;border-t=
+op: 1px solid #ffffff;border-bottom: 1px solid #ffffff;padding-top: 0;padd=
+ing-bottom: 0;"><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%" class=3D"mcnImageBlock" style=3D"min-width: 100%;border-colla=
+pse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-ad=
+just: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnImageBlockOuter">
+            <tr>
+                <td valign=3D"top" style=3D"padding: 9px;mso-line-height-r=
+ule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;" c=
+lass=3D"mcnImageBlockInner">
+                    <table align=3D"left" width=3D"100%" border=3D"0" cell=
+padding=3D"0" cellspacing=3D"0" class=3D"mcnImageContentContainer" style=
+=3D"min-width: 100%;border-collapse: collapse;mso-table-lspace: 0pt;mso-ta=
+ble-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;=
+float: left;">
+                        <tbody><tr>
+                            <td class=3D"mcnImageContent" valign=3D"top" s=
+tyle=3D"padding-right: 9px;padding-left: 9px;padding-top: 0;padding-bottom=
+: 0;text-align: center;mso-line-height-rule: exactly;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;">
+
+
+                                        <img align=3D"center" alt=3D"" src=
+=3D"https://mcusercontent.com/c63aaf213d10dc2571bdeffac/images/ec10c410-7e=
+49-201d-0929-913273ef8978.jpg" width=3D"563.9999389648438" style=3D"max-wi=
+dth: 1199px;padding-bottom: 0;display: inline !important;vertical-align: b=
+ottom;border: 0;height: auto;outline: none;text-decoration: none;-ms-inter=
+polation-mode: bicubic;" class=3D"mcnImage">
+
+
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #000000;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;mso-line-height-rule=
+: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-b=
+reak: break-word;font-size: 12px;line-height: 150%;text-align: center;">
+
+                            <div style=3D"text-align: center;"><span style=
+=3D"font-size:16px"><span style=3D"color:#000000"><strong>FOLLOW US</stron=
+g></span></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnFollowBlock" style=3D"min-width: 100%;border-collapse: co=
+llapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 1=
+00%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnFollowBlockOuter">
+        <tr>
+            <td align=3D"center" valign=3D"top" style=3D"padding: 9px;mso-=
+line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adj=
+ust: 100%;" class=3D"mcnFollowBlockInner">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%" class=3D"mcnFollowContentContainer" style=3D"min-width: 100%;=
+border-collapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-=
+text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+    <tbody><tr>
+        <td align=3D"center" style=3D"padding-left: 9px;padding-right: 9px=
+;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-siz=
+e-adjust: 100%;">
+            <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=
+=3D"100%" style=3D"min-width: 100%;border-collapse: collapse;mso-table-lsp=
+ace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-siz=
+e-adjust: 100%;" class=3D"mcnFollowContent">
+                <tbody><tr>
+                    <td align=3D"center" valign=3D"top" style=3D"padding-t=
+op: 9px;padding-right: 9px;padding-left: 9px;mso-line-height-rule: exactly=
+;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                        <table align=3D"center" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" style=3D"border-collapse: collapse;mso-table-lspa=
+ce: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size=
+-adjust: 100%;">
+                            <tbody><tr>
+                                <td align=3D"center" valign=3D"top" style=
+=3D"mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webkit-text-=
+size-adjust: 100%;">
+                                    <!--[if mso]>
+                                    <table align=3D"center" border=3D"0" c=
+ellspacing=3D"0" cellpadding=3D"0">
+                                    <tr>
+                                    <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+
+                                            <table align=3D"left" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnFollowStacked" styl=
+e=3D"display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-t=
+able-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;float: left;">
+
+                                                <tbody><tr>
+                                                    <td align=3D"center" v=
+align=3D"top" class=3D"mcnFollowIconContent" style=3D"padding-right: 10px;=
+padding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;">
+                                                        <a href=3D"https:/=
+/www.instagram.com/wildandthemoonuae/?mc_cid=3D084198c643&mc_eid=3DUNIQID"=
+ target=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-ad=
+just: 100%;-webkit-text-size-adjust: 100%;"><img src=3D"https://cdn-images=
+=2Emailchimp.com/icons/social-block-v2/outline-dark-instagram-96.png" alt=3D=
+"Instagram" class=3D"mcnFollowBlockIcon" width=3D"48" style=3D"width: 48px=
+;max-width: 48px;display: block;border: 0;height: auto;outline: none;text-=
+decoration: none;-ms-interpolation-mode: bicubic;"></a>
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody></table>
+
+
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                        <!--[if mso]>
+                                        <td align=3D"center" valign=3D"top=
+">
+                                        <![endif]-->
+
+                                            <table align=3D"left" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"mcnFollowStacked" styl=
+e=3D"display: inline;border-collapse: collapse;mso-table-lspace: 0pt;mso-t=
+able-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%=
+;float: left;">
+
+                                                <tbody><tr>
+                                                    <td align=3D"center" v=
+align=3D"top" class=3D"mcnFollowIconContent" style=3D"padding-right: 0;pad=
+ding-bottom: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;=
+-webkit-text-size-adjust: 100%;">
+                                                        <a href=3D"https:/=
+/www.facebook.com/WildAndTheMoonUAE?mc_cid=3D084198c643&mc_eid=3DUNIQID" t=
+arget=3D"_blank" style=3D"mso-line-height-rule: exactly;-ms-text-size-adju=
+st: 100%;-webkit-text-size-adjust: 100%;"><img src=3D"https://cdn-images.m=
+ailchimp.com/icons/social-block-v2/outline-dark-facebook-96.png" alt=3D"Fa=
+cebook" class=3D"mcnFollowBlockIcon" width=3D"48" style=3D"width: 48px;max=
+-width: 48px;display: block;border: 0;height: auto;outline: none;text-deco=
+ration: none;-ms-interpolation-mode: bicubic;"></a>
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody></table>
+
+
+                                        <!--[if mso]>
+                                        </td>
+                                        <![endif]-->
+
+                                    <!--[if mso]>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </tbody></table>
+                    </td>
+                </tr>
+            </tbody></table>
+        </td>
+    </tr>
+</tbody></table>
+
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #000000;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;mso-line-height-rule=
+: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-b=
+reak: break-word;font-size: 12px;line-height: 150%;text-align: center;">
+
+                            <div style=3D"text-align: center;"><span style=
+=3D"font-size:16px"><span style=3D"color:#000000"><strong>CONTACT US</stro=
+ng></span></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #000000;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;mso-line-height-rule=
+: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-b=
+reak: break-word;font-size: 12px;line-height: 150%;text-align: center;">
+
+                            <div style=3D"text-align: center;"><span style=
+=3D"font-size:15px"><span style=3D"color:#000000">&nbsp;On phone at + 971=
+ 54 581 0728</span><br>
+On email&nbsp;contactdxb@wildandthemoon.com</span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnDividerBlock" style=3D"min-width: 100%;border-collapse: c=
+ollapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust:=
+ 100%;-webkit-text-size-adjust: 100%;table-layout: fixed !important;">
+    <tbody class=3D"mcnDividerBlockOuter">
+        <tr>
+            <td class=3D"mcnDividerBlockInner" style=3D"min-width: 100%;pa=
+dding: 18px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webk=
+it-text-size-adjust: 100%;">
+                <table class=3D"mcnDividerContent" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" width=3D"100%" style=3D"min-width: 100%;border-t=
+op-width: 1px;border-top-style: dotted;border-top-color: #222222;border-co=
+llapse: collapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size=
+-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                    <tbody><tr>
+                        <td style=3D"mso-line-height-rule: exactly;-ms-tex=
+t-size-adjust: 100%;-webkit-text-size-adjust: 100%;">
+                            <span></span>
+                        </td>
+                    </tr>
+                </tbody></table>
+<!--
+                <td class=3D"mcnDividerBlockInner" style=3D"padding: 18px;=
+">
+                <hr class=3D"mcnDividerContent" style=3D"border-bottom-col=
+or:none; border-left-color:none; border-right-color:none; border-bottom-wi=
+dth:0; border-left-width:0; border-right-width:0; margin-top:0; margin-rig=
+ht:0; margin-bottom:0; margin-left:0;" />
+-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #000000;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;mso-line-height-rule=
+: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-b=
+reak: break-word;font-size: 12px;line-height: 150%;text-align: center;">
+
+                            <div style=3D"text-align: center;"><span style=
+=3D"font-size:16px"><span style=3D"color:#000000"><strong>COME SEE US</str=
+ong></span></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;color: #000000;font-family: &quot;Helvetica Neue=
+&quot;=2C Helvetica=2C Arial=2C Verdana=2C sans-serif;mso-line-height-rule=
+: exactly;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-b=
+reak: break-word;font-size: 12px;line-height: 150%;text-align: center;">
+
+                            <div style=3D"text-align: center;"><span style=
+=3D"color:#696969"><strong><font face=3D"helvetica neue=2C helvetica=2C ar=
+ial=2C verdana=2C sans-serif">Wild &amp; The Moon=2C&nbsp;Alserkal Avenue&=
+nbsp;</font></strong><br>
+<font face=3D"helvetica neue=2C helvetica=2C arial=2C verdana=2C sans-seri=
+f">Warehouse 77=2C Street 8=2C Al Qouz</font><br>
+<strong>Wild &amp; The Moon=2C Dubai international Financial Center</stron=
+g><br>
+<font face=3D"helvetica neue=2C helvetica=2C arial=2C verdana=2C sans-seri=
+f">Gate Avenue=2C U-1495</font><br>
+<strong>Wild &amp; The Moon Downtown Dubai&nbsp;</strong><br>
+<font face=3D"helvetica neue=2C helvetica=2C arial=2C verdana=2C sans-seri=
+f">Palance hotel n5=2C Sheikh Mohammed Bin Rashid Boulevard</font><br>
+<strong>Wild &amp; The Moon Abu Dhabi&nbsp;</strong><br>
+<font face=3D"helvetica neue=2C helvetica=2C arial=2C verdana=2C sans-seri=
+f">Abu Dhabi Cultural Foundation&nbsp;</font></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table><table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" width=3D"1=
+00%" class=3D"mcnTextBlock" style=3D"min-width: 100%;border-collapse: coll=
+apse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100=
+%;-webkit-text-size-adjust: 100%;">
+    <tbody class=3D"mcnTextBlockOuter">
+        <tr>
+            <td valign=3D"top" class=3D"mcnTextBlockInner" style=3D"paddin=
+g-top: 9px;mso-line-height-rule: exactly;-ms-text-size-adjust: 100%;-webki=
+t-text-size-adjust: 100%;">
+              =09<!--[if mso]>
+=09=09=09=09<table align=3D"left" border=3D"0" cellspacing=3D"0" cellpaddi=
+ng=3D"0" width=3D"100%" style=3D"width:100%;">
+=09=09=09=09<tr>
+=09=09=09=09<![endif]-->
+=09=09=09
+=09=09=09=09<!--[if mso]>
+=09=09=09=09<td valign=3D"top" width=3D"600" style=3D"width:600px;">
+=09=09=09=09<![endif]-->
+                <table align=3D"left" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" style=3D"max-width: 100%;min-width: 100%;border-collapse: col=
+lapse;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 10=
+0%;-webkit-text-size-adjust: 100%;float: left;" width=3D"100%" class=3D"mc=
+nTextContentContainer">
+                    <tbody><tr>
+
+                        <td valign=3D"top" class=3D"mcnTextContent" style=
+=3D"padding: 0px 18px 9px;font-family: &quot;Helvetica Neue&quot;=2C Helve=
+tica=2C Arial=2C Verdana=2C sans-serif;mso-line-height-rule: exactly;-ms-t=
+ext-size-adjust: 100%;-webkit-text-size-adjust: 100%;word-break: break-wor=
+d;color: #FFFFFF;font-size: 12px;line-height: 150%;text-align: center;">
+
+                            <div style=3D"text-align: center;"><span style=
+=3D"font-size:12px"><span style=3D"color:#696969"><em>Copyright =C2=A9 Wil=
+d &amp; The Moon - 2021. All rights reserved.</em></span></span></div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</td>
+=09=09=09=09<![endif]-->
+
+=09=09=09=09<!--[if mso]>
+=09=09=09=09</tr>
+=09=09=09=09</table>
+=09=09=09=09<![endif]-->
+            </td>
+        </tr>
+    </tbody>
+</table></td>
+                                        </tr>
+                                    </table>
+                                    <!--[if (gte mso 9)|(IE)]>
+                                    </td>
+                                    </tr>
+                                    </table>
+                                    <![endif]-->
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- // END TEMPLATE -->
+                    </td>
+                </tr>
+            </table>
+        </center>
+                <center>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wi=
+dth=3D"100%" id=3D"canspamBarWrapper" style=3D"background-color:#FFFFFF; b=
+order-top:1px solid #E5E5E5;">
+                    <tr>
+                        <td align=3D"center" valign=3D"top" style=3D"paddi=
+ng-top:20px; padding-bottom:20px;">
+                            <table border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0" id=3D"canspamBar">
+                                <tr>
+                                    <td align=3D"center" valign=3D"top" st=
+yle=3D"color:#606060; font-family:Helvetica=2C Arial=2C sans-serif; font-s=
+ize:11px; line-height:150%; padding-right:20px; padding-bottom:5px; paddin=
+g-left:20px; text-align:center;">
+                                        This email was sent to <a href=3D"=
+mailto:elsa.airin@gmail.com" target=3D"_blank" style=3D"color:#404040 !importa=
+nt;">elsa.airin@gmail.com</a>
+                                        <br />
+                                        <a href=3D"https://wildandthemoon.=
+us5.list-manage.com/about?u=3Da418adf6d83c83f35428ea87a&id=3Dc1fe5cf9da&e=
+=3D__test_email__&c=3D084198c643" target=3D"_blank" style=3D"color:#404040 !impo=
+rtant;"><em>why did I get this?</em></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href=3D=
+"https://wildandthemoon.us5.list-manage.com/unsubscribe?u=3Da418adf6d83c83=
+f35428ea87a&id=3Dc1fe5cf9da&t=3Db&e=3D__test_email__&c=3D084198c643" style=3D"co=
+lor:#404040 !important;">unsubscribe from this list</a>&nbsp;&nbsp;&nbsp;&=
+nbsp;<a href=3D"https://wildandthemoon.us5.list-manage.com/profile?u=3Da41=
+8adf6d83c83f35428ea87a&id=3Dc1fe5cf9da&e=3D__test_email__&c=3D084198c643" style=
+=3D"color:#404040 !important;">update subscription preferences</a>
+                                        <br />
+                                        Wild & The Moon &middot; Street 8=
+=2C Al Qouz Alserkal Avenue &middot; Dubai=2C United Arab Emirates 99247 &=
+middot; United Arab Emirates
+                                        <br />
+                                        <br />
+
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <style type=3D"text/css">
+                    @media only screen and (max-width: 480px){
+                        table#canspamBar td{font-size:14px !important;}
+                        table#canspamBar td a{display:block !important; ma=
+rgin-top:10px !important;}
+                    }
+                </style>
+            </center></body>
+</html>
+--_----------=_MCPart_1654080161--

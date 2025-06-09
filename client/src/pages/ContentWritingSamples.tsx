@@ -21,7 +21,7 @@ const contentSamples: ContentSample[] = [
     title: 'Wild Supper Club Launch',
     description: 'Exclusive event announcement featuring renowned plant-based Chef Claire Sharryn Roberto with adaptogenic menu.',
     category: 'press_release',
-    pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO_1749425627779.pdf'
+    pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO.pdf'
   },
   {
     id: 'pr-2', 
@@ -121,7 +121,7 @@ const contentSamples: ContentSample[] = [
     title: 'Summer brings new Wild flavors!',
     description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
     category: 'email_marketing',
-    pdfFile: 'WILD & THE MOON x COMPTOIR102 x DIRTEA_ A Shroom Boom with Fungi!_1749425627780.pdf'
+    pdfFile: 'Get Summer Ready with Wild.eml'
   }
 ];
 
