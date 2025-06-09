@@ -1,8 +1,9 @@
-import strategicMarketingImg from "@assets/strategic-marketing.jpg";
-import customerEngagementImg from "@assets/customer-engagement.png";
-import brandStorytellingImg from "@assets/brand-storytelling.png";
-import awardsRecognitionImg from "@assets/awards-recognition.jpg";
-import pressReleaseImg from "@assets/press-release.jpg";
+// Using direct paths to test image loading
+const strategicMarketingImg = "/attached_assets/strategic-marketing.jpg";
+const customerEngagementImg = "/attached_assets/customer-engagement.png";
+const brandStorytellingImg = "/attached_assets/brand-storytelling.png";
+const awardsRecognitionImg = "/attached_assets/awards-recognition.jpg";
+const pressReleaseImg = "/attached_assets/press-release.jpg";
 
 export interface PortfolioItem {
   id: number;
