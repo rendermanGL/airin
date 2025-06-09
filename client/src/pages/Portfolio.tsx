@@ -8,35 +8,35 @@ const portfolioCategories = [
     id: "strategic-marketing",
     title: "Strategic Marketing",
     description: "Multi-channel brand portfolio management and innovative marketing strategies that drive measurable business growth.",
-    imageUrl: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80",
+    imageUrl: "../attached_assets/Strategic Marketing_1749427174294.jpg",
     route: "/portfolio/strategic-marketing"
   },
   {
     id: "customer-engagement",
     title: "Customer Experience & Community Engagement",
     description: "Building meaningful community connections and enhancing customer experiences through innovative engagement strategies.",
-    imageUrl: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80",
+    imageUrl: "attached_assets/Customer Experience & Community Engagement_1749427174294.png",
     route: "/portfolio/customer-engagement"
   },
   {
     id: "brand-storytelling",
     title: "Brand Storytelling & Multi-Channel Marketing",
     description: "Creating compelling brand narratives and executing integrated campaigns across multiple touchpoints.",
-    imageUrl: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80",
+    imageUrl: "attached_assets/Brand Storytelling & Multi-Channel Marketing_1749427174294.png",
     route: "/portfolio/brand-storytelling"
   },
   {
     id: "awards-recognition",
     title: "Awards & Recognition",
     description: "Industry recognition and award-winning campaigns that showcase excellence in brand marketing and communications.",
-    imageUrl: "https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80",
+    imageUrl: "attached_assets/Awards & Recognition_1749427174294.jpg",
     route: "/portfolio/awards-recognition"
   },
   {
     id: "content-writing",
     title: "Content Writing Samples",
     description: "Professional content writing portfolio including press releases, event materials, and brand communications that generated significant media coverage.",
-    imageUrl: "https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=700&q=80",
+    imageUrl: "attached_assets/Press Release_1749427252000.jpg",
     route: "/portfolio/content-writing"
   }
 ];
