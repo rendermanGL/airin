@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 
 const campaigns = [
   {
-    image: "/attached_assets/Brand Product Compaign_1749429682985.jpeg",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     title: "Brand Product Campaign",
     subtitle: "Kava & Chai: Summer Matcha Bliss",
     description: "Developed and launched two limited-edition summer drinks—Iced Coco Matcha and Mango Matcha—to add new offerings and maintain customer excitement.",
@@ -22,7 +22,7 @@ const campaigns = [
     ]
   },
   {
-    image: "/attached_assets/Seasonal Product Campaign_1749429682985.jpeg",
+    image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     title: "Seasonal Product Campaign",
     subtitle: "Wild & The Moon: Hit Reset with the Best!",
     description: "Introduced a Summer Detox Range offered at a 20% discount for a limited period to increase engagement during the summer downtime.",
@@ -37,7 +37,7 @@ const campaigns = [
     ]
   },
   {
-    image: "/attached_assets/Tactical Campaigning Methods and Successess_1749429682985.jpeg",
+    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     title: "Tactical Campaigning Methods and Successes",
     subtitle: "Chin Chin",
     description: "Utilized WhatsApp as a new communication medium for tactical campaigns to boost impact and drive sales.",
