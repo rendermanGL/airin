@@ -85,7 +85,7 @@ const contentSamples: ContentSample[] = [
   // Email Marketing
   {
     id: 'email-1',
-    title: 'Product Launch Campaign',
+    title: 'The Wildest Iftars are coming your way this Ramadan',
     description: 'Multi-sequence email campaign for new menu item launch with personalized customer journey.',
     imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
@@ -93,7 +93,7 @@ const contentSamples: ContentSample[] = [
   },
   {
     id: 'email-2',
-    title: 'Seasonal Wellness Series',
+    title: 'Wild & The Moon x Claire Sharryn Roberto',
     description: 'Educational email series connecting seasonal ingredients with wellness benefits and menu offerings.',
     imageUrl: 'https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
@@ -101,7 +101,7 @@ const contentSamples: ContentSample[] = [
   },
   {
     id: 'email-3',
-    title: 'Customer Retention Campaign',
+    title: 'Self-care is Quintessential!',
     description: 'Loyalty-focused email campaign with personalized offers and exclusive member benefits.',
     imageUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
@@ -109,7 +109,31 @@ const contentSamples: ContentSample[] = [
   },
   {
     id: 'email-4',
-    title: 'Event Promotion Series',
+    title: 'Enter superfood heaven with us! Wild & The Moon x Respect Health x Comptoir102',
+    description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
+    imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
+    category: 'email_marketing',
+    pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
+  },
+  {
+    id: 'email-5',
+    title: 'Get Summer Ready with Wild!',
+    description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
+    imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
+    category: 'email_marketing',
+    pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
+  },
+  {
+    id: 'email-6',
+    title: 'Easter brings you the Wildest treats!',
+    description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
+    imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
+    category: 'email_marketing',
+    pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
+  },
+  {
+    id: 'email-7',
+    title: 'Summer brings new Wild flavors!',
     description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
     imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
@@ -241,7 +265,7 @@ export default function ContentWritingSamples() {
                           className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
                         >
                           <a 
-                            href={`/api/awards/${encodeURIComponent(sample.pdfFile)}`}
+                            href={`/public/pdfs/${encodeURIComponent(sample.pdfFile)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                           >
