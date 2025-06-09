@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -9,10 +10,8 @@ interface ContentSample {
   id: string;
   title: string;
   description: string;
-  imageUrl: string;
   category: 'press_release' | 'award_submission' | 'email_marketing';
-  documentId?: number;
-  pdfFile?: string;
+  pdfFile: string;
 }
 
 const contentSamples: ContentSample[] = [
@@ -21,7 +20,6 @@ const contentSamples: ContentSample[] = [
     id: 'pr-1',
     title: 'Wild Supper Club Launch',
     description: 'Exclusive event announcement featuring renowned plant-based Chef Claire Sharryn Roberto with adaptogenic menu.',
-    imageUrl: 'https://images.unsplash.com/photo-1514533212735-5df27d970db9?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'press_release',
     pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO_1749425627779.pdf'
   },
@@ -29,7 +27,6 @@ const contentSamples: ContentSample[] = [
     id: 'pr-2', 
     title: 'Ramadan Iftar Edition',
     description: 'Special Ramadan edition featuring two exclusive Asian-inspired plant-based menus for traditional Iftar.',
-    imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'press_release',
     pdfFile: 'WILD SUPPER CLUB_ IFTAR EDITION_1749425627780.pdf'
   },
@@ -37,7 +34,6 @@ const contentSamples: ContentSample[] = [
     id: 'pr-3',
     title: 'Mushroom Wellness Workshop',
     description: 'Collaboration with DIRTEA exploring functional mushroom blends and next-generation wellness biohacking.',
-    imageUrl: 'https://images.unsplash.com/photo-1506976785307-8732e854ad03?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'press_release',
     pdfFile: 'WILD & THE MOON x COMPTOIR102 x DIRTEA_ A Shroom Boom with Fungi!_1749425627780.pdf'
   },
@@ -45,7 +41,6 @@ const contentSamples: ContentSample[] = [
     id: 'pr-4',
     title: 'Superfood Workshop Series',
     description: 'Interactive educational session with Respect Health CEO teaching plant-based superfood integration.',
-    imageUrl: 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'press_release',
     pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
   },
@@ -54,7 +49,6 @@ const contentSamples: ContentSample[] = [
     id: 'award-1',
     title: 'F&B Entrepreneur(s) of the Year',
     description: 'Strategic award submission highlighting Wild & The Moon\'s entrepreneurial leadership and innovation in the F&B industry.',
-    imageUrl: '/portfolio-images/awards-recognition.jpg',
     category: 'award_submission',
     pdfFile: '1. Wild & The Moon_ F&B Entrepreneur(s) of the Year_1749427936886.pdf'
   },
@@ -62,7 +56,6 @@ const contentSamples: ContentSample[] = [
     id: 'award-2',
     title: 'Leading Cafe',
     description: 'Comprehensive submission showcasing Wild & The Moon\'s excellence in cafe operations and customer experience.',
-    imageUrl: '/portfolio-images/awards-recognition.jpg',
     category: 'award_submission',
     pdfFile: '2. Wild & The Moon_ Leading Cafe_1749427936886.pdf'
   },
@@ -70,7 +63,6 @@ const contentSamples: ContentSample[] = [
     id: 'award-3',
     title: 'Leading Healthy Restaurant',
     description: 'Award submission demonstrating Wild & The Moon\'s commitment to healthy, plant-based dining excellence.',
-    imageUrl: '/portfolio-images/awards-recognition.jpg',
     category: 'award_submission',
     pdfFile: '3. Wild & The Moon_ Leading Healthy Restaurant_1749427936886.pdf'
   },
@@ -78,7 +70,6 @@ const contentSamples: ContentSample[] = [
     id: 'award-4',
     title: 'Leading Sustainable Restaurant Category',
     description: 'Strategic submission highlighting Wild & The Moon\'s pioneering sustainability initiatives and environmental leadership.',
-    imageUrl: '/portfolio-images/awards-recognition.jpg',
     category: 'award_submission',
     pdfFile: '4. Wild & The Moon_ Leading Sustainable Restaurant Category_1749427936886.pdf'
   },
@@ -87,23 +78,20 @@ const contentSamples: ContentSample[] = [
     id: 'email-1',
     title: 'The Wildest Iftars are coming your way this Ramadan',
     description: 'Multi-sequence email campaign for new menu item launch with personalized customer journey.',
-    imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
-    pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO_1749425627779.pdf'
+    pdfFile: 'WILD SUPPER CLUB_ IFTAR EDITION_1749425627780.pdf'
   },
   {
     id: 'email-2',
     title: 'Wild & The Moon x Claire Sharryn Roberto',
     description: 'Educational email series connecting seasonal ingredients with wellness benefits and menu offerings.',
-    imageUrl: 'https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
-    pdfFile: 'WILD SUPPER CLUB_ IFTAR EDITION_1749425627780.pdf'
+    pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO_1749425627779.pdf'
   },
   {
     id: 'email-3',
     title: 'Self-care is Quintessential!',
     description: 'Loyalty-focused email campaign with personalized offers and exclusive member benefits.',
-    imageUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
     pdfFile: 'WILD & THE MOON x COMPTOIR102 x DIRTEA_ A Shroom Boom with Fungi!_1749425627780.pdf'
   },
@@ -111,7 +99,6 @@ const contentSamples: ContentSample[] = [
     id: 'email-4',
     title: 'Enter superfood heaven with us! Wild & The Moon x Respect Health x Comptoir102',
     description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
-    imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
     pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
   },
@@ -119,25 +106,22 @@ const contentSamples: ContentSample[] = [
     id: 'email-5',
     title: 'Get Summer Ready with Wild!',
     description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
-    imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
-    pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
+    pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO_1749425627779.pdf'
   },
   {
     id: 'email-6',
     title: 'Easter brings you the Wildest treats!',
     description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
-    imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
-    pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
+    pdfFile: 'WILD SUPPER CLUB_ IFTAR EDITION_1749425627780.pdf'
   },
   {
     id: 'email-7',
     title: 'Summer brings new Wild flavors!',
     description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
-    imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'email_marketing',
-    pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
+    pdfFile: 'WILD & THE MOON x COMPTOIR102 x DIRTEA_ A Shroom Boom with Fungi!_1749425627780.pdf'
   }
 ];
 
@@ -161,7 +145,7 @@ const categories = [
     title: 'Email Marketing',
     description: 'Comprehensive email campaigns driving engagement and conversions',
     icon: Mail,
-    count: 4
+    count: 7
   }
 ];
 
@@ -259,28 +243,18 @@ export default function ContentWritingSamples() {
                         {sample.description}
                       </p>
                       
-                      {sample.pdfFile ? (
-                        <Button 
-                          asChild
-                          className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
-                        >
-                          <a 
-                            href={`/public/pdfs/${encodeURIComponent(sample.pdfFile)}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Read
-                          </a>
-                        </Button>
-                      ) : (
-                        <Button 
-                          variant="outline" 
-                          className="w-full" 
-                          disabled
+                      <Button 
+                        asChild
+                        className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
+                      >
+                        <a 
+                          href={`/pdfs/${encodeURIComponent(sample.pdfFile)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
                         >
                           Read
-                        </Button>
-                      )}
+                        </a>
+                      </Button>
                     </CardContent>
                   </Card>
                 ))}
@@ -288,8 +262,6 @@ export default function ContentWritingSamples() {
             </motion.div>
           );
         })}
-
-        
       </div>
     </div>
   );
