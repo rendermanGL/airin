@@ -23,7 +23,7 @@ const contentSamples: ContentSample[] = [
     description: 'Exclusive event announcement featuring renowned plant-based Chef Claire Sharryn Roberto with adaptogenic menu.',
     imageUrl: 'https://images.unsplash.com/photo-1514533212735-5df27d970db9?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'press_release',
-    documentId: 1
+    pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO_1749425627779.pdf'
   },
   {
     id: 'pr-2', 
@@ -31,7 +31,7 @@ const contentSamples: ContentSample[] = [
     description: 'Special Ramadan edition featuring two exclusive Asian-inspired plant-based menus for traditional Iftar.',
     imageUrl: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'press_release',
-    documentId: 2
+    pdfFile: 'WILD SUPPER CLUB_ IFTAR EDITION_1749425627780.pdf'
   },
   {
     id: 'pr-3',
@@ -39,7 +39,7 @@ const contentSamples: ContentSample[] = [
     description: 'Collaboration with DIRTEA exploring functional mushroom blends and next-generation wellness biohacking.',
     imageUrl: 'https://images.unsplash.com/photo-1506976785307-8732e854ad03?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'press_release',
-    documentId: 3
+    pdfFile: 'WILD & THE MOON x COMPTOIR102 x DIRTEA_ A Shroom Boom with Fungi!_1749425627780.pdf'
   },
   {
     id: 'pr-4',
@@ -47,7 +47,7 @@ const contentSamples: ContentSample[] = [
     description: 'Interactive educational session with Respect Health CEO teaching plant-based superfood integration.',
     imageUrl: 'https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
     category: 'press_release',
-    documentId: 4
+    pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
   },
   // Award Submissions
   {
@@ -88,28 +88,32 @@ const contentSamples: ContentSample[] = [
     title: 'Product Launch Campaign',
     description: 'Multi-sequence email campaign for new menu item launch with personalized customer journey.',
     imageUrl: 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
-    category: 'email_marketing'
+    category: 'email_marketing',
+    pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO_1749425627779.pdf'
   },
   {
     id: 'email-2',
     title: 'Seasonal Wellness Series',
     description: 'Educational email series connecting seasonal ingredients with wellness benefits and menu offerings.',
     imageUrl: 'https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
-    category: 'email_marketing'
+    category: 'email_marketing',
+    pdfFile: 'WILD SUPPER CLUB_ IFTAR EDITION_1749425627780.pdf'
   },
   {
     id: 'email-3',
     title: 'Customer Retention Campaign',
     description: 'Loyalty-focused email campaign with personalized offers and exclusive member benefits.',
     imageUrl: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
-    category: 'email_marketing'
+    category: 'email_marketing',
+    pdfFile: 'WILD & THE MOON x COMPTOIR102 x DIRTEA_ A Shroom Boom with Fungi!_1749425627780.pdf'
   },
   {
     id: 'email-4',
     title: 'Event Promotion Series',
     description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
     imageUrl: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80',
-    category: 'email_marketing'
+    category: 'email_marketing',
+    pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
   }
 ];
 
@@ -231,16 +235,7 @@ export default function ContentWritingSamples() {
                         {sample.description}
                       </p>
                       
-                      {sample.documentId ? (
-                        <Button 
-                          asChild 
-                          className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
-                        >
-                          <Link href={`/portfolio/content-writing/${sample.documentId}`}>
-                            Read
-                          </Link>
-                        </Button>
-                      ) : sample.pdfFile ? (
+                      {sample.pdfFile ? (
                         <Button 
                           asChild
                           className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
@@ -270,59 +265,7 @@ export default function ContentWritingSamples() {
           );
         })}
 
-        {/* Key Achievements */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-16"
-        >
-          <h2 className="font-playfair text-3xl font-bold text-primary mb-8">
-            Content Writing Impact
-          </h2>
-          
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">25+</div>
-                <div className="text-sm font-medium text-muted-foreground mb-2">Press Releases</div>
-                <p className="text-xs text-muted-foreground">
-                  Professional press releases generating media coverage
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">4+</div>
-                <div className="text-sm font-medium text-muted-foreground mb-2">Award Submissions</div>
-                <p className="text-xs text-muted-foreground">
-                  Strategic submissions for Wild & The Moon's industry recognition
-                </p>
-              </CardContent>
-            </Card>
-            
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">50+</div>
-                <div className="text-sm font-medium text-muted-foreground mb-2">Email Campaigns</div>
-                <p className="text-xs text-muted-foreground">
-                  Multi-sequence campaigns driving engagement
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card>
-              <CardContent className="p-6 text-center">
-                <div className="text-3xl font-bold text-primary mb-2">85%</div>
-                <div className="text-sm font-medium text-muted-foreground mb-2">Success Rate</div>
-                <p className="text-xs text-muted-foreground">
-                  Content achieving measurable business impact
-                </p>
-              </CardContent>
-            </Card>
-          </div>
-        </motion.div>
+        
       </div>
     </div>
   );
