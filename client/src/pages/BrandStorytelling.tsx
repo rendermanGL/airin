@@ -29,7 +29,7 @@ const campaigns = [
     title: "Chin Chin",
     subtitle: "CSR: Ramadan Campaign",
     description: "Launched a Ramadan initiative encouraging aimed at fostering community engagement, featuring a curated Ramadan Box accompanied with a voucher redeemable at select stores, integrating social impact with customer value.",
-    image: "/public/multi-channel-marketing/csr-ramadan-campaign.JPG",
+    image: "/public/portfolio-images/brand-storytelling.png",
     objectives: [
       "Align the brand with the spirit of the season through meaningful CSR activities",
       "Strengthen brand image and visibility through targeted social media campaigns, influencer partnerships, and robust PR efforts"

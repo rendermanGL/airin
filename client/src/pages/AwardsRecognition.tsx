@@ -55,7 +55,7 @@ export default function AwardsRecognition() {
                 className="rounded-lg overflow-hidden shadow-lg h-full"
               >
                 <img 
-                  src="client/public/portfolio-images/awards-recognition.jpg"
+                  src="/portfolio-images/awards-recognition.jpg"
                   alt="Awards & Recognition"
                   className="w-full h-full object-cover"
                 />
