@@ -106,6 +106,7 @@ This is a modern portfolio website for Airin John, a Brand Marketing Manager wit
 - **Development**: Port 24678 (mapped to external port 3000)
 
 ## Recent Changes
+- June 22, 2025: Updated Skills.tsx with authentic marketing expertise, leadership skills, and removed emoji headers
 - June 22, 2025: Fixed ContentWritingSamples.tsx card layout with equal heights and bottom-pinned Read buttons
 - June 22, 2025: Updated ContentWritingSamples.tsx with authentic Wild & The Moon content titles and removed descriptions
 - June 22, 2025: Completed AwardsRecognition.tsx layout with proper image paths and consistent flex positioning

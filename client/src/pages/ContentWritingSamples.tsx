@@ -19,57 +19,57 @@ const contentSamples: ContentSample[] = [
     id: 'pr-1',
     title: 'Wild Supper Club Iftar edition',
     category: 'press_release',
-    pdfFile: 'wild-supper-club-iftar-edition.pdf'
+    pdfFile: 'WILD SUPPER CLUB_ IFTAR EDITION.pdf'
   },
   {
     id: 'pr-2',
     title: 'Wild Supper Club: Wild & The Moon x Claire Sharryn Roberto',
     category: 'press_release',
-    pdfFile: 'wild-supper-club-claire-sharryn-roberto.pdf'
+    pdfFile: 'WILD SUPPER CLUB_WILD_THE MOON_CLAIRE SHARRYN ROBERTO.pdf'
   },
   {
     id: 'pr-3',
     title: 'Superfood Workshop with Respect: Wild & The Moon x Comptoir102 x Respect Superfoods',
     category: 'press_release',
-    pdfFile: 'superfood-workshop-respect.pdf'
+    pdfFile: 'WILD & THE MOON_COMPTOIR102_RESPECT_ Superfood Workshop with Respect.pdf'
   },
   {
     id: 'pr-4',
     title: 'A Shroom Boom with Dirtea: Wild & The Moon x Comptoir102 x Dirtea',
     category: 'press_release',
-    pdfFile: 'shroom-boom-dirtea.pdf'
+    pdfFile: 'WILD & THE MOON_COMPTOIR102_DIRTEA_ A Shroom Boom with Fungi.pdf'
   },
   // Award Submissions
   {
     id: 'award-1',
     title: 'F&B Entrepreneur(s) of the Year',
     category: 'award_submission',
-    pdfFile: 'fb-entrepreneur-of-the-year.pdf'
+    pdfFile: 'Wild_The Moon_F_B Entrepreneurs of the Year.pdf'
   },
   {
     id: 'award-2',
     title: 'Leading Cafe',
     category: 'award_submission',
-    pdfFile: 'leading-cafe.pdf'
+    pdfFile: 'Wild_The Moon_ Leading Cafe.pdf'
   },
   {
     id: 'award-3',
     title: 'Leading Healthy Restaurant',
     category: 'award_submission',
-    pdfFile: 'leading-healthy-restaurant.pdf'
+    pdfFile: 'Wild_The Moon_Leading Healthy Restaurant.pdf'
   },
   {
     id: 'award-4',
     title: 'Leading Sustainable Restaurant Category',
     category: 'award_submission',
-    pdfFile: 'leading-sustainable-restaurant.pdf'
+    pdfFile: 'Wild_The Moon_Leading Sustainable Restaurant Category.pdf'
   },
   // Email Marketing
   {
     id: 'email-1',
     title: 'The Wildest Iftars are coming your way this Ramadan',
     category: 'email_marketing',
-    pdfFile: 'wildest-iftars-ramadan.eml'
+    pdfFile: 'Wildest Iftars Ramadan.eml'
   },
   {
     id: 'email-2',
@@ -81,31 +81,31 @@ const contentSamples: ContentSample[] = [
     id: 'email-3',
     title: 'Self-care is Quintessential!',
     category: 'email_marketing',
-    pdfFile: 'self-care-quintessential.eml'
+    pdfFile: 'Self-care is Quintessential.eml'
   },
   {
     id: 'email-4',
     title: 'Enter superfood heaven with us! Wild & The Moon x Respect Health x Comptoir102',
     category: 'email_marketing',
-    pdfFile: 'superfood-heaven-respect-health.eml'
+    pdfFile: 'Superfood Heaven Collaboration.eml'
   },
   {
     id: 'email-5',
     title: 'Get Summer Ready with Wild!',
     category: 'email_marketing',
-    pdfFile: 'get-summer-ready-wild.eml'
+    pdfFile: 'Get Summer Ready with Wild.eml'
   },
   {
     id: 'email-6',
     title: 'Easter brings you the Wildest treats!',
     category: 'email_marketing',
-    pdfFile: 'easter-wildest-treats.eml'
+    pdfFile: 'Easter Treats Email.eml'
   },
   {
     id: 'email-7',
     title: 'Summer brings new Wild flavors!',
     category: 'email_marketing',
-    pdfFile: 'summer-new-wild-flavors.eml'
+    pdfFile: 'Summer Wild Flavors Menu.eml'
   }
 ];
 

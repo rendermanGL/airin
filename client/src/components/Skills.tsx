@@ -23,7 +23,7 @@ export default function Skills() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-primary mb-4">🧠 My Skills</h2>
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-primary mb-4">My Skills</h2>
           <div className="w-24 h-1 bg-accent mx-auto"></div>
           <p className="mt-6 max-w-2xl mx-auto text-foreground">A combination of marketing expertise and leadership skills that drives impactful brand strategies and successful multi-channel campaigns.</p>
         </motion.div>
@@ -36,7 +36,7 @@ export default function Skills() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">💼 Marketing Expertise</h3>
+            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">Marketing Expertise</h3>
             
             {marketingSkills.map((skill, index) => (
               <div className="mb-6" key={skill.name}>
@@ -64,7 +64,7 @@ export default function Skills() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">🧩 Leadership & Management</h3>
+            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">Leadership & Management</h3>
             
             {leadershipSkills.map((skill, index) => (
               <div className="mb-6" key={skill.name}>

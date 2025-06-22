@@ -21,7 +21,9 @@ export default function Hero() {
               Brand Marketing Manager
             </h2>
             <p className="text-lg text-foreground mb-8 max-w-xl leading-relaxed">
-              As a marketing strategist with over five years of experience, I have led multi-channel campaigns and shaped brand stories that connect. I work on activations, partnerships, and product rollouts for brands across F&B, lifestyle, and tech-enabled services. My approach blends strategy with soul – building marketing that’s insight-driven, purpose-led, and made to resonate.
+              I’m a strategic marketer with over six years of experience building and scaling brands through multi-channel campaigns, performance marketing, and purpose-led storytelling. I’ve led integrated campaigns, product rollouts, and strategic partnerships for brands across F&B, lifestyle, and tech-enabled services.
+              <br /><br />
+              I specialize in translating strategy into impact – blending creative direction with data-driven insights to drive brand equity, customer engagement, and measurable growth. Whether it’s launching new concepts, optimizing existing initiatives and campaigns, managing influencer collaborations, or reporting ROI to the C-suite, I bring a hands-on, collaborative approach to every project. My focus: building marketing that’s clear, compelling, and built to resonate.
             </p>
             <div className="flex space-x-4">
               <Button

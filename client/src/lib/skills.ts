@@ -6,53 +6,57 @@ export interface Skill {
 
 export const marketingSkills: Skill[] = [
   {
-    name: "Integrated Campaign Management",
+    name: "Strategic Brand Management",
     percentage: 95,
   },
   {
-    name: "Brand Strategy & Storytelling",
+    name: "Integrated Campaign Execution",
     percentage: 93,
   },
   {
-    name: "Digital Marketing",
-    percentage: 90,
+    name: "Performance Marketing",
+    percentage: 91,
   },
   {
-    name: "PR & Media Relations",
+    name: "PR & Media Strategy",
+    percentage: 89,
+  },
+  {
+    name: "Cross-Channel Storytelling",
     percentage: 88,
   },
   {
-    name: "Content Strategy",
+    name: "Social Media & Influencer Strategy",
     percentage: 87,
   },
 ];
 
 export const leadershipSkills: Skill[] = [
   {
-    name: "Performance Reporting",
-    percentage: 91,
+    name: "Stakeholder & Cross-Functional Collaboration",
+    percentage: 92,
   },
   {
-    name: "Stakeholder Alignment",
+    name: "Performance Reporting & KPI Analysis",
     percentage: 90,
   },
   {
     name: "Project Management",
-    percentage: 88,
+    percentage: 89,
   },
   {
     name: "Strategic Partnerships",
-    percentage: 86,
+    percentage: 87,
   },
   {
-    name: "Budget Management",
+    name: "Budget Planning & Management",
     percentage: 85,
   },
 ];
 
 export const tools = [
   "Meta Business Suite",
-  "PowerBi",
+  "Power BI",
   "Salesforce",
   "Mailchimp",
   "Asana",
