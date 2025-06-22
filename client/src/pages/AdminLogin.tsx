@@ -26,11 +26,14 @@ export default function AdminLogin() {
 
   const onSubmit = async (data: LoginFormValues) => {
     try {
-      await apiRequest({
+      console.log('Attempting login with:', data);
+      const response = await apiRequest({
         url: '/api/admin/login',
         method: 'POST',
         body: data,
       });
+      
+      console.log('Login response:', response);
       
       toast({
         title: "Login successful",
@@ -39,6 +42,7 @@ export default function AdminLogin() {
       
       setLocation('/admin/dashboard');
     } catch (error) {
+      console.error('Login error:', error);
       toast({
         title: "Login failed",
         description: "Invalid username or password",
