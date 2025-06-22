@@ -42,28 +42,28 @@ export default function AwardsRecognition() {
 
           {/* Awards Section */}
           <motion.div 
-            className="grid lg:grid-cols-2 gap-12 items-center"
+            className="flex flex-col lg:flex-row gap-12 items-stretch"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="order-2 lg:order-1">
+            <div className="flex-1 lg:order-1">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="rounded-lg overflow-hidden shadow-lg"
+                className="rounded-lg overflow-hidden shadow-lg h-full"
               >
                 <img 
                   src="client/public/portfolio-images/awards-recognition.jpg"
                   alt="Awards & Recognition"
-                  className="w-full h-80 object-cover"
+                  className="w-full h-full object-cover"
                 />
               </motion.div>
             </div>
 
-            <div className="order-1 lg:order-2">
-              <div className="bg-white p-8 rounded-lg shadow-md">
+            <div className="flex-1 lg:order-2">
+              <div className="bg-white p-8 rounded-lg shadow-md h-full">
                 <h3 className="text-3xl font-bold text-gray-900 mb-4">Wild & The Moon</h3>
                 <p className="text-lg text-gray-600 mb-6">
                   Played a pivotal role in winning multiple awards and secured PR placements in leading publications, enhancing the brand's regional credibility.

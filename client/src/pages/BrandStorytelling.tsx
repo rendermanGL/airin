@@ -9,7 +9,7 @@ const campaigns = [
     title: "Brand Campaign",
     subtitle: "Chin Chin",
     description: "Conceptualized and executed a vibrant marketing campaign featuring the tagline, \"Chin Chin, So Nice, You Gotta Say it Twice!\", brought to life through engaging content - brand video campaigns and curated brand jingle - and media strategies. <strong>To be launched in 2025</strong>.",
-    image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/public/multi-channel-marketing/chin-chin-brand-campaign.jpeg",
     objectives: [
       "Drive brand awareness and engagement through unique, memorable brand campaigns",
       "Elevate brand presence by using creative and media-driven strategies",
@@ -29,7 +29,7 @@ const campaigns = [
     title: "Chin Chin",
     subtitle: "CSR: Ramadan Campaign",
     description: "Launched a Ramadan initiative encouraging aimed at fostering community engagement, featuring a curated Ramadan Box accompanied with a voucher redeemable at select stores, integrating social impact with customer value.",
-    image: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    image: "/public/multi-channel-marketing/csr-ramadan-campaign.JPG",
     objectives: [
       "Align the brand with the spirit of the season through meaningful CSR activities",
       "Strengthen brand image and visibility through targeted social media campaigns, influencer partnerships, and robust PR efforts"
