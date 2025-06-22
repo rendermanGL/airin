@@ -12,6 +12,8 @@ import BrandStorytelling from "@/pages/BrandStorytelling";
 import AwardsRecognition from "@/pages/AwardsRecognition";
 import ContentWritingSamples from "@/pages/ContentWritingSamples";
 import DocumentViewer from "@/pages/DocumentViewer";
+import AdminLogin from "@/pages/AdminLogin";
+import AdminDashboard from "@/pages/AdminDashboard";
 import { motion, AnimatePresence } from "framer-motion";
 
 function Router() {
@@ -26,6 +28,8 @@ function Router() {
         <Route path="/portfolio/awards-recognition" component={AwardsRecognition} />
         <Route path="/portfolio/content-writing" component={ContentWritingSamples} />
         <Route path="/portfolio/content-writing/:id" component={DocumentViewer} />
+        <Route path="/admin/login" component={AdminLogin} />
+        <Route path="/admin/dashboard" component={AdminDashboard} />
         <Route component={NotFound} />
       </Switch>
     </AnimatePresence>

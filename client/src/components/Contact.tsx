@@ -31,9 +31,11 @@ export default function Contact() {
 
   const onSubmit = async (data: ContactFormValues) => {
     try {
-      // This would typically connect to a backend API
-      // For now, we'll just simulate a success response
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      const response = await apiRequest({
+        url: '/api/contact',
+        method: 'POST',
+        body: data,
+      });
       
       toast({
         title: "Message sent!",
@@ -44,7 +46,7 @@ export default function Contact() {
     } catch (error) {
       toast({
         title: "Error",
-        description: "There was a problem sending your message. Please try again.",
+        description: "Failed to send message. Please try again.",
         variant: "destructive",
       });
     }

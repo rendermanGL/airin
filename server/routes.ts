@@ -1,12 +1,66 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { db } from "./db";
-import { eq } from "drizzle-orm";
-import { documents } from "@shared/schema";
+import { eq, desc } from "drizzle-orm";
+import { documents, contacts } from "@shared/schema";
 import path from "path";
 import fs from "fs";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Contact form submission
+  app.post("/api/contact", async (req, res) => {
+    try {
+      const { name, email, subject, message } = req.body;
+      
+      const newContact = await db.insert(contacts).values({
+        name,
+        email,
+        subject,
+        message,
+        createdAt: new Date().toISOString(),
+      }).returning();
+
+      res.json({ success: true, contact: newContact[0] });
+    } catch (error) {
+      console.error('Error saving contact:', error);
+      res.status(500).json({ error: "Failed to save contact" });
+    }
+  });
+
+  // Admin authentication
+  app.post("/api/admin/login", (req, res) => {
+    const { username, password } = req.body;
+    
+    if (username === "admin" && password === "admin12341234!") {
+      req.session.adminLoggedIn = true;
+      res.json({ success: true });
+    } else {
+      res.status(401).json({ error: "Invalid credentials" });
+    }
+  });
+
+  // Admin logout
+  app.post("/api/admin/logout", (req, res) => {
+    req.session.adminLoggedIn = false;
+    res.json({ success: true });
+  });
+
+  // Get contact messages (admin only)
+  app.get("/api/admin/contacts", (req, res) => {
+    if (!req.session.adminLoggedIn) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    db.select().from(contacts).orderBy(desc(contacts.createdAt))
+      .then(contactMessages => {
+        res.json(contactMessages);
+      })
+      .catch(error => {
+        console.error('Error fetching contacts:', error);
+        res.status(500).json({ error: "Failed to fetch contacts" });
+      });
+  });
+
   // API routes for documents
   app.get("/api/documents", async (req, res) => {
     try {

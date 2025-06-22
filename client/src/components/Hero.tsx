@@ -28,7 +28,7 @@ export default function Hero() {
                 asChild
                 className="bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6"
               >
-                <a href="#portfolio">View My Work</a>
+                <a href="/portfolio">View My Work</a>
               </Button>
               <Button
                 asChild
