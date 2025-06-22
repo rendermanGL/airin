@@ -57,7 +57,7 @@ export default function CustomerEngagement() {
                   className="rounded-lg overflow-hidden shadow-lg h-full"
                 >
                   <img 
-                    src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src="/public/community-engagement-images/community-workshops-events.jpg"
                     alt="Community Workshops & Events"
                     className="w-full h-full object-cover"
                   />
@@ -108,7 +108,7 @@ export default function CustomerEngagement() {
                   className="rounded-lg overflow-hidden shadow-lg h-full"
                 >
                   <img 
-                    src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                    src="/public/community-engagement-images/in-store-experience.png"
                     alt="In-store Experience"
                     className="w-full h-full object-cover"
                   />
