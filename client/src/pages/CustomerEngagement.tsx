@@ -44,28 +44,28 @@ export default function CustomerEngagement() {
             
             {/* Community Workshops & Events */}
             <motion.div 
-              className="grid lg:grid-cols-2 gap-12 items-center"
+              className="flex flex-col lg:flex-row gap-12 items-stretch"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="order-2 lg:order-1">
+              <div className="flex-1">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6 }}
-                  className="rounded-lg overflow-hidden shadow-lg"
+                  className="rounded-lg overflow-hidden shadow-lg h-full"
                 >
                   <img 
                     src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                     alt="Community Workshops & Events"
-                    className="w-full h-80 object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </motion.div>
               </div>
 
-              <div className="order-1 lg:order-2">
-                <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="flex-1">
+                <div className="bg-white p-8 rounded-lg shadow-md h-full">
                   <h3 className="text-3xl font-bold text-gray-900 mb-4">Community Workshops & Events</h3>
                   <h4 className="text-2xl font-semibold text-gray-700 mb-4">Wild & The Moon</h4>
                   <p className="text-lg text-gray-600 mb-6">
@@ -95,28 +95,28 @@ export default function CustomerEngagement() {
 
             {/* In-store Experience */}
             <motion.div 
-              className="grid lg:grid-cols-2 gap-12 items-center"
+              className="flex flex-col lg:flex-row gap-12 items-stretch"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div>
+              <div className="flex-1 lg:order-2">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.1 }}
-                  className="rounded-lg overflow-hidden shadow-lg"
+                  className="rounded-lg overflow-hidden shadow-lg h-full"
                 >
                   <img 
                     src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
                     alt="In-store Experience"
-                    className="w-full h-80 object-cover"
+                    className="w-full h-full object-cover"
                   />
                 </motion.div>
               </div>
 
-              <div>
-                <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="flex-1 lg:order-1">
+                <div className="bg-white p-8 rounded-lg shadow-md h-full">
                   <h3 className="text-3xl font-bold text-gray-900 mb-4">In-store Experience</h3>
                   <h4 className="text-2xl font-semibold text-gray-700 mb-4">Kava & Chai</h4>
                   <p className="text-lg text-gray-600 mb-6">
