@@ -15,25 +15,11 @@ export default function About() {
           <div className="w-24 h-1 bg-accent mx-auto"></div>
         </motion.div>
         
-        <div className="flex flex-col lg:flex-row items-center gap-12">
+        <div className="max-w-4xl mx-auto">
           <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <img 
-              src="https://www.dropbox.com/scl/fi/n0yvq47kjbut8x5x9931m/airin-john-website.jpg?rlkey=aw7zepv90hq4wpkprpimp2g5a&st=0v4vpze4&raw=1" 
-              alt="Airin working"
-              className="rounded-lg shadow-xl w-full h-auto object-cover"
-            />
-          </motion.div>
-          
-          <motion.div 
-            className="lg:w-1/2"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            className="text-center md:text-left"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
@@ -44,7 +30,7 @@ export default function About() {
             <p className="text-foreground mb-6 leading-relaxed">
               My approach combines strategic thinking with creative execution. I specialize in developing brand messaging and executing multi-channel campaigns across digital, social, PR, and brand partnerships. I’m adept at leveraging data-driven insights to strengthen brand equity and deepen customer engagement.
             </p>
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <h4 className="font-medium text-primary mb-2">Education</h4>
                 <p className="text-sm">M.A. Honors in International Business Management with Marketing<br/>Heriot-Watt University, Dubai</p>

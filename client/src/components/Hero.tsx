@@ -46,11 +46,11 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 rounded-full bg-accent/20 absolute top-4 left-4"></div>
+              <div className="w-80 h-80 md:w-96 md:h-96 rounded-full bg-accent/20 absolute top-3 left-3"></div>
               <img
                 src="https://www.dropbox.com/scl/fi/n0yvq47kjbut8x5x9931m/airin-john-website.jpg?rlkey=aw7zepv90hq4wpkprpimp2g5a&st=0v4vpze4&raw=1"
                 alt="Airin John"
-                className="w-64 h-64 md:w-80 md:h-80 rounded-full object-cover relative z-10 border-4 border-white shadow-lg"
+                className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover relative z-10 border-4 border-white shadow-lg"
               />
             </div>
           </motion.div>
