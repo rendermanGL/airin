@@ -217,16 +217,16 @@ export default function ContentWritingSamples() {
               {/* Sample Cards Grid */}
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
                 {categorySamples.map((sample, index) => (
-                  <Card key={sample.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                  <Card key={sample.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
                     {/* Content */}
-                    <CardContent className="p-6">
-                      <h3 className="font-semibold text-lg mb-4 group-hover:text-primary transition-colors">
+                    <CardContent className="p-6 h-full flex flex-col justify-between">
+                      <h3 className="font-semibold text-lg mb-4 group-hover:text-primary transition-colors flex-grow">
                         {sample.title}
                       </h3>
                       
                       <Button 
                         asChild
-                        className="w-full group-hover:bg-primary group-hover:text-white transition-colors"
+                        className="w-full group-hover:bg-primary group-hover:text-white transition-colors mt-auto"
                       >
                         <a 
                           href={`/pdfs/${encodeURIComponent(sample.pdfFile)}`}
