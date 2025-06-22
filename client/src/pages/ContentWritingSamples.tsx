@@ -9,7 +9,6 @@ import { Link } from "wouter";
 interface ContentSample {
   id: string;
   title: string;
-  description: string;
   category: 'press_release' | 'award_submission' | 'email_marketing';
   pdfFile: string;
 }
@@ -18,110 +17,95 @@ const contentSamples: ContentSample[] = [
   // Press Releases
   {
     id: 'pr-1',
-    title: 'Wild Supper Club Launch',
-    description: 'Exclusive event announcement featuring renowned plant-based Chef Claire Sharryn Roberto with adaptogenic menu.',
+    title: 'Wild Supper Club Iftar edition',
     category: 'press_release',
-    pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO.pdf'
+    pdfFile: 'wild-supper-club-iftar-edition.pdf'
   },
   {
-    id: 'pr-2', 
-    title: 'Ramadan Iftar Edition',
-    description: 'Special Ramadan edition featuring two exclusive Asian-inspired plant-based menus for traditional Iftar.',
+    id: 'pr-2',
+    title: 'Wild Supper Club: Wild & The Moon x Claire Sharryn Roberto',
     category: 'press_release',
-    pdfFile: 'WILD SUPPER CLUB_ IFTAR EDITION_1749425627780.pdf'
+    pdfFile: 'wild-supper-club-claire-sharryn-roberto.pdf'
   },
   {
     id: 'pr-3',
-    title: 'Mushroom Wellness Workshop',
-    description: 'Collaboration with DIRTEA exploring functional mushroom blends and next-generation wellness biohacking.',
+    title: 'Superfood Workshop with Respect: Wild & The Moon x Comptoir102 x Respect Superfoods',
     category: 'press_release',
-    pdfFile: 'WILD & THE MOON x COMPTOIR102 x DIRTEA_ A Shroom Boom with Fungi!_1749425627780.pdf'
+    pdfFile: 'superfood-workshop-respect.pdf'
   },
   {
     id: 'pr-4',
-    title: 'Superfood Workshop Series',
-    description: 'Interactive educational session with Respect Health CEO teaching plant-based superfood integration.',
+    title: 'A Shroom Boom with Dirtea: Wild & The Moon x Comptoir102 x Dirtea',
     category: 'press_release',
-    pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
+    pdfFile: 'shroom-boom-dirtea.pdf'
   },
   // Award Submissions
   {
     id: 'award-1',
     title: 'F&B Entrepreneur(s) of the Year',
-    description: 'Strategic award submission highlighting Wild & The Moon\'s entrepreneurial leadership and innovation in the F&B industry.',
     category: 'award_submission',
-    pdfFile: '1. Wild & The Moon_ F&B Entrepreneur(s) of the Year_1749427936886.pdf'
+    pdfFile: 'fb-entrepreneur-of-the-year.pdf'
   },
   {
     id: 'award-2',
     title: 'Leading Cafe',
-    description: 'Comprehensive submission showcasing Wild & The Moon\'s excellence in cafe operations and customer experience.',
     category: 'award_submission',
-    pdfFile: '2. Wild & The Moon_ Leading Cafe_1749427936886.pdf'
+    pdfFile: 'leading-cafe.pdf'
   },
   {
     id: 'award-3',
     title: 'Leading Healthy Restaurant',
-    description: 'Award submission demonstrating Wild & The Moon\'s commitment to healthy, plant-based dining excellence.',
     category: 'award_submission',
-    pdfFile: '3. Wild & The Moon_ Leading Healthy Restaurant_1749427936886.pdf'
+    pdfFile: 'leading-healthy-restaurant.pdf'
   },
   {
     id: 'award-4',
     title: 'Leading Sustainable Restaurant Category',
-    description: 'Strategic submission highlighting Wild & The Moon\'s pioneering sustainability initiatives and environmental leadership.',
     category: 'award_submission',
-    pdfFile: '4. Wild & The Moon_ Leading Sustainable Restaurant Category_1749427936886.pdf'
+    pdfFile: 'leading-sustainable-restaurant.pdf'
   },
   // Email Marketing
   {
     id: 'email-1',
     title: 'The Wildest Iftars are coming your way this Ramadan',
-    description: 'Multi-sequence email campaign for new menu item launch with personalized customer journey.',
     category: 'email_marketing',
-    pdfFile: 'WILD SUPPER CLUB_ IFTAR EDITION_1749425627780.pdf'
+    pdfFile: 'wildest-iftars-ramadan.eml'
   },
   {
     id: 'email-2',
     title: 'Wild & The Moon x Claire Sharryn Roberto',
-    description: 'Educational email series connecting seasonal ingredients with wellness benefits and menu offerings.',
     category: 'email_marketing',
-    pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO_1749425627779.pdf'
+    pdfFile: 'wild-moon-claire-sharryn-roberto.eml'
   },
   {
     id: 'email-3',
     title: 'Self-care is Quintessential!',
-    description: 'Loyalty-focused email campaign with personalized offers and exclusive member benefits.',
     category: 'email_marketing',
-    pdfFile: 'WILD & THE MOON x COMPTOIR102 x DIRTEA_ A Shroom Boom with Fungi!_1749425627780.pdf'
+    pdfFile: 'self-care-quintessential.eml'
   },
   {
     id: 'email-4',
     title: 'Enter superfood heaven with us! Wild & The Moon x Respect Health x Comptoir102',
-    description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
     category: 'email_marketing',
-    pdfFile: 'WILD & THE MOON X COMPTOIR102 X RESPECT_ Superfood Workshop with Respect.docx_1749425627780.pdf'
+    pdfFile: 'superfood-heaven-respect-health.eml'
   },
   {
     id: 'email-5',
     title: 'Get Summer Ready with Wild!',
-    description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
     category: 'email_marketing',
-    pdfFile: 'WILD SUPPER CLUB_ WILD & THE MOON X CLAIRE SHARRYN ROBERTO_1749425627779.pdf'
+    pdfFile: 'get-summer-ready-wild.eml'
   },
   {
     id: 'email-6',
     title: 'Easter brings you the Wildest treats!',
-    description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
     category: 'email_marketing',
-    pdfFile: 'WILD SUPPER CLUB_ IFTAR EDITION_1749425627780.pdf'
+    pdfFile: 'easter-wildest-treats.eml'
   },
   {
     id: 'email-7',
     title: 'Summer brings new Wild flavors!',
-    description: 'Comprehensive email marketing strategy for workshop and event promotion with automated follow-ups.',
     category: 'email_marketing',
-    pdfFile: 'Get Summer Ready with Wild.eml'
+    pdfFile: 'summer-new-wild-flavors.eml'
   }
 ];
 
@@ -236,12 +220,9 @@ export default function ContentWritingSamples() {
                   <Card key={sample.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
                     {/* Content */}
                     <CardContent className="p-6">
-                      <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">
+                      <h3 className="font-semibold text-lg mb-4 group-hover:text-primary transition-colors">
                         {sample.title}
                       </h3>
-                      <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                        {sample.description}
-                      </p>
                       
                       <Button 
                         asChild
