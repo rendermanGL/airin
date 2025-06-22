@@ -105,8 +105,10 @@ This is a modern portfolio website for Airin John, a Brand Marketing Manager wit
 - **Server**: Port 5000 (mapped to external port 80)
 - **Development**: Port 24678 (mapped to external port 3000)
 
-## Changelog
-- June 22, 2025. Initial setup
+## Recent Changes
+- June 22, 2025: Updated StrategicMarketing.tsx layout to use flex with items-stretch for image-text height matching
+- June 22, 2025: Fixed admin login authentication flow and resolved HTTP token validation errors
+- June 22, 2025: Initial portfolio setup with Wild & The Moon authentic brand imagery
 
 ## User Preferences
 

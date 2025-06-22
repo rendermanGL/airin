@@ -55,7 +55,7 @@ export default function AwardsRecognition() {
                 className="rounded-lg overflow-hidden shadow-lg"
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  src="client/public/portfolio-images/awards-recognition.jpg"
                   alt="Awards & Recognition"
                   className="w-full h-80 object-cover"
                 />

@@ -96,30 +96,30 @@ export default function StrategicMarketing() {
             {campaigns.map((campaign, index) => (
               <motion.div
                 key={index}
-                className="grid lg:grid-cols-2 gap-12 items-center"
+                className="flex flex-col lg:flex-row gap-12 items-stretch"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
                 {/* Image */}
                 <motion.div 
-                  className={`${index % 2 === 1 ? 'lg:order-2' : ''}`}
+                  className={`flex-1 ${index % 2 === 1 ? 'lg:order-2' : ''}`}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 + 0.1 }}
                 >
-                  <div className="rounded-lg overflow-hidden shadow-lg">
+                  <div className="rounded-lg overflow-hidden shadow-lg h-full">
                     <img 
                       src={campaign.image}
                       alt={`${campaign.title} - ${campaign.subtitle}`}
-                      className="w-full h-80 object-cover"
+                      className="w-full h-full object-cover"
                     />
                   </div>
                 </motion.div>
 
                 {/* Content */}
                 <motion.div 
-                  className={`bg-white p-8 rounded-lg shadow-md ${index % 2 === 1 ? 'lg:order-1' : ''}`}
+                  className={`flex-1 bg-white p-8 rounded-lg shadow-md ${index % 2 === 1 ? 'lg:order-1' : ''}`}
                   initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
