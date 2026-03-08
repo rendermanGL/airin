@@ -1,49 +1,183 @@
+import { useEffect, useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
-import { motion } from "framer-motion";
-import { Link, useLocation } from "wouter";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import HudOverlay from "@/components/HudOverlay";
+type Metric = {
+  value: string;
+  label: string;
+};
 
-const portfolioCategories = [
+type PortfolioItem = {
+  id: string;
+  fileId: string;
+  status: string;
+  title: string;
+  description: string;
+  category: string;
+  tags: string[];
+  year: string;
+  href: string;
+  image?: string;
+  metrics: Metric[];
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut', delay }
+  })
+};
+
+const portfolioItems: PortfolioItem[] = [
   {
-    id: "strategic-marketing",
-    title: "Strategic Marketing",
-    description: "Multi-channel brand portfolio management and innovative marketing strategies that drive measurable business growth.",
-    imageUrl: "/portfolio-images/strategic-marketing.jpg",
-    route: "/portfolio/strategic-marketing"
+    id: 'strategic-marketing',
+    fileId: 'FILE_2025_001',
+    status: 'COMPLETE',
+    title: 'Strategic Marketing',
+    description:
+      'Campaign strategy, go-to-market planning, product launches, and integrated multi-channel work designed to build brand visibility and commercial impact.',
+    category: 'Brand Strategy · Campaign Systems',
+    tags: ['Featured', 'UAE', 'GCC'],
+    year: '2019–2025',
+    href: '/portfolio/strategic-marketing',
+    image: '/portfolio-images/strategic-marketing.jpg',
+    metrics: [
+      { value: 'Multi', label: 'Channels' },
+      { value: 'UAE', label: 'Market' },
+      { value: '6+ Yrs', label: 'Timeline' }
+    ]
   },
   {
-    id: "customer-engagement",
-    title: "Customer Experience & Community Engagement",
-    description: "Building meaningful community connections and enhancing customer experiences through innovative engagement strategies.",
-    imageUrl: "/portfolio-images/customer-engagement.png",
-    route: "/portfolio/customer-engagement"
+    id: 'customer-engagement',
+    fileId: 'FILE_2024_007',
+    status: 'COMPLETE',
+    title: 'Customer Engagement',
+    description:
+      'Community-led campaigns, engagement mechanics, creator activations, and audience participation systems designed to deepen brand interaction.',
+    category: 'Community · Engagement',
+    tags: ['Engagement', 'Activation', 'Audience'],
+    year: '2020–2025',
+    href: '/portfolio/customer-engagement',
+    image: '/portfolio-images/customer-engagement.png',
+    metrics: [
+      { value: 'CRM', label: 'Touchpoints' },
+      { value: 'Social', label: 'Channels' },
+      { value: 'Live', label: 'Activation' }
+    ]
   },
   {
-    id: "brand-storytelling",
-    title: "Brand Storytelling & Multi-Channel Marketing",
-    description: "Creating compelling brand narratives and executing integrated campaigns across multiple touchpoints.",
-    imageUrl: "/portfolio-images/brand-storytelling.png",
-    route: "/portfolio/brand-storytelling"
+    id: 'brand-storytelling',
+    fileId: 'FILE_2024_003',
+    status: 'COMPLETE',
+    title: 'Brand Storytelling',
+    description:
+      'Narrative systems, brand voice, social storytelling, campaign copy, and editorial-style messaging built to sharpen positioning and emotional resonance.',
+    category: 'Content · Narrative',
+    tags: ['Copy', 'Voice', 'Story'],
+    year: '2019–2025',
+    href: '/portfolio/brand-storytelling',
+    image: '/portfolio-images/brand-storytelling.png',
+    metrics: [
+      { value: 'Voice', label: 'System' },
+      { value: 'Social', label: 'Content' },
+      { value: 'Brand', label: 'Narrative' }
+    ]
   },
   {
-    id: "awards-recognition",
-    title: "Awards & Recognition",
-    description: "Industry recognition and award-winning campaigns that showcase excellence in brand marketing and communications.",
-    imageUrl: "/portfolio-images/awards-recognition.jpg",
-    route: "/portfolio/awards-recognition"
+    id: 'awards-recognition',
+    fileId: 'FILE_2023_011',
+    status: 'COMPLETE',
+    title: 'Awards & Recognition',
+    description:
+      'Industry recognition, shortlisted work, awards entries, and credibility signals that support strategic and creative marketing capability.',
+    category: 'Credentials · Industry Recognition',
+    tags: ['Awards', 'Recognition', 'Proof'],
+    year: 'Selected',
+    href: '/portfolio/awards-recognition',
+    image: '/portfolio-images/awards-recognition.jpg',
+    metrics: [
+      { value: 'Cred.', label: 'Signal' },
+      { value: 'Brand', label: 'Trust' },
+      { value: 'Case', label: 'Proof' }
+    ]
   },
   {
-    id: "content-writing",
-    title: "Content Writing Samples",
-    description: "Professional content writing portfolio including press releases, event materials, and brand communications that generated significant media coverage.",
-    imageUrl: "/portfolio-images/content-writing.jpg",
-    route: "/portfolio/content-writing"
+    id: 'content-writing',
+    fileId: 'FILE_2023_005',
+    status: 'COMPLETE',
+    title: 'Content Writing Samples',
+    description:
+      'Selected writing samples spanning marketing copy, editorial content, structured messaging, and branded writing across formats.',
+    category: 'Writing · Copy Samples',
+    tags: ['Writing', 'Samples', 'Editorial'],
+    year: 'Selected',
+    href: '/portfolio/content-writing',
+    image: '/portfolio-images/content-writing.jpg',
+    metrics: [
+      { value: 'Docs', label: 'Viewer' },
+      { value: 'Copy', label: 'Formats' },
+      { value: 'Brand', label: 'Voice' }
+    ]
   }
 ];
 
+const filterOptions = ['All', 'Brand', 'Growth', 'Content'];
+
+function matchesFilter(item: PortfolioItem, filter: string) {
+  if (filter === 'All') return true;
+
+  const haystack = [
+    item.title,
+    item.description,
+    item.category,
+    ...item.tags
+  ].join(' ').toLowerCase();
+
+  if (filter === 'Brand') {
+    return haystack.includes('brand') || haystack.includes('strategy') || haystack.includes('story');
+  }
+
+  if (filter === 'Growth') {
+    return haystack.includes('engagement') || haystack.includes('audience') || haystack.includes('activation');
+  }
+
+  if (filter === 'Content') {
+    return haystack.includes('content') || haystack.includes('copy') || haystack.includes('writing') || haystack.includes('editorial');
+  }
+
+  return true;
+}
+
 export default function Portfolio() {
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const filteredItems = useMemo(() => {
+    return portfolioItems.filter((item) => matchesFilter(item, activeFilter));
+  }, [activeFilter]);
+
+  useEffect(() => {
+    const reveals = document.querySelectorAll('.portfolio-reveal');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [activeFilter]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -51,68 +185,126 @@ export default function Portfolio() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <HudOverlay />
       <Navbar />
-      
-      <section className="pt-32 pb-[140px]">
-        <div className="container mx-auto px-6">
-          <motion.div 
-            className="mb-16"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+
+      <section className="portfolio-dossier-page">
+        <div className="hud-grid-bg" />
+
+        <div className="portfolio-dossier-wrap">
+          <motion.div
+            className="portfolio-sec-head"
+            variants={fadeUp}
+            initial="hidden"
+            animate="visible"
+            custom={0.06}
           >
-            <span className="hud-label block mb-4">// PORTFOLIO</span>
-            <h1 className="section-title mb-4">
-              Portfolio
-            </h1>
-            <div className="gradient-line mb-6"></div>
-            <p className="text-[0.9rem] text-[#4A4A56] max-w-3xl leading-[1.85] font-light">
-              Explore my expertise across strategic marketing, customer engagement, brand storytelling, and award-winning campaigns that have driven measurable business results.
-            </p>
+            <div className="portfolio-sec-left">
+              <div className="portfolio-sec-label">Case Files · Active Portfolio</div>
+              <h1 className="portfolio-sec-title">Mission Dossiers</h1>
+              <p className="portfolio-sec-sub">
+                A structured archive of strategic marketing, engagement, storytelling,
+                awards, and writing work across the UAE and GCC. Each file opens into
+                a deeper layer of portfolio content.
+              </p>
+            </div>
+
+            <div className="portfolio-sec-right">
+              <span className="portfolio-count">
+                {String(filteredItems.length).padStart(2, '0')} FILES
+              </span>
+
+              <div className="portfolio-filter" role="tablist" aria-label="Portfolio filters">
+                {filterOptions.map((filter) => (
+                  <button
+                    key={filter}
+                    type="button"
+                    className={`portfolio-filter-btn ${activeFilter === filter ? 'active' : ''}`}
+                    onClick={() => setActiveFilter(filter)}
+                    aria-pressed={activeFilter === filter}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {portfolioCategories.map((category, index) => (
-              <motion.div
-                key={category.id}
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.1 }}
-                className="group"
-              >
-                <Link href={category.route}>
-                  <div className="glass-panel overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-[0_0_40px_rgba(163,120,255,0.15)]">
-                    <div className="px-4 pt-4">
-                      <span className="data-readout">PROJECT_{String(index + 1).padStart(2, '0')}</span>
-                    </div>
-                    <div className="relative h-64 overflow-hidden mt-2">
-                      <img 
-                        src={category.imageUrl}
-                        alt={category.title}
-                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
-                    </div>
-                    
-                    <div className="p-6">
-                      <h3 className="font-light text-[1.4rem] text-[#0A0A0F] mb-3 tracking-[-0.01em]">
-                        {category.title}
-                      </h3>
-                      <p className="text-[0.85rem] text-[#4A4A56] leading-relaxed mb-4">
-                        {category.description}
-                      </p>
-                      <div className="border-t border-[#E8E8EC] pt-4">
-                        <span className="text-[0.7rem] uppercase tracking-[0.15em] text-[#8A8A96] group-hover:text-[#A378FF] transition-colors duration-300">
-                          EXPLORE →
-                        </span>
-                      </div>
-                    </div>
+          {filteredItems.length === 0 ? (
+            <div className="portfolio-empty">
+              No matching files found for this filter.
+            </div>
+          ) : (
+            <div className="dos-grid">
+              {filteredItems.map((item, index) => (
+                <a
+                  key={item.id}
+                  href={item.href}
+                  className="dos-card portfolio-reveal"
+                  style={{ animationDelay: `${index * 80}ms` }}
+                >
+                  <div className="dos-corner dcc-tl" />
+                  <div className="dos-corner dcc-tr" />
+
+                  <div className="dos-file-id">
+                    <span>
+                      <span className="fid-num">{item.fileId}</span>
+                    </span>
+                    <span className="dos-status">● {item.status}</span>
                   </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+
+                  <div className="dos-thumb">
+                    <div className="dos-thumb-inner">
+                      {item.image ? (
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="dos-thumb-img"
+                          onError={(e) => {
+                            const img = e.currentTarget;
+                            img.style.display = 'none';
+                            const fallback = img.nextElementSibling as HTMLElement | null;
+                            if (fallback) fallback.style.display = 'block';
+                          }}
+                        />
+                      ) : null}
+
+                      <div
+                        className="dos-thumb-placeholder"
+                        style={{ display: item.image ? 'none' : 'block' }}
+                        aria-hidden={item.image ? 'true' : 'false'}
+                      />
+                    </div>
+
+                    <div className="dos-thumb-scan" />
+                  </div>
+
+                  <div className="dos-cat">{item.category}</div>
+                  <div className="dos-title">{item.title}</div>
+                  <div className="dos-desc">{item.description}</div>
+
+                  <div className="dos-meta-line">
+                    <span className="dos-meta-pill featured">{item.year}</span>
+                    {item.tags.map((tag) => (
+                      <span key={tag} className="dos-meta-pill">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="dos-metrics">
+                    {item.metrics.map((metric) => (
+                      <div key={`${item.id}-${metric.label}`} className="dos-metric">
+                        <span className="dos-m-val">{metric.value}</span>
+                        <span className="dos-m-lbl">{metric.label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <span className="dos-arrow">Open File →</span>
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

@@ -1,0 +1,1299 @@
+Absolutely. Here’s a **Replit-friendly implementation guide** for **Concept C — Case File Dossier**, written in the same style and level of specificity as your Hero guide.
+
+This version assumes you want to implement the **`/portfolio` index page only**, while preserving the existing route structure, tech stack, admin system, and database/backend. That matches the current site architecture and rules in your reference doc.  
+
+---
+
+# Portfolio Index — Concept C (Case File Dossier) — Replit Implementation Guide
+
+### airinjohn.com · React + TypeScript + Tailwind + Framer Motion
+
+---
+
+## BEFORE YOU START — READ THIS
+
+This guide is for implementing the **Portfolio Index page** in the **Concept C — Case File Dossier** style.
+
+The site is already built in **React + TypeScript + Vite + Tailwind + Framer Motion**, and the portfolio lives under `/portfolio` with supporting category routes already defined. The admin routes and backend must remain untouched.   
+
+### What this portfolio index does
+
+* White/off-white **Light Monochrome HUD** section language
+* Portfolio index becomes a **case file archive**
+* Each item appears as a **flat dossier card**
+* Card structure is recruiter-first: **title, category, status, quick metrics**
+* Hover state reveals:
+
+  * thin iris border emphasis
+  * thumbnail scan line
+  * KPI/data readout
+  * “Open File →” affordance
+  * subtle upward lift
+* Includes:
+
+  * section header
+  * case count
+  * category filter strip
+  * 3-column dossier grid on desktop
+  * responsive collapse on tablet/mobile
+* Uses only the established site design language:
+
+  * Space Grotesk only
+  * white / off-white public backgrounds
+  * no rounded corners
+  * violet only as a signal/accent
+  * Framer Motion fade-up entrances retained  
+
+---
+
+## WHAT IS NOT CHANGING
+
+To be clear, this implementation must **not** change any of the following:
+
+| File / System                    | Status      |
+| -------------------------------- | ----------- |
+| `App.tsx` routing                | ✅ Untouched |
+| `/admin/login`                   | ✅ Untouched |
+| `/admin/dashboard`               | ✅ Untouched |
+| backend / Express / Drizzle ORM  | ✅ Untouched |
+| database schema                  | ✅ Untouched |
+| existing portfolio detail routes | ✅ Untouched |
+| overall site tech stack          | ✅ Untouched |
+
+The reference document is explicit: do not change routing, backend logic, database schema, or admin behaviour unless specifically asked. Styling/design changes should be handled at the page/component/CSS level.  
+
+---
+
+## TARGET PAGE
+
+This implementation is for:
+
+```txt
+/portfolio
+```
+
+This route is already defined as the **Portfolio Index** and is meant to serve as an overview of all portfolio categories. Supporting category routes already exist below it. 
+
+---
+
+## DESIGN INTENT
+
+This page should feel like a **controlled archive of strategic work**, not a playful gallery.
+
+### The vibe
+
+* recruiter-readable
+* outcome-first
+* structured
+* sharp
+* restrained
+* lightly futuristic, but still professional
+
+### The core metaphor
+
+Each project/category card is a **mission dossier / case file**:
+
+* file ID at top
+* completion status
+* visual preview strip
+* category line
+* project title
+* metrics/data readout hidden until hover
+* CTA signal appears only when engaged
+
+### Important visual rules
+
+* **No rounded corners anywhere**
+* **No dark section backgrounds**
+* **No decorative purple floods**
+* **Purple is signal only**
+* **Everything should feel flat, sharp, precise**
+* **Keep motion purposeful, not flashy**  
+
+---
+
+## STEP 1 — IDENTIFY THE PORTFOLIO PAGE FILE
+
+Find the component that renders `/portfolio`.
+
+Based on the project structure, this will likely be in:
+
+```txt
+client/src/pages/
+```
+
+Look for something like one of these:
+
+```txt
+Portfolio.tsx
+PortfolioIndex.tsx
+PortfolioPage.tsx
+```
+
+Use the page file that currently powers:
+
+```txt
+/portfolio
+```
+
+### Important
+
+Do **not** change the route declaration in `App.tsx`.
+Only update the page component and CSS/classes used by that page. The route structure is already final. 
+
+---
+
+## STEP 2 — USE THE EXISTING PORTFOLIO IMAGE LOCATION
+
+All portfolio imagery should continue to come from:
+
+```txt
+client/public/portfolio-images/
+```
+
+That is the existing asset location defined in the reference doc. 
+
+### Expected usage
+
+If a card thumbnail image exists, it should be referenced like:
+
+```tsx
+<img src="/portfolio-images/filename.jpg" alt="Project preview" />
+```
+
+If an item does not yet have an image, render a neutral placeholder panel with a light monochrome gradient and HUD label text.
+
+---
+
+## STEP 3 — ADD GLOBAL CSS
+
+Open:
+
+```txt
+client/src/index.css
+```
+
+Add the following block **at the end of the file**, after all existing styles.
+
+```css
+/* ═══════════════════════════════════════
+   PORTFOLIO INDEX — CONCEPT C CASE DOSSIER
+   ═══════════════════════════════════════ */
+
+/* Page shell */
+.portfolio-dossier-page {
+  position: relative;
+  min-height: 100vh;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+/* Light HUD grid */
+.portfolio-dossier-page .hud-grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.038) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.038) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Main content container */
+.portfolio-dossier-wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 140px 7% 100px;
+}
+
+/* Section header */
+.portfolio-sec-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 44px;
+}
+
+.portfolio-sec-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-sec-label {
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.portfolio-sec-label::before {
+  content: '//';
+  color: #A378FF;
+  font-weight: 500;
+}
+
+.portfolio-sec-title {
+  margin-top: 12px;
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  color: #0A0A0F;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.portfolio-sec-sub {
+  margin-top: 14px;
+  max-width: 620px;
+  font-size: 0.92rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #4A4A56;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Right-side controls */
+.portfolio-sec-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.portfolio-count {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #A378FF;
+  padding: 7px 14px;
+  border: 1px solid rgba(163,120,255,0.28);
+  background: rgba(163,120,255,0.06);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Filter strip */
+.portfolio-filter {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.portfolio-filter-btn {
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  padding: 8px 16px;
+  border: 1px solid #E8E8EC;
+  border-right: none;
+  background: transparent;
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.portfolio-filter-btn:last-child {
+  border-right: 1px solid #E8E8EC;
+}
+
+.portfolio-filter-btn:hover {
+  color: #0A0A0F;
+  border-color: #C8C8D0;
+}
+
+.portfolio-filter-btn.active {
+  color: #A378FF;
+  border-color: rgba(163,120,255,0.28);
+  background: rgba(163,120,255,0.06);
+}
+
+/* Dossier grid */
+.dos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2px;
+  position: relative;
+}
+
+/* Card */
+.dos-card {
+  position: relative;
+  min-height: 340px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 28px 24px;
+  background: rgba(0,0,0,0.015);
+  border: 1px solid rgba(0,0,0,0.07);
+  transition:
+    background 320ms ease,
+    border-color 320ms ease,
+    box-shadow 320ms ease,
+    transform 320ms ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.dos-card:hover {
+  background: rgba(0,0,0,0.03);
+  border-color: rgba(163,120,255,0.28);
+  box-shadow: 0 0 48px rgba(163,120,255,0.07);
+  transform: translateY(-2px);
+}
+
+/* Corner brackets */
+.dos-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(163,120,255,0.22);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 280ms ease;
+}
+
+.dos-card:hover .dos-corner {
+  opacity: 1;
+}
+
+.dcc-tl {
+  top: 8px;
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.dcc-tr {
+  top: 8px;
+  right: 8px;
+  border-left: none;
+  border-bottom: none;
+}
+
+/* Header line */
+.dos-file-id {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+  font-size: 0.44rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.dos-file-id .fid-num {
+  color: #A378FF;
+}
+
+.dos-status {
+  font-size: 0.4rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #00C87A;
+  padding: 2px 7px;
+  border: 1px solid rgba(0,200,122,0.3);
+  background: rgba(0,200,122,0.06);
+  white-space: nowrap;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Thumb */
+.dos-thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 20px;
+  filter: grayscale(0.18);
+  background: linear-gradient(135deg, #F4F4F7 0%, #ECECF2 100%);
+  transition: filter 280ms ease;
+}
+
+.dos-card:hover .dos-thumb {
+  filter: grayscale(0);
+}
+
+.dos-thumb-img,
+.dos-thumb-placeholder {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dos-thumb-img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.dos-thumb-placeholder {
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(163,120,255,0.06) 0%, rgba(0,0,0,0.02) 100%);
+}
+
+.dos-thumb-placeholder::before {
+  content: 'PREVIEW_PENDING';
+  position: absolute;
+  left: 14px;
+  bottom: 12px;
+  font-size: 0.46rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.dos-thumb-inner {
+  width: 100%;
+  height: 100%;
+  transform: scale(1);
+  transition: transform 500ms cubic-bezier(0.16,1,0.3,1);
+}
+
+.dos-card:hover .dos-thumb-inner {
+  transform: scale(1.05);
+}
+
+/* Scan line */
+.dos-thumb-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(163,120,255,0.6), transparent);
+  opacity: 0;
+  animation: dosScan 3s ease-in-out infinite;
+}
+
+.dos-card:hover .dos-thumb-scan {
+  opacity: 1;
+}
+
+@keyframes dosScan {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+/* Category */
+.dos-cat {
+  margin-bottom: 10px;
+  font-size: 0.44rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #A378FF;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Title */
+.dos-title {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  color: #0A0A0F;
+  margin-bottom: 10px;
+  transition: letter-spacing 280ms ease;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.dos-card:hover .dos-title {
+  letter-spacing: 0.005em;
+}
+
+/* Summary */
+.dos-desc {
+  font-size: 0.76rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #4A4A56;
+  margin-bottom: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Footer meta */
+.dos-meta-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.dos-meta-pill {
+  font-size: 0.42rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  padding: 4px 8px;
+  border: 1px solid #E8E8EC;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.dos-meta-pill.featured {
+  color: #A378FF;
+  border-color: rgba(163,120,255,0.28);
+  background: rgba(163,120,255,0.06);
+}
+
+/* Metrics */
+.dos-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.dos-card:hover .dos-metrics {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dos-metric {
+  padding: 10px 0;
+  text-align: center;
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+
+.dos-metric:last-child {
+  border-right: none;
+}
+
+.dos-m-val {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: #A378FF;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.dos-m-lbl {
+  font-size: 0.4rem;
+  font-weight: 300;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Open file signal */
+.dos-arrow {
+  position: absolute;
+  right: 16px;
+  bottom: 14px;
+  font-size: 0.55rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #A378FF;
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 220ms ease 100ms, transform 220ms ease 100ms;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.dos-card:hover .dos-arrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Reveal utility */
+.portfolio-reveal {
+  opacity: 0;
+}
+
+.portfolio-reveal.in {
+  animation: portfolioFadeUp 0.65s ease forwards;
+}
+
+@keyframes portfolioFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Empty state */
+.portfolio-empty {
+  padding: 36px 28px;
+  border: 1px solid rgba(0,0,0,0.07);
+  background: rgba(0,0,0,0.015);
+  font-size: 0.82rem;
+  font-weight: 300;
+  line-height: 1.8;
+  color: #4A4A56;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 1180px) {
+  .dos-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .portfolio-sec-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .portfolio-sec-right {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 760px) {
+  .portfolio-dossier-wrap {
+    padding: 120px 20px 72px;
+  }
+
+  .dos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-filter {
+    width: 100%;
+  }
+
+  .portfolio-filter-btn {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  .dos-card {
+    min-height: 0;
+  }
+
+  .dos-metrics {
+    opacity: 1;
+    transform: none;
+  }
+
+  .dos-arrow {
+    opacity: 1;
+    transform: none;
+    position: static;
+    margin-top: 14px;
+  }
+}
+```
+
+---
+
+## STEP 4 — REPLACE THE PORTFOLIO INDEX PAGE COMPONENT
+
+Open the file that renders `/portfolio` and replace the full file with the following.
+
+### Important notes before pasting
+
+* This code uses:
+
+  * React
+  * TypeScript
+  * Framer Motion
+* It does **not** change routing
+* It does **not** alter the backend
+* It assumes each card links to existing routes or placeholders
+* You can swap the sample data later with your real data or admin-fed data
+
+```tsx
+import { useEffect, useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
+
+type Metric = {
+  value: string;
+  label: string;
+};
+
+type PortfolioItem = {
+  id: string;
+  fileId: string;
+  status: string;
+  title: string;
+  description: string;
+  category: string;
+  tags: string[];
+  year: string;
+  href: string;
+  image?: string;
+  metrics: Metric[];
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut', delay }
+  })
+};
+
+const portfolioItems: PortfolioItem[] = [
+  {
+    id: 'strategic-marketing',
+    fileId: 'FILE_2025_001',
+    status: 'COMPLETE',
+    title: 'Strategic Marketing',
+    description:
+      'Campaign strategy, go-to-market planning, product launches, and integrated multi-channel work designed to build brand visibility and commercial impact.',
+    category: 'Brand Strategy · Campaign Systems',
+    tags: ['Featured', 'UAE', 'GCC'],
+    year: '2019–2025',
+    href: '/portfolio/strategic-marketing',
+    image: '/portfolio-images/strategic-marketing.jpg',
+    metrics: [
+      { value: 'Multi', label: 'Channels' },
+      { value: 'UAE', label: 'Market' },
+      { value: '6+ Yrs', label: 'Timeline' }
+    ]
+  },
+  {
+    id: 'customer-engagement',
+    fileId: 'FILE_2024_007',
+    status: 'COMPLETE',
+    title: 'Customer Engagement',
+    description:
+      'Community-led campaigns, engagement mechanics, creator activations, and audience participation systems designed to deepen brand interaction.',
+    category: 'Community · Engagement',
+    tags: ['Engagement', 'Activation', 'Audience'],
+    year: '2020–2025',
+    href: '/portfolio/customer-engagement',
+    image: '/portfolio-images/customer-engagement.jpg',
+    metrics: [
+      { value: 'CRM', label: 'Touchpoints' },
+      { value: 'Social', label: 'Channels' },
+      { value: 'Live', label: 'Activation' }
+    ]
+  },
+  {
+    id: 'brand-storytelling',
+    fileId: 'FILE_2024_003',
+    status: 'COMPLETE',
+    title: 'Brand Storytelling',
+    description:
+      'Narrative systems, brand voice, social storytelling, campaign copy, and editorial-style messaging built to sharpen positioning and emotional resonance.',
+    category: 'Content · Narrative',
+    tags: ['Copy', 'Voice', 'Story'],
+    year: '2019–2025',
+    href: '/portfolio/brand-storytelling',
+    image: '/portfolio-images/brand-storytelling.jpg',
+    metrics: [
+      { value: 'Voice', label: 'System' },
+      { value: 'Social', label: 'Content' },
+      { value: 'Brand', label: 'Narrative' }
+    ]
+  },
+  {
+    id: 'awards-recognition',
+    fileId: 'FILE_2023_011',
+    status: 'COMPLETE',
+    title: 'Awards & Recognition',
+    description:
+      'Industry recognition, shortlisted work, awards entries, and credibility signals that support strategic and creative marketing capability.',
+    category: 'Credentials · Industry Recognition',
+    tags: ['Awards', 'Recognition', 'Proof'],
+    year: 'Selected',
+    href: '/portfolio/awards-recognition',
+    image: '/portfolio-images/awards-recognition.jpg',
+    metrics: [
+      { value: 'Cred.', label: 'Signal' },
+      { value: 'Brand', label: 'Trust' },
+      { value: 'Case', label: 'Proof' }
+    ]
+  },
+  {
+    id: 'content-writing',
+    fileId: 'FILE_2023_005',
+    status: 'COMPLETE',
+    title: 'Content Writing Samples',
+    description:
+      'Selected writing samples spanning marketing copy, editorial content, structured messaging, and branded writing across formats.',
+    category: 'Writing · Copy Samples',
+    tags: ['Writing', 'Samples', 'Editorial'],
+    year: 'Selected',
+    href: '/portfolio/content-writing',
+    image: '/portfolio-images/content-writing.jpg',
+    metrics: [
+      { value: 'Docs', label: 'Viewer' },
+      { value: 'Copy', label: 'Formats' },
+      { value: 'Brand', label: 'Voice' }
+    ]
+  }
+];
+
+const filterOptions = ['All', 'Brand', 'Growth', 'Content'];
+
+function matchesFilter(item: PortfolioItem, filter: string) {
+  if (filter === 'All') return true;
+
+  const haystack = [
+    item.title,
+    item.description,
+    item.category,
+    ...item.tags
+  ].join(' ').toLowerCase();
+
+  if (filter === 'Brand') {
+    return haystack.includes('brand') || haystack.includes('strategy') || haystack.includes('story');
+  }
+
+  if (filter === 'Growth') {
+    return haystack.includes('engagement') || haystack.includes('audience') || haystack.includes('activation');
+  }
+
+  if (filter === 'Content') {
+    return haystack.includes('content') || haystack.includes('copy') || haystack.includes('writing') || haystack.includes('editorial');
+  }
+
+  return true;
+}
+
+export default function Portfolio() {
+  const [activeFilter, setActiveFilter] = useState('All');
+
+  const filteredItems = useMemo(() => {
+    return portfolioItems.filter((item) => matchesFilter(item, activeFilter));
+  }, [activeFilter]);
+
+  useEffect(() => {
+    const reveals = document.querySelectorAll('.portfolio-reveal');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+
+    reveals.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, [activeFilter]);
+
+  return (
+    <section className="portfolio-dossier-page">
+      <div className="hud-grid-bg" />
+
+      <div className="portfolio-dossier-wrap">
+        <motion.div
+          className="portfolio-sec-head"
+          variants={fadeUp}
+          initial="hidden"
+          animate="visible"
+          custom={0.06}
+        >
+          <div className="portfolio-sec-left">
+            <div className="portfolio-sec-label">Case Files · Active Portfolio</div>
+            <h1 className="portfolio-sec-title">Mission Dossiers</h1>
+            <p className="portfolio-sec-sub">
+              A structured archive of strategic marketing, engagement, storytelling,
+              awards, and writing work across the UAE and GCC. Each file opens into
+              a deeper layer of portfolio content.
+            </p>
+          </div>
+
+          <div className="portfolio-sec-right">
+            <span className="portfolio-count">
+              {String(filteredItems.length).padStart(2, '0')} FILES
+            </span>
+
+            <div className="portfolio-filter" role="tablist" aria-label="Portfolio filters">
+              {filterOptions.map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  className={`portfolio-filter-btn ${activeFilter === filter ? 'active' : ''}`}
+                  onClick={() => setActiveFilter(filter)}
+                  aria-pressed={activeFilter === filter}
+                >
+                  {filter}
+                </button>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        {filteredItems.length === 0 ? (
+          <div className="portfolio-empty">
+            No matching files found for this filter. Add more dossier items or adjust
+            the filter logic to align with the real portfolio categories.
+          </div>
+        ) : (
+          <div className="dos-grid">
+            {filteredItems.map((item, index) => (
+              <a
+                key={item.id}
+                href={item.href}
+                className="dos-card portfolio-reveal"
+                style={{ animationDelay: `${index * 80}ms` }}
+              >
+                <div className="dos-corner dcc-tl" />
+                <div className="dos-corner dcc-tr" />
+
+                <div className="dos-file-id">
+                  <span>
+                    <span className="fid-num">{item.fileId}</span>
+                  </span>
+                  <span className="dos-status">● {item.status}</span>
+                </div>
+
+                <div className="dos-thumb">
+                  <div className="dos-thumb-inner">
+                    {item.image ? (
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="dos-thumb-img"
+                        onError={(e) => {
+                          const img = e.currentTarget;
+                          img.style.display = 'none';
+                          const fallback = img.nextElementSibling as HTMLElement | null;
+                          if (fallback) fallback.style.display = 'block';
+                        }}
+                      />
+                    ) : null}
+
+                    <div
+                      className="dos-thumb-placeholder"
+                      style={{ display: item.image ? 'none' : 'block' }}
+                      aria-hidden={item.image ? 'true' : 'false'}
+                    />
+                  </div>
+
+                  <div className="dos-thumb-scan" />
+                </div>
+
+                <div className="dos-cat">{item.category}</div>
+                <div className="dos-title">{item.title}</div>
+                <div className="dos-desc">{item.description}</div>
+
+                <div className="dos-meta-line">
+                  <span className="dos-meta-pill featured">{item.year}</span>
+                  {item.tags.map((tag) => (
+                    <span key={tag} className="dos-meta-pill">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="dos-metrics">
+                  {item.metrics.map((metric) => (
+                    <div key={`${item.id}-${metric.label}`} className="dos-metric">
+                      <span className="dos-m-val">{metric.value}</span>
+                      <span className="dos-m-lbl">{metric.label}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <span className="dos-arrow">Open File →</span>
+              </a>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## STEP 5 — MAKE SURE THE PAGE NAME MATCHES THE ROUTE
+
+If the existing route imports the component under a different filename, keep the filename consistent.
+
+Examples:
+
+* if `App.tsx` imports `PortfolioPage`, keep the file named `PortfolioPage.tsx`
+* if it imports `Portfolio`, keep that
+* do **not** change `App.tsx` just to match a renamed file
+
+Again: route definitions are not to be altered. 
+
+---
+
+## STEP 6 — IMAGE FALLBACK BEHAVIOUR
+
+For each dossier card:
+
+* try to load a real image from `/portfolio-images/...`
+* if the image fails, hide the broken image and show the placeholder panel
+
+### Recommended image filenames
+
+Put these in:
+
+```txt
+client/public/portfolio-images/
+```
+
+Suggested starter filenames:
+
+```txt
+strategic-marketing.jpg
+customer-engagement.jpg
+brand-storytelling.jpg
+awards-recognition.jpg
+content-writing.jpg
+```
+
+If you do not yet have all of them, that is fine. The placeholder state will keep the layout stable.
+
+---
+
+## STEP 7 — FILTER BEHAVIOUR
+
+The guide above includes a **visual + functional filter strip**.
+
+### What it currently does
+
+* `All` shows everything
+* `Brand` matches brand/story/strategy-related items
+* `Growth` matches engagement/audience/activation-style items
+* `Content` matches content/copy/writing-related items
+
+### Important
+
+This is intentionally lightweight and front-end only.
+It does not touch the database, CMS, or backend filtering logic.
+
+If your actual portfolio categories are stricter, replace `matchesFilter()` with your real taxonomy mapping.
+
+---
+
+## STEP 8 — MOTION BEHAVIOUR
+
+The page should use restrained motion only.
+
+### Keep these behaviours
+
+* section header fades up
+* cards reveal on scroll via intersection observer
+* on hover:
+
+  * card lifts slightly
+  * border shifts to iris
+  * scan line activates
+  * title spacing subtly loosens
+  * KPI strip fades in
+  * “Open File” appears
+
+### Do not add
+
+* large parallax
+* bouncing cards
+* 3D tilt
+* dramatic scale
+* rotating panels
+* anything that delays reading
+
+The current site direction explicitly prefers recruiter-safe, purposeful motion with Framer Motion fade-up entrances.  
+
+---
+
+## STEP 9 — RESPONSIVE RULES
+
+### Desktop
+
+* 3 columns
+* dense but breathable spacing
+* hover metrics hidden until interaction
+
+### Tablet
+
+* 2 columns
+
+### Mobile
+
+* 1 column
+* metrics visible by default
+* open arrow visible by default
+* comfortable padding
+* no hover dependency
+
+### Important mobile note
+
+The project reference specifically warns against fixed parallax behaviour on iPhone Safari. Keep this page flat and stable on mobile.  
+
+---
+
+## STEP 10 — TYPOGRAPHY + TOKENS
+
+Use only the existing site language.
+
+### Typography
+
+* **Font:** Space Grotesk only
+* title weights should remain light
+* metadata tiny and uppercased
+* labels behave like HUD readouts
+
+### Visual tokens already aligned with the site system
+
+* `#FFFFFF` — primary page background
+* `#F5F5F7` — off-white support surface
+* `#0A0A0F` — primary text
+* `#4A4A56` — body/supporting text
+* `#8A8A96` — metadata/HUD labels
+* `#E8E8EC` — border
+* `#A378FF` — restricted signal accent
+* `#00C87A` — status dot / system signal only  
+
+---
+
+## STEP 11 — CONTENT STRATEGY FOR THIS PAGE
+
+This index page should not try to tell the full case study.
+
+Each dossier should do only this:
+
+1. identify the file
+2. establish the category
+3. give a sharp one-line sense of what’s inside
+4. surface quick signals/metrics
+5. invite the click
+
+### Good dossier card content
+
+* title: broad but concrete
+* description: 1–2 sentences max
+* metrics: short, punchy, readable in 1 second
+* tags: small and meaningful
+* file ID: consistent system naming
+
+### Bad dossier card content
+
+* paragraph-heavy summaries
+* long achievement lists
+* multiple CTA buttons
+* generic fluff like “innovative and dynamic”
+* oversized decorative visuals
+
+---
+
+## STEP 12 — ACCESSIBILITY / QA CHECKS
+
+Before finishing, verify:
+
+### Layout
+
+* no rounded corners anywhere
+* all cards align cleanly
+* 3 / 2 / 1 column responsiveness works
+* no overflow issues on narrow screens
+
+### Images
+
+* every image has alt text
+* broken images fall back correctly
+* images crop cleanly at 16:9
+
+### Motion
+
+* hover states are subtle
+* no lag or jank
+* mobile doesn’t rely on hover
+
+### Visual system
+
+* no dark backgrounds introduced
+* purple only appears in signal moments
+* green used only for the status chip
+* fonts remain Space Grotesk only
+
+These rules all align with the project constraints in the reference file. 
+
+---
+
+## WHAT THIS IMPLEMENTATION SETS UP NEXT
+
+Once this is in place, the structure is ready for the second layer:
+
+* `/portfolio/strategic-marketing`
+* `/portfolio/customer-engagement`
+* `/portfolio/brand-storytelling`
+* `/portfolio/awards-recognition`
+* `/portfolio/content-writing`
+
+That route family already exists, so this page becomes a much stronger parent index leading into those deeper pages. 
+
+---
+
+## QUICK REFERENCE — DESIGN TOKENS USED
+
+| Token                    | Value        | Use                                  |
+| ------------------------ | ------------ | ------------------------------------ |
+| `#FFFFFF`                | white        | page background                      |
+| `#F5F5F7`                | off-white    | light support surfaces               |
+| `#0A0A0F`                | black        | primary headings                     |
+| `#4A4A56`                | dark grey    | body copy                            |
+| `#8A8A96`                | muted grey   | labels / metadata                    |
+| `#E8E8EC`                | light border | default borders                      |
+| `#A378FF`                | iris violet  | signal states only                   |
+| `rgba(163,120,255,0.06)` | iris wash    | featured pills / soft hover surfaces |
+| `rgba(163,120,255,0.28)` | iris border  | active borders / highlights          |
+| `#00C87A`                | signal green | status indicator only                |
+
+---
+
+## FINAL IMPLEMENTATION NOTES FOR REPLIT
+
+Use this as the execution summary:
+
+### Implement exactly this:
+
+* update the `/portfolio` index page only
+* do not touch routing
+* do not touch admin
+* do not touch backend/database
+* append the supplied CSS to `client/src/index.css`
+* replace the existing portfolio index component with the supplied React + TypeScript component
+* keep Space Grotesk only
+* keep square corners only
+* keep white/off-white public backgrounds only
+* keep iris violet restricted to signal moments
+* use `/client/public/portfolio-images/` for all dossier thumbnails
+* preserve category routes below `/portfolio`
+
+
