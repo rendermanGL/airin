@@ -3,79 +3,35 @@ import { testimonials } from "@/lib/testimonials";
 
 export default function Testimonials() {
   return (
-    <section className="py-32 relative z-10">
+    <section className="py-20 bg-primary/5">
       <div className="container mx-auto px-6">
-        <motion.div
+        <motion.div 
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 400,
-              fontSize: 'clamp(2rem, 4vw, 3.5rem)',
-              color: 'var(--col-cream)',
-            }}
-            className="mb-4"
-          >
-            Client Testimonials
-          </h2>
-          <div style={{ width: '40px', height: '1px', background: 'linear-gradient(to right, #854F6C, #DFB6B2)', margin: '0 auto' }} />
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-primary mb-4">Client Testimonials</h2>
+          <div className="w-24 h-1 bg-accent mx-auto"></div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {testimonials.map((testimonial, index) => (
-            <motion.div
+            <motion.div 
               key={testimonial.id}
-              className="p-8"
-              style={{
-                background: 'rgba(43,18,76,0.3)',
-                borderLeft: '2px solid #854F6C',
-                borderRadius: 0,
-              }}
+              className="bg-white p-8 rounded-lg shadow-md"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
-              <p
-                className="mb-6 leading-relaxed"
-                style={{
-                  fontFamily: "'Cormorant Garamond', serif",
-                  fontWeight: 400,
-                  fontStyle: 'italic',
-                  fontSize: '1.1rem',
-                  color: 'var(--col-cream)',
-                }}
-              >
+              <p className="text-gray-600 italic mb-6 text-lg leading-relaxed">
                 "{testimonial.content}"
               </p>
               <div>
-                <p
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: 300,
-                    fontSize: '0.75rem',
-                    textTransform: 'uppercase',
-                    color: 'var(--col-blush)',
-                    letterSpacing: '0.05em',
-                  }}
-                >
-                  {testimonial.author}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "'DM Sans', sans-serif",
-                    fontWeight: 300,
-                    fontSize: '0.7rem',
-                    color: 'var(--col-rose)',
-                  }}
-                >
-                  {testimonial.position}
-                </p>
+                <p className="font-medium text-primary text-lg">{testimonial.author}</p>
+                <p className="text-sm text-gray-500">{testimonial.position}</p>
               </div>
             </motion.div>
           ))}

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 
 interface ParticleSystemProps {
@@ -13,16 +13,9 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
   const linesRef = useRef<THREE.LineSegments | null>(null);
   const mouseRef = useRef({ x: 0, y: 0 });
   const frameRef = useRef<number>();
-  const [webGLAvailable, setWebGLAvailable] = useState(true);
 
   useEffect(() => {
     if (!mountRef.current) return;
-
-    try {
-      const testCanvas = document.createElement('canvas');
-      const gl = testCanvas.getContext('webgl') || testCanvas.getContext('experimental-webgl');
-      if (!gl) { setWebGLAvailable(false); return; }
-    } catch { setWebGLAvailable(false); return; }
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -98,10 +91,10 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
     particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
     const particleMaterial = new THREE.PointsMaterial({
-      color: 0x854F6C,
+      color: 0x666666,
       size: isMobile ? 2.5 : 3.5,
       transparent: true,
-      opacity: 0.12,
+      opacity: 0.3,
       sizeAttenuation: true,
       map: circleTexture
     });
@@ -113,9 +106,9 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
     // Line system for connections
     const lineGeometry = new THREE.BufferGeometry();
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x854F6C,
+      color: 0x888888,
       transparent: true,
-      opacity: 0.08
+      opacity: 0.15
     });
 
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);
@@ -254,10 +247,6 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
       circleTexture.dispose();
     };
   }, []);
-
-  if (!webGLAvailable) {
-    return null;
-  }
 
   return (
     <div 

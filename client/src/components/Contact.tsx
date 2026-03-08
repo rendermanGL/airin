@@ -2,6 +2,9 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { z } from "zod";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 
@@ -18,225 +21,186 @@ export default function Contact() {
   const { toast } = useToast();
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: "", email: "", subject: "", message: "" },
+    defaultValues: {
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+    },
   });
 
   const onSubmit = async (data: ContactFormValues) => {
     try {
-      await apiRequest({ url: '/api/contact', method: 'POST', body: data });
-      toast({ title: "Message sent!", description: "Thank you for your message. I'll get back to you soon." });
+      const response = await apiRequest({
+        url: '/api/contact',
+        method: 'POST',
+        body: data,
+      });
+      
+      toast({
+        title: "Message sent!",
+        description: "Thank you for your message. I'll get back to you soon.",
+      });
+      
       reset();
     } catch (error) {
-      toast({ title: "Error", description: "Failed to send message. Please try again.", variant: "destructive" });
+      toast({
+        title: "Error",
+        description: "Failed to send message. Please try again.",
+        variant: "destructive",
+      });
     }
   };
 
-  const inputStyle = {
-    background: 'rgba(43,18,76,0.4)',
-    border: '1px solid rgba(251,228,216,0.1)',
-    color: 'var(--col-cream)',
-    borderRadius: 0,
-    padding: '12px 16px',
-    fontFamily: "'DM Sans', sans-serif",
-    fontWeight: 300,
-    fontSize: '0.9rem',
-    outline: 'none',
-    width: '100%',
-    transition: 'border-color 300ms ease',
-  };
-
   return (
-    <section id="contact" className="py-32 relative z-10">
+    <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-6">
-        <motion.div
-          className="mb-16"
+        <motion.div 
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2
-            style={{
-              fontFamily: "'Cormorant Garamond', serif",
-              fontWeight: 300,
-              fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-              color: 'var(--col-cream)',
-              lineHeight: 1.1,
-            }}
-            className="max-w-2xl"
-          >
-            Let's build something that moves people.
-          </h2>
+          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-primary mb-4">Get In Touch</h2>
+          <div className="w-24 h-1 bg-accent mx-auto"></div>
+          <p className="mt-6 max-w-2xl mx-auto text-foreground">Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.</p>
         </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl">
+        
+        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3
-              className="mb-6"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 400,
-                fontSize: '1.5rem',
-                color: 'var(--col-cream)',
-              }}
-            >
-              Contact Information
-            </h3>
-
+            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">Contact Information</h3>
+            
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="mt-1 mr-4" style={{ color: 'var(--col-rose)' }}>
-                  <i className="fas fa-map-marker-alt text-lg"></i>
+                <div className="text-secondary mt-1 mr-4">
+                  <i className="fas fa-map-marker-alt text-xl"></i>
                 </div>
                 <div>
-                  <h4 style={{ color: 'var(--col-cream)', fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: '0.85rem' }}>Location</h4>
-                  <p style={{ color: 'var(--col-blush)', fontSize: '0.85rem' }}>Dubai, United Arab Emirates</p>
+                  <h4 className="font-medium text-primary">Location</h4>
+                  <p className="text-gray-600">Dubai, United Arab Emirates</p>
                 </div>
               </div>
-
+              
               <div className="flex items-start">
-                <div className="mt-1 mr-4" style={{ color: 'var(--col-rose)' }}>
-                  <i className="fas fa-envelope text-lg"></i>
+                <div className="text-secondary mt-1 mr-4">
+                  <i className="fas fa-envelope text-xl"></i>
                 </div>
                 <div>
-                  <h4 style={{ color: 'var(--col-cream)', fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: '0.85rem' }}>Email</h4>
-                  <a href="mailto:elsa.airin@gmail.com" className="transition-colors hover:opacity-80" style={{ color: 'var(--col-blush)', fontSize: '0.85rem' }}>elsa.airin@gmail.com</a>
+                  <h4 className="font-medium text-primary">Email</h4>
+                  <a href="mailto:elsa.airin@gmail.com" className="text-gray-600 hover:text-secondary transition-colors">elsa.airin@gmail.com</a>
                 </div>
               </div>
-
+              
               <div className="flex items-start">
-                <div className="mt-1 mr-4" style={{ color: 'var(--col-rose)' }}>
-                  <i className="fas fa-phone-alt text-lg"></i>
+                <div className="text-secondary mt-1 mr-4">
+                  <i className="fas fa-phone-alt text-xl"></i>
                 </div>
                 <div>
-                  <h4 style={{ color: 'var(--col-cream)', fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: '0.85rem' }}>Phone</h4>
-                  <p style={{ color: 'var(--col-blush)', fontSize: '0.85rem' }}>(+971) 55 981 3969</p>
+                  <h4 className="font-medium text-primary">Phone</h4>
+                  <p className="text-gray-600">(+971) 55 981 3969</p>
                 </div>
               </div>
-
+              
               <div className="flex items-start">
-                <div className="mt-1 mr-4" style={{ color: 'var(--col-rose)' }}>
-                  <i className="fas fa-globe text-lg"></i>
+                <div className="text-secondary mt-1 mr-4">
+                  <i className="fas fa-globe text-xl"></i>
                 </div>
                 <div>
-                  <h4 style={{ color: 'var(--col-cream)', fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: '0.85rem' }}>LinkedIn</h4>
-                  <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="transition-colors hover:opacity-80" style={{ color: 'var(--col-blush)', fontSize: '0.85rem' }}>linkedin.com/in/airinjohn</a>
+                  <h4 className="font-medium text-primary">LinkedIn</h4>
+                  <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-secondary transition-colors">linkedin.com/in/airinjohn</a>
                 </div>
               </div>
             </div>
-
+            
             <div className="mt-12">
-              <h4 className="mb-4" style={{ color: 'var(--col-cream)', fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: '0.85rem' }}>Connect With Me</h4>
+              <h4 className="font-medium text-primary mb-4">Connect With Me</h4>
               <div className="flex space-x-4">
-                <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="social-icon">
+                <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent social-icon">
                   <i className="fab fa-linkedin-in text-xl"></i>
                 </a>
               </div>
             </div>
           </motion.div>
-
+          
+          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3
-              className="mb-6"
-              style={{
-                fontFamily: "'Cormorant Garamond', serif",
-                fontWeight: 400,
-                fontSize: '1.5rem',
-                color: 'var(--col-cream)',
-              }}
-            >
-              Send Me a Message
-            </h3>
-
-            <form className="space-y-5" onSubmit={handleSubmit(onSubmit)}>
+            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">Send Me a Message</h3>
+            
+            <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
               <div>
-                <label className="block mb-1" style={{ color: 'var(--col-blush)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: "'DM Sans', sans-serif" }}>Your Name</label>
-                <input
+                <label htmlFor="name" className="block text-sm font-medium text-primary mb-1">Your Name</label>
+                <Input 
+                  id="name" 
+                  placeholder="John Doe"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition-colors"
                   {...register("name")}
-                  placeholder="Jane Doe"
-                  style={inputStyle}
-                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(133,79,108,0.5)'}
-                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(251,228,216,0.1)'}
                 />
-                {errors.name && <p className="mt-1 text-sm" style={{ color: '#ef4444' }}>{errors.name.message}</p>}
+                {errors.name && (
+                  <p className="mt-1 text-sm text-red-500">{errors.name.message}</p>
+                )}
               </div>
-
+              
               <div>
-                <label className="block mb-1" style={{ color: 'var(--col-blush)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: "'DM Sans', sans-serif" }}>Your Email</label>
-                <input
-                  {...register("email")}
+                <label htmlFor="email" className="block text-sm font-medium text-primary mb-1">Your Email</label>
+                <Input 
+                  id="email" 
                   type="email"
-                  placeholder="jane@example.com"
-                  style={inputStyle}
-                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(133,79,108,0.5)'}
-                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(251,228,216,0.1)'}
+                  placeholder="john@example.com"
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition-colors"
+                  {...register("email")}
                 />
-                {errors.email && <p className="mt-1 text-sm" style={{ color: '#ef4444' }}>{errors.email.message}</p>}
+                {errors.email && (
+                  <p className="mt-1 text-sm text-red-500">{errors.email.message}</p>
+                )}
               </div>
-
+              
               <div>
-                <label className="block mb-1" style={{ color: 'var(--col-blush)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: "'DM Sans', sans-serif" }}>Subject</label>
-                <input
-                  {...register("subject")}
+                <label htmlFor="subject" className="block text-sm font-medium text-primary mb-1">Subject</label>
+                <Input 
+                  id="subject" 
                   placeholder="Project Inquiry"
-                  style={inputStyle}
-                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(133,79,108,0.5)'}
-                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(251,228,216,0.1)'}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition-colors"
+                  {...register("subject")}
                 />
-                {errors.subject && <p className="mt-1 text-sm" style={{ color: '#ef4444' }}>{errors.subject.message}</p>}
+                {errors.subject && (
+                  <p className="mt-1 text-sm text-red-500">{errors.subject.message}</p>
+                )}
               </div>
-
+              
               <div>
-                <label className="block mb-1" style={{ color: 'var(--col-blush)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontFamily: "'DM Sans', sans-serif" }}>Message</label>
-                <textarea
-                  {...register("message")}
+                <label htmlFor="message" className="block text-sm font-medium text-primary mb-1">Message</label>
+                <Textarea 
+                  id="message" 
                   rows={5}
                   placeholder="Tell me about your project..."
-                  style={{ ...inputStyle, resize: 'vertical' }}
-                  onFocus={(e) => e.currentTarget.style.borderColor = 'rgba(133,79,108,0.5)'}
-                  onBlur={(e) => e.currentTarget.style.borderColor = 'rgba(251,228,216,0.1)'}
+                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-secondary transition-colors"
+                  {...register("message")}
                 />
-                {errors.message && <p className="mt-1 text-sm" style={{ color: '#ef4444' }}>{errors.message.message}</p>}
+                {errors.message && (
+                  <p className="mt-1 text-sm text-red-500">{errors.message.message}</p>
+                )}
               </div>
-
-              <button
-                type="submit"
+              
+              <Button 
+                type="submit" 
+                className="w-full bg-secondary hover:bg-secondary/90 text-white font-medium py-3 px-6 flex items-center justify-center"
                 disabled={isSubmitting}
-                className="w-full py-3.5 px-9 transition-all duration-300 uppercase tracking-widest text-sm"
-                style={{
-                  fontFamily: "'DM Sans', sans-serif",
-                  fontWeight: 400,
-                  background: 'linear-gradient(135deg, #522B5B, #854F6C)',
-                  color: 'var(--col-cream)',
-                  border: 'none',
-                  borderRadius: 0,
-                  letterSpacing: '0.1em',
-                  cursor: isSubmitting ? 'not-allowed' : 'pointer',
-                  opacity: isSubmitting ? 0.7 : 1,
-                }}
-                onMouseEnter={(e) => {
-                  if (!isSubmitting) {
-                    e.currentTarget.style.background = 'linear-gradient(135deg, #854F6C, #DFB6B2)';
-                    e.currentTarget.style.color = '#190019';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'linear-gradient(135deg, #522B5B, #854F6C)';
-                  e.currentTarget.style.color = 'var(--col-cream)';
-                }}
               >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </button>
+                <span>{isSubmitting ? "Sending..." : "Send Message"}</span>
+                <i className="fas fa-paper-plane ml-2"></i>
+              </Button>
             </form>
           </motion.div>
         </div>

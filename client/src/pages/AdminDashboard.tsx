@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
 import { useLocation } from "wouter";
@@ -20,14 +23,23 @@ export default function AdminDashboard() {
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
 
-  useEffect(() => { fetchContacts(); }, []);
+  useEffect(() => {
+    fetchContacts();
+  }, []);
 
   const fetchContacts = async () => {
     try {
-      const response = await apiRequest({ url: '/api/admin/contacts', method: 'GET' });
+      const response = await apiRequest({
+        url: '/api/admin/contacts',
+        method: 'GET',
+      });
       setContacts(response);
     } catch (error) {
-      toast({ title: "Error", description: "Failed to fetch contact messages", variant: "destructive" });
+      toast({
+        title: "Error",
+        description: "Failed to fetch contact messages",
+        variant: "destructive",
+      });
       setLocation('/admin/login');
     } finally {
       setLoading(false);
@@ -36,100 +48,125 @@ export default function AdminDashboard() {
 
   const handleLogout = async () => {
     try {
-      await apiRequest({ url: '/api/admin/logout', method: 'POST' });
-      toast({ title: "Logged out", description: "You have been successfully logged out" });
+      await apiRequest({
+        url: '/api/admin/logout',
+        method: 'POST',
+      });
+      
+      toast({
+        title: "Logged out",
+        description: "You have been successfully logged out",
+      });
+      
       setLocation('/admin/login');
     } catch (error) {
       setLocation('/admin/login');
     }
   };
 
-  const formatDate = (dateString: string) => new Date(dateString).toLocaleString();
+  const formatDate = (dateString: string) => {
+    return new Date(dateString).toLocaleString();
+  };
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center relative z-10">
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: 'var(--col-rose)' }} />
-          <p style={{ color: 'var(--col-blush)' }}>Loading dashboard...</p>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
+          <p>Loading dashboard...</p>
         </div>
       </div>
     );
   }
 
-  const cardStyle = {
-    background: 'rgba(43,18,76,0.4)',
-    border: '1px solid rgba(251,228,216,0.08)',
-    borderRadius: 0,
-    backdropFilter: 'blur(8px)',
-  };
-
   return (
-    <div className="min-h-screen relative z-10">
-      <header className="py-4" style={{ borderBottom: '1px solid rgba(251,228,216,0.08)', background: 'rgba(25,0,25,0.75)', backdropFilter: 'blur(16px)' }}>
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <header className="bg-white shadow-sm border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
-            <h1 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, fontSize: '1.5rem', color: 'var(--col-cream)' }}>Admin Dashboard</h1>
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 transition-all duration-300 text-xs uppercase tracking-widest"
-              style={{
-                fontFamily: "'DM Sans', sans-serif",
-                border: '1px solid rgba(251,228,216,0.2)',
-                color: 'var(--col-blush)',
-                background: 'transparent',
-                borderRadius: 0,
-              }}
-            >
-              <LogOut className="w-4 h-4" />
+          <div className="flex justify-between items-center py-4">
+            <h1 className="text-2xl font-bold text-primary">Admin Dashboard</h1>
+            <Button onClick={handleLogout} variant="outline" size="sm">
+              <LogOut className="w-4 h-4 mr-2" />
               Logout
-            </button>
+            </Button>
           </div>
         </div>
       </header>
 
+      {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Stats */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
         >
-          {[
-            { icon: Mail, label: 'Total Messages', value: contacts.length },
-            { icon: Calendar, label: 'Today', value: contacts.filter(c => new Date(c.createdAt).toDateString() === new Date().toDateString()).length },
-            { icon: User, label: 'Unique Contacts', value: new Set(contacts.map(c => c.email)).size },
-          ].map((stat, i) => (
-            <div key={i} className="p-6" style={cardStyle}>
+          <Card>
+            <CardContent className="p-6">
               <div className="flex items-center">
-                <stat.icon className="w-8 h-8 mr-3" style={{ color: 'var(--col-rose)' }} />
+                <Mail className="w-8 h-8 text-primary mr-3" />
                 <div>
-                  <p className="text-2xl font-bold" style={{ color: 'var(--col-cream)' }}>{stat.value}</p>
-                  <p style={{ color: 'var(--col-blush)', fontSize: '0.8rem' }}>{stat.label}</p>
+                  <p className="text-2xl font-bold">{contacts.length}</p>
+                  <p className="text-muted-foreground">Total Messages</p>
                 </div>
               </div>
-            </div>
-          ))}
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center">
+                <Calendar className="w-8 h-8 text-primary mr-3" />
+                <div>
+                  <p className="text-2xl font-bold">
+                    {contacts.filter(c => {
+                      const today = new Date();
+                      const msgDate = new Date(c.createdAt);
+                      return msgDate.toDateString() === today.toDateString();
+                    }).length}
+                  </p>
+                  <p className="text-muted-foreground">Today</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+          
+          <Card>
+            <CardContent className="p-6">
+              <div className="flex items-center">
+                <User className="w-8 h-8 text-primary mr-3" />
+                <div>
+                  <p className="text-2xl font-bold">
+                    {new Set(contacts.map(c => c.email)).size}
+                  </p>
+                  <p className="text-muted-foreground">Unique Contacts</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </motion.div>
 
+        {/* Contact Messages */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <div style={cardStyle}>
-            <div className="p-6" style={{ borderBottom: '1px solid rgba(251,228,216,0.08)' }}>
-              <div className="flex items-center gap-2">
-                <Mail className="w-5 h-5" style={{ color: 'var(--col-rose)' }} />
-                <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontWeight: 400, fontSize: '1.3rem', color: 'var(--col-cream)' }}>Contact Messages</h2>
-                <span className="px-2 py-0.5 text-xs" style={{ background: 'rgba(133,79,108,0.2)', border: '1px solid rgba(133,79,108,0.3)', color: 'var(--col-blush)', borderRadius: 0 }}>{contacts.length}</span>
-              </div>
-            </div>
-            <div className="p-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Mail className="w-5 h-5" />
+                Contact Messages
+                <Badge variant="secondary">{contacts.length}</Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
               {contacts.length === 0 ? (
                 <div className="text-center py-8">
-                  <Mail className="w-12 h-12 mx-auto mb-4" style={{ color: 'var(--col-rose)', opacity: 0.5 }} />
-                  <p style={{ color: 'var(--col-blush)' }}>No contact messages yet</p>
+                  <Mail className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                  <p className="text-muted-foreground">No contact messages yet</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -139,30 +176,37 @@ export default function AdminDashboard() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="p-4 transition-all duration-300"
-                      style={{ border: '1px solid rgba(251,228,216,0.06)', background: 'rgba(43,18,76,0.2)', borderRadius: 0 }}
+                      className="border rounded-lg p-4 hover:bg-gray-50"
                     >
                       <div className="flex justify-between items-start mb-2">
                         <div>
-                          <h3 style={{ color: 'var(--col-cream)', fontFamily: "'DM Sans', sans-serif", fontWeight: 400, fontSize: '0.9rem' }}>{contact.name}</h3>
-                          <p style={{ color: 'var(--col-blush)', fontSize: '0.8rem' }}>{contact.email}</p>
+                          <h3 className="font-semibold text-primary">{contact.name}</h3>
+                          <p className="text-sm text-muted-foreground">{contact.email}</p>
                         </div>
-                        <span className="px-2 py-0.5 text-xs" style={{ border: '1px solid rgba(251,228,216,0.1)', color: 'var(--col-blush)', borderRadius: 0 }}>{formatDate(contact.createdAt)}</span>
+                        <div className="text-right">
+                          <Badge variant="outline" className="mb-1">
+                            {formatDate(contact.createdAt)}
+                          </Badge>
+                        </div>
                       </div>
+                      
                       <div className="mb-3">
-                        <h4 className="mb-1" style={{ color: 'var(--col-cream)', fontSize: '0.8rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 400 }}>Subject:</h4>
-                        <p style={{ color: 'var(--col-blush)', fontSize: '0.85rem' }}>{contact.subject}</p>
+                        <h4 className="font-medium mb-1">Subject:</h4>
+                        <p className="text-sm">{contact.subject}</p>
                       </div>
+                      
                       <div>
-                        <h4 className="mb-1" style={{ color: 'var(--col-cream)', fontSize: '0.8rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 400 }}>Message:</h4>
-                        <p className="whitespace-pre-wrap" style={{ color: 'var(--col-blush)', fontSize: '0.85rem' }}>{contact.message}</p>
+                        <h4 className="font-medium mb-1">Message:</h4>
+                        <p className="text-sm text-muted-foreground whitespace-pre-wrap">
+                          {contact.message}
+                        </p>
                       </div>
                     </motion.div>
                   ))}
                 </div>
               )}
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </motion.div>
       </main>
     </div>
