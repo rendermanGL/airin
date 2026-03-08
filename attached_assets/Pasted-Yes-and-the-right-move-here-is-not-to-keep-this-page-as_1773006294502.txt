@@ -1,0 +1,1099 @@
+Yes — and the right move here is **not** to keep this page as a generic image-left/text-right campaign list.
+
+For 2026 portfolio patterns, the strongest direction is:
+
+* **case-study depth over gallery-style browsing**, with projects framed as structured narratives rather than simple cards, ([IxDF - Interaction Design Foundation][1])
+* **data-led case studies** that surface impact clearly, which portfolio guidance keeps emphasizing as a hiring advantage, ([IxDF - Interaction Design Foundation][2])
+* **minimal, calm presentation** with content carrying the weight, not decorative clutter, ([Awwwards][3])
+* **purposeful microinteractions** instead of big flashy motion. ([Webflow][4])
+
+That lines up perfectly with your site constraints too: white/off-white backgrounds, Space Grotesk, square edges, restrained violet accent, and no unnecessary routing/backend changes.  
+
+So for **Strategic Marketing**, I’d shift it from a “campaign feed” into a **deep-dive dossier page**:
+
+* each campaign becomes a **case file section**
+* each section leads with **result signals**
+* content is broken into **Context / Objective / Approach / Execution / Results**
+* images become **evidence panels**, not just decorative banners
+* the whole page feels like a curated archive of strategic work
+
+Below is the **Replit-friendly implementation guide** in the same style as your previous one.
+
+---
+
+# Strategic Marketing Page — Concept C Case File Treatment — Replit Implementation Guide
+
+### airinjohn.com · React + TypeScript + Tailwind + Framer Motion
+
+---
+
+## BEFORE YOU START — READ THIS
+
+This guide rewrites the **Strategic Marketing** portfolio detail page only.
+
+The current page already contains strong content, but the layout is still too close to a standard portfolio/case-study stack:
+
+* large image
+* text block
+* generic section rhythm
+
+That is functional, but it is not yet aligned with the stronger **2026 case-study trend**: highly structured, results-forward, recruiter-readable case study pages with minimal but intentional motion. ([IxDF - Interaction Design Foundation][2])
+
+### What this page should become
+
+* A **deep-dive dossier page** inside the portfolio system
+* Same visual language as the **Concept C dossier index**
+* White/off-white monochrome page with restrained HUD cues
+* Campaigns displayed as **case files**
+* Each file section includes:
+
+  * file ID
+  * status
+  * category tag
+  * campaign title
+  * business context
+  * objective block
+  * execution block
+  * results block
+  * optional image evidence panel
+* Results should become more prominent than descriptive copy
+* Motion should stay subtle:
+
+  * fade-up
+  * line draw
+  * small hover/state transitions
+  * no gimmicky parallax or heavy scroll effects
+
+### Why this is the right direction
+
+Current portfolio guidance keeps leaning toward:
+
+* **storytelling with business context**, ([IxDF - Interaction Design Foundation][1])
+* **measurable outcomes and impact-first framing**, ([IxDF - Interaction Design Foundation][2])
+* **minimal layouts with strong hierarchy**, ([Awwwards][3])
+* **microinteractions that improve clarity rather than distract**. ([Webflow][4])
+
+---
+
+## WHAT IS NOT CHANGING
+
+Do **not** change any of the following:
+
+| File / System                  | Status                                                |
+| ------------------------------ | ----------------------------------------------------- |
+| `App.tsx` routing              | ✅ Untouched                                           |
+| `/portfolio` index route       | ✅ Untouched                                           |
+| admin routes                   | ✅ Untouched                                           |
+| backend / database / CMS logic | ✅ Untouched                                           |
+| Navbar / Footer components     | ✅ Kept                                                |
+| overall stack                  | ✅ React + TypeScript + Tailwind + Framer Motion stays |
+
+That matches the project constraints already set for the site.  
+
+---
+
+## TARGET FILE
+
+Use the existing **Strategic Marketing page component** you pasted.
+
+That is the file to update.
+
+### Important
+
+Do **not** rename the route or restructure navigation.
+Only restyle and restructure the page component content.
+
+---
+
+## DESIGN DIRECTION FOR THIS PAGE
+
+This page should feel like a **case file archive inside one category**.
+
+### The page metaphor
+
+The portfolio index shows **multiple dossiers**.
+This page shows the **opened dossier contents** for one category.
+
+### Visual structure
+
+1. **Top archive header**
+
+   * breadcrumb
+   * section label
+   * page title
+   * short descriptor
+   * file count / category metadata
+
+2. **Campaign case files**
+
+   * each campaign sits inside a bordered “file block”
+   * each block feels like an opened mission file
+   * image and text are still paired, but inside a more structured frame
+
+3. **Data emphasis**
+
+   * results are surfaced as KPI tiles or readouts
+   * objectives and approach become clearly separated sections
+   * long paragraphs are trimmed or segmented
+
+### The visual tone
+
+* calm
+* precise
+* strategic
+* professional
+* editorial
+* lightly sci-fi, never game-like
+
+---
+
+## CONTENT TREATMENT CHANGES
+
+Your current content is good, but the presentation needs a better hierarchy.
+
+### Keep
+
+* the campaign titles
+* subtitles
+* objectives
+* measures
+* results
+* product/channel metadata
+* images
+
+### Change the way they are shown
+
+Instead of:
+
+* title
+* subtitle
+* description
+* bullets
+
+Use this structure for each campaign:
+
+### Case file structure
+
+* **FILE ID**
+* **STATUS**
+* **Campaign Type / Channel / Year**
+* **Title**
+* **Subtitle**
+* **Context**
+* **Strategic Objective**
+* **Execution / Approach**
+* **Results**
+* **Key Signal / KPI strip**
+
+### Example content mapping
+
+For each campaign:
+
+* `description` becomes **Context**
+* `objectives` stay, but are renamed **Strategic Objectives**
+* `measures` becomes **Method / Segmentation Logic**
+* `results` become a **highlighted outcomes section**
+* `products` or `channel` move into top metadata pills
+
+This is more in line with how case studies are expected to communicate process and impact. ([IxDF - Interaction Design Foundation][1])
+
+---
+
+## STEP 1 — UPDATE THE CAMPAIGN DATA SHAPE
+
+Refactor the `campaigns` array so it feels more like a dossier system.
+
+### Add these fields to each object
+
+```ts
+fileId
+status
+year
+type
+market
+kpis
+```
+
+### Recommended structure
+
+```ts
+const campaigns = [
+  {
+    fileId: "FILE_2024_001",
+    status: "COMPLETE",
+    year: "2024",
+    type: "Product Launch Campaign",
+    market: "UAE",
+    image: "/portfolio-images/brand-product-campaign.jpeg",
+    title: "Brand Product Campaign",
+    subtitle: "Kava & Chai: Summer Matcha Bliss",
+    description: "...",
+    products: "...",
+    objectives: [...],
+    measures: "...",
+    results: [...],
+    kpis: [
+      { value: "6%", label: "Sales Mix" },
+      { value: "+23%", label: "Digital Engagement" },
+      { value: "LTO", label: "Launch Format" }
+    ]
+  }
+]
+```
+
+### Why this matters
+
+This makes the page feel like a **system of case files**, not just a mapped list of campaigns.
+
+---
+
+## STEP 2 — RESTRUCTURE THE PAGE HEADER
+
+The current header is too light for the dossier direction.
+
+### Replace it with:
+
+* breadcrumb
+* HUD label
+* big title
+* short paragraph explaining what “Strategic Marketing” covers
+* small metadata strip:
+
+  * campaign count
+  * market
+  * timeline
+  * category
+
+### Example content
+
+* label: `// Case Files · Strategic Marketing`
+* title: `Strategic Marketing`
+* subtext:
+  “Selected campaigns spanning launch strategy, seasonal activations, tactical communications, and performance-led marketing across hospitality and F&B.”
+
+### Add a top metadata strip
+
+* `03 FILES`
+* `F&B / Hospitality`
+* `UAE`
+* `2019–2024`
+
+This matches the stronger hierarchy patterns seen in current portfolio examples and guidance. ([IxDF - Interaction Design Foundation][2])
+
+---
+
+## STEP 3 — CHANGE THE LAYOUT RHYTHM
+
+Right now each entry is:
+
+* 2-column
+* large image
+* generic glass panel
+
+That “glass panel” feel is too generic for this direction.
+
+### Replace it with dossier blocks
+
+Each campaign should become a **case-file module** with:
+
+* thin border
+* square corners
+* file header line
+* image evidence panel
+* structured content stack
+* KPI readout section
+* subtle hover emphasis
+
+### New campaign block layout
+
+Desktop:
+
+* 2 columns
+* left/right alternate is okay, but keep it restrained
+* image sits inside a clean evidence frame
+* text side uses dossier formatting
+
+Mobile:
+
+* stack vertically
+* KPI strip always visible
+
+---
+
+## STEP 4 — REMOVE THE GLASS PANEL LOOK
+
+Your current content panel uses:
+
+```tsx
+className="flex-1 glass-panel p-8"
+```
+
+That should be removed.
+
+### Replace with a sharper dossier container
+
+Use something like:
+
+* flat white or very light grey background
+* 1px border
+* no blur-heavy glass effect
+* no rounded corners
+* subtle violet hover border
+* small shadow only if necessary
+
+### Why
+
+The site’s visual system is explicitly **light monochrome HUD**, not frosted/glassy consumer SaaS UI. 
+
+---
+
+## STEP 5 — ADD GLOBAL CSS
+
+Open:
+
+```txt
+client/src/index.css
+```
+
+Add this block at the end.
+
+```css
+/* ═══════════════════════════════════════
+   STRATEGIC MARKETING — DOSSIER DETAIL PAGE
+   ═══════════════════════════════════════ */
+
+.strat-page {
+  position: relative;
+  min-height: 100vh;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+.strat-page .hud-grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.038) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.038) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.strat-wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.strat-head {
+  padding-top: 120px;
+  padding-bottom: 30px;
+}
+
+.strat-label {
+  font-size: 0.62rem;
+  font-weight: 300;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.strat-label::before {
+  content: '//';
+  color: #A378FF;
+  font-weight: 500;
+}
+
+.strat-title {
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #0A0A0F;
+  margin-top: 12px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.strat-sub {
+  max-width: 720px;
+  margin-top: 16px;
+  font-size: 0.92rem;
+  line-height: 1.85;
+  font-weight: 300;
+  color: #4A4A56;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.strat-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-top: 24px;
+}
+
+.strat-meta-tile {
+  padding: 10px 18px;
+  border: 1px solid #E8E8EC;
+  border-right: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.strat-meta-tile:last-child {
+  border-right: 1px solid #E8E8EC;
+}
+
+.strat-meta-val {
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: #0A0A0F;
+}
+
+.strat-meta-lbl {
+  font-size: 0.48rem;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8A8A96;
+}
+
+.strat-list {
+  padding-top: 16px;
+  padding-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.case-file {
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.07);
+  background: rgba(0,0,0,0.015);
+  padding: 28px;
+  transition:
+    border-color 300ms ease,
+    background 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease;
+}
+
+.case-file:hover {
+  border-color: rgba(163,120,255,0.28);
+  background: rgba(0,0,0,0.025);
+  box-shadow: 0 0 40px rgba(163,120,255,0.06);
+  transform: translateY(-2px);
+}
+
+.case-corner {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(163,120,255,0.22);
+  opacity: 0;
+  transition: opacity 240ms ease;
+  pointer-events: none;
+}
+
+.case-file:hover .case-corner {
+  opacity: 1;
+}
+
+.case-corner.tl {
+  top: 8px;
+  left: 8px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.case-corner.tr {
+  top: 8px;
+  right: 8px;
+  border-left: none;
+  border-bottom: none;
+}
+
+.case-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 12px;
+  margin-bottom: 22px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.case-file-id {
+  font-size: 0.44rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-file-id .fid {
+  color: #A378FF;
+}
+
+.case-status {
+  font-size: 0.4rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #00C87A;
+  padding: 2px 7px;
+  border: 1px solid rgba(0,200,122,0.3);
+  background: rgba(0,200,122,0.06);
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.case-grid.reverse .case-media {
+  order: 2;
+}
+
+.case-grid.reverse .case-body {
+  order: 1;
+}
+
+.case-media {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.case-image-wrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  border: 1px solid rgba(0,0,0,0.06);
+  background: #F5F5F7;
+}
+
+.case-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1);
+  transition: transform 500ms cubic-bezier(0.16,1,0.3,1), filter 280ms ease;
+  filter: grayscale(0.12);
+}
+
+.case-file:hover .case-image {
+  transform: scale(1.04);
+  filter: grayscale(0);
+}
+
+.case-scan {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  top: 0;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(163,120,255,0.6), transparent);
+  animation: caseScan 3s ease-in-out infinite;
+}
+
+.case-file:hover .case-scan {
+  opacity: 1;
+}
+
+@keyframes caseScan {
+  0% { top: 0%; }
+  100% { top: 100%; }
+}
+
+.case-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.case-pill {
+  font-size: 0.42rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  border: 1px solid #E8E8EC;
+  padding: 5px 8px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-pill.featured {
+  color: #A378FF;
+  border-color: rgba(163,120,255,0.28);
+  background: rgba(163,120,255,0.06);
+}
+
+.case-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-type {
+  font-size: 0.44rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #A378FF;
+  margin-bottom: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-title {
+  font-size: 1.45rem;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #0A0A0F;
+  margin-bottom: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-subtitle {
+  font-size: 0.98rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #4A4A56;
+  margin-bottom: 18px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.case-block {
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.case-block-label {
+  font-size: 0.48rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #A378FF;
+  margin-bottom: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-copy {
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.85;
+  color: #4A4A56;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.case-list-item {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #4A4A56;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-list-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 6px;
+  height: 1px;
+  background: #A378FF;
+}
+
+.case-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 18px;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  padding-top: 18px;
+}
+
+.case-kpi {
+  text-align: center;
+  padding: 10px 0;
+  border-right: 1px solid rgba(0,0,0,0.06);
+}
+
+.case-kpi:last-child {
+  border-right: none;
+}
+
+.case-kpi-val {
+  display: block;
+  margin-bottom: 3px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #A378FF;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-kpi-lbl {
+  font-size: 0.4rem;
+  font-weight: 300;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.case-reveal {
+  opacity: 0;
+}
+
+.case-reveal.in {
+  animation: caseFadeUp 0.7s ease forwards;
+}
+
+@keyframes caseFadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 1024px) {
+  .case-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-grid.reverse .case-media,
+  .case-grid.reverse .case-body {
+    order: unset;
+  }
+}
+
+@media (max-width: 760px) {
+  .case-file {
+    padding: 20px;
+  }
+
+  .strat-head {
+    padding-top: 108px;
+  }
+
+  .case-kpis {
+    grid-template-columns: 1fr;
+  }
+
+  .case-kpi {
+    border-right: none;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+  }
+
+  .case-kpi:last-child {
+    border-bottom: none;
+  }
+}
+```
+
+---
+
+## STEP 6 — REWRITE THE PAGE COMPONENT STRUCTURE
+
+Use your current `StrategicMarketing` component, but restructure it around:
+
+* page shell
+* header metadata
+* mapped dossier sections
+
+### Keep these imports
+
+* `motion`
+* `Link`
+* `Navbar`
+* `Footer`
+* `HudOverlay`
+
+### Remove reliance on
+
+* `glass-panel`
+* generic visual panel styling
+* loose unstructured content blocks
+
+### The new page structure should be
+
+```tsx
+<motion.div>
+  <HudOverlay />
+  <Navbar />
+
+  <main className="strat-page">
+    <div className="hud-grid-bg" />
+
+    <section className="strat-wrap">
+      <header className="strat-head">...</header>
+      <section className="strat-list">
+        {campaigns.map(...case file block...)}
+      </section>
+    </section>
+  </main>
+
+  <Footer />
+</motion.div>
+```
+
+---
+
+## STEP 7 — CHANGE EACH CAMPAIGN INTO A CASE FILE BLOCK
+
+Each mapped item should render like this:
+
+### Top line
+
+* left: `FILE_2024_001`
+* right: `● COMPLETE`
+
+### Main grid
+
+* one image side
+* one content side
+
+### Content side order
+
+1. `type`
+2. `title`
+3. `subtitle`
+4. metadata pills
+5. context block
+6. objectives block
+7. method/measures block if present
+8. results block
+9. KPI strip
+
+---
+
+## STEP 8 — RESULTS SHOULD NOT JUST BE BULLETS
+
+This is one of the most important changes.
+
+In your current version, results are just another list.
+That undersells them.
+
+### New treatment
+
+Keep the bullet list, but also extract **3 KPI readouts** from each campaign and show them at the bottom of each case file.
+
+### Examples from your content
+
+#### Brand Product Campaign
+
+* `6%` / `Sales Mix`
+* `+23%` / `Digital Engagement`
+* `LTO` / `Launch Type`
+
+#### Seasonal Product Campaign
+
+* `38` / `ROAS`
+* `+27%` / `Web Traffic`
+* `20%` / `Offer`
+
+#### Tactical Campaigning Methods and Successes
+
+* `27+` / `ROAS`
+* `+42%` / `Menu Views`
+* `WA` / `Channel`
+
+This is exactly the kind of impact-forward scannability modern portfolio advice keeps rewarding. ([IxDF - Interaction Design Foundation][2])
+
+---
+
+## STEP 9 — ADD INTERSECTION-OBSERVER REVEALS
+
+Just like the dossier page, add a small reveal system.
+
+### Behaviour
+
+* every `.case-reveal` animates once when entering viewport
+* no repeated replay
+* no large transform distance
+
+### Use
+
+* for each campaign block
+* optional for header metadata strip
+
+That keeps the motion consistent with the “micro-delight over spectacle” direction. ([Webflow][4])
+
+---
+
+## STEP 10 — REWRITE THE BREADCRUMB / HEADER COPY
+
+Use cleaner, more strategic copy.
+
+### Recommended breadcrumb
+
+* Home / Portfolio / Strategic Marketing
+
+### Recommended label
+
+`// Case Files · Strategic Marketing`
+
+### Recommended description
+
+“Selected campaign work across product launches, seasonal activations, tactical messaging, and performance-led marketing. Each file highlights the strategic objective, execution approach, and measurable outcome.”
+
+This sounds sharper and more senior than a generic portfolio heading.
+
+---
+
+## STEP 11 — TREAT IMAGES AS EVIDENCE PANELS
+
+The image should not feel like a lifestyle banner.
+
+### Do
+
+* keep them inside bordered frames
+* use subtle grayscale-to-full-colour hover shift
+* add scan-line on hover
+* maintain tight crop
+* keep square geometry
+
+### Do not
+
+* round corners
+* add floating cards
+* over-shadow the image
+* use giant parallax
+
+The point is to make the image feel like **supporting proof**, not the main show.
+
+---
+
+## STEP 12 — TAILWIND USAGE RULE
+
+You can keep the page mostly in Tailwind where convenient, but for dossier-specific styling:
+
+* use the custom CSS block above
+* avoid mixing too many existing utility classes that might fight the system
+* keep the dossier styles centralized
+
+This is the same approach that worked better for the Hero and dossier index direction.
+
+---
+
+## STEP 13 — OPTIONAL 2026 UPGRADE: “KEY TAKEAWAY” LINE
+
+A strong 2026 addition for a page like this is a final **one-line takeaway** inside each case file.
+
+Example:
+
+* “Demonstrated how trend-led LTOs can sustain seasonal demand while reinforcing innovation.”
+* “Validated WhatsApp as a repeatable tactical revenue channel.”
+* “Used performance-led seasonal offers to maintain traffic during low-demand periods.”
+
+This works because stronger case studies now increasingly show not just what happened, but what the work proves strategically. ([IxDF - Interaction Design Foundation][1])
+
+---
+
+## STEP 14 — CONTENT CLEAN-UP RECOMMENDATIONS
+
+Before implementation, tighten these copy patterns:
+
+### Change
+
+* “Developed and launched two limited-edition summer drinks...”
+  to a more concise context sentence if possible
+
+### Avoid repeating
+
+* “increase engagement”
+* “support sales traffic”
+* “drive impact”
+
+### Prefer
+
+* what the business problem was
+* what strategy was used
+* what changed as a result
+
+That will make the page feel more senior and less like campaign reporting.
+
+---
+
+## STEP 15 — QUALITY CHECK
+
+Before finalising, verify:
+
+### Visual system
+
+* no rounded corners
+* no glassmorphism
+* white/off-white backgrounds only
+* violet only as accent/signal
+* green only for status chip
+
+### Layout
+
+* clean 2-column desktop
+* stacked mobile
+* KPI section readable
+* no overflow or broken image stretching
+
+### Motion
+
+* subtle only
+* no large slide-ins
+* no jank on mobile
+* no hover dependency for essential content
+
+### Content
+
+* each campaign reads like a case file
+* results are visible in under 3 seconds
+* image supports the story, not vice versa
+
+---
+
+## REPLIT EXECUTION SUMMARY
+
+Send this to Replit as the distilled instruction set:
+
+### Implement exactly this:
+
+* keep the existing Strategic Marketing route and component
+* keep Navbar, Footer, HudOverlay
+* do not touch routing, admin, backend, or DB
+* replace the current “image + glass panel” layout with a **Concept C dossier-detail layout**
+* append the provided CSS to `client/src/index.css`
+* refactor the `campaigns` data objects to include `fileId`, `status`, `year`, `type`, `market`, and `kpis`
+* restructure each campaign into a **case file block**
+* surface results as both:
+
+  * a structured results list
+  * a 3-cell KPI strip
+* keep the page white/off-white, square-edged, minimal, and recruiter-readable
+* use subtle reveal and hover microinteractions only
+* keep images in bordered evidence frames with scan-line hover treatment
+
+---
+[1]: https://www.interaction-design.org/literature/topics/ux-case-studies?srsltid=AfmBOorYo3wRqN49Ygsg0YdgVb9nX0Wm-ZcI2XELEa78ITofG1GcYuuU&utm_source=chatgpt.com "What are UX Case Studies? — updated 2026"
+[2]: https://www.interaction-design.org/literature/article/the-10-most-inspirational-ux-design-portfolio-examples?srsltid=AfmBOopKCHref5ZdO9hcFIEmR5_ppj7s-ObysChWTJfOYwGKtE4Xu9ow&utm_source=chatgpt.com "The 10 Most Inspirational UX Design Portfolio Examples in ..."
+[3]: https://www.awwwards.com/sites/minimalistic-portfolio?utm_source=chatgpt.com "Minimalistic Portfolio - Awwwards Honorable Mention"
+[4]: https://webflow.com/blog/microinteractions?utm_source=chatgpt.com "15 best microinteraction examples for web design inspiration"

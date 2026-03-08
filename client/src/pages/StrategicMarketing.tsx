@@ -1,63 +1,142 @@
+import { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'wouter';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
-import { motion } from "framer-motion";
-import { Link } from "wouter";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import HudOverlay from "@/components/HudOverlay";
+type KPI = { value: string; label: string };
 
-const campaigns = [
+type Campaign = {
+  fileId: string;
+  status: string;
+  year: string;
+  type: string;
+  market: string;
+  image: string;
+  title: string;
+  subtitle: string;
+  context: string;
+  products?: string;
+  channel?: string;
+  objectives: string[];
+  measures?: string;
+  results: string[];
+  kpis: KPI[];
+};
+
+const campaigns: Campaign[] = [
   {
-    image: "/portfolio-images/brand-product-campaign.jpeg",
-    title: "Brand Product Campaign",
-    subtitle: "Kava & Chai: Summer Matcha Bliss",
-    description: "Developed and launched two limited-edition summer drinks—Iced Coco Matcha and Mango Matcha—to add new offerings and maintain customer excitement.",
-    products: "Iced Coco Matcha & Mango Matcha",
+    fileId: 'FILE_2024_001',
+    status: 'COMPLETE',
+    year: '2024',
+    type: 'Product Launch Campaign',
+    market: 'UAE',
+    image: '/portfolio-images/brand-product-campaign.jpeg',
+    title: 'Brand Product Campaign',
+    subtitle: 'Kava & Chai: Summer Matcha Bliss',
+    context:
+      'Developed and launched two limited-edition summer drinks — Iced Coco Matcha and Mango Matcha — to add new offerings and maintain customer excitement during off-peak season.',
+    products: 'Iced Coco Matcha & Mango Matcha',
     objectives: [
-      "Increase traffic during off-season with LTO offerings",
-      "Uplift brand perception through trend-driven and innovative offerings that align with market dynamics and customer preferences"
+      'Increase traffic during off-season with LTO offerings',
+      'Uplift brand perception through trend-driven and innovative offerings that align with market dynamics and customer preferences',
     ],
     results: [
-      "Contributed <strong>6% of</strong> overall <strong>sales mix</strong>",
-      "Performance marketing and influencer collaborations drove a <strong>23% increase in digital engagement</strong>",
-      "Enhanced the brand's reputation for innovation and trend alignment, fostering a stronger connection with its target audience"
-    ]
+      'Contributed 6% of overall sales mix',
+      'Performance marketing and influencer collaborations drove a 23% increase in digital engagement',
+      'Enhanced the brand\'s reputation for innovation and trend alignment',
+    ],
+    kpis: [
+      { value: '6%', label: 'Sales Mix' },
+      { value: '+23%', label: 'Digital Engagement' },
+      { value: 'LTO', label: 'Launch Format' },
+    ],
   },
   {
-    image: "/portfolio-images/seasonal-product-campaign.jpeg",
-    title: "Seasonal Product Campaign",
-    subtitle: "Wild & The Moon: Hit Reset with the Best!",
-    description: "Introduced a Summer Detox Range offered at a 20% discount for a limited period to increase engagement during the summer downtime.",
-    products: "Summer Detox Range at 20% off for a limited time only!",
+    fileId: 'FILE_2024_002',
+    status: 'COMPLETE',
+    year: '2024',
+    type: 'Seasonal Activation',
+    market: 'UAE',
+    image: '/portfolio-images/seasonal-product-campaign.jpeg',
+    title: 'Seasonal Product Campaign',
+    subtitle: 'Wild & The Moon: Hit Reset with the Best!',
+    context:
+      'Introduced a Summer Detox Range offered at a 20% discount for a limited period to increase engagement during the summer downtime and drive e-shop traffic.',
+    products: 'Summer Detox Range — 20% off limited time',
     objectives: [
-      "Support sales traffic during summer downtime",
-      "Increased customer engagement on digital platforms and traffic on the website (e-shop)"
+      'Support sales traffic during summer downtime',
+      'Increase customer engagement on digital platforms and traffic on the website (e-shop)',
     ],
     results: [
-      "Attained a striking <strong>ROAS of 38</strong> through targeted performance marketing campaigns",
-      "Increased <strong>website traffic by 27%</strong>, driving higher engagement and conversion"
-    ]
+      'Attained a striking ROAS of 38 through targeted performance marketing campaigns',
+      'Increased website traffic by 27%, driving higher engagement and conversion',
+    ],
+    kpis: [
+      { value: '38', label: 'ROAS' },
+      { value: '+27%', label: 'Web Traffic' },
+      { value: '20%', label: 'Offer' },
+    ],
   },
   {
-    image: "/portfolio-images/tactical-campaining-methods-and-successes.jpeg",
-    title: "Tactical Campaigning Methods and Successes",
-    subtitle: "Chin Chin",
-    description: "Utilized WhatsApp as a new communication medium for tactical campaigns to boost impact and drive sales.",
-    channel: "WhatsApp",
+    fileId: 'FILE_2023_003',
+    status: 'COMPLETE',
+    year: '2023',
+    type: 'Tactical Campaign',
+    market: 'UAE',
+    image: '/portfolio-images/tactical-campaining-methods-and-successes.jpeg',
+    title: 'Tactical Campaigning Methods and Successes',
+    subtitle: 'Chin Chin',
+    context:
+      'Utilized WhatsApp as a new communication medium for tactical campaigns to boost impact and drive sales through delivery platforms.',
+    channel: 'WhatsApp',
     objectives: [
-      "Introduce and test a new medium of communication to attain more impact around the campaign",
-      "Support sales traffic during summer downtime",
-      "Drive customer orders through delivery platforms and other aggregators"
+      'Introduce and test a new medium of communication to attain more impact around the campaign',
+      'Support sales traffic during summer downtime',
+      'Drive customer orders through delivery platforms and other aggregators',
     ],
-    measures: "Customers are split into categories - First Time Users, Frequent Customers and Churned Customers - then targeted based on results during the trial phase.",
+    measures:
+      'Customers are split into categories — First Time Users, Frequent Customers and Churned Customers — then targeted based on results during the trial phase.',
     results: [
-      "Tactical campaigns acquired the highest <strong>ROAS</strong>, ranging from <strong>27</strong> and above per campaign",
-      "Improved <strong>menu views by 42%</strong> across aggregators and delivery platforms",
-      "Identified and implemented WhatsApp as an effective communication medium, setting a replicable model across brand campaigns"
-    ]
-  }
+      'Tactical campaigns acquired the highest ROAS, ranging from 27 and above per campaign',
+      'Improved menu views by 42% across aggregators and delivery platforms',
+      'Identified and implemented WhatsApp as an effective communication medium, setting a replicable model across brand campaigns',
+    ],
+    kpis: [
+      { value: '27+', label: 'ROAS' },
+      { value: '+42%', label: 'Menu Views' },
+      { value: 'WA', label: 'Channel' },
+    ],
+  },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut', delay },
+  }),
+};
+
 export default function StrategicMarketing() {
+  useEffect(() => {
+    const reveals = document.querySelectorAll('.case-reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    reveals.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -65,115 +144,137 @@ export default function StrategicMarketing() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <HudOverlay />
       <Navbar />
-      
-      <section className="pt-24 pb-8">
-        <div className="container mx-auto px-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <nav className="text-sm mb-4">
-              <Link href="/" className="text-[#4A4A56] hover:text-[#A378FF] transition-colors">Home</Link>
-              <span className="mx-2 text-[#8A8A96]">/</span>
-              <Link href="/portfolio" className="text-[#4A4A56] hover:text-[#A378FF] transition-colors">Portfolio</Link>
-              <span className="mx-2 text-[#8A8A96]">/</span>
-              <span className="text-[#0A0A0F] font-medium">Strategic Marketing</span>
-            </nav>
-            <h1 className="section-title mb-4">
-              Strategic Marketing
-            </h1>
-            <div className="gradient-line mb-6"></div>
-          </motion.div>
-        </div>
-      </section>
 
-      <section className="py-[140px] pt-12">
-        <div className="container mx-auto px-6">
-          <div className="space-y-16">
-            {campaigns.map((campaign, index) => (
-              <motion.div
-                key={index}
-                className="flex flex-col lg:flex-row gap-12 items-stretch"
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.2 }}
+      <main className="strat-page">
+        <div className="hud-grid-bg" />
+
+        <section className="strat-wrap">
+          <header className="strat-head">
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0.05}>
+              <nav className="strat-breadcrumb">
+                <Link href="/">Home</Link>
+                <span className="sep">/</span>
+                <Link href="/portfolio">Portfolio</Link>
+                <span className="sep">/</span>
+                <span style={{ color: '#0A0A0F' }}>Strategic Marketing</span>
+              </nav>
+
+              <div className="strat-label">Case Files · Strategic Marketing</div>
+              <h1 className="strat-title">Strategic Marketing</h1>
+              <p className="strat-sub">
+                Selected campaign work across product launches, seasonal activations,
+                tactical messaging, and performance-led marketing. Each file highlights
+                the strategic objective, execution approach, and measurable outcome.
+              </p>
+
+              <div className="strat-meta">
+                <div className="strat-meta-tile">
+                  <span className="strat-meta-val" style={{ color: '#A378FF' }}>
+                    {String(campaigns.length).padStart(2, '0')} Files
+                  </span>
+                  <span className="strat-meta-lbl">Campaigns</span>
+                </div>
+                <div className="strat-meta-tile">
+                  <span className="strat-meta-val">F&B / Hospitality</span>
+                  <span className="strat-meta-lbl">Sector</span>
+                </div>
+                <div className="strat-meta-tile">
+                  <span className="strat-meta-val">UAE</span>
+                  <span className="strat-meta-lbl">Market</span>
+                </div>
+                <div className="strat-meta-tile">
+                  <span className="strat-meta-val">2023–2024</span>
+                  <span className="strat-meta-lbl">Timeline</span>
+                </div>
+              </div>
+            </motion.div>
+          </header>
+
+          <section className="strat-list">
+            {campaigns.map((c, index) => (
+              <div
+                key={c.fileId}
+                className="case-file case-reveal"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <motion.div 
-                  className={`flex-1 ${index % 2 === 1 ? 'lg:order-2' : ''}`}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.2 + 0.1 }}
-                >
-                  <div className="overflow-hidden h-full">
-                    <img 
-                      src={campaign.image}
-                      alt={`${campaign.title} - ${campaign.subtitle}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </motion.div>
+                <div className="case-corner tl" />
+                <div className="case-corner tr" />
 
-                <motion.div 
-                  className={`flex-1 glass-panel p-8 ${index % 2 === 1 ? 'lg:order-1' : ''}`}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.2 + 0.2 }}
-                >
-                  <h3 className="text-2xl font-light text-[#0A0A0F] mb-4">{campaign.title}</h3>
-                  <h4 className="text-xl text-[#4A4A56] mb-4">{campaign.subtitle}</h4>
-                  <p className="text-[0.9rem] text-[#4A4A56] mb-6 leading-[1.85] font-light">
-                    {campaign.description}
-                  </p>
-                  
-                  <div className="space-y-4">
-                    {campaign.products && (
-                      <div>
-                        <h5 className="font-medium text-[#0A0A0F] mb-2">Products:</h5>
-                        <p className="text-[#4A4A56] text-[0.9rem]">{campaign.products}</p>
-                      </div>
-                    )}
-                    
-                    {campaign.channel && (
-                      <div>
-                        <h5 className="font-medium text-[#0A0A0F] mb-2">Channel:</h5>
-                        <p className="text-[#4A4A56] text-[0.9rem]">{campaign.channel}</p>
-                      </div>
-                    )}
-                    
-                    <div>
-                      <h5 className="font-medium text-[#0A0A0F] mb-2">Objectives:</h5>
-                      <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
-                        {campaign.objectives.map((objective, objIndex) => (
-                          <li key={objIndex}>{objective}</li>
-                        ))}
-                      </ul>
+                <div className="case-top">
+                  <span className="case-file-id">
+                    <span className="fid">{c.fileId}</span>
+                  </span>
+                  <span className="case-status">● {c.status}</span>
+                </div>
+
+                <div className={`case-grid ${index % 2 === 1 ? 'reverse' : ''}`}>
+                  <div className="case-media">
+                    <div className="case-image-wrap">
+                      <img src={c.image} alt={c.title} className="case-image" />
+                      <div className="case-scan" />
                     </div>
-                    
-                    {campaign.measures && (
-                      <div>
-                        <h5 className="font-medium text-[#0A0A0F] mb-2">Measures:</h5>
-                        <p className="text-[#4A4A56] text-[0.9rem]">{campaign.measures}</p>
-                      </div>
-                    )}
-                    
-                    <div>
-                      <h5 className="font-medium text-[#0A0A0F] mb-2">Results:</h5>
-                      <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
-                        {campaign.results.map((result, resIndex) => (
-                          <li key={resIndex} dangerouslySetInnerHTML={{ __html: result }}></li>
-                        ))}
-                      </ul>
+                    <div className="case-pills">
+                      <span className="case-pill featured">{c.year}</span>
+                      <span className="case-pill featured">{c.type}</span>
+                      <span className="case-pill">{c.market}</span>
+                      {c.products && <span className="case-pill">{c.products}</span>}
+                      {c.channel && <span className="case-pill">{c.channel}</span>}
                     </div>
                   </div>
-                </motion.div>
-              </motion.div>
+
+                  <div className="case-body">
+                    <div className="case-type">{c.type}</div>
+                    <h3 className="case-title">{c.title}</h3>
+                    <p className="case-subtitle">{c.subtitle}</p>
+
+                    <div className="case-sections">
+                      <div className="case-block">
+                        <div className="case-block-label">Context</div>
+                        <p className="case-copy">{c.context}</p>
+                      </div>
+
+                      <div className="case-block">
+                        <div className="case-block-label">Strategic Objectives</div>
+                        <div className="case-list">
+                          {c.objectives.map((obj, i) => (
+                            <div key={i} className="case-list-item">{obj}</div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {c.measures && (
+                        <div className="case-block">
+                          <div className="case-block-label">Method / Segmentation</div>
+                          <p className="case-copy">{c.measures}</p>
+                        </div>
+                      )}
+
+                      <div className="case-block">
+                        <div className="case-block-label">Results</div>
+                        <div className="case-list">
+                          {c.results.map((res, i) => (
+                            <div key={i} className="case-list-item">{res}</div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="case-kpis">
+                      {c.kpis.map((kpi) => (
+                        <div key={kpi.label} className="case-kpi">
+                          <span className="case-kpi-val">{kpi.value}</span>
+                          <span className="case-kpi-lbl">{kpi.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
-          </div>
-        </div>
-      </section>
+          </section>
+        </section>
+      </main>
 
       <Footer />
     </motion.div>

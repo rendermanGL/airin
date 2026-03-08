@@ -127,6 +127,7 @@ This is a modern portfolio website for Airin John, a Brand Marketing Manager wit
 - GA4 tracking: G-6DHC4RNDG2
 
 ## Recent Changes
+- March 8, 2026: Strategic Marketing page redesigned — Case File Dossier layout with file IDs, status chips, 2-col grid (image evidence panel + structured content body), KPI strips, scan-line hover, intersection observer reveals, breadcrumb nav, metadata strip
 - March 8, 2026: Portfolio index page redesigned — "Case File Dossier" layout with flat dossier cards, file IDs, status chips, thumbnail scan lines, hover metrics, category filter strip, 3-col responsive grid, intersection observer scroll reveal
 - March 8, 2026: Hero redesigned — Frame B Reticle Arcs layout with circular portrait in sci-fi reticle frame (rotating arc segments, dashed rings, L-brackets, pulse rings), parallax mouse tracking, magnetic CTA buttons, iris cursor spotlight, staggered HUD callout lines on hover, interactive word-hero name with letter-spacing expansion and `// tag` reveal
 - March 8, 2026: THEME MIGRATION — Switched from dark void (#03000A) to light white/black HUD aesthetic (#FFFFFF base, #0A0A0F text). Updated CSS variables, all components, and all portfolio pages. Violet accent retained for highlights only. Orbs reduced to subtle violet mist.

@@ -1,7 +1,7 @@
-import { useEffect, useMemo, useState } from 'react';
-import { motion } from 'framer-motion';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import { useEffect, useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 type Metric = {
   value: string;
@@ -27,150 +27,160 @@ const fadeUp = {
   visible: (delay: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, ease: 'easeOut', delay }
-  })
+    transition: { duration: 0.7, ease: "easeOut", delay },
+  }),
 };
 
 const portfolioItems: PortfolioItem[] = [
   {
-    id: 'strategic-marketing',
-    fileId: 'FILE_2025_001',
-    status: 'COMPLETE',
-    title: 'Strategic Marketing',
+    id: "strategic-marketing",
+    fileId: "FILE_2025_001",
+    status: "COMPLETE",
+    title: "Strategic Marketing",
     description:
-      'Campaign strategy, go-to-market planning, product launches, and integrated multi-channel work designed to build brand visibility and commercial impact.',
-    category: 'Brand Strategy · Campaign Systems',
-    tags: ['Featured', 'UAE', 'GCC'],
-    year: '2019–2025',
-    href: '/portfolio/strategic-marketing',
-    image: '/portfolio-images/strategic-marketing.jpg',
+      "Campaign strategy, go-to-market planning, product launches, and integrated multi-channel work designed to build brand visibility and commercial impact.",
+    category: "Brand Strategy · Campaign Systems",
+    tags: ["Featured", "UAE", "GCC"],
+    year: "2019–2025",
+    href: "/portfolio/strategic-marketing",
+    image: "/portfolio-images/strategic-marketing.jpg",
     metrics: [
-      { value: 'Multi', label: 'Channels' },
-      { value: 'UAE', label: 'Market' },
-      { value: '6+ Yrs', label: 'Timeline' }
-    ]
+      { value: "Multi", label: "Channels" },
+      { value: "UAE", label: "Market" },
+      { value: "6+ Yrs", label: "Timeline" },
+    ],
   },
   {
-    id: 'customer-engagement',
-    fileId: 'FILE_2024_007',
-    status: 'COMPLETE',
-    title: 'Customer Engagement',
+    id: "customer-engagement",
+    fileId: "FILE_2024_007",
+    status: "COMPLETE",
+    title: "Customer Engagement",
     description:
-      'Community-led campaigns, engagement mechanics, creator activations, and audience participation systems designed to deepen brand interaction.',
-    category: 'Community · Engagement',
-    tags: ['Engagement', 'Activation', 'Audience'],
-    year: '2020–2025',
-    href: '/portfolio/customer-engagement',
-    image: '/portfolio-images/customer-engagement.png',
+      "Community-led campaigns, engagement mechanics, creator activations, and audience participation systems designed to deepen brand interaction.",
+    category: "Community · Engagement",
+    tags: ["Engagement", "Activation", "Audience"],
+    year: "2020–2025",
+    href: "/portfolio/customer-engagement",
+    image: "/portfolio-images/customer-engagement.png",
     metrics: [
-      { value: 'CRM', label: 'Touchpoints' },
-      { value: 'Social', label: 'Channels' },
-      { value: 'Live', label: 'Activation' }
-    ]
+      { value: "CRM", label: "Touchpoints" },
+      { value: "Social", label: "Channels" },
+      { value: "Live", label: "Activation" },
+    ],
   },
   {
-    id: 'brand-storytelling',
-    fileId: 'FILE_2024_003',
-    status: 'COMPLETE',
-    title: 'Brand Storytelling',
+    id: "brand-storytelling",
+    fileId: "FILE_2024_003",
+    status: "COMPLETE",
+    title: "Brand Storytelling",
     description:
-      'Narrative systems, brand voice, social storytelling, campaign copy, and editorial-style messaging built to sharpen positioning and emotional resonance.',
-    category: 'Content · Narrative',
-    tags: ['Copy', 'Voice', 'Story'],
-    year: '2019–2025',
-    href: '/portfolio/brand-storytelling',
-    image: '/portfolio-images/brand-storytelling.png',
+      "Narrative systems, brand voice, social storytelling, campaign copy, and editorial-style messaging built to sharpen positioning and emotional resonance.",
+    category: "Content · Narrative",
+    tags: ["Copy", "Voice", "Story"],
+    year: "2019–2025",
+    href: "/portfolio/brand-storytelling",
+    image: "/portfolio-images/brand-storytelling.png",
     metrics: [
-      { value: 'Voice', label: 'System' },
-      { value: 'Social', label: 'Content' },
-      { value: 'Brand', label: 'Narrative' }
-    ]
+      { value: "Voice", label: "System" },
+      { value: "Social", label: "Content" },
+      { value: "Brand", label: "Narrative" },
+    ],
   },
   {
-    id: 'awards-recognition',
-    fileId: 'FILE_2023_011',
-    status: 'COMPLETE',
-    title: 'Awards & Recognition',
+    id: "awards-recognition",
+    fileId: "FILE_2023_011",
+    status: "COMPLETE",
+    title: "Awards & Recognition",
     description:
-      'Industry recognition, shortlisted work, awards entries, and credibility signals that support strategic and creative marketing capability.',
-    category: 'Credentials · Industry Recognition',
-    tags: ['Awards', 'Recognition', 'Proof'],
-    year: 'Selected',
-    href: '/portfolio/awards-recognition',
-    image: '/portfolio-images/awards-recognition.jpg',
+      "Industry recognition, shortlisted work, awards entries, and credibility signals that support strategic and creative marketing capability.",
+    category: "Credentials · Industry Recognition",
+    tags: ["Awards", "Recognition", "Proof"],
+    year: "Selected",
+    href: "/portfolio/awards-recognition",
+    image: "/portfolio-images/awards-recognition.jpg",
     metrics: [
-      { value: 'Cred.', label: 'Signal' },
-      { value: 'Brand', label: 'Trust' },
-      { value: 'Case', label: 'Proof' }
-    ]
+      { value: "Cred.", label: "Signal" },
+      { value: "Brand", label: "Trust" },
+      { value: "Case", label: "Proof" },
+    ],
   },
   {
-    id: 'content-writing',
-    fileId: 'FILE_2023_005',
-    status: 'COMPLETE',
-    title: 'Content Writing Samples',
+    id: "content-writing",
+    fileId: "FILE_2023_005",
+    status: "COMPLETE",
+    title: "Content Writing Samples",
     description:
-      'Selected writing samples spanning marketing copy, editorial content, structured messaging, and branded writing across formats.',
-    category: 'Writing · Copy Samples',
-    tags: ['Writing', 'Samples', 'Editorial'],
-    year: 'Selected',
-    href: '/portfolio/content-writing',
-    image: '/portfolio-images/content-writing.jpg',
+      "Selected writing samples spanning marketing copy, editorial content, structured messaging, and branded writing across formats.",
+    category: "Writing · Copy Samples",
+    tags: ["Writing", "Samples", "Editorial"],
+    year: "Selected",
+    href: "/portfolio/content-writing",
+    image: "/portfolio-images/content-writing.jpg",
     metrics: [
-      { value: 'Docs', label: 'Viewer' },
-      { value: 'Copy', label: 'Formats' },
-      { value: 'Brand', label: 'Voice' }
-    ]
-  }
+      { value: "Docs", label: "Viewer" },
+      { value: "Copy", label: "Formats" },
+      { value: "Brand", label: "Voice" },
+    ],
+  },
 ];
 
-const filterOptions = ['All', 'Brand', 'Growth', 'Content'];
+const filterOptions = ["All", "Brand", "Growth", "Content"];
 
 function matchesFilter(item: PortfolioItem, filter: string) {
-  if (filter === 'All') return true;
+  if (filter === "All") return true;
 
-  const haystack = [
-    item.title,
-    item.description,
-    item.category,
-    ...item.tags
-  ].join(' ').toLowerCase();
+  const haystack = [item.title, item.description, item.category, ...item.tags]
+    .join(" ")
+    .toLowerCase();
 
-  if (filter === 'Brand') {
-    return haystack.includes('brand') || haystack.includes('strategy') || haystack.includes('story');
+  if (filter === "Brand") {
+    return (
+      haystack.includes("brand") ||
+      haystack.includes("strategy") ||
+      haystack.includes("story")
+    );
   }
 
-  if (filter === 'Growth') {
-    return haystack.includes('engagement') || haystack.includes('audience') || haystack.includes('activation');
+  if (filter === "Growth") {
+    return (
+      haystack.includes("engagement") ||
+      haystack.includes("audience") ||
+      haystack.includes("activation")
+    );
   }
 
-  if (filter === 'Content') {
-    return haystack.includes('content') || haystack.includes('copy') || haystack.includes('writing') || haystack.includes('editorial');
+  if (filter === "Content") {
+    return (
+      haystack.includes("content") ||
+      haystack.includes("copy") ||
+      haystack.includes("writing") ||
+      haystack.includes("editorial")
+    );
   }
 
   return true;
 }
 
 export default function Portfolio() {
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [activeFilter, setActiveFilter] = useState("All");
 
   const filteredItems = useMemo(() => {
     return portfolioItems.filter((item) => matchesFilter(item, activeFilter));
   }, [activeFilter]);
 
   useEffect(() => {
-    const reveals = document.querySelectorAll('.portfolio-reveal');
+    const reveals = document.querySelectorAll(".portfolio-reveal");
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('in');
+            entry.target.classList.add("in");
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.12 },
     );
 
     reveals.forEach((el) => observer.observe(el));
@@ -199,26 +209,32 @@ export default function Portfolio() {
             custom={0.06}
           >
             <div className="portfolio-sec-left">
-              <div className="portfolio-sec-label">Case Files · Active Portfolio</div>
-              <h1 className="portfolio-sec-title">Mission Dossiers</h1>
+              <div className="portfolio-sec-label">
+                Case Files · Active Portfolio
+              </div>
+              <h1 className="portfolio-sec-title">Portfolio</h1>
               <p className="portfolio-sec-sub">
-                A structured archive of strategic marketing, engagement, storytelling,
-                awards, and writing work across the UAE and GCC. Each file opens into
-                a deeper layer of portfolio content.
+                A structured archive of strategic marketing, engagement,
+                storytelling, awards, and writing work across the UAE and GCC.
+                Each file opens into a deeper layer of portfolio content.
               </p>
             </div>
 
             <div className="portfolio-sec-right">
               <span className="portfolio-count">
-                {String(filteredItems.length).padStart(2, '0')} FILES
+                {String(filteredItems.length).padStart(2, "0")} FILES
               </span>
 
-              <div className="portfolio-filter" role="tablist" aria-label="Portfolio filters">
+              <div
+                className="portfolio-filter"
+                role="tablist"
+                aria-label="Portfolio filters"
+              >
                 {filterOptions.map((filter) => (
                   <button
                     key={filter}
                     type="button"
-                    className={`portfolio-filter-btn ${activeFilter === filter ? 'active' : ''}`}
+                    className={`portfolio-filter-btn ${activeFilter === filter ? "active" : ""}`}
                     onClick={() => setActiveFilter(filter)}
                     aria-pressed={activeFilter === filter}
                   >
@@ -261,17 +277,18 @@ export default function Portfolio() {
                           className="dos-thumb-img"
                           onError={(e) => {
                             const img = e.currentTarget;
-                            img.style.display = 'none';
-                            const fallback = img.nextElementSibling as HTMLElement | null;
-                            if (fallback) fallback.style.display = 'block';
+                            img.style.display = "none";
+                            const fallback =
+                              img.nextElementSibling as HTMLElement | null;
+                            if (fallback) fallback.style.display = "block";
                           }}
                         />
                       ) : null}
 
                       <div
                         className="dos-thumb-placeholder"
-                        style={{ display: item.image ? 'none' : 'block' }}
-                        aria-hidden={item.image ? 'true' : 'false'}
+                        style={{ display: item.image ? "none" : "block" }}
+                        aria-hidden={item.image ? "true" : "false"}
                       />
                     </div>
 
@@ -293,7 +310,10 @@ export default function Portfolio() {
 
                   <div className="dos-metrics">
                     {item.metrics.map((metric) => (
-                      <div key={`${item.id}-${metric.label}`} className="dos-metric">
+                      <div
+                        key={`${item.id}-${metric.label}`}
+                        className="dos-metric"
+                      >
                         <span className="dos-m-val">{metric.value}</span>
                         <span className="dos-m-lbl">{metric.label}</span>
                       </div>
