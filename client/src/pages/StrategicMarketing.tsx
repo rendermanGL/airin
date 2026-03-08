@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HudOverlay from "@/components/HudOverlay";
 
 const campaigns = [
   {
@@ -64,51 +65,49 @@ export default function StrategicMarketing() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
+      <HudOverlay />
       <Navbar />
       
-      {/* Header Section */}
-      <section className="pt-24 pb-8 bg-white">
+      <section className="pt-24 pb-8">
         <div className="container mx-auto px-6">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <nav className="text-sm text-gray-500 mb-4">
-              <Link href="/" className="hover:text-secondary">Home</Link>
-              <span className="mx-2">/</span>
-              <Link href="/portfolio" className="hover:text-secondary">Portfolio</Link>
-              <span className="mx-2">/</span>
-              <span className="text-primary font-medium">Strategic Marketing</span>
+            <nav className="text-sm mb-4">
+              <Link href="/" className="text-[#8B85A0] hover:text-[#A378FF] transition-colors">Home</Link>
+              <span className="mx-2 text-[#4A4560]">/</span>
+              <Link href="/portfolio" className="text-[#8B85A0] hover:text-[#A378FF] transition-colors">Portfolio</Link>
+              <span className="mx-2 text-[#4A4560]">/</span>
+              <span className="text-[#F0ECFF] font-medium">Strategic Marketing</span>
             </nav>
-            <h1 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-4">
+            <h1 className="section-title mb-4">
               Strategic Marketing
             </h1>
-            <div className="w-24 h-1 bg-accent mb-6"></div>
+            <div className="gradient-line mb-6"></div>
           </motion.div>
         </div>
       </section>
 
-      {/* Main Content */}
-      <section className="py-12 bg-gray-50">
+      <section className="py-[140px] pt-12">
         <div className="container mx-auto px-6">
           <div className="space-y-16">
             {campaigns.map((campaign, index) => (
               <motion.div
                 key={index}
                 className="flex flex-col lg:flex-row gap-12 items-stretch"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
+                transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.2 }}
               >
-                {/* Image */}
                 <motion.div 
                   className={`flex-1 ${index % 2 === 1 ? 'lg:order-2' : ''}`}
                   initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 + 0.1 }}
+                  transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.2 + 0.1 }}
                 >
-                  <div className="rounded-lg overflow-hidden shadow-lg h-full">
+                  <div className="overflow-hidden h-full">
                     <img 
                       src={campaign.image}
                       alt={`${campaign.title} - ${campaign.subtitle}`}
@@ -117,37 +116,36 @@ export default function StrategicMarketing() {
                   </div>
                 </motion.div>
 
-                {/* Content */}
                 <motion.div 
-                  className={`flex-1 bg-white p-8 rounded-lg shadow-md ${index % 2 === 1 ? 'lg:order-1' : ''}`}
+                  className={`flex-1 glass-panel p-8 ${index % 2 === 1 ? 'lg:order-1' : ''}`}
                   initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 + 0.2 }}
+                  transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.2 + 0.2 }}
                 >
-                  <h3 className="text-3xl font-bold text-gray-900 mb-4">{campaign.title}</h3>
-                  <h4 className="text-2xl font-semibold text-gray-700 mb-4">{campaign.subtitle}</h4>
-                  <p className="text-lg text-gray-600 mb-6">
+                  <h3 className="text-2xl font-light text-[#F0ECFF] mb-4">{campaign.title}</h3>
+                  <h4 className="text-xl text-[#8B85A0] mb-4">{campaign.subtitle}</h4>
+                  <p className="text-[0.9rem] text-[#8B85A0] mb-6 leading-[1.85] font-light">
                     {campaign.description}
                   </p>
                   
                   <div className="space-y-4">
                     {campaign.products && (
                       <div>
-                        <h5 className="font-bold text-gray-800 mb-2">Products:</h5>
-                        <p className="text-gray-600">{campaign.products}</p>
+                        <h5 className="font-medium text-[#F0ECFF] mb-2">Products:</h5>
+                        <p className="text-[#8B85A0] text-[0.9rem]">{campaign.products}</p>
                       </div>
                     )}
                     
                     {campaign.channel && (
                       <div>
-                        <h5 className="font-bold text-gray-800 mb-2">Channel:</h5>
-                        <p className="text-gray-600">{campaign.channel}</p>
+                        <h5 className="font-medium text-[#F0ECFF] mb-2">Channel:</h5>
+                        <p className="text-[#8B85A0] text-[0.9rem]">{campaign.channel}</p>
                       </div>
                     )}
                     
                     <div>
-                      <h5 className="font-bold text-gray-800 mb-2">Objectives:</h5>
-                      <ul className="list-disc list-inside text-gray-600 space-y-1">
+                      <h5 className="font-medium text-[#F0ECFF] mb-2">Objectives:</h5>
+                      <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                         {campaign.objectives.map((objective, objIndex) => (
                           <li key={objIndex}>{objective}</li>
                         ))}
@@ -156,14 +154,14 @@ export default function StrategicMarketing() {
                     
                     {campaign.measures && (
                       <div>
-                        <h5 className="font-bold text-gray-800 mb-2">Measures:</h5>
-                        <p className="text-gray-600">{campaign.measures}</p>
+                        <h5 className="font-medium text-[#F0ECFF] mb-2">Measures:</h5>
+                        <p className="text-[#8B85A0] text-[0.9rem]">{campaign.measures}</p>
                       </div>
                     )}
                     
                     <div>
-                      <h5 className="font-bold text-gray-800 mb-2">Results:</h5>
-                      <ul className="list-disc list-inside text-gray-600 space-y-1">
+                      <h5 className="font-medium text-[#F0ECFF] mb-2">Results:</h5>
+                      <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                         {campaign.results.map((result, resIndex) => (
                           <li key={resIndex} dangerouslySetInnerHTML={{ __html: result }}></li>
                         ))}

@@ -1,10 +1,12 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft, FileText, ExternalLink, Award, Mail, Newspaper } from "lucide-react";
 import { Link } from "wouter";
+import HudOverlay from "@/components/HudOverlay";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 interface ContentSample {
   id: string;
@@ -135,62 +137,65 @@ const categories = [
 
 export default function ContentWritingSamples() {
   return (
-    <div className="min-h-screen bg-background py-24">
-      <div className="container mx-auto px-6">
-        {/* Header */}
+    <div className="min-h-screen bg-transparent">
+      <Navbar />
+      <HudOverlay />
+      <div className="container mx-auto px-6 py-[140px]">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="mb-12"
         >
           <Link href="/portfolio">
-            <Button variant="ghost" className="mb-6 hover:bg-accent">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Portfolio
-            </Button>
+            <button className="cta-secondary mb-6 flex items-center gap-2 px-4 py-2 text-[0.75rem]">
+              <ArrowLeft className="w-4 h-4" />
+              BACK TO PORTFOLIO
+            </button>
           </Link>
           
           <div className="flex items-center gap-4 mb-6">
-            <Badge variant="secondary" className="px-4 py-2">
+            <span className="glass-panel px-4 py-2 text-[0.7rem] uppercase tracking-[0.15em] text-[#A378FF]">
               Content Writing Samples
-            </Badge>
+            </span>
           </div>
+
+          <p className="hud-label mb-4">// CONTENT WRITING</p>
           
-          <h1 className="font-playfair text-4xl md:text-5xl font-bold text-primary mb-6">
+          <h1 className="section-title mb-6">
             Content Writing Portfolio
           </h1>
           
-          <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
+          <div className="gradient-line mb-6" />
+          
+          <p className="text-[0.9rem] font-light text-[#8B85A0] max-w-3xl leading-[1.85]">
             A comprehensive collection of professional content writing across press releases, award submissions, 
             and email marketing campaigns. Each piece demonstrates strategic messaging, brand voice consistency, 
             and measurable impact in driving engagement and business results.
           </p>
         </motion.div>
 
-        {/* Categories Overview */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
           className="grid gap-6 md:grid-cols-3 mb-16"
         >
-          {categories.map((category, index) => {
+          {categories.map((category) => {
             const IconComponent = category.icon;
             return (
-              <Card key={category.id} className="text-center">
-                <CardContent className="p-6">
-                  <IconComponent className="w-12 h-12 text-primary mx-auto mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">{category.title}</h3>
-                  <p className="text-muted-foreground text-sm mb-4">{category.description}</p>
-                  <Badge variant="outline">{category.count} samples</Badge>
-                </CardContent>
-              </Card>
+              <div key={category.id} className="glass-panel text-center p-6">
+                <IconComponent className="w-12 h-12 text-[#A378FF] mx-auto mb-4" />
+                <h3 className="text-xl font-light text-[#F0ECFF] mb-2">{category.title}</h3>
+                <p className="text-[#8B85A0] text-sm mb-4 font-light">{category.description}</p>
+                <span className="glass-panel px-3 py-1 text-[0.7rem] text-[#A378FF] tracking-[0.05em]">
+                  {category.count} samples
+                </span>
+              </div>
             );
           })}
         </motion.div>
 
-        {/* Content Categories */}
         {categories.map((category, categoryIndex) => {
           const categorySamples = contentSamples.filter(sample => sample.category === category.id);
           const IconComponent = category.icon;
@@ -198,52 +203,52 @@ export default function ContentWritingSamples() {
           return (
             <motion.div
               key={category.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 + categoryIndex * 0.1 }}
+              transition={{ duration: 0.7, ease: "easeOut", delay: 0.4 + categoryIndex * 0.1 }}
               className="mb-16"
             >
-              {/* Category Header */}
+              <div className="flex items-center gap-4 mb-2">
+                <p className="hud-label">// CATEGORY_{String(categoryIndex + 1).padStart(2, '0')}</p>
+              </div>
               <div className="flex items-center gap-4 mb-8">
-                <IconComponent className="w-8 h-8 text-primary" />
+                <IconComponent className="w-8 h-8 text-[#A378FF]" />
                 <div>
-                  <h2 className="font-playfair text-3xl font-bold text-primary">
+                  <h2 className="font-light text-[clamp(1.5rem,3vw,2.5rem)] text-[#F0ECFF] tracking-[-0.02em]">
                     {category.title}
                   </h2>
-                  <p className="text-muted-foreground">{category.description}</p>
+                  <p className="text-[#8B85A0] font-light text-[0.85rem]">{category.description}</p>
                 </div>
               </div>
 
-              {/* Sample Cards Grid */}
               <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-                {categorySamples.map((sample, index) => (
-                  <Card key={sample.id} className="group hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
-                    {/* Content */}
-                    <CardContent className="p-6 h-full flex flex-col justify-between">
-                      <h3 className="font-semibold text-lg mb-4 group-hover:text-primary transition-colors flex-grow">
+                {categorySamples.map((sample) => (
+                  <div 
+                    key={sample.id} 
+                    className="glass-panel group h-full flex flex-col transition-all duration-300 hover:shadow-[0_0_40px_rgba(123,94,167,0.15)]"
+                  >
+                    <div className="p-6 h-full flex flex-col justify-between">
+                      <h3 className="font-light text-lg mb-4 text-[#F0ECFF] group-hover:text-[#A378FF] transition-colors flex-grow">
                         {sample.title}
                       </h3>
                       
-                      <Button 
-                        asChild
-                        className="w-full group-hover:bg-primary group-hover:text-white transition-colors mt-auto"
+                      <a 
+                        href={`/pdfs/${encodeURIComponent(sample.pdfFile)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="cta-primary block text-center mt-auto text-[0.7rem] py-2 px-4"
                       >
-                        <a 
-                          href={`/pdfs/${encodeURIComponent(sample.pdfFile)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Read
-                        </a>
-                      </Button>
-                    </CardContent>
-                  </Card>
+                        READ →
+                      </a>
+                    </div>
+                  </div>
                 ))}
               </div>
             </motion.div>
           );
         })}
       </div>
+      <Footer />
     </div>
   );
 }

@@ -14,35 +14,35 @@ export default function Skills() {
   }, [isInView]);
 
   return (
-    <section id="skills" className="py-20 bg-primary/5" ref={ref}>
+    <section id="skills" className="py-[140px]" ref={ref}>
       <div className="container mx-auto px-6">
         <motion.div 
-          className="text-center mb-16"
-          initial={{ opacity: 0, y: 20 }}
+          className="mb-16"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <h2 className="font-playfair text-3xl md:text-4xl font-bold text-primary mb-4">My Skills</h2>
-          <div className="w-24 h-1 bg-accent mx-auto"></div>
-          <p className="mt-6 max-w-2xl mx-auto text-foreground">A combination of marketing expertise and leadership skills that drives impactful brand strategies and successful multi-channel campaigns.</p>
+          <span className="hud-label block mb-4">// CAPABILITIES</span>
+          <h2 className="section-title mb-6">My Skills</h2>
+          <div className="gradient-line mb-6"></div>
+          <p className="max-w-2xl text-[0.9rem] font-light text-[#8B85A0] leading-[1.85]">A combination of marketing expertise and leadership skills that drives impactful brand strategies and successful multi-channel campaigns.</p>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl mx-auto">
-          {/* Marketing Skills */}
+        <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">Marketing Expertise</h3>
+            <h3 className="font-light text-xl text-[#F0ECFF] mb-8">Marketing Expertise</h3>
             
             {marketingSkills.map((skill, index) => (
-              <div className="mb-6" key={skill.name}>
-                <div className="flex justify-between mb-2">
-                  <span className="font-medium">{skill.name}</span>
-                  <span>{skill.percentage}%</span>
+              <div className="py-4 border-b border-[rgba(255,255,255,0.04)]" key={skill.name}>
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-[0.85rem] text-[#8B85A0]">{skill.name}</span>
+                  <span className="data-readout">{skill.percentage}%</span>
                 </div>
                 <div className="skill-bar">
                   <div 
@@ -57,20 +57,19 @@ export default function Skills() {
             ))}
           </motion.div>
           
-          {/* Leadership Skills */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <h3 className="font-playfair text-2xl text-primary font-semibold mb-6">Leadership & Management</h3>
+            <h3 className="font-light text-xl text-[#F0ECFF] mb-8">Leadership & Management</h3>
             
             {leadershipSkills.map((skill, index) => (
-              <div className="mb-6" key={skill.name}>
-                <div className="flex justify-between mb-2">
-                  <span className="font-medium">{skill.name}</span>
-                  <span>{skill.percentage}%</span>
+              <div className="py-4 border-b border-[rgba(255,255,255,0.04)]" key={skill.name}>
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-[0.85rem] text-[#8B85A0]">{skill.name}</span>
+                  <span className="data-readout">{skill.percentage}%</span>
                 </div>
                 <div className="skill-bar">
                   <div 
@@ -86,21 +85,20 @@ export default function Skills() {
           </motion.div>
         </div>
         
-        {/* Tools & Technologies */}
         <motion.div 
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 20 }}
+          className="mt-16"
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <h3 className="font-playfair text-xl text-primary font-semibold mb-6">Tools & Technologies</h3>
+          <h3 className="font-light text-xl text-[#F0ECFF] mb-6">Tools & Technologies</h3>
           
-          <div className="flex flex-wrap justify-center gap-4">
+          <div className="flex flex-wrap gap-3">
             {tools.map((tool) => (
               <motion.span 
                 key={tool}
-                className="px-4 py-2 bg-white rounded-full shadow-sm"
+                className="glass-panel-static px-4 py-2 text-[0.8rem] text-[#8B85A0]"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}

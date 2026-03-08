@@ -1,0 +1,334 @@
+Completely redesign the visual UI/UX of this site. Keep all routing, 
+content, backend, admin system, and component logic unchanged. 
+Restyle everything visually.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DESIGN DIRECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Futuristic Mission Control HUD — think the interface a systems 
+operator uses aboard a spacecraft en route to Mars. 
+Not sci-fi fantasy. Not neon cyberpunk. 
+Precision engineering aesthetic. Calm, clinical, intelligent. 
+Every element feels like it was placed with a purpose.
+
+2026 trends to incorporate:
+- Glassmorphism: frosted translucent panels with blur layers
+- Contextual minimalism: UI reveals itself as needed
+- Scroll storytelling: content unfolds as a journey
+- Liquid Glass surface treatment on cards
+- Sci-fi gradient depth on dark backgrounds
+- Behaviour-driven microinteractions
+- Data-forward typography — numbers and labels 
+  feel like readouts, not decoration
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COLOUR SYSTEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Define in index.css as CSS variables:
+
+  --void:        #03000A    /* near-black space background */
+  --deep:        #0A0614    /* deep space purple-black */
+  --surface:     rgba(255, 255, 255, 0.04)  /* glass panels */
+  --surface-hover: rgba(255, 255, 255, 0.08)
+  --border:      rgba(255, 255, 255, 0.07)  /* panel borders */
+  --border-active: rgba(163, 120, 255, 0.4) /* active/hover borders */
+  --text-primary: #F0ECFF   /* near-white with slight purple cast */
+  --text-secondary: #8B85A0 /* muted purple-grey */
+  --text-dim:    #4A4560    /* very dim — labels, metadata */
+  --accent-1:    #7B5EA7    /* deep violet — primary accent */
+  --accent-2:    #A378FF    /* bright violet — highlights, CTAs */
+  --accent-3:    #C4A8FF    /* light lavender — glow edges */
+  --signal:      #00FFB2    /* single neon green — 
+                               used ONCE per page maximum, 
+                               like a live system indicator */
+
+Global background:
+  background: radial-gradient(
+    ellipse at 20% 10%,
+    #0A0614 0%,
+    #03000A 50%
+  );
+  min-height: 100vh;
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TYPOGRAPHY — ONE FONT, WEIGHT = HIERARCHY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Import from Google Fonts:
+  "Space Grotesk" — weights 300, 400, 500, 600, 700
+  (engineered, technical, zero-serif, 
+   feels like it belongs in a cockpit)
+
+Remove all other fonts. One font only throughout.
+
+Scale:
+  Hero name:        Space Grotesk 300, clamp(3.5rem,8vw,8rem),
+                    #F0ECFF, letter-spacing -0.03em
+  Section titles:   Space Grotesk 300, clamp(2rem,4vw,3.5rem),
+                    #F0ECFF, letter-spacing -0.02em
+  Body text:        Space Grotesk 300, 0.9rem, 
+                    #8B85A0, line-height 1.85
+  Important body:   Space Grotesk 400, same — weight signals importance
+  Nav links:        Space Grotesk 400, 0.7rem, 
+                    uppercase, 0.2em tracking, #8B85A0
+  HUD labels:       Space Grotesk 300, 0.65rem, 
+                    uppercase, 0.25em tracking, #4A4560
+  Data readouts:    Space Grotesk 500, 0.75rem, 
+                    #A378FF, letter-spacing 0.05em
+  CTA buttons:      Space Grotesk 500, 0.75rem, 
+                    uppercase, 0.15em tracking
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HUD GRID SYSTEM — THE MISSION CONTROL LAYER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Add a subtle full-page grid overlay that sits beneath all content:
+
+  .hud-grid {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: 
+      linear-gradient(rgba(163,120,255,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(163,120,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+Add 4 corner bracket markers to the viewport — top-left, top-right, 
+bottom-left, bottom-right — using CSS ::before/::after or absolute divs:
+
+  .corner-bracket {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-color: rgba(163,120,255,0.25);
+    border-style: solid;
+    border-width: 0;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .corner-tl { top:20px; left:20px; 
+    border-top-width:1px; border-left-width:1px; }
+  .corner-tr { top:20px; right:20px; 
+    border-top-width:1px; border-right-width:1px; }
+  .corner-bl { bottom:20px; left:20px; 
+    border-bottom-width:1px; border-left-width:1px; }
+  .corner-br { bottom:20px; right:20px; 
+    border-bottom-width:1px; border-right-width:1px; }
+
+Add a single live status indicator in the top-right corner 
+(below navbar, fixed position):
+  — A 4px circle pulsing in #00FFB2 (the signal colour)
+  — Next to it: "SYSTEM ONLINE" in Space Grotesk 300, 
+    0.6rem, uppercase, 0.2em tracking, #4A4560
+  — Pulse animation:
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.8); }
+    }
+    animation: pulse 2s ease-in-out infinite;
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NAVBAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Default: fully transparent
+- On scroll: 
+    background: rgba(3,0,10,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+- Left: "AJ" monogram — Space Grotesk 500, 0.9rem, 
+  letter-spacing 0.1em, #F0ECFF
+  followed by a 1px vertical rule in rgba(255,255,255,0.1), 
+  then "AIRIN JOHN" in Space Grotesk 300, 0.65rem, 
+  uppercase, 0.25em tracking, #8B85A0
+- Right: nav links with gap: 52px between each
+  Space Grotesk 400, 0.7rem, uppercase, 0.2em tracking, #8B85A0
+  Hover: colour #F0ECFF, with a 1px bottom border #A378FF
+- Far right after links: a small outlined button "HIRE ME"
+  border: 1px solid rgba(163,120,255,0.4)
+  color: #A378FF
+  padding: 6px 16px
+  border-radius: 0
+  hover: background rgba(163,120,255,0.1)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HERO SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Full viewport height
+- Two ambient orbs behind content:
+  Orb A: 600px, radial-gradient(#7B5EA7, transparent), 
+    top:-10%, left:-5%, blur:140px, opacity:0.5
+  Orb B: 400px, radial-gradient(#A378FF, transparent),
+    bottom:10%, right:5%, blur:120px, opacity:0.3
+  Both drift slowly using keyframe animations (12–18s loops)
+
+- Content positioned bottom-left (bottom: 12%, left: 6%):
+
+  Row 1 — HUD label:
+    "// BRAND MARKETING MANAGER" 
+    Space Grotesk 300, 0.65rem, uppercase, 0.25em tracking, #4A4560
+
+  Row 2 — Name:
+    "Airin John"
+    Space Grotesk 300, clamp(3.5rem,8vw,8rem), #F0ECFF,
+    letter-spacing -0.03em, line-height 0.95
+
+  Row 3 — Thin separator line:
+    width: 48px, height: 1px, 
+    background: linear-gradient(to right, #A378FF, transparent)
+    margin: 20px 0
+
+  Row 4 — Single line descriptor:
+    "Strategic marketer. Brand builder. Multi-channel architect."
+    Space Grotesk 300, 0.9rem, #8B85A0
+
+  Row 5 — Data readout strip (HUD style):
+    Three small stat blocks side by side, separated by 
+    1px vertical rules in rgba(255,255,255,0.08):
+    [ 6+ YRS EXPERIENCE ] [ UAE & GCC MARKET ] [ F&B · LIFESTYLE · TECH ]
+    Space Grotesk 300, 0.65rem, uppercase, 0.2em tracking, #4A4560
+    values in Space Grotesk 500, 0.85rem, #A378FF
+    margin-top: 32px
+
+  Row 6 — CTA buttons (margin-top: 32px):
+    Primary "VIEW WORK": 
+      border: 1px solid rgba(163,120,255,0.4)
+      background: transparent, color: #F0ECFF
+      padding: 12px 28px, border-radius: 0
+      hover: background rgba(163,120,255,0.12), 
+             border-color: #A378FF
+    Secondary "CONTACT":
+      border: 1px solid rgba(255,255,255,0.08)
+      color: #8B85A0, same sizing
+      hover: border-color rgba(163,120,255,0.3), 
+             color #F0ECFF
+
+- Profile photo: position right side of hero, tall rectangle crop
+  (aspect ratio 3:4), no border-radius
+  Apply CSS filter: 
+    filter: contrast(1.05) brightness(0.9) saturate(0.85);
+  Overlay a gradient fade on left edge and bottom edge 
+  blending photo into background:
+    left fade: linear-gradient(to right, #03000A, transparent)
+    bottom fade: linear-gradient(to top, #03000A, transparent)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GLASSMORPHISM PANEL SYSTEM — ALL CARDS & SECTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+All cards, panels, and content blocks use this base style:
+
+  .glass-panel {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 0;
+  }
+
+  .glass-panel:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(163, 120, 255, 0.3);
+    transition: all 400ms ease;
+  }
+
+Add a very subtle inner top highlight to panels:
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PORTFOLIO CARDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Apply glass-panel style to all cards
+- Add a HUD-style label above each card title:
+  "PROJECT_01", "PROJECT_02" etc. in the data readout style
+- Category tag: Space Grotesk 300, uppercase, 0.2em, 
+  colour #A378FF, 0.65rem
+- Card title: Space Grotesk 300, 1.4rem, #F0ECFF
+- Description: Space Grotesk 300, 0.85rem, #8B85A0
+- Bottom of card: a thin 1px rule rgba(255,255,255,0.06) 
+  then "EXPLORE →" Space Grotesk 400, 0.7rem, 
+  uppercase, #4A4560, hover #A378FF
+- On hover: a very subtle violet glow appears behind the card:
+  box-shadow: 0 0 40px rgba(123,94,167,0.15)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SKILLS SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Render skills as a data table / system readout:
+  Two columns — skill name left, proficiency indicator right
+  Proficiency shown as a thin horizontal bar:
+    background: rgba(255,255,255,0.06)
+    fill: linear-gradient(to right, #7B5EA7, #A378FF)
+    height: 1px, width varies by level
+- Each skill row separated by 1px rgba(255,255,255,0.04) rule
+- Section label styled as a HUD header:
+  "// CAPABILITIES" — Space Grotesk 300, uppercase, 
+  0.2em tracking, #4A4560, 0.65rem
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SCROLL BEHAVIOUR & MICROINTERACTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- All sections fade + slide up on scroll into view using 
+  Framer Motion (keep existing logic, adjust values):
+    initial: { opacity: 0, y: 24 }
+    animate: { opacity: 1, y: 0 }
+    transition: { duration: 0.7, ease: "easeOut" }
+
+- Add a scroll progress indicator — a single 1px horizontal 
+  line at very top of page that fills left to right as 
+  user scrolls, colour #A378FF, opacity 0.6
+
+- Add a custom cursor:
+    Default: 6px circle, border 1px solid #A378FF, 
+             no fill, mix-blend-mode: difference
+    On hover over links/buttons: 
+             scale to 20px, fill rgba(163,120,255,0.15)
+    Transition: 150ms ease
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONTACT SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- HUD header: "// INITIATE CONTACT" — dim label style
+- Large statement: "Let's build something that moves people."
+  Space Grotesk 300, clamp(2rem,4vw,3.5rem), #F0ECFF
+- Contact details rendered as system data:
+  CHANNEL_01 · EMAIL · [address]
+  CHANNEL_02 · LINKEDIN · [link]
+  Space Grotesk 300, 0.8rem, #8B85A0, monospaced feel
+- CTA button: "OPEN CHANNEL"
+  background: linear-gradient(135deg, #7B5EA7, #A378FF)
+  color: #F0ECFF, border: none, border-radius: 0
+  padding: 14px 36px
+  hover: opacity 0.85, subtle glow:
+    box-shadow: 0 0 24px rgba(163,120,255,0.3)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FOOTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Border-top: 1px solid rgba(255,255,255,0.06)
+- Three columns:
+  Left:   "AJ · AIRIN JOHN" — Space Grotesk 300, 0.7rem, 
+          uppercase, 0.2em tracking, #4A4560
+  Centre: nav links repeated — Space Grotesk 300, 
+          0.65rem, uppercase, #4A4560, gap: 32px
+  Right:  "© 2025 · ALL SYSTEMS NOMINAL" — 
+          Space Grotesk 300, 0.65rem, #4A4560
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GLOBAL RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- border-radius: 0 everywhere — no rounded corners at all
+- No white or light backgrounds on any section
+- Section padding: minimum 140px top and bottom
+- All decorative lines: 1px, rgba white under 8% opacity
+- No drop shadows — use glow (box-shadow with blur, 
+  no offset, rgba violet) instead
+- Custom cursor: disable on mobile/touch devices
+- background-attachment: scroll on mobile 
+  (fixed parallax breaks on iOS Safari)
+- ParticleSystem: colour #7B5EA7, opacity 0.08
+- Maintain WCAG AA contrast: 
+  #F0ECFF on #03000A passes at ~15:1 ratio
+- Do not change any routing, backend, admin, 
+  or data logic whatsoever
+
+Confirm each section is complete when done and flag anything 
+that cannot be restyled without breaking functionality.

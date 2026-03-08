@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Link, useLocation } from "wouter";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HudOverlay from "@/components/HudOverlay";
 
 const portfolioCategories = [
   {
@@ -50,68 +51,62 @@ export default function Portfolio() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
+      <HudOverlay />
       <Navbar />
       
-      {/* Header Section */}
-      <section className="pt-24 pb-16 bg-gradient-to-br from-primary/5 to-secondary/5">
+      <section className="pt-32 pb-[140px]">
         <div className="container mx-auto px-6">
           <motion.div 
-            className="text-center mb-16"
-            initial={{ opacity: 0, y: 20 }}
+            className="mb-16"
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <h1 className="font-playfair text-4xl md:text-5xl lg:text-6xl font-bold text-primary leading-tight mb-6">
+            <span className="hud-label block mb-4">// PORTFOLIO</span>
+            <h1 className="section-title mb-4">
               Portfolio
             </h1>
-            <div className="w-24 h-1 bg-accent mx-auto mb-6"></div>
-            <p className="text-lg text-foreground max-w-3xl mx-auto leading-relaxed">
+            <div className="gradient-line mb-6"></div>
+            <p className="text-[0.9rem] text-[#8B85A0] max-w-3xl leading-[1.85] font-light">
               Explore my expertise across strategic marketing, customer engagement, brand storytelling, and award-winning campaigns that have driven measurable business results.
             </p>
           </motion.div>
-        </div>
-      </section>
 
-      {/* Portfolio Categories Grid */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {portfolioCategories.map((category, index) => (
               <motion.div
                 key={category.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 24 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
+                transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.1 }}
                 className="group"
               >
                 <Link href={category.route}>
-                  <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 cursor-pointer">
-                    {/* Image Section */}
-                    <div className="relative h-64 overflow-hidden">
+                  <div className="glass-panel overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-[0_0_40px_rgba(123,94,167,0.15)]">
+                    <div className="px-4 pt-4">
+                      <span className="data-readout">PROJECT_{String(index + 1).padStart(2, '0')}</span>
+                    </div>
+                    <div className="relative h-64 overflow-hidden mt-2">
                       <img 
                         src={category.imageUrl}
                         alt={category.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      <div className="absolute bottom-4 left-4 right-4 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 opacity-0 group-hover:opacity-100">
-                        <div className="inline-flex items-center text-white font-medium bg-secondary/90 px-4 py-2 rounded-full">
-                          <span>Explore Projects</span>
-                          <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                          </svg>
-                        </div>
-                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#03000A]/80 via-transparent to-transparent"></div>
                     </div>
                     
-                    {/* Content Section */}
-                    <div className="p-8">
-                      <h3 className="font-playfair text-2xl font-bold text-primary mb-4 group-hover:text-secondary transition-colors duration-300">
+                    <div className="p-6">
+                      <h3 className="font-light text-[1.4rem] text-[#F0ECFF] mb-3 tracking-[-0.01em]">
                         {category.title}
                       </h3>
-                      <p className="text-foreground leading-relaxed">
+                      <p className="text-[0.85rem] text-[#8B85A0] leading-relaxed mb-4">
                         {category.description}
                       </p>
+                      <div className="border-t border-[rgba(255,255,255,0.07)] pt-4">
+                        <span className="text-[0.7rem] uppercase tracking-[0.15em] text-[#4A4560] group-hover:text-[#A378FF] transition-colors duration-300">
+                          EXPLORE →
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </Link>

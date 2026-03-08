@@ -91,10 +91,10 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
     particleGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
     const particleMaterial = new THREE.PointsMaterial({
-      color: 0x666666,
+      color: 0x7B5EA7,
       size: isMobile ? 2.5 : 3.5,
       transparent: true,
-      opacity: 0.3,
+      opacity: 0.08,
       sizeAttenuation: true,
       map: circleTexture
     });
@@ -106,9 +106,9 @@ export default function ParticleSystem({ className = '' }: ParticleSystemProps) 
     // Line system for connections
     const lineGeometry = new THREE.BufferGeometry();
     const lineMaterial = new THREE.LineBasicMaterial({
-      color: 0x888888,
+      color: 0x7B5EA7,
       transparent: true,
-      opacity: 0.15
+      opacity: 0.06
     });
 
     const lines = new THREE.LineSegments(lineGeometry, lineMaterial);

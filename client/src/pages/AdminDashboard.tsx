@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
@@ -70,103 +68,98 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p>Loading dashboard...</p>
+          <div className="w-12 h-12 border-2 border-[#A378FF] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className="text-[#8B85A0] font-light">Loading dashboard...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+    <div className="min-h-screen">
+      <header className="border-b border-[rgba(255,255,255,0.06)] bg-[rgba(3,0,10,0.85)] backdrop-blur-[20px]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
-            <h1 className="text-2xl font-bold text-primary">Admin Dashboard</h1>
-            <Button onClick={handleLogout} variant="outline" size="sm">
-              <LogOut className="w-4 h-4 mr-2" />
-              Logout
-            </Button>
+            <div>
+              <p className="hud-label mb-1">// ADMIN PANEL</p>
+              <h1 className="text-2xl font-light text-[#F0ECFF] tracking-[-0.02em]">Admin Dashboard</h1>
+            </div>
+            <button onClick={handleLogout} className="cta-secondary flex items-center gap-2 px-4 py-2 text-[0.7rem]">
+              <LogOut className="w-4 h-4" />
+              LOGOUT
+            </button>
           </div>
         </div>
       </header>
 
-      {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Stats */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
         >
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center">
-                <Mail className="w-8 h-8 text-primary mr-3" />
-                <div>
-                  <p className="text-2xl font-bold">{contacts.length}</p>
-                  <p className="text-muted-foreground">Total Messages</p>
-                </div>
+          <div className="glass-panel p-6">
+            <div className="flex items-center">
+              <Mail className="w-8 h-8 text-[#A378FF] mr-3" />
+              <div>
+                <p className="text-2xl font-light text-[#F0ECFF]">{contacts.length}</p>
+                <p className="text-[#8B85A0] text-[0.8rem] font-light">Total Messages</p>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
           
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center">
-                <Calendar className="w-8 h-8 text-primary mr-3" />
-                <div>
-                  <p className="text-2xl font-bold">
-                    {contacts.filter(c => {
-                      const today = new Date();
-                      const msgDate = new Date(c.createdAt);
-                      return msgDate.toDateString() === today.toDateString();
-                    }).length}
-                  </p>
-                  <p className="text-muted-foreground">Today</p>
-                </div>
+          <div className="glass-panel p-6">
+            <div className="flex items-center">
+              <Calendar className="w-8 h-8 text-[#A378FF] mr-3" />
+              <div>
+                <p className="text-2xl font-light text-[#F0ECFF]">
+                  {contacts.filter(c => {
+                    const today = new Date();
+                    const msgDate = new Date(c.createdAt);
+                    return msgDate.toDateString() === today.toDateString();
+                  }).length}
+                </p>
+                <p className="text-[#8B85A0] text-[0.8rem] font-light">Today</p>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
           
-          <Card>
-            <CardContent className="p-6">
-              <div className="flex items-center">
-                <User className="w-8 h-8 text-primary mr-3" />
-                <div>
-                  <p className="text-2xl font-bold">
-                    {new Set(contacts.map(c => c.email)).size}
-                  </p>
-                  <p className="text-muted-foreground">Unique Contacts</p>
-                </div>
+          <div className="glass-panel p-6">
+            <div className="flex items-center">
+              <User className="w-8 h-8 text-[#A378FF] mr-3" />
+              <div>
+                <p className="text-2xl font-light text-[#F0ECFF]">
+                  {new Set(contacts.map(c => c.email)).size}
+                </p>
+                <p className="text-[#8B85A0] text-[0.8rem] font-light">Unique Contacts</p>
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </motion.div>
 
-        {/* Contact Messages */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
         >
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <Mail className="w-5 h-5" />
-                Contact Messages
-                <Badge variant="secondary">{contacts.length}</Badge>
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
+          <div className="glass-panel-static">
+            <div className="p-6 border-b border-[rgba(255,255,255,0.07)]">
+              <div className="flex items-center gap-2">
+                <Mail className="w-5 h-5 text-[#A378FF]" />
+                <h2 className="text-lg font-light text-[#F0ECFF]">Contact Messages</h2>
+                <span className="glass-panel px-3 py-1 text-[0.7rem] text-[#A378FF] tracking-[0.05em] ml-2">
+                  {contacts.length}
+                </span>
+              </div>
+            </div>
+            <div className="p-6">
               {contacts.length === 0 ? (
                 <div className="text-center py-8">
-                  <Mail className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                  <p className="text-muted-foreground">No contact messages yet</p>
+                  <Mail className="w-12 h-12 text-[#4A4560] mx-auto mb-4" />
+                  <p className="text-[#8B85A0] font-light">No contact messages yet</p>
                 </div>
               ) : (
                 <div className="space-y-4">
@@ -176,28 +169,28 @@ export default function AdminDashboard() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="border rounded-lg p-4 hover:bg-gray-50"
+                      className="glass-panel p-4 hover:bg-[rgba(255,255,255,0.06)] transition-colors"
                     >
                       <div className="flex justify-between items-start mb-2">
                         <div>
-                          <h3 className="font-semibold text-primary">{contact.name}</h3>
-                          <p className="text-sm text-muted-foreground">{contact.email}</p>
+                          <h3 className="font-medium text-[#F0ECFF]">{contact.name}</h3>
+                          <p className="text-sm text-[#8B85A0]">{contact.email}</p>
                         </div>
                         <div className="text-right">
-                          <Badge variant="outline" className="mb-1">
+                          <span className="glass-panel px-3 py-1 text-[0.65rem] text-[#8B85A0] tracking-[0.05em]">
                             {formatDate(contact.createdAt)}
-                          </Badge>
+                          </span>
                         </div>
                       </div>
                       
                       <div className="mb-3">
-                        <h4 className="font-medium mb-1">Subject:</h4>
-                        <p className="text-sm">{contact.subject}</p>
+                        <h4 className="font-medium mb-1 text-[#F0ECFF] text-[0.85rem]">Subject:</h4>
+                        <p className="text-sm text-[#8B85A0]">{contact.subject}</p>
                       </div>
                       
                       <div>
-                        <h4 className="font-medium mb-1">Message:</h4>
-                        <p className="text-sm text-muted-foreground whitespace-pre-wrap">
+                        <h4 className="font-medium mb-1 text-[#F0ECFF] text-[0.85rem]">Message:</h4>
+                        <p className="text-sm text-[#8B85A0] whitespace-pre-wrap font-light">
                           {contact.message}
                         </p>
                       </div>
@@ -205,8 +198,8 @@ export default function AdminDashboard() {
                   ))}
                 </div>
               )}
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </motion.div>
       </main>
     </div>

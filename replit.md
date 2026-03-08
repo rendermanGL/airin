@@ -2,18 +2,27 @@
 
 ## Overview
 
-This is a modern portfolio website for Airin John, a Brand Marketing Manager with over 5 years of experience in multi-channel marketing campaigns. The application showcases her professional work, skills, and achievements through an interactive portfolio format with document viewing capabilities.
+This is a modern portfolio website for Airin John, a Brand Marketing Manager with over 6 years of experience in multi-channel marketing campaigns. The application showcases her professional work, skills, and achievements through an interactive portfolio format with document viewing capabilities. The site uses a "Futuristic Mission Control HUD" design aesthetic with glassmorphism, dark space-themed backgrounds, and data-readout typography.
 
 ## System Architecture
 
 ### Frontend Architecture
 - **Framework**: React 18 with TypeScript
 - **Routing**: Wouter for client-side routing
-- **Styling**: Tailwind CSS v4 with shadcn/ui component library
+- **Styling**: Tailwind CSS with custom HUD design system (glassmorphism, dark theme)
+- **Typography**: Space Grotesk (single font, weight = hierarchy)
 - **Animations**: Framer Motion for smooth page transitions and animations
-- **3D Effects**: Three.js for particle system background effects
+- **3D Effects**: Three.js for particle system background effects (violet theme)
 - **State Management**: TanStack Query (React Query) for server state management
 - **Form Handling**: React Hook Form with Zod validation
+- **Analytics**: Google Analytics GA4 (G-6DHC4RNDG2)
+
+### Design System
+- **Color Palette**: Dark space theme (#03000A void, #0A0614 deep, #7B5EA7 accent-1, #A378FF accent-2, #00FFB2 signal green)
+- **Glass Panels**: rgba(255,255,255,0.04) bg, rgba(255,255,255,0.07) border, blur(12px)
+- **HUD Elements**: Grid overlay, corner brackets, scroll progress bar, status indicator
+- **Typography Scale**: Hero 300/clamp, Section titles 300/clamp, Body 300/0.9rem, Nav 400/0.7rem, HUD labels 300/0.65rem, Data readouts 500/0.75rem
+- **Global Rules**: border-radius: 0 everywhere, no white backgrounds, min 140px section padding
 
 ### Backend Architecture
 - **Runtime**: Node.js with Express.js server
@@ -41,24 +50,27 @@ This is a modern portfolio website for Airin John, a Brand Marketing Manager wit
 - `GET /api/documents` - Fetch all documents
 - `GET /api/documents/:id` - Fetch specific document
 - `GET /api/documents/:id/file` - Download document file
+- `POST /api/contact` - Submit contact form
+- `POST /api/admin/login` - Admin authentication
+- `GET /api/admin/contacts` - Fetch contact messages (auth required)
+- `POST /api/admin/logout` - Admin logout
 
 ### Frontend Pages
-- **Home**: Hero section, about, skills, testimonials, contact
-- **Portfolio**: Main portfolio categories
+- **Home**: Hero section (HUD layout), about, skills, testimonials, contact
+- **Portfolio**: Main portfolio categories with glass-panel cards
 - **Strategic Marketing**: Campaign showcases with metrics
 - **Customer Engagement**: Community and engagement strategies
 - **Brand Storytelling**: Multi-channel marketing campaigns
 - **Awards Recognition**: Industry awards and achievements
-- **Content Writing Samples**: PDF document viewer for press releases and content
+- **Content Writing Samples**: Document viewer for press releases and content
+- **Admin Login/Dashboard**: Contact form management
 
 ### UI Components
-- Complete shadcn/ui component library integration
-- Custom particle system background
-- Responsive navigation with mobile menu
-- Interactive skill progress bars
-- PDF document viewer
-- Contact form with validation
-- Newsletter subscription
+- **HudOverlay**: Grid, corner brackets, status indicator, scroll progress
+- **ParticleSystem**: Three.js violet-themed particle network
+- **Navbar**: Transparent → frosted glass on scroll, AJ monogram
+- **Glass Panels**: Glassmorphism cards used across all sections
+- **Custom CSS Classes**: hud-label, data-readout, section-title, gradient-line, glass-panel, cta-primary/secondary/gradient, orb-a/orb-b
 
 ## Data Flow
 
@@ -94,6 +106,7 @@ This is a modern portfolio website for Airin John, a Brand Marketing Manager wit
 - **Database**: Neon PostgreSQL serverless
 - **Build Process**: Vite build for client, esbuild for server
 - **Environment**: Node.js 20 with PostgreSQL 16
+- **Custom Domain**: airinjohn.com (to be connected)
 
 ### Build Configuration
 - **Development**: `npm run dev` - runs tsx server with Vite middleware
@@ -105,16 +118,21 @@ This is a modern portfolio website for Airin John, a Brand Marketing Manager wit
 - **Server**: Port 5000 (mapped to external port 80)
 - **Development**: Port 24678 (mapped to external port 3000)
 
+### SEO & Meta
+- Page title: "Airin John | Brand Marketing Manager"
+- Meta description: 160 chars professional summary
+- Open Graph tags for LinkedIn/WhatsApp previews
+- Twitter card tags
+- Favicon: SVG with "AJ" initials
+- GA4 tracking: G-6DHC4RNDG2
+
 ## Recent Changes
-- June 22, 2025: Updated Skills.tsx with authentic marketing expertise, leadership skills, and removed emoji headers
-- June 22, 2025: Fixed ContentWritingSamples.tsx card layout with equal heights and bottom-pinned Read buttons
-- June 22, 2025: Updated ContentWritingSamples.tsx with authentic Wild & The Moon content titles and removed descriptions
-- June 22, 2025: Completed AwardsRecognition.tsx layout with proper image paths and consistent flex positioning
-- June 22, 2025: Updated BrandStorytelling.tsx with dynamic flex layout, height matching, and alternating positions
-- June 22, 2025: Updated CustomerEngagement.tsx with flex layout, height matching, and alternating image positions
-- June 22, 2025: Updated StrategicMarketing.tsx layout to use flex with items-stretch for image-text height matching
-- June 22, 2025: Fixed admin login authentication flow and resolved HTTP token validation errors
-- June 22, 2025: Initial portfolio setup with Wild & The Moon authentic brand imagery
+- March 8, 2026: Complete visual redesign to "Mission Control HUD" aesthetic - dark theme, glassmorphism, Space Grotesk typography, HUD overlays, ambient orbs, data readout styling across all pages
+- March 8, 2026: Added Google Analytics GA4 (G-6DHC4RNDG2)
+- March 8, 2026: Added Open Graph + Twitter card meta tags for link previews
+- March 8, 2026: Added SVG favicon with AJ monogram
+- March 8, 2026: Made email/LinkedIn links clickable in Contact section
+- March 8, 2026: Updated footer copy and newsletter description
 
 ## User Preferences
 
