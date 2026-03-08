@@ -76,11 +76,11 @@ export default function StrategicMarketing() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <nav className="text-sm mb-4">
-              <Link href="/" className="text-[#8B85A0] hover:text-[#A378FF] transition-colors">Home</Link>
-              <span className="mx-2 text-[#4A4560]">/</span>
-              <Link href="/portfolio" className="text-[#8B85A0] hover:text-[#A378FF] transition-colors">Portfolio</Link>
-              <span className="mx-2 text-[#4A4560]">/</span>
-              <span className="text-[#F0ECFF] font-medium">Strategic Marketing</span>
+              <Link href="/" className="text-[#4A4A56] hover:text-[#A378FF] transition-colors">Home</Link>
+              <span className="mx-2 text-[#8A8A96]">/</span>
+              <Link href="/portfolio" className="text-[#4A4A56] hover:text-[#A378FF] transition-colors">Portfolio</Link>
+              <span className="mx-2 text-[#8A8A96]">/</span>
+              <span className="text-[#0A0A0F] font-medium">Strategic Marketing</span>
             </nav>
             <h1 className="section-title mb-4">
               Strategic Marketing
@@ -122,30 +122,30 @@ export default function StrategicMarketing() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.2 + 0.2 }}
                 >
-                  <h3 className="text-2xl font-light text-[#F0ECFF] mb-4">{campaign.title}</h3>
-                  <h4 className="text-xl text-[#8B85A0] mb-4">{campaign.subtitle}</h4>
-                  <p className="text-[0.9rem] text-[#8B85A0] mb-6 leading-[1.85] font-light">
+                  <h3 className="text-2xl font-light text-[#0A0A0F] mb-4">{campaign.title}</h3>
+                  <h4 className="text-xl text-[#4A4A56] mb-4">{campaign.subtitle}</h4>
+                  <p className="text-[0.9rem] text-[#4A4A56] mb-6 leading-[1.85] font-light">
                     {campaign.description}
                   </p>
                   
                   <div className="space-y-4">
                     {campaign.products && (
                       <div>
-                        <h5 className="font-medium text-[#F0ECFF] mb-2">Products:</h5>
-                        <p className="text-[#8B85A0] text-[0.9rem]">{campaign.products}</p>
+                        <h5 className="font-medium text-[#0A0A0F] mb-2">Products:</h5>
+                        <p className="text-[#4A4A56] text-[0.9rem]">{campaign.products}</p>
                       </div>
                     )}
                     
                     {campaign.channel && (
                       <div>
-                        <h5 className="font-medium text-[#F0ECFF] mb-2">Channel:</h5>
-                        <p className="text-[#8B85A0] text-[0.9rem]">{campaign.channel}</p>
+                        <h5 className="font-medium text-[#0A0A0F] mb-2">Channel:</h5>
+                        <p className="text-[#4A4A56] text-[0.9rem]">{campaign.channel}</p>
                       </div>
                     )}
                     
                     <div>
-                      <h5 className="font-medium text-[#F0ECFF] mb-2">Objectives:</h5>
-                      <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
+                      <h5 className="font-medium text-[#0A0A0F] mb-2">Objectives:</h5>
+                      <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                         {campaign.objectives.map((objective, objIndex) => (
                           <li key={objIndex}>{objective}</li>
                         ))}
@@ -154,14 +154,14 @@ export default function StrategicMarketing() {
                     
                     {campaign.measures && (
                       <div>
-                        <h5 className="font-medium text-[#F0ECFF] mb-2">Measures:</h5>
-                        <p className="text-[#8B85A0] text-[0.9rem]">{campaign.measures}</p>
+                        <h5 className="font-medium text-[#0A0A0F] mb-2">Measures:</h5>
+                        <p className="text-[#4A4A56] text-[0.9rem]">{campaign.measures}</p>
                       </div>
                     )}
                     
                     <div>
-                      <h5 className="font-medium text-[#F0ECFF] mb-2">Results:</h5>
-                      <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
+                      <h5 className="font-medium text-[#0A0A0F] mb-2">Results:</h5>
+                      <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                         {campaign.results.map((result, resIndex) => (
                           <li key={resIndex} dangerouslySetInnerHTML={{ __html: result }}></li>
                         ))}

@@ -168,7 +168,7 @@ export default function ContentWritingSamples() {
           
           <div className="gradient-line mb-6" />
           
-          <p className="text-[0.9rem] font-light text-[#8B85A0] max-w-3xl leading-[1.85]">
+          <p className="text-[0.9rem] font-light text-[#4A4A56] max-w-3xl leading-[1.85]">
             A comprehensive collection of professional content writing across press releases, award submissions, 
             and email marketing campaigns. Each piece demonstrates strategic messaging, brand voice consistency, 
             and measurable impact in driving engagement and business results.
@@ -186,8 +186,8 @@ export default function ContentWritingSamples() {
             return (
               <div key={category.id} className="glass-panel text-center p-6">
                 <IconComponent className="w-12 h-12 text-[#A378FF] mx-auto mb-4" />
-                <h3 className="text-xl font-light text-[#F0ECFF] mb-2">{category.title}</h3>
-                <p className="text-[#8B85A0] text-sm mb-4 font-light">{category.description}</p>
+                <h3 className="text-xl font-light text-[#0A0A0F] mb-2">{category.title}</h3>
+                <p className="text-[#4A4A56] text-sm mb-4 font-light">{category.description}</p>
                 <span className="glass-panel px-3 py-1 text-[0.7rem] text-[#A378FF] tracking-[0.05em]">
                   {category.count} samples
                 </span>
@@ -214,10 +214,10 @@ export default function ContentWritingSamples() {
               <div className="flex items-center gap-4 mb-8">
                 <IconComponent className="w-8 h-8 text-[#A378FF]" />
                 <div>
-                  <h2 className="font-light text-[clamp(1.5rem,3vw,2.5rem)] text-[#F0ECFF] tracking-[-0.02em]">
+                  <h2 className="font-light text-[clamp(1.5rem,3vw,2.5rem)] text-[#0A0A0F] tracking-[-0.02em]">
                     {category.title}
                   </h2>
-                  <p className="text-[#8B85A0] font-light text-[0.85rem]">{category.description}</p>
+                  <p className="text-[#4A4A56] font-light text-[0.85rem]">{category.description}</p>
                 </div>
               </div>
 
@@ -225,10 +225,10 @@ export default function ContentWritingSamples() {
                 {categorySamples.map((sample) => (
                   <div 
                     key={sample.id} 
-                    className="glass-panel group h-full flex flex-col transition-all duration-300 hover:shadow-[0_0_40px_rgba(123,94,167,0.15)]"
+                    className="glass-panel group h-full flex flex-col transition-all duration-300 hover:shadow-[0_0_40px_rgba(163,120,255,0.15)]"
                   >
                     <div className="p-6 h-full flex flex-col justify-between">
-                      <h3 className="font-light text-lg mb-4 text-[#F0ECFF] group-hover:text-[#A378FF] transition-colors flex-grow">
+                      <h3 className="font-light text-lg mb-4 text-[#0A0A0F] group-hover:text-[#A378FF] transition-colors flex-grow">
                         {sample.title}
                       </h3>
                       

@@ -23,11 +23,11 @@ export default function AwardsRecognition() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <nav className="text-sm mb-4">
-              <Link href="/" className="text-[#8B85A0] hover:text-[#A378FF] transition-colors">Home</Link>
-              <span className="mx-2 text-[#4A4560]">/</span>
-              <Link href="/portfolio" className="text-[#8B85A0] hover:text-[#A378FF] transition-colors">Portfolio</Link>
-              <span className="mx-2 text-[#4A4560]">/</span>
-              <span className="text-[#F0ECFF] font-medium">Awards & Recognition</span>
+              <Link href="/" className="text-[#4A4A56] hover:text-[#A378FF] transition-colors">Home</Link>
+              <span className="mx-2 text-[#8A8A96]">/</span>
+              <Link href="/portfolio" className="text-[#4A4A56] hover:text-[#A378FF] transition-colors">Portfolio</Link>
+              <span className="mx-2 text-[#8A8A96]">/</span>
+              <span className="text-[#0A0A0F] font-medium">Awards & Recognition</span>
             </nav>
             <h1 className="section-title mb-4">
               Awards & Recognition
@@ -63,26 +63,26 @@ export default function AwardsRecognition() {
 
             <div className="flex-1 lg:order-2">
               <div className="glass-panel p-8 h-full">
-                <h3 className="text-2xl font-light text-[#F0ECFF] mb-4">Wild & The Moon</h3>
-                <p className="text-[0.9rem] text-[#8B85A0] mb-6 leading-[1.85] font-light">
+                <h3 className="text-2xl font-light text-[#0A0A0F] mb-4">Wild & The Moon</h3>
+                <p className="text-[0.9rem] text-[#4A4A56] mb-6 leading-[1.85] font-light">
                   Played a pivotal role in winning multiple awards and secured PR placements in leading publications, enhancing the brand's regional credibility.
                 </p>
 
                 <div className="space-y-6">
                   <div>
-                    <h5 className="font-medium text-[#F0ECFF] mb-4 text-xl">Awards:</h5>
+                    <h5 className="font-medium text-[#0A0A0F] mb-4 text-xl">Awards:</h5>
 
                     <div className="space-y-4">
                       <div className="border-l-2 border-[#A378FF] pl-4">
                         <h6 className="font-medium text-[#A378FF] mb-2">2020:</h6>
-                        <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
+                        <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                           <li>FACT Magazine - Favorite Vegan Friendly Cafe</li>
                         </ul>
                       </div>
 
                       <div className="border-l-2 border-[#A378FF] pl-4">
                         <h6 className="font-medium text-[#A378FF] mb-2">2021:</h6>
-                        <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
+                        <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                           <li>FACT Magazine - Best Vegan Friendly Cafe Dubai</li>
                           <li>WhatsOn Dubai - Favorite Healthy Eating Restaurant</li>
                           <li>WhatsOn Abu Dhabi - Favorite Healthy Eating Restaurant</li>
@@ -92,7 +92,7 @@ export default function AwardsRecognition() {
 
                       <div className="border-l-2 border-[#A378FF] pl-4">
                         <h6 className="font-medium text-[#A378FF] mb-2">2022:</h6>
-                        <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
+                        <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                           <li>Dubai Green Star Awards</li>
                           <li>PETA Awards</li>
                         </ul>
@@ -101,8 +101,8 @@ export default function AwardsRecognition() {
                   </div>
 
                   <div className="glass-panel p-6">
-                    <h6 className="font-medium text-[#F0ECFF] mb-3">Impact & Recognition:</h6>
-                    <ul className="list-disc list-inside text-[#8B85A0] space-y-2 text-[0.9rem] marker:text-[#A378FF]">
+                    <h6 className="font-medium text-[#0A0A0F] mb-3">Impact & Recognition:</h6>
+                    <ul className="list-disc list-inside text-[#4A4A56] space-y-2 text-[0.9rem] marker:text-[#A378FF]">
                       <li>Enhanced brand credibility and regional recognition across the GCC market</li>
                       <li>Positioned Wild & The Moon as a leader in sustainable and health-conscious dining</li>
                       <li>Generated significant organic media coverage and brand awareness</li>

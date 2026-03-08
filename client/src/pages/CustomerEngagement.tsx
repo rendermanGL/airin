@@ -24,11 +24,11 @@ export default function CustomerEngagement() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <nav className="text-sm mb-4">
-              <Link href="/" className="text-[#8B85A0] hover:text-[#A378FF] transition-colors">Home</Link>
-              <span className="mx-2 text-[#4A4560]">/</span>
-              <Link href="/portfolio" className="text-[#8B85A0] hover:text-[#A378FF] transition-colors">Portfolio</Link>
-              <span className="mx-2 text-[#4A4560]">/</span>
-              <span className="text-[#F0ECFF] font-medium">Customer Experience & Community Engagement</span>
+              <Link href="/" className="text-[#4A4A56] hover:text-[#A378FF] transition-colors">Home</Link>
+              <span className="mx-2 text-[#8A8A96]">/</span>
+              <Link href="/portfolio" className="text-[#4A4A56] hover:text-[#A378FF] transition-colors">Portfolio</Link>
+              <span className="mx-2 text-[#8A8A96]">/</span>
+              <span className="text-[#0A0A0F] font-medium">Customer Experience & Community Engagement</span>
             </nav>
             <h1 className="section-title mb-4">
               Customer Experience & Community Engagement
@@ -65,24 +65,24 @@ export default function CustomerEngagement() {
 
               <div className="flex-1">
                 <div className="glass-panel p-8 h-full">
-                  <h3 className="text-2xl font-light text-[#F0ECFF] mb-4">Community Workshops & Events</h3>
-                  <h4 className="text-xl text-[#8B85A0] mb-4">Wild & The Moon</h4>
-                  <p className="text-[0.9rem] text-[#8B85A0] mb-6 leading-[1.85] font-light">
+                  <h3 className="text-2xl font-light text-[#0A0A0F] mb-4">Community Workshops & Events</h3>
+                  <h4 className="text-xl text-[#4A4A56] mb-4">Wild & The Moon</h4>
+                  <p className="text-[0.9rem] text-[#4A4A56] mb-6 leading-[1.85] font-light">
                     Designed and spearheaded a series of wellness-centric workshops and events, reinforcing the brand's position as a thought leader and a go-to hub for health-conscious communities.
                   </p>
                   
                   <div className="space-y-4">
                     <div>
-                      <h5 className="font-medium text-[#F0ECFF] mb-2">Objectives:</h5>
-                      <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
+                      <h5 className="font-medium text-[#0A0A0F] mb-2">Objectives:</h5>
+                      <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                         <li>Strengthen brand loyalty by fostering community engagement</li>
                         <li>Boost visibility in the region through cross-marketing, digital channels, word-of-mouth, and other organic measures</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h5 className="font-medium text-[#F0ECFF] mb-2">Results:</h5>
-                      <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
+                      <h5 className="font-medium text-[#0A0A0F] mb-2">Results:</h5>
+                      <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                         <li>Increased event <strong>attendance by 45% YoY</strong>, positioning the brand as a leader in health-conscious communities</li>
                         <li>Boosted <strong>social media engagement by 13%</strong> through event-related posts and interactive campaigns</li>
                       </ul>
@@ -115,24 +115,24 @@ export default function CustomerEngagement() {
 
               <div className="flex-1 lg:order-1">
                 <div className="glass-panel p-8 h-full">
-                  <h3 className="text-2xl font-light text-[#F0ECFF] mb-4">In-store Experience</h3>
-                  <h4 className="text-xl text-[#8B85A0] mb-4">Kava & Chai</h4>
-                  <p className="text-[0.9rem] text-[#8B85A0] mb-6 leading-[1.85] font-light">
+                  <h3 className="text-2xl font-light text-[#0A0A0F] mb-4">In-store Experience</h3>
+                  <h4 className="text-xl text-[#4A4A56] mb-4">Kava & Chai</h4>
+                  <p className="text-[0.9rem] text-[#4A4A56] mb-6 leading-[1.85] font-light">
                     Organized multiple PR campaigns and in-store activations, including collaboration with a local artist to draw portraits in-store.
                   </p>
                   
                   <div className="space-y-4">
                     <div>
-                      <h5 className="font-medium text-[#F0ECFF] mb-2">Objectives:</h5>
-                      <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
+                      <h5 className="font-medium text-[#0A0A0F] mb-2">Objectives:</h5>
+                      <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                         <li>Elevate brand image and establish brand as a local go-to cafe chain</li>
                         <li>Generate a "digital buzz" to drive traffic in-store and boost online engagement</li>
                       </ul>
                     </div>
                     
                     <div>
-                      <h5 className="font-medium text-[#F0ECFF] mb-2">Results:</h5>
-                      <ul className="list-disc list-inside text-[#8B85A0] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
+                      <h5 className="font-medium text-[#0A0A0F] mb-2">Results:</h5>
+                      <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
                         <li>Secured organic media coverage in top publications, including Time Out Dubai and WhatsOn, enhancing brand credibility and reach</li>
                         <li>Boosted social media <strong>engagement by 45%</strong> through targeted digital strategies - UGC and organic PR</li>
                         <li>Increased <strong>in-store foot traffic by 65%</strong> during activations, driving both sales and customer engagement</li>

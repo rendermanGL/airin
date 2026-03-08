@@ -127,6 +127,8 @@ This is a modern portfolio website for Airin John, a Brand Marketing Manager wit
 - GA4 tracking: G-6DHC4RNDG2
 
 ## Recent Changes
+- March 8, 2026: THEME MIGRATION — Switched from dark void (#03000A) to light white/black HUD aesthetic (#FFFFFF base, #0A0A0F text). Updated CSS variables, all components, and all portfolio pages. Violet accent retained for highlights only. Orbs reduced to subtle violet mist.
+- March 8, 2026: Skills section redesigned to Capability Cards layout (2x3 glassmorphism grid with proof statements and tags, replacing percentage bars)
 - March 8, 2026: Complete visual redesign to "Mission Control HUD" aesthetic - dark theme, glassmorphism, Space Grotesk typography, HUD overlays, ambient orbs, data readout styling across all pages
 - March 8, 2026: Added Google Analytics GA4 (G-6DHC4RNDG2)
 - March 8, 2026: Added Open Graph + Twitter card meta tags for link previews

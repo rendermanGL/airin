@@ -67,7 +67,7 @@ export default function Portfolio() {
               Portfolio
             </h1>
             <div className="gradient-line mb-6"></div>
-            <p className="text-[0.9rem] text-[#8B85A0] max-w-3xl leading-[1.85] font-light">
+            <p className="text-[0.9rem] text-[#4A4A56] max-w-3xl leading-[1.85] font-light">
               Explore my expertise across strategic marketing, customer engagement, brand storytelling, and award-winning campaigns that have driven measurable business results.
             </p>
           </motion.div>
@@ -82,7 +82,7 @@ export default function Portfolio() {
                 className="group"
               >
                 <Link href={category.route}>
-                  <div className="glass-panel overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-[0_0_40px_rgba(123,94,167,0.15)]">
+                  <div className="glass-panel overflow-hidden cursor-pointer transition-all duration-500 hover:shadow-[0_0_40px_rgba(163,120,255,0.15)]">
                     <div className="px-4 pt-4">
                       <span className="data-readout">PROJECT_{String(index + 1).padStart(2, '0')}</span>
                     </div>
@@ -92,18 +92,18 @@ export default function Portfolio() {
                         alt={category.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#03000A]/80 via-transparent to-transparent"></div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
                     </div>
                     
                     <div className="p-6">
-                      <h3 className="font-light text-[1.4rem] text-[#F0ECFF] mb-3 tracking-[-0.01em]">
+                      <h3 className="font-light text-[1.4rem] text-[#0A0A0F] mb-3 tracking-[-0.01em]">
                         {category.title}
                       </h3>
-                      <p className="text-[0.85rem] text-[#8B85A0] leading-relaxed mb-4">
+                      <p className="text-[0.85rem] text-[#4A4A56] leading-relaxed mb-4">
                         {category.description}
                       </p>
-                      <div className="border-t border-[rgba(255,255,255,0.07)] pt-4">
-                        <span className="text-[0.7rem] uppercase tracking-[0.15em] text-[#4A4560] group-hover:text-[#A378FF] transition-colors duration-300">
+                      <div className="border-t border-[#E8E8EC] pt-4">
+                        <span className="text-[0.7rem] uppercase tracking-[0.15em] text-[#8A8A96] group-hover:text-[#A378FF] transition-colors duration-300">
                           EXPLORE →
                         </span>
                       </div>

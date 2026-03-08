@@ -114,7 +114,7 @@ export default function Skills() {
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "0.65rem",
               fontWeight: 300,
-              color: "#4A4560",
+              color: "#8A8A96",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
               marginBottom: "16px",
@@ -127,7 +127,7 @@ export default function Skills() {
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(2rem, 4vw, 3.5rem)",
               fontWeight: 300,
-              color: "#F0ECFF",
+              color: "#0A0A0F",
               letterSpacing: "-0.02em",
               marginBottom: "64px",
             }}
@@ -152,12 +152,12 @@ export default function Skills() {
               key={cap.id}
               variants={cardVariants}
               style={{
-                background: "rgba(255, 255, 255, 0.04)",
-                border: "1px solid rgba(255, 255, 255, 0.07)",
+                background: "rgba(0, 0, 0, 0.02)",
+                border: "1px solid rgba(0, 0, 0, 0.07)",
                 backdropFilter: "blur(12px)",
                 WebkitBackdropFilter: "blur(12px)",
                 borderRadius: 0,
-                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,1)",
                 padding: "28px 32px",
                 display: "flex",
                 flexDirection: "column" as const,
@@ -167,15 +167,15 @@ export default function Skills() {
               }}
               onMouseEnter={(e) => {
                 const el = e.currentTarget;
-                el.style.background = "rgba(255, 255, 255, 0.07)";
+                el.style.background = "rgba(0, 0, 0, 0.04)";
                 el.style.borderColor = "rgba(163, 120, 255, 0.3)";
-                el.style.boxShadow = "0 0 40px rgba(123, 94, 167, 0.15)";
+                el.style.boxShadow = "0 0 40px rgba(163, 120, 255, 0.1)";
               }}
               onMouseLeave={(e) => {
                 const el = e.currentTarget;
-                el.style.background = "rgba(255, 255, 255, 0.04)";
-                el.style.borderColor = "rgba(255, 255, 255, 0.07)";
-                el.style.boxShadow = "inset 0 1px 0 rgba(255,255,255,0.06)";
+                el.style.background = "rgba(0, 0, 0, 0.02)";
+                el.style.borderColor = "rgba(0, 0, 0, 0.07)";
+                el.style.boxShadow = "inset 0 1px 0 rgba(255,255,255,1)";
               }}
             >
               <p
@@ -183,7 +183,7 @@ export default function Skills() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "0.6rem",
                   fontWeight: 300,
-                  color: "#4A4560",
+                  color: "#8A8A96",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                 }}
@@ -196,7 +196,7 @@ export default function Skills() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "0.9rem",
                   fontWeight: 500,
-                  color: "#F0ECFF",
+                  color: "#0A0A0F",
                   letterSpacing: "0.02em",
                 }}
               >
@@ -208,7 +208,7 @@ export default function Skills() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "0.8rem",
                   fontWeight: 300,
-                  color: "#8B85A0",
+                  color: "#4A4A56",
                   lineHeight: 1.75,
                   borderLeft: "2px solid rgba(163, 120, 255, 0.3)",
                   paddingLeft: "12px",
@@ -255,7 +255,7 @@ export default function Skills() {
           style={{
             marginTop: "48px",
             paddingTop: "40px",
-            borderTop: "1px solid rgba(255, 255, 255, 0.07)",
+            borderTop: "1px solid rgba(0, 0, 0, 0.07)",
           }}
         >
           <p
@@ -263,7 +263,7 @@ export default function Skills() {
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "0.6rem",
               fontWeight: 300,
-              color: "#4A4560",
+              color: "#8A8A96",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
               marginBottom: "16px",
@@ -285,10 +285,10 @@ export default function Skills() {
                   fontFamily: "'Space Grotesk', sans-serif",
                   padding: "5px 14px",
                   background: "transparent",
-                  border: "1px solid rgba(255, 255, 255, 0.07)",
+                  border: "1px solid rgba(0, 0, 0, 0.07)",
                   fontSize: "0.65rem",
                   fontWeight: 300,
-                  color: "#4A4560",
+                  color: "#8A8A96",
                   letterSpacing: "0.08em",
                   borderRadius: 0,
                   transition: "all 250ms ease",
@@ -297,12 +297,12 @@ export default function Skills() {
                 onMouseEnter={(e) => {
                   const el = e.currentTarget;
                   el.style.borderColor = "rgba(163, 120, 255, 0.3)";
-                  el.style.color = "#8B85A0";
+                  el.style.color = "#4A4A56";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget;
-                  el.style.borderColor = "rgba(255, 255, 255, 0.07)";
-                  el.style.color = "#4A4560";
+                  el.style.borderColor = "rgba(0, 0, 0, 0.07)";
+                  el.style.color = "#8A8A96";
                 }}
               >
                 {tool}

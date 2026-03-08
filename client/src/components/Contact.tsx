@@ -75,27 +75,27 @@ export default function Contact() {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <div className="space-y-6">
-              <div className="py-3 border-b border-[rgba(255,255,255,0.04)]">
-                <span className="text-[#8B85A0] text-[0.8rem] font-light">
-                  <span className="data-readout">CHANNEL_01</span> · LOCATION · Dubai, United Arab Emirates
+              <div className="py-3 border-b border-[rgba(0,0,0,0.06)]">
+                <span className="text-[#8A8A96] text-[0.8rem] font-light">
+                  <span className="data-readout">CHANNEL_01</span> · LOCATION · <span className="text-[#0A0A0F]">Dubai, United Arab Emirates</span>
                 </span>
               </div>
               
-              <div className="py-3 border-b border-[rgba(255,255,255,0.04)]">
-                <span className="text-[#8B85A0] text-[0.8rem] font-light">
-                  <span className="data-readout">CHANNEL_02</span> · EMAIL · <a href="mailto:elsa.airin@gmail.com" className="hover:text-[#A378FF] transition-colors">elsa.airin@gmail.com</a>
+              <div className="py-3 border-b border-[rgba(0,0,0,0.06)]">
+                <span className="text-[#8A8A96] text-[0.8rem] font-light">
+                  <span className="data-readout">CHANNEL_02</span> · EMAIL · <a href="mailto:elsa.airin@gmail.com" className="text-[#0A0A0F] hover:text-[#A378FF] transition-colors">elsa.airin@gmail.com</a>
                 </span>
               </div>
               
-              <div className="py-3 border-b border-[rgba(255,255,255,0.04)]">
-                <span className="text-[#8B85A0] text-[0.8rem] font-light">
-                  <span className="data-readout">CHANNEL_03</span> · PHONE · (+971) 55 981 3969
+              <div className="py-3 border-b border-[rgba(0,0,0,0.06)]">
+                <span className="text-[#8A8A96] text-[0.8rem] font-light">
+                  <span className="data-readout">CHANNEL_03</span> · PHONE · <span className="text-[#0A0A0F]">(+971) 55 981 3969</span>
                 </span>
               </div>
               
-              <div className="py-3 border-b border-[rgba(255,255,255,0.04)]">
-                <span className="text-[#8B85A0] text-[0.8rem] font-light">
-                  <span className="data-readout">CHANNEL_04</span> · LINKEDIN · <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="hover:text-[#A378FF] transition-colors">linkedin.com/in/airinjohn</a>
+              <div className="py-3 border-b border-[rgba(0,0,0,0.06)]">
+                <span className="text-[#8A8A96] text-[0.8rem] font-light">
+                  <span className="data-readout">CHANNEL_04</span> · LINKEDIN · <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="text-[#0A0A0F] hover:text-[#A378FF] transition-colors">linkedin.com/in/airinjohn</a>
                 </span>
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function Contact() {
                 <Input 
                   id="name" 
                   placeholder="John Doe"
-                  className="w-full p-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.07)] text-[#F0ECFF] placeholder:text-[#4A4560] focus:ring-1 focus:ring-[#A378FF] focus:border-[rgba(163,120,255,0.4)] transition-colors"
+                  className="w-full p-3 bg-[rgba(0,0,0,0.02)] border border-[rgba(0,0,0,0.07)] text-[#0A0A0F] placeholder:text-[#8A8A96] focus:ring-1 focus:ring-[#A378FF] focus:border-[rgba(163,120,255,0.4)] transition-colors"
                   {...register("name")}
                 />
                 {errors.name && (
@@ -136,7 +136,7 @@ export default function Contact() {
                   id="email" 
                   type="email"
                   placeholder="john@example.com"
-                  className="w-full p-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.07)] text-[#F0ECFF] placeholder:text-[#4A4560] focus:ring-1 focus:ring-[#A378FF] focus:border-[rgba(163,120,255,0.4)] transition-colors"
+                  className="w-full p-3 bg-[rgba(0,0,0,0.02)] border border-[rgba(0,0,0,0.07)] text-[#0A0A0F] placeholder:text-[#8A8A96] focus:ring-1 focus:ring-[#A378FF] focus:border-[rgba(163,120,255,0.4)] transition-colors"
                   {...register("email")}
                 />
                 {errors.email && (
@@ -149,7 +149,7 @@ export default function Contact() {
                 <Input 
                   id="subject" 
                   placeholder="Project Inquiry"
-                  className="w-full p-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.07)] text-[#F0ECFF] placeholder:text-[#4A4560] focus:ring-1 focus:ring-[#A378FF] focus:border-[rgba(163,120,255,0.4)] transition-colors"
+                  className="w-full p-3 bg-[rgba(0,0,0,0.02)] border border-[rgba(0,0,0,0.07)] text-[#0A0A0F] placeholder:text-[#8A8A96] focus:ring-1 focus:ring-[#A378FF] focus:border-[rgba(163,120,255,0.4)] transition-colors"
                   {...register("subject")}
                 />
                 {errors.subject && (
@@ -163,7 +163,7 @@ export default function Contact() {
                   id="message" 
                   rows={5}
                   placeholder="Tell me about your project..."
-                  className="w-full p-3 bg-[rgba(255,255,255,0.04)] border border-[rgba(255,255,255,0.07)] text-[#F0ECFF] placeholder:text-[#4A4560] focus:ring-1 focus:ring-[#A378FF] focus:border-[rgba(163,120,255,0.4)] transition-colors"
+                  className="w-full p-3 bg-[rgba(0,0,0,0.02)] border border-[rgba(0,0,0,0.07)] text-[#0A0A0F] placeholder:text-[#8A8A96] focus:ring-1 focus:ring-[#A378FF] focus:border-[rgba(163,120,255,0.4)] transition-colors"
                   {...register("message")}
                 />
                 {errors.message && (

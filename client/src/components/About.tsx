@@ -37,17 +37,17 @@ export default function About() {
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
-            <h3 className="font-light text-xl text-[#F0ECFF] mb-4">My Journey</h3>
-            <p className="font-light text-[0.9rem] text-[#8B85A0] leading-[1.85] mb-6">
+            <h3 className="font-light text-xl text-[#0A0A0F] mb-4">My Journey</h3>
+            <p className="font-light text-[0.9rem] text-[#4A4A56] leading-[1.85] mb-6">
               With over six years of experience in brand marketing and communications, I've helped scale emerging and established brands across sectors including Law, F&B, and tech-enabled services. My work spans integrated multi-channel campaigns, high-impact activations, PR planning, and creative development – l always work with the focus on aligning marketing efforts to clear business outcomes.
             </p>
-            <p className="font-light text-[0.9rem] text-[#8B85A0] leading-[1.85] mb-6">
+            <p className="font-light text-[0.9rem] text-[#4A4A56] leading-[1.85] mb-6">
               Raised in Dubai, I bring both regional fluency and global perspective to the way I build brands. From branded content and in-store collaterals to influencer strategy and digital rollouts, I've consistently led campaigns that drive customer loyalty, boost retail footfall, and strengthen market positioning.
             </p>
-            <p className="font-light text-[0.9rem] text-[#8B85A0] leading-[1.85] mb-6">
+            <p className="font-light text-[0.9rem] text-[#4A4A56] leading-[1.85] mb-6">
               I specialize in 360-degree marketing, with expertise across digital, social, PR & media, in-store activations, and influencer marketing. I've collaborated closely with cross-functional teams and external partners to deliver cohesive brand experiences, and bring the same energy whether I'm managing a campaign calendar or reporting KPIs to leadership.
             </p>
-            <p className="font-light text-[0.9rem] text-[#8B85A0] leading-[1.85] mb-6">
+            <p className="font-light text-[0.9rem] text-[#4A4A56] leading-[1.85] mb-6">
               What drives me is building marketing that moves the brand forward – with creativity, clarity, and commercial impact. I thrive in environments where collaboration, accountability, and insight-led decision-making shape how brands grow.
             </p>
           </motion.div>
@@ -62,7 +62,7 @@ export default function About() {
             >
               <span className="hud-label block mb-2">// CAREER TRAJECTORY</span>
               <span
-                className="block text-[0.65rem] uppercase tracking-[0.15em] text-[#4A4560]"
+                className="block text-[0.65rem] uppercase tracking-[0.15em] text-[#8A8A96]"
                 style={{ fontWeight: 300 }}
               >
                 PROFESSIONAL CHRONOLOGY · 2017 – PRESENT
@@ -71,11 +71,11 @@ export default function About() {
 
             <div className="relative pl-8 md:pl-12">
               <div
-                className="absolute left-[11px] md:left-[19px] top-0 w-px bg-[rgba(163,120,255,0.2)]"
+                className="absolute left-[11px] md:left-[19px] top-0 w-px bg-[rgba(0,0,0,0.08)]"
                 style={{ height: "100%" }}
               >
                 <div
-                  className="w-full bg-gradient-to-b from-[#A378FF] to-[rgba(163,120,255,0.05)]"
+                  className="w-full bg-gradient-to-b from-[#A378FF] to-[rgba(0,0,0,0.05)]"
                   style={{
                     height: isInView ? "100%" : "0%",
                     transition: "height 1.5s ease-out",
@@ -108,7 +108,7 @@ export default function About() {
                     />
 
                     <div
-                      className="absolute top-[23px] h-px bg-[rgba(163,120,255,0.15)]"
+                      className="absolute top-[23px] h-px bg-[rgba(0,0,0,0.08)]"
                       style={{
                         left: "-13px",
                         width: "13px",
@@ -118,7 +118,7 @@ export default function About() {
                     <div
                       className="glass-panel-static p-5"
                       style={{
-                        boxShadow: "inset 2px 0 0 rgba(163,120,255,0.4), inset 0 1px 0 rgba(255,255,255,0.06)",
+                        boxShadow: "inset 2px 0 0 rgba(163,120,255,0.4), inset 0 1px 0 rgba(255,255,255,0.8)",
                       }}
                     >
                       <span
@@ -128,13 +128,13 @@ export default function About() {
                         {entry.year}
                       </span>
                       <h4
-                        className="text-[0.95rem] text-[#F0ECFF] mb-1"
+                        className="text-[0.95rem] text-[#0A0A0F] mb-1"
                         style={{ fontWeight: 300 }}
                       >
                         {entry.role}
                       </h4>
                       <p
-                        className="text-[0.8rem] text-[#8B85A0] uppercase tracking-[0.15em]"
+                        className="text-[0.8rem] text-[#4A4A56] uppercase tracking-[0.15em]"
                         style={{ fontWeight: 300 }}
                       >
                         {entry.company}

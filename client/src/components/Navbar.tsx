@@ -50,24 +50,24 @@ export default function Navbar() {
     <header
       className={`fixed w-full z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-[rgba(3,0,10,0.85)] backdrop-blur-[20px] border-b border-[rgba(255,255,255,0.06)]"
+          ? "bg-[rgba(255,255,255,0.92)] backdrop-blur-xl border-b border-[rgba(0,0,0,0.07)]"
           : "bg-transparent border-b border-transparent"
       }`}
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-3">
-          <span className="text-[#F0ECFF] text-[0.9rem] font-medium tracking-[0.1em]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <span className="text-[#0A0A0F] text-[0.9rem] font-medium tracking-[0.1em]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             AJ
           </span>
-          <span className="w-px h-4 bg-[rgba(255,255,255,0.1)]" />
-          <span className="text-[#8B85A0] text-[0.65rem] uppercase tracking-[0.25em] font-light" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <span className="w-px h-4 bg-[#E8E8EC]" />
+          <span className="text-[#8A8A96] text-[0.65rem] uppercase tracking-[0.25em] font-light" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
             AIRIN JOHN
           </span>
         </Link>
 
         <button
           onClick={toggleMenu}
-          className="md:hidden focus:outline-none text-[#8B85A0]"
+          className="md:hidden focus:outline-none text-[#4A4A56]"
           aria-label="Toggle menu"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -101,7 +101,7 @@ export default function Navbar() {
           )}
           <a
             href="#contact"
-            className="border border-[rgba(163,120,255,0.4)] text-[#A378FF] px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.15em] font-medium hover:bg-[rgba(163,120,255,0.1)] transition-all duration-300"
+            className="border border-[rgba(0,0,0,0.12)] text-[#0A0A0F] px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.15em] font-medium hover:text-[#A378FF] hover:border-[rgba(163,120,255,0.4)] transition-all duration-300"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
             HIRE ME
@@ -116,7 +116,7 @@ export default function Navbar() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="bg-[rgba(3,0,10,0.95)] backdrop-blur-[20px] md:hidden w-full border-t border-[rgba(255,255,255,0.06)]"
+            className="bg-[rgba(255,255,255,0.95)] backdrop-blur-xl md:hidden w-full border-t border-[rgba(0,0,0,0.06)]"
           >
             <div className="container mx-auto px-6 py-4 flex flex-col space-y-4">
               {navItems.map((item) =>
@@ -143,7 +143,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={closeMenu}
-                className="border border-[rgba(163,120,255,0.4)] text-[#A378FF] px-4 py-2 text-[0.7rem] uppercase tracking-[0.15em] font-medium text-center hover:bg-[rgba(163,120,255,0.1)] transition-all duration-300 w-fit"
+                className="border border-[rgba(0,0,0,0.12)] text-[#0A0A0F] px-4 py-2 text-[0.7rem] uppercase tracking-[0.15em] font-medium text-center hover:text-[#A378FF] hover:border-[rgba(163,120,255,0.4)] transition-all duration-300 w-fit"
               >
                 HIRE ME
               </a>

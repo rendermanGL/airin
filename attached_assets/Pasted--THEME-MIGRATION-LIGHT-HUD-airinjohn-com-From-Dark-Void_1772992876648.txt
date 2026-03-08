@@ -1,0 +1,591 @@
+# THEME MIGRATION — LIGHT HUD
+## airinjohn.com · From Dark Void to White/Black + Iridescent Violet
+**Date:** March 2026  
+**Scope:** CSS/Tailwind styling only — no routing, logic, or component structure changes
+
+---
+
+## OVERVIEW OF CHANGES
+
+The site is moving from a **dark space void** (#03000A background) to a **light monochrome HUD** aesthetic. The core language — Space Grotesk, HUD labels, `//` prefixes, corner brackets, scroll bar, status dot, grid overlay, glassmorphism panels, Framer Motion animations — all stays intact. Only the colour values change.
+
+The iridescent violet accent (`#A378FF`) is **retained but restricted** — it now appears only on selected highlights, featured elements, active borders, and glow states. The base canvas is white and black.
+
+---
+
+## STEP 1 — UPDATE CSS VARIABLES IN `index.css`
+
+Open `client/src/index.css` (or wherever global CSS variables are defined).
+
+**Replace the entire `:root` variable block with this:**
+
+```css
+:root {
+  /* ── BASE CANVAS ── */
+  --void:           #FFFFFF;        /* was near-black — now pure white */
+  --deep:           #F5F5F7;        /* was deep-space purple — now off-white */
+
+  /* ── SURFACES / PANELS ── */
+  --surface:        rgba(0, 0, 0, 0.03);     /* glass panel fill on white bg */
+  --surface-hover:  rgba(0, 0, 0, 0.055);    /* glass panel hover */
+
+  /* ── BORDERS ── */
+  --border:         rgba(0, 0, 0, 0.08);     /* default panel borders */
+  --border-active:  rgba(163, 120, 255, 0.35); /* iris accent border — unchanged */
+
+  /* ── TYPOGRAPHY ── */
+  --text-primary:   #0A0A0F;        /* was near-white — now near-black */
+  --text-secondary: #4A4A56;        /* was muted purple-grey — now dark grey */
+  --text-dim:       #8A8A96;        /* was very dim purple — now mid grey */
+
+  /* ── IRIDESCENT ACCENT — RESTRICT USAGE ── */
+  --accent-1:       #7B5EA7;        /* deep violet — unchanged */
+  --accent-2:       #A378FF;        /* bright violet — unchanged */
+  --accent-3:       #C4A8FF;        /* light lavender — unchanged */
+
+  /* ── ACCENT UTILITIES ── */
+  --iris-glow:      rgba(163, 120, 255, 0.3);
+  --iris-subtle:    rgba(163, 120, 255, 0.07);
+  --iris-border:    rgba(163, 120, 255, 0.3);
+
+  /* ── SIGNAL DOT ── */
+  --signal:         #00C87A;        /* slightly muted green — reads better on white */
+
+  /* ── GREY SCALE ── */
+  --grey-100:       #E8E8EC;
+  --grey-200:       #C8C8D0;
+  --grey-400:       #8A8A96;
+  --grey-600:       #4A4A56;
+  --grey-800:       #1C1C24;
+}
+```
+
+---
+
+## STEP 2 — UPDATE `tailwind.config.ts`
+
+Open `tailwind.config.ts`. Update the colour tokens to match the new palette:
+
+```ts
+colors: {
+  void:     '#FFFFFF',
+  deep:     '#F5F5F7',
+  'text-primary':   '#0A0A0F',
+  'text-secondary': '#4A4A56',
+  'text-dim':       '#8A8A96',
+  'accent-1':       '#7B5EA7',
+  'accent-2':       '#A378FF',
+  'accent-3':       '#C4A8FF',
+  signal:           '#00C87A',
+  // Grey scale additions
+  'grey-100':       '#E8E8EC',
+  'grey-200':       '#C8C8D0',
+  'grey-400':       '#8A8A96',
+  'grey-600':       '#4A4A56',
+  'grey-800':       '#1C1C24',
+  black:            '#0A0A0F',
+}
+```
+
+---
+
+## STEP 3 — UPDATE `ParticleSystem` COMPONENT
+
+Open `client/src/components/ParticleSystem.tsx` (or equivalent ambient background component).
+
+**Remove** the five dark-coloured orbs entirely.
+
+**Replace with two very subtle light-mode glow orbs:**
+
+```tsx
+// Orb 1 — top right, violet mist
+<div style={{
+  position: 'fixed',
+  top: '-10%',
+  right: '-5%',
+  width: '600px',
+  height: '600px',
+  background: 'radial-gradient(circle, rgba(163,120,255,0.10) 0%, transparent 65%)',
+  filter: 'blur(60px)',
+  pointerEvents: 'none',
+  zIndex: 0,
+  animation: 'orbDrift 18s ease-in-out infinite',
+}} />
+
+// Orb 2 — bottom left, softer
+<div style={{
+  position: 'fixed',
+  bottom: '0%',
+  left: '-5%',
+  width: '400px',
+  height: '400px',
+  background: 'radial-gradient(circle, rgba(123,94,167,0.07) 0%, transparent 65%)',
+  filter: 'blur(60px)',
+  pointerEvents: 'none',
+  zIndex: 0,
+  animation: 'orbDrift 24s ease-in-out infinite reverse',
+}} />
+```
+
+**Update the CSS keyframe** (in index.css or the component's styles):
+```css
+@keyframes orbDrift {
+  0%, 100% { transform: translate(0, 0); }
+  33%      { transform: translate(20px, -30px); }
+  66%      { transform: translate(-15px, 20px); }
+}
+```
+
+The HUD grid overlay **stays exactly the same** — only update the line colour:
+```css
+/* OLD */
+background-image:
+  linear-gradient(rgba(163,120,255,0.03) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(163,120,255,0.03) 1px, transparent 1px);
+
+/* NEW — slightly darker so it reads on white */
+background-image:
+  linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+  linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+background-size: 60px 60px;
+```
+
+---
+
+## STEP 4 — UPDATE `Navbar.tsx`
+
+Open `client/src/components/Navbar.tsx`.
+
+**Scrolled state background** — update from dark frosted to light frosted:
+```tsx
+// OLD
+scrolled: 'bg-[rgba(3,0,10,0.85)] backdrop-blur-xl'
+
+// NEW
+scrolled: 'bg-[rgba(255,255,255,0.92)] backdrop-blur-xl border-b border-[rgba(0,0,0,0.07)]'
+```
+
+**Nav link colours** — update text colours:
+```tsx
+// Nav links: was text-[#8B85A0], now:
+className="text-[#4A4A56] hover:text-[#0A0A0F]"
+
+// AJ monogram: was text-[#F0ECFF], now:
+className="text-[#0A0A0F] font-medium"
+
+// AIRIN JOHN name label: was text-[#8B85A0], now:
+className="text-[#8A8A96]"
+
+// Divider: was bg-[rgba(255,255,255,0.12)], now:
+className="bg-[#E8E8EC]"
+```
+
+**HIRE ME button** — update border and hover:
+```tsx
+// Border: rgba(163,120,255,0.4) — keep this, it's the iris accent
+// Hover: keep existing iris glow
+// Text: was text-[#F0ECFF], now:
+className="text-[#0A0A0F] hover:text-[#A378FF]"
+```
+
+---
+
+## STEP 5 — UPDATE `Hero.tsx`
+
+Open `client/src/components/Hero.tsx`.
+
+**Section background** — update the `body` / hero wrapper:
+```tsx
+// Remove any dark background styles
+// Ensure: background: 'transparent' (inherits white from body)
+```
+
+**HUD label** (`// BRAND MARKETING MANAGER`):
+```tsx
+// Was: text-[#4A4560]
+// Now: text-[#8A8A96]
+// The '//' prefix: text-[#A378FF] — keep iris accent
+```
+
+**Hero name `h1`**:
+```tsx
+// Was: text-[#F0ECFF]
+// Now: text-[#0A0A0F]
+```
+
+**Separator line**:
+```tsx
+// Keep: background: 'linear-gradient(90deg, #A378FF, transparent)'
+// No change needed
+```
+
+**Descriptor paragraph**:
+```tsx
+// Was: text-[#8B85A0]
+// Now: text-[#4A4A56]
+```
+
+**Data readout strip** (the `[ 6+ YRS ] [ UAE ]` pills):
+```tsx
+// Default pill:
+border: '1px solid #E8E8EC',
+background: '#F5F5F7',
+color: '#1C1C24',
+
+// Highlighted pill (UAE & GCC MARKET — the one iridescent pill):
+border: '1px solid rgba(163,120,255,0.3)',
+background: 'rgba(163,120,255,0.07)',
+color: '#A378FF',
+```
+
+**Profile photo** — update the fade gradient overlays:
+```tsx
+// Left edge fade: was rgba(3,0,10,...) — now:
+background: 'linear-gradient(to right, rgba(255,255,255,1), transparent)'
+
+// Bottom edge fade: was rgba(3,0,10,...) — now:
+background: 'linear-gradient(to top, rgba(255,255,255,1), transparent)'
+```
+
+**CTA Buttons:**
+```tsx
+// Primary button (VIEW WORK):
+border: '1px solid #0A0A0F',
+background: '#0A0A0F',
+color: '#FFFFFF',
+// hover: border-color: '#A378FF', box-shadow: '0 0 24px rgba(163,120,255,0.3)'
+
+// Secondary button (CONTACT):
+border: '1px solid #E8E8EC',
+background: 'transparent',
+color: '#0A0A0F',
+// hover: border-color: 'rgba(163,120,255,0.35)', color: '#A378FF'
+```
+
+---
+
+## STEP 6 — UPDATE `Skills.tsx`
+
+Open `client/src/components/Skills.tsx`.
+
+**Section wrapper / card panels:**
+```tsx
+// Was: rgba(255,255,255,0.04) glass on dark
+// Now: light glassmorphism
+background: 'rgba(0,0,0,0.02)',
+border: '1px solid rgba(0,0,0,0.07)',
+backdropFilter: 'blur(12px)',
+boxShadow: 'inset 0 1px 0 rgba(255,255,255,0.8)',
+
+// Hover:
+background: 'rgba(0,0,0,0.04)',
+borderColor: 'rgba(163,120,255,0.3)',
+boxShadow: '0 0 40px rgba(163,120,255,0.08)',
+```
+
+**Featured/highlighted skill rows** (top 2–3 skills by importance):
+```tsx
+background: 'rgba(163,120,255,0.07)',
+borderColor: 'rgba(163,120,255,0.3)',
+// Left accent stripe: background: 'linear-gradient(to bottom, #C4A8FF, #7B5EA7)'
+// with boxShadow: '2px 0 12px rgba(163,120,255,0.3)'
+```
+
+**Skill bar tracks:**
+```tsx
+// Track: background: '#E8E8EC'
+// Default bar fill: background: '#C8C8D0'
+// Featured bar fill: background: 'linear-gradient(90deg, #7B5EA7, #A378FF)'
+//   with boxShadow: '0 0 8px rgba(163,120,255,0.4)'
+```
+
+**Skill percentage labels:**
+```tsx
+// Default: color: '#8A8A96'
+// Featured: color: '#A378FF'
+```
+
+---
+
+## STEP 7 — UPDATE `About.tsx`
+
+Open `client/src/components/About.tsx`.
+
+**Body text:**
+```tsx
+// Was: text-[#8B85A0]
+// Now: text-[#4A4A56]
+```
+
+**Any inline callout or highlighted text:**
+```tsx
+// Use: color: '#A378FF', fontWeight: 500
+// Only for 1–2 key phrases per section, not all bold text
+```
+
+**Section background:** transparent (inherits white from body — no change needed if using CSS variables correctly).
+
+---
+
+## STEP 8 — UPDATE `Testimonials.tsx`
+
+Open `client/src/components/Testimonials.tsx`.
+
+**Card panels** — apply new light glassmorphism:
+```tsx
+background: 'rgba(0,0,0,0.02)',
+border: '1px solid rgba(0,0,0,0.07)',
+backdropFilter: 'blur(12px)',
+
+// Hover:
+background: '#F5F5F7',
+borderColor: 'rgba(163,120,255,0.3)',
+boxShadow: '0 0 32px rgba(163,120,255,0.08)',
+```
+
+**Quote text:**
+```tsx
+// Was: text-[#F0ECFF]
+// Now: text-[#0A0A0F]  font-weight: 300
+```
+
+**Attribution (name/title):**
+```tsx
+// Name: text-[#1C1C24]  font-weight: 500
+// Title: text-[#8A8A96]  font-weight: 300
+```
+
+**Quotation mark decorative element** (if present):
+```tsx
+color: 'rgba(163,120,255,0.15)'  // Very faint iris — barely visible
+```
+
+---
+
+## STEP 9 — UPDATE `Contact.tsx`
+
+Open `client/src/components/Contact.tsx`.
+
+**Channel labels** (`CHANNEL_01 · EMAIL`):
+```tsx
+// Was: text-[#4A4560]
+// Now: text-[#8A8A96]
+// '//' prefix: color: '#A378FF' — keep iris
+```
+
+**Contact value text** (email address, LinkedIn URL):
+```tsx
+// Was: text-[#F0ECFF]
+// Now: text-[#0A0A0F]
+```
+
+**Contact card panel:**
+```tsx
+// Apply same light glassmorphism as Step 7
+background: 'rgba(0,0,0,0.02)',
+border: '1px solid rgba(0,0,0,0.07)',
+```
+
+**CTA statement** ("Let's build something that moves people"):
+```tsx
+// Was: text-[#F0ECFF]
+// Now: text-[#0A0A0F]  font-weight: 300
+```
+
+**Section divider line** (if one exists between channels):
+```tsx
+// Was: rgba(255,255,255,0.06)
+// Now: rgba(0,0,0,0.06)
+```
+
+---
+
+## STEP 10 — UPDATE `Footer.tsx`
+
+Open `client/src/components/Footer.tsx`.
+
+**Footer background:**
+```tsx
+// Was: dark void
+// Now: background: '#F5F5F7' (off-white — slightly distinct from page white)
+borderTop: '1px solid rgba(0,0,0,0.07)',
+```
+
+**"ALL SYSTEMS NOMINAL" text:**
+```tsx
+// Was: text-[#4A4560]
+// Now: text-[#8A8A96]
+```
+
+**Footer links / legal:**
+```tsx
+// Was: text-[#4A4560]
+// Now: text-[#8A8A96]
+// Hover: text-[#A378FF]
+```
+
+---
+
+## STEP 11 — UPDATE PORTFOLIO PAGES
+
+Open each portfolio page component in `client/src/pages/`:
+- `strategic-marketing.tsx`
+- `customer-engagement.tsx`
+- `brand-storytelling.tsx`
+- `awards-recognition.tsx`
+- `content-writing.tsx`
+
+**For all portfolio pages, apply these rules:**
+
+**Page background:** transparent / white (inherited).
+
+**Portfolio cards:**
+```tsx
+// Panel:
+background: '#FFFFFF',
+border: '1px solid #E8E8EC',
+boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+
+// Hover:
+border: '1px solid rgba(163,120,255,0.3)',
+boxShadow: '0 0 32px rgba(163,120,255,0.1)',
+transform: 'translateY(-2px)',
+transition: 'all 400ms ease',
+```
+
+**HUD label above card title** (`PROJECT_01`):
+```tsx
+// Was: text-[#4A4560]
+// Now: text-[#8A8A96]
+```
+
+**Card title:**
+```tsx
+// Was: text-[#F0ECFF]
+// Now: text-[#0A0A0F]
+```
+
+**Card description:**
+```tsx
+// Was: text-[#8B85A0]
+// Now: text-[#4A4A56]
+```
+
+**Category/tag chips on cards:**
+```tsx
+// Default tag:
+background: '#F5F5F7',
+border: '1px solid #E8E8EC',
+color: '#8A8A96',
+
+// Featured/primary tag (one per card maximum):
+background: 'rgba(163,120,255,0.07)',
+border: '1px solid rgba(163,120,255,0.3)',
+color: '#A378FF',
+```
+
+---
+
+## STEP 12 — UPDATE HUD CHROME ELEMENTS
+
+These are the fixed UI elements — cursor, corners, status dot, scroll bar.
+
+**Custom cursor** (in index.css or cursor component):
+```css
+.cursor {
+  border: 1px solid #A378FF;    /* iris — unchanged */
+  background: transparent;
+  mix-blend-mode: multiply;     /* works correctly on white bg */
+}
+.cursor.hover {
+  background: rgba(163,120,255,0.10);
+  border-color: #A378FF;
+}
+```
+
+**Corner bracket markers:**
+```css
+/* Was: rgba(163,120,255,0.25) */
+/* Now: slightly more visible on white */
+border-color: rgba(163,120,255,0.22);
+```
+
+**Status dot:**
+```css
+/* Dot colour: #00C87A (was #00FFB2 — muted slightly for white bg) */
+/* Label text: color: #8A8A96 (was #4A4560) */
+```
+
+**Scroll progress bar:**
+```css
+/* Keep: linear-gradient(90deg, #7B5EA7, #A378FF, #C4A8FF) */
+/* No change needed */
+```
+
+---
+
+## STEP 13 — UPDATE `body` AND `html` BASE STYLES
+
+In `index.css`:
+
+```css
+html, body {
+  background-color: #FFFFFF;
+  color: #0A0A0F;
+}
+
+/* Remove any dark background overrides on sections */
+section {
+  background: transparent;
+}
+```
+
+---
+
+## STEP 14 — CHECK ADMIN PAGES (DO NOT MODIFY)
+
+Open `/admin/login` and `/admin/dashboard` in the browser after deployment.
+
+The admin pages should be **visually isolated** from the public site theme. If they inherit any global CSS that breaks their layout, scope the public theme changes to a class on the public layout wrapper (e.g. `.public-layout`) rather than on `body` directly.
+
+**Do not edit admin component files.** Only verify they still function.
+
+---
+
+## STEP 15 — VERIFY CONTRAST (WCAG AA)
+
+After applying the new palette, verify these critical contrast ratios:
+
+| Pair | Ratio | Pass |
+|------|-------|------|
+| #0A0A0F on #FFFFFF | ~21:1 | ✓ AAA |
+| #4A4A56 on #FFFFFF | ~8.5:1 | ✓ AA |
+| #8A8A96 on #FFFFFF | ~3.9:1 | ✓ AA (large text) |
+| #A378FF on #FFFFFF | ~4.5:1 | ✓ AA |
+| #FFFFFF on #0A0A0F | ~21:1 | ✓ AAA (btn labels) |
+
+The previous checklist noted `#F0ECFF on #03000A = ~15:1`. The new system exceeds this on all primary text pairs.
+
+---
+
+## SUMMARY — WHAT CHANGES, WHAT DOESN'T
+
+| Element | Before | After |
+|---------|--------|-------|
+| Page background | #03000A (void black) | #FFFFFF (white) |
+| Section fills | rgba(255,255,255,0.04) | rgba(0,0,0,0.02–0.04) |
+| Headings | #F0ECFF (near-white) | #0A0A0F (near-black) |
+| Body text | #8B85A0 (purple-grey) | #4A4A56 (dark grey) |
+| Dim labels | #4A4560 | #8A8A96 |
+| Borders | rgba(white, 0.07) | rgba(black, 0.07) |
+| Violet accent | Used broadly | **Restricted to highlights only** |
+| Orbs | 5 dark purple orbs | 2 subtle violet mist orbs |
+| Grid overlay | rgba(violet, 0.03) | rgba(black, 0.04) |
+| Status dot | #00FFB2 neon | #00C87A muted green |
+| Signal usage rule | once only | once only — unchanged |
+| Font | Space Grotesk | Space Grotesk — unchanged |
+| border-radius | 0 | 0 — unchanged |
+| Animations | Framer Motion intact | Framer Motion intact |
+| Routing | unchanged | unchanged |
+| Backend | unchanged | unchanged |
+| Admin system | unchanged | unchanged |

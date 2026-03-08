@@ -6,9 +6,6 @@ export default function Hero() {
     <section id="hero" className="relative min-h-screen overflow-hidden flex items-end pb-[12%]">
       <ParticleSystem />
 
-      <div className="orb-a" />
-      <div className="orb-b" />
-
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex flex-col lg:flex-row items-end lg:items-end justify-between">
           <motion.div
@@ -20,7 +17,7 @@ export default function Hero() {
             <span className="hud-label block mb-4">// BRAND MARKETING MANAGER</span>
 
             <h1
-              className="font-light text-[#F0ECFF] tracking-[-0.03em] leading-[0.95] mb-6"
+              className="font-light text-[#0A0A0F] tracking-[-0.03em] leading-[0.95] mb-6"
               style={{ fontSize: "clamp(3.5rem, 8vw, 8rem)" }}
             >
               Airin John
@@ -28,7 +25,7 @@ export default function Hero() {
 
             <div className="gradient-line mb-6" />
 
-            <p className="font-light text-[0.9rem] text-[#8B85A0] mb-8">
+            <p className="font-light text-[0.9rem] text-[#4A4A56] mb-8">
               Strategic marketer. Brand builder. Multi-channel architect.
             </p>
 
@@ -37,12 +34,12 @@ export default function Hero() {
                 <span className="hud-label mb-1">EXPERIENCE</span>
                 <span className="data-readout">6+ YRS</span>
               </div>
-              <div className="w-px h-8 bg-[rgba(255,255,255,0.1)]" />
+              <div className="w-px h-8 bg-[#E8E8EC]" />
               <div className="flex flex-col">
                 <span className="hud-label mb-1">MARKET</span>
                 <span className="data-readout">UAE & GCC</span>
               </div>
-              <div className="w-px h-8 bg-[rgba(255,255,255,0.1)]" />
+              <div className="w-px h-8 bg-[#E8E8EC]" />
               <div className="flex flex-col">
                 <span className="hud-label mb-1">SECTORS</span>
                 <span className="data-readout">F&B · LIFESTYLE · TECH</span>
@@ -78,7 +75,7 @@ export default function Hero() {
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    "linear-gradient(to right, rgba(3,0,10,0.6) 0%, transparent 30%), linear-gradient(to top, rgba(3,0,10,0.7) 0%, transparent 40%)",
+                    "linear-gradient(to right, rgba(255,255,255,0.6) 0%, transparent 30%), linear-gradient(to top, rgba(255,255,255,0.7) 0%, transparent 40%)",
                 }}
               />
             </div>

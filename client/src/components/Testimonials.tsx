@@ -27,12 +27,12 @@ export default function Testimonials() {
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.1 }}
             >
-              <p className="text-[#8B85A0] italic mb-6 text-[0.9rem] leading-[1.85] font-light">
+              <p className="text-[#0A0A0F] italic mb-6 text-[0.9rem] leading-[1.85] font-light" style={{ fontWeight: 300 }}>
                 "{testimonial.content}"
               </p>
               <div>
-                <p className="text-[#F0ECFF] text-[0.9rem] font-medium">{testimonial.author}</p>
-                <p className="text-[0.8rem] text-[#4A4560]">{testimonial.position}</p>
+                <p className="text-[#1C1C24] text-[0.9rem]" style={{ fontWeight: 500 }}>{testimonial.author}</p>
+                <p className="text-[0.8rem] text-[#8A8A96]" style={{ fontWeight: 300 }}>{testimonial.position}</p>
               </div>
             </motion.div>
           ))}
