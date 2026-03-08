@@ -150,28 +150,28 @@ export default function Hero() {
           <div className="pulse-ring" />
 
           <div className="px-layer" ref={fbPx1Ref} style={{ position: 'absolute', inset: 0 }}>
-            <svg className="hud-svg" viewBox="0 0 380 380">
+            <svg className="hud-svg" viewBox="0 0 500 500">
               <g className="rot-cw18">
-                <path className="arc-seg arc-seg-iris" d="M 190,10 A 180,180 0 0 1 370,190" />
-                <path className="arc-seg arc-seg-dim"  d="M 370,190 A 180,180 0 0 1 190,370" />
-                <path className="arc-seg arc-seg-iris" d="M 190,370 A 180,180 0 0 1 10,190" />
-                <path className="arc-seg arc-seg-dim"  d="M 10,190 A 180,180 0 0 1 190,10" />
+                <path className="arc-seg arc-seg-iris" d="M 250,20 A 230,230 0 0 1 480,250" />
+                <path className="arc-seg arc-seg-dim"  d="M 480,250 A 230,230 0 0 1 250,480" />
+                <path className="arc-seg arc-seg-iris" d="M 250,480 A 230,230 0 0 1 20,250" />
+                <path className="arc-seg arc-seg-dim"  d="M 20,250 A 230,230 0 0 1 250,20" />
               </g>
-              <circle className="arc-seg-thin rot-ccw30" cx="190" cy="190" r="155" />
+              <circle className="arc-seg-thin rot-ccw30" cx="250" cy="250" r="198" />
             </svg>
           </div>
 
           <div className="px-layer" ref={fbPx2Ref} style={{ position: 'absolute', inset: 0 }}>
-            <svg className="hud-svg" viewBox="0 0 380 380">
-              <path className="t-bracket" d="M 50,70 L 50,50 L 70,50" />
-              <path className="t-bracket" d="M 310,50 L 330,50 L 330,70" />
-              <path className="t-bracket" d="M 50,310 L 50,330 L 70,330" />
-              <path className="t-bracket" d="M 310,330 L 330,330 L 330,310" />
-              <circle className="arc-seg arc-seg-dim" cx="190" cy="190" r="125" strokeDasharray="12 5" />
-              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="190" y1="60"  x2="190" y2="72" />
-              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="190" y1="308" x2="190" y2="320" />
-              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="60"  y1="190" x2="72"  y2="190" />
-              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="308" y1="190" x2="320" y2="190" />
+            <svg className="hud-svg" viewBox="0 0 500 500">
+              <path className="t-bracket" d="M 68,92 L 68,68 L 92,68" />
+              <path className="t-bracket" d="M 408,68 L 432,68 L 432,92" />
+              <path className="t-bracket" d="M 68,408 L 68,432 L 92,432" />
+              <path className="t-bracket" d="M 408,432 L 432,432 L 432,408" />
+              <circle className="arc-seg arc-seg-dim" cx="250" cy="250" r="162" strokeDasharray="12 5" />
+              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="250" y1="78"  x2="250" y2="94" />
+              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="250" y1="406" x2="250" y2="422" />
+              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="78"  y1="250" x2="94"  y2="250" />
+              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="406" y1="250" x2="422" y2="250" />
             </svg>
           </div>
 
@@ -193,10 +193,10 @@ export default function Hero() {
 
           <svg
             style={{ position: 'absolute', inset: 0, zIndex: 21, pointerEvents: 'none' }}
-            viewBox="0 0 380 380"
+            viewBox="0 0 500 500"
           >
-            <circle cx="190" cy="190" r="117" fill="none" stroke="rgba(163,120,255,0.35)" strokeWidth="1" />
-            <circle cx="190" cy="190" r="120" fill="none" stroke="rgba(163,120,255,0.1)"  strokeWidth="0.5" strokeDasharray="4 8" />
+            <circle cx="250" cy="250" r="152" fill="none" stroke="rgba(163,120,255,0.35)" strokeWidth="1" />
+            <circle cx="250" cy="250" r="156" fill="none" stroke="rgba(163,120,255,0.1)" strokeWidth="0.5" strokeDasharray="4 8" />
           </svg>
 
           <div className="callout-b cb-1"

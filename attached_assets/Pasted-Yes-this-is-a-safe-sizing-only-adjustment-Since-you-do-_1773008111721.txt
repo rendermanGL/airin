@@ -1,0 +1,380 @@
+Yes — this is a **safe sizing-only adjustment**.
+
+Since you do **not** want to touch the effect logic, animation system, or structure, the only thing to change is the **CSS dimensions** that control the portrait zone and the frame scale.
+
+Send this to Replit exactly:
+
+---
+
+# Hero Section — Enlarge Portrait Zone Only — Replit Update
+
+### airinjohn.com · React + TypeScript + Tailwind + Framer Motion
+
+---
+
+## IMPORTANT
+
+Do **not** touch:
+
+* animation logic
+* Framer Motion code
+* mouse/parallax logic
+* callout logic
+* SVG structure
+* component structure
+* hover behaviour
+* reticle effect system
+
+This is a **size-only update**.
+
+The goal is:
+
+* make the **portrait zone** visibly larger
+* keep the **same reticle effect**
+* keep the **same animation**
+* keep the **same behaviour**
+* do not break the working system
+
+---
+
+## STEP 1 — UPDATE THE HERO GRID COLUMN
+
+Open `client/src/index.css`.
+
+Find this block:
+
+```css
+.hero-grid {
+  position: relative; z-index: 2;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  align-items: center;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 7%;
+  gap: 0;
+}
+```
+
+Replace it with:
+
+```css
+.hero-grid {
+  position: relative; z-index: 2;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 620px;
+  align-items: center;
+  max-width: 1520px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 7%;
+  gap: 0;
+}
+```
+
+### What this does
+
+* gives the right column more space
+* allows the portrait frame to grow without crowding the text
+* does not affect animation logic
+
+---
+
+## STEP 2 — ENLARGE THE FRAME WRAPPER
+
+Find this block:
+
+```css
+.frame-b {
+  position: relative; width: 380px; height: 380px;
+  display: flex; align-items: center; justify-content: center;
+}
+```
+
+Replace it with:
+
+```css
+.frame-b {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+```
+
+### What this does
+
+* enlarges the entire portrait system
+* keeps the existing visual hierarchy intact
+* does not alter the interaction model
+
+---
+
+## STEP 3 — ENLARGE THE PORTRAIT CIRCLE
+
+Find this block:
+
+```css
+.frame-b .portrait-circle {
+  position: relative; z-index: 10;
+  width: 230px; height: 230px; border-radius: 50%;
+  overflow: hidden;
+  will-change: transform;
+  box-shadow: 0 0 0 2px rgba(163,120,255,0.18), 0 0 50px rgba(163,120,255,0.1);
+}
+```
+
+Replace it with:
+
+```css
+.frame-b .portrait-circle {
+  position: relative;
+  z-index: 10;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  overflow: hidden;
+  will-change: transform;
+  box-shadow: 0 0 0 2px rgba(163,120,255,0.18), 0 0 50px rgba(163,120,255,0.1);
+}
+```
+
+### What this does
+
+* makes the actual portrait much larger
+* keeps the image crop behaviour the same
+* does not affect the `<img>` logic
+
+---
+
+## STEP 4 — SCALE THE SVG OVERLAY SYSTEM
+
+Because the frame is now larger, the SVG overlay also needs to scale up proportionally.
+
+### Find these classes:
+
+```css
+.rot-cw18  { animation: spinCW  18s linear infinite; transform-origin: 190px 190px; }
+.rot-ccw30 { animation: spinCCW 30s linear infinite; transform-origin: 190px 190px; }
+```
+
+Replace with:
+
+```css
+.rot-cw18  { animation: spinCW  18s linear infinite; transform-origin: 250px 250px; }
+.rot-ccw30 { animation: spinCCW 30s linear infinite; transform-origin: 250px 250px; }
+```
+
+---
+
+## STEP 5 — UPDATE THE PULSE RINGS
+
+Find this block:
+
+```css
+@keyframes pulseOut {
+  0%   { width: 230px; height: 230px; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.5; }
+  100% { width: 400px; height: 400px; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0; }
+}
+```
+
+Replace it with:
+
+```css
+@keyframes pulseOut {
+  0%   { width: 300px; height: 300px; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.5; }
+  100% { width: 520px; height: 520px; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0; }
+}
+```
+
+### What this does
+
+* keeps the pulse effect proportional to the larger portrait
+* preserves the same animation behaviour
+
+---
+
+## STEP 6 — UPDATE THE SVG VIEWBOX SIZE IN `Hero.tsx`
+
+Open `client/src/components/Hero.tsx`.
+
+Find every SVG in the portrait frame section using:
+
+```tsx
+viewBox="0 0 380 380"
+```
+
+Change each one to:
+
+```tsx
+viewBox="0 0 500 500"
+```
+
+---
+
+## STEP 7 — SCALE THE SVG CIRCLE / ARC COORDINATES
+
+In the portrait-frame SVG section, update the coordinates from the 380 system to the 500 system.
+
+### Replace this block:
+
+```tsx
+<svg className="hud-svg" viewBox="0 0 380 380">
+  <g className="rot-cw18">
+    <path className="arc-seg arc-seg-iris" d="M 190,10 A 180,180 0 0 1 370,190" />
+    <path className="arc-seg arc-seg-dim"  d="M 370,190 A 180,180 0 0 1 190,370" />
+    <path className="arc-seg arc-seg-iris" d="M 190,370 A 180,180 0 0 1 10,190" />
+    <path className="arc-seg arc-seg-dim"  d="M 10,190 A 180,180 0 0 1 190,10" />
+  </g>
+  <circle className="arc-seg-thin rot-ccw30" cx="190" cy="190" r="155" />
+</svg>
+```
+
+With:
+
+```tsx
+<svg className="hud-svg" viewBox="0 0 500 500">
+  <g className="rot-cw18">
+    <path className="arc-seg arc-seg-iris" d="M 250,20 A 230,230 0 0 1 480,250" />
+    <path className="arc-seg arc-seg-dim"  d="M 480,250 A 230,230 0 0 1 250,480" />
+    <path className="arc-seg arc-seg-iris" d="M 250,480 A 230,230 0 0 1 20,250" />
+    <path className="arc-seg arc-seg-dim"  d="M 20,250 A 230,230 0 0 1 250,20" />
+  </g>
+  <circle className="arc-seg-thin rot-ccw30" cx="250" cy="250" r="198" />
+</svg>
+```
+
+---
+
+## STEP 8 — UPDATE THE MID-LAYER SVG
+
+Replace this:
+
+```tsx
+<svg className="hud-svg" viewBox="0 0 380 380">
+  <path className="t-bracket" d="M 50,70 L 50,50 L 70,50" />
+  <path className="t-bracket" d="M 310,50 L 330,50 L 330,70" />
+  <path className="t-bracket" d="M 50,310 L 50,330 L 70,330" />
+  <path className="t-bracket" d="M 310,330 L 330,330 L 330,310" />
+  <circle className="arc-seg arc-seg-dim" cx="190" cy="190" r="125" strokeDasharray="12 5" />
+  <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="190" y1="60"  x2="190" y2="72" />
+  <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="190" y1="308" x2="190" y2="320" />
+  <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="60"  y1="190" x2="72"  y2="190" />
+  <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="308" y1="190" x2="320" y2="190" />
+</svg>
+```
+
+With:
+
+```tsx
+<svg className="hud-svg" viewBox="0 0 500 500">
+  <path className="t-bracket" d="M 68,92 L 68,68 L 92,68" />
+  <path className="t-bracket" d="M 408,68 L 432,68 L 432,92" />
+  <path className="t-bracket" d="M 68,408 L 68,432 L 92,432" />
+  <path className="t-bracket" d="M 408,432 L 432,432 L 432,408" />
+  <circle className="arc-seg arc-seg-dim" cx="250" cy="250" r="162" strokeDasharray="12 5" />
+  <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="250" y1="78"  x2="250" y2="94" />
+  <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="250" y1="406" x2="250" y2="422" />
+  <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="78"  y1="250" x2="94"  y2="250" />
+  <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="406" y1="250" x2="422" y2="250" />
+</svg>
+```
+
+---
+
+## STEP 9 — UPDATE THE INNER FIXED RINGS
+
+Replace this:
+
+```tsx
+<svg
+  style={{ position: 'absolute', inset: 0, zIndex: 21, pointerEvents: 'none' }}
+  viewBox="0 0 380 380"
+>
+  <circle cx="190" cy="190" r="117" fill="none" stroke="rgba(163,120,255,0.35)" strokeWidth="1" />
+  <circle cx="190" cy="190" r="120" fill="none" stroke="rgba(163,120,255,0.1)"  strokeWidth="0.5" strokeDasharray="4 8" />
+</svg>
+```
+
+With:
+
+```tsx
+<svg
+  style={{ position: 'absolute', inset: 0, zIndex: 21, pointerEvents: 'none' }}
+  viewBox="0 0 500 500"
+>
+  <circle cx="250" cy="250" r="152" fill="none" stroke="rgba(163,120,255,0.35)" strokeWidth="1" />
+  <circle cx="250" cy="250" r="156" fill="none" stroke="rgba(163,120,255,0.1)" strokeWidth="0.5" strokeDasharray="4 8" />
+</svg>
+```
+
+---
+
+## STEP 10 — KEEP THE CALLOUTS UNTOUCHED FOR NOW
+
+Do **not** edit the callout logic unless they become visibly misplaced after scaling.
+
+Because you asked for:
+
+* no animation change
+* no effect change
+* no system breakage
+
+the safest move is:
+
+* enlarge the portrait system first
+* check the visual result
+* only then adjust callout anchor positions if necessary
+
+Most likely, the portrait zone itself will already feel much stronger after Steps 1–9.
+
+---
+
+## SAFE VERSION SUMMARY
+
+If Replit asks for the minimum required changes, tell it this:
+
+### Only do this
+
+* enlarge `.hero-grid` right column from `480px` to `620px`
+* enlarge `.frame-b` from `380px` to `500px`
+* enlarge `.portrait-circle` from `230px` to `300px`
+* scale the SVG `viewBox` values and ring/arc coordinates proportionally
+* scale `pulseOut` sizes accordingly
+* do not touch animation logic
+* do not touch event handlers
+* do not touch parallax logic
+* do not touch hover logic
+* do not touch component structure
+
+---
+
+## EVEN SAFER FALLBACK OPTION
+
+If you want the **least risky possible version**, do just these three CSS changes first:
+
+```css
+.hero-grid {
+  grid-template-columns: 1fr 620px;
+  max-width: 1520px;
+}
+
+.frame-b {
+  width: 500px;
+  height: 500px;
+}
+
+.frame-b .portrait-circle {
+  width: 300px;
+  height: 300px;
+}
+```
+
+That alone will make it visibly larger, though the reticle system will stay at its original scale unless the SVG coordinates are also updated.
+
+---

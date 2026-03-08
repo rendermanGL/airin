@@ -363,9 +363,9 @@ body { cursor: none; }
   position: relative; z-index: 2;
   min-height: 100vh;
   display: grid;
-  grid-template-columns: 1fr 480px;
+  grid-template-columns: 1fr 620px;
   align-items: center;
-  max-width: 1440px;
+  max-width: 1520px;
   width: 100%;
   margin: 0 auto;
   padding: 0 7%;
@@ -388,13 +388,20 @@ body { cursor: none; }
 }
 
 .frame-b {
-  position: relative; width: 380px; height: 380px;
-  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .frame-b .portrait-circle {
-  position: relative; z-index: 10;
-  width: 230px; height: 230px; border-radius: 50% !important;
+  position: relative;
+  z-index: 10;
+  width: 300px;
+  height: 300px;
+  border-radius: 50% !important;
   overflow: hidden;
   will-change: transform;
   box-shadow: 0 0 0 2px rgba(163,120,255,0.18), 0 0 50px rgba(163,120,255,0.1);
@@ -426,8 +433,8 @@ body { cursor: none; }
 
 @keyframes spinCW  { from { transform: rotate(0deg);   } to { transform: rotate(360deg);  } }
 @keyframes spinCCW { from { transform: rotate(0deg);   } to { transform: rotate(-360deg); } }
-.rot-cw18  { animation: spinCW  18s linear infinite; transform-origin: 190px 190px; }
-.rot-ccw30 { animation: spinCCW 30s linear infinite; transform-origin: 190px 190px; }
+.rot-cw18  { animation: spinCW  18s linear infinite; transform-origin: 250px 250px; }
+.rot-ccw30 { animation: spinCCW 30s linear infinite; transform-origin: 250px 250px; }
 
 .t-bracket { fill: none; stroke: #A378FF; stroke-width: 1.5; opacity: 0.55; }
 
@@ -440,8 +447,8 @@ body { cursor: none; }
 .pulse-ring:nth-child(2) { animation-delay: 0.8s; }
 .pulse-ring:nth-child(3) { animation-delay: 1.6s; }
 @keyframes pulseOut {
-  0%   { width: 230px; height: 230px; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.5; }
-  100% { width: 400px; height: 400px; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0; }
+  0%   { width: 300px; height: 300px; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0.5; }
+  100% { width: 520px; height: 520px; top: 50%; left: 50%; transform: translate(-50%,-50%); opacity: 0; }
 }
 
 .px-layer { position: absolute; will-change: transform; pointer-events: none; }
