@@ -94,7 +94,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium text-primary">Email</h4>
-                  <p className="text-gray-600">elsa.airin@gmail.com</p>
+                  <a href="mailto:elsa.airin@gmail.com" className="text-gray-600 hover:text-secondary transition-colors">elsa.airin@gmail.com</a>
                 </div>
               </div>
               
@@ -114,7 +114,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h4 className="font-medium text-primary">LinkedIn</h4>
-                  <p className="text-gray-600">linkedin.com/in/airinjohn</p>
+                  <a href="https://www.linkedin.com/in/airinjohn" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-secondary transition-colors">linkedin.com/in/airinjohn</a>
                 </div>
               </div>
             </div>

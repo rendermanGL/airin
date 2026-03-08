@@ -1,0 +1,42 @@
+Please complete the following pre-launch checklist for airinjohn.com before we go live:
+
+CONTENT & COPY
+- Remove all placeholder text (check for any "Lorem ipsum" anywhere on the site)
+- Confirm name, title, and bio are accurate and final
+- Test all links (email, LinkedIn, portfolio/case study links) — fix any that are broken
+- Check all images load correctly and have alt text
+- Review for consistent capitalisation and punctuation throughout
+
+SEO & DISCOVERABILITY
+- Confirm page <title> is set to: "Airin John | Brand Marketing Manager"
+- Add a meta description (150–160 characters summarising who she is and what she does)
+- Add Open Graph tags so the link previews correctly when shared on LinkedIn and WhatsApp
+- Confirm a favicon is set (the small icon that appears in the browser tab)
+- Connect Google Search Console and submit the sitemap
+
+PERFORMANCE
+- Compress and optimise all images (convert to WebP format where possible)
+- Confirm the page loads in under 3 seconds on mobile
+- Remove any unused CSS or JavaScript that may be slowing the page down
+
+MOBILE & CROSS-BROWSER
+- Confirm the layout looks correct on iPhone (Safari)
+- Confirm the layout looks correct on Android (Chrome)
+- Test on desktop: Chrome, Safari, and Firefox
+- Check for any text overflow or layout breaks on small screens
+
+DOMAIN & HOSTING
+- Confirm the custom domain airinjohn.com is properly connected (not showing Replit's default URL)
+- Confirm SSL certificate is active and the site loads on https:// with no security warnings
+- Confirm WWW redirect is consistent (www.airinjohn.com should redirect to airinjohn.com or vice versa)
+
+ANALYTICS
+- Install Google Analytics GA4 and confirm it is tracking page views
+- Test that a live visit registers in the GA4 real-time dashboard
+
+FINAL CHECKS
+- Test the contact/email button to confirm it opens a mail client or sends correctly
+- View the site in an incognito/private browser window to simulate a visitor experience
+- Send airinjohn.com on WhatsApp and confirm the link preview (image, title, description) looks correct
+
+Please confirm each item is complete before we proceed to launch.

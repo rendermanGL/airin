@@ -60,8 +60,9 @@ export default function Footer() {
               Airin John
             </h3>
             <p className="text-gray-300 mb-6 max-w-xs">
-              Creating thoughtful digital experiences through design and
-              development, helping brands connect with their audience.
+              Strategic marketer building and scaling brands through
+              multi-channel campaigns, performance marketing, and
+              purpose-led storytelling.
             </p>
             <p className="text-gray-300">
               © {currentYear} Airin John. All rights reserved.
@@ -128,7 +129,7 @@ export default function Footer() {
             <h4 className="font-medium text-xl mb-6">Newsletter</h4>
             <p className="text-gray-300 mb-4">
               Subscribe to my newsletter to get updates on my latest work and
-              thoughts on design.
+              insights on brand marketing.
             </p>
             <form className="flex" onSubmit={handleSubscribe}>
               <Input
