@@ -127,7 +127,7 @@ This is a modern portfolio website for Airin John, a Brand Marketing Manager wit
 - GA4 tracking: G-6DHC4RNDG2
 
 ## Recent Changes
-- March 8, 2026: Hero redesigned — Frame B Reticle Arcs layout with circular portrait in sci-fi reticle frame (rotating arc segments, dashed rings, L-brackets, pulse rings), parallax mouse tracking, magnetic CTA buttons, iris cursor spotlight, staggered HUD callout lines on hover, interactive word-hero name with letter-spacing expansion and `// tag` reveal
+- March 8, 2026: Hero upgraded to mobile-first v2 — separate mobile (stacked vertical) and desktop (two-column grid) layouts. Mobile: scaled reticle (260px), data chips (always visible), scan line, scroll-triggered underlines, touch-friendly buttons, HUD corner brackets. Desktop: parallax, magnetic buttons, spotlight, hover callouts. Custom cursor only on pointer devices via `@media (hover: hover)`. iOS Safari fix: `100svh`, no `background-attachment: fixed`
 - March 8, 2026: THEME MIGRATION — Switched from dark void (#03000A) to light white/black HUD aesthetic (#FFFFFF base, #0A0A0F text). Updated CSS variables, all components, and all portfolio pages. Violet accent retained for highlights only. Orbs reduced to subtle violet mist.
 - March 8, 2026: Skills section redesigned to Capability Cards layout (2x3 glassmorphism grid with proof statements and tags, replacing percentage bars)
 - March 8, 2026: Complete visual redesign to "Mission Control HUD" aesthetic - dark theme, glassmorphism, Space Grotesk typography, HUD overlays, ambient orbs, data readout styling across all pages
