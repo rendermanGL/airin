@@ -1,0 +1,282 @@
+Redesign the site's visual system using the following colour palette and 
+conceptual direction. Keep all routing, backend, admin, and component 
+logic unchanged. Restyle only.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COLOUR PALETTE — EXACT VALUES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Define these as CSS variables in index.css:
+
+  --col-void:      #190019   /* deepest dark — text on light bg */
+  --col-deep:      #2B124C   /* deep purple — primary dark bg */
+  --col-mid:       #522B5B   /* mid purple — orb core, gradients */
+  --col-rose:      #854F6C   /* dusty rose purple — orb blend */
+  --col-blush:     #DFB6B2   /* blush — orb edge glow, highlights */
+  --col-cream:     #FBE4D8   /* warm cream — ALL text on dark bg */
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONCEPTUAL DIRECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+The site represents a strategic marketer who builds and scales brands 
+across multiple channels simultaneously. The visual language should 
+reflect this through:
+
+STRATEGIC = structured, intentional layouts. Grid lines. 
+            Precise typography. Nothing accidental.
+
+BUILDING & SCALING = layered depth. Elements that feel stacked, 
+                     constructed. Orbs that suggest growth radiating 
+                     outward from a core.
+
+MULTI-CHANNEL = multiple orbs pulsing independently across the page, 
+                like broadcast signals or nodes in a network — each 
+                one active, each one distinct, but part of one system.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GLOBAL BACKGROUND
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Base background: #190019 (darkest plum-black)
+- Apply a full-page radial gradient wash behind everything:
+  background: radial-gradient(
+    ellipse at 30% 20%, 
+    #2B124C 0%, 
+    #190019 60%
+  );
+- This creates the same ambient depth as the colour palette image itself
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ORB SYSTEM — THE MULTI-CHANNEL METAPHOR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Create 5 orbs total — one for each "channel" — each slightly different 
+in size, colour, position, and drift speed. They should feel like 
+independent signals broadcasting simultaneously.
+
+Place all orbs in a fixed full-page container:
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+
+ORB 1 — "Strategy" (largest, most dominant)
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, #522B5B 0%, transparent 70%);
+  top: -15%; left: -10%;
+  opacity: 0.7;
+  filter: blur(100px);
+  animation: drift1 16s ease-in-out infinite;
+
+ORB 2 — "Brand" 
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #2B124C 0%, #522B5B 40%, transparent 70%);
+  top: 20%; right: -5%;
+  opacity: 0.6;
+  filter: blur(90px);
+  animation: drift2 20s ease-in-out infinite;
+
+ORB 3 — "Content"
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #854F6C 0%, transparent 70%);
+  top: 50%; left: 30%;
+  opacity: 0.45;
+  filter: blur(80px);
+  animation: drift3 14s ease-in-out infinite;
+
+ORB 4 — "Community"
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, #DFB6B2 0%, #854F6C 50%, transparent 70%);
+  bottom: 15%; right: 20%;
+  opacity: 0.35;
+  filter: blur(110px);
+  animation: drift4 18s ease-in-out infinite;
+
+ORB 5 — "Performance"
+  width: 250px; height: 250px;
+  background: radial-gradient(circle, #FBE4D8 0%, #DFB6B2 40%, transparent 70%);
+  bottom: 5%; left: 10%;
+  opacity: 0.25;
+  filter: blur(70px);
+  animation: drift5 22s ease-in-out infinite;
+
+DRIFT ANIMATIONS — each orb moves independently like a signal pulse:
+  @keyframes drift1 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    25%       { transform: translate(30px, -20px) scale(1.04); }
+    50%       { transform: translate(-20px, 30px) scale(0.97); }
+    75%       { transform: translate(15px, 20px) scale(1.02); }
+  }
+  @keyframes drift2 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    33%       { transform: translate(-25px, 20px) scale(1.03); }
+    66%       { transform: translate(20px, -25px) scale(0.98); }
+  }
+  @keyframes drift3 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    40%       { transform: translate(20px, 15px) scale(1.05); }
+    80%       { transform: translate(-15px, -20px) scale(0.96); }
+  }
+  @keyframes drift4 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    30%       { transform: translate(-20px, -15px) scale(1.03); }
+    70%       { transform: translate(25px, 10px) scale(0.98); }
+  }
+  @keyframes drift5 {
+    0%, 100% { transform: translate(0px, 0px) scale(1); }
+    50%       { transform: translate(15px, -20px) scale(1.06); }
+  }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TYPOGRAPHY
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Import from Google Fonts:
+  "Cormorant Garamond" weights 300, 400, 600
+  "DM Sans" weights 300, 400, 500
+
+- ALL text on dark backgrounds: colour #FBE4D8 (cream)
+- ALL text on any light surface: colour #190019 (deep void)
+- Secondary/muted text: colour #DFB6B2 (blush)
+- Accent labels and active states: colour #854F6C (rose)
+
+H1 display titles:
+  font-family: Cormorant Garamond, 300 weight
+  font-size: clamp(4rem, 10vw, 9rem)
+  color: #FBE4D8
+  letter-spacing: -0.02em
+  line-height: 0.9
+
+H2 section titles:
+  font-family: Cormorant Garamond, 400 weight
+  font-size: clamp(2rem, 4vw, 3.5rem)
+  color: #FBE4D8
+
+Body text:
+  font-family: DM Sans, 300 weight
+  font-size: 0.9rem
+  color: #DFB6B2
+  line-height: 1.85
+
+Nav + labels:
+  font-family: DM Sans, 400 weight
+  font-size: 0.7rem
+  text-transform: uppercase
+  letter-spacing: 0.14em
+  color: #DFB6B2
+  hover color: #FBE4D8
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NAVBAR
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Default: fully transparent background
+- On scroll: 
+  background: rgba(25, 0, 25, 0.75);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(251, 228, 216, 0.08);
+- Logo "Airin John": DM Sans 400, uppercase, 0.14em tracking, #FBE4D8
+- Nav links: DM Sans 400, uppercase, 0.12em tracking, #DFB6B2
+  hover: color #FBE4D8, with a 1px bottom border in #854F6C
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+HERO SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Full viewport height, content centred vertically
+- Large H1: "Airin John" at clamp(4rem, 10vw, 9rem)
+  Cormorant Garamond 300, #FBE4D8
+  Let orb glow bleed through and behind the text
+- Subtitle: "Brand Marketing Manager"
+  DM Sans 300, 0.8rem, uppercase, 0.2em tracking, #DFB6B2
+- Thin rule: 40px wide, 1px, background: 
+  linear-gradient(to right, #854F6C, #DFB6B2)
+  margin: 24px 0
+- Bio: max 2 sentences, DM Sans 300, 0.9rem, #DFB6B2, max-width 400px
+- Profile photo: rectangular crop, no border-radius, 
+  overlay a very subtle gradient:
+  background: linear-gradient(to bottom, transparent 60%, #190019 100%)
+  This makes the photo feel like it emerges from the dark background
+- CTA buttons — sharp corners, border-radius: 0:
+  Primary: border: 1px solid rgba(251,228,216,0.3), 
+    color: #FBE4D8, background: transparent
+    hover: border-color: #854F6C, color: #854F6C
+  Secondary: same base, 
+    hover: border-color: #DFB6B2, color: #DFB6B2
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PORTFOLIO CARDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Background: rgba(43, 18, 76, 0.4)  (deep purple at low opacity)
+- Border: 1px solid rgba(251, 228, 216, 0.08)
+- border-radius: 0
+- backdrop-filter: blur(8px)
+- On hover:
+  background: rgba(82, 43, 91, 0.5)
+  border-color: rgba(133, 79, 108, 0.4)
+  transition: all 400ms ease
+- Category label: DM Sans 300, uppercase, 0.12em, #854F6C
+- Card title: Cormorant Garamond 400, 1.5rem, #FBE4D8
+- Description: DM Sans 300, 0.85rem, #DFB6B2, line-height 1.7
+- Hover CTA "Explore →": #DFB6B2, hover #FBE4D8
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SKILLS SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Two column layout: section title far left, skill list right
+- Section title: Cormorant Garamond 400, 2.5rem, #FBE4D8
+- Skill items: DM Sans 300, 0.85rem, #DFB6B2, line-height 2.2, no bullets
+- Divider between columns: 1px solid rgba(251,228,216,0.08)
+- Skill tags if used: 
+  background: rgba(133,79,108,0.2)
+  border: 1px solid rgba(133,79,108,0.3)
+  color: #DFB6B2
+  border-radius: 0
+  padding: 4px 12px
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TESTIMONIALS SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Card background: rgba(43,18,76,0.3)
+- Left border accent: 2px solid #854F6C
+- Quote text: Cormorant Garamond 400 italic, 1.1rem, #FBE4D8
+- Attribution: DM Sans 300, 0.75rem, uppercase, #DFB6B2
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CONTACT / CTA SECTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Large statement left-aligned:
+  "Let's build something that moves people."
+  Cormorant Garamond 300, clamp(2.5rem, 5vw, 4rem), #FBE4D8
+- Orb 4 and 5 glow visible in background of this section
+- CTA button: 
+  background: linear-gradient(135deg, #522B5B, #854F6C)
+  color: #FBE4D8
+  border: none, border-radius: 0
+  padding: 14px 36px
+  DM Sans 400, uppercase, 0.1em tracking
+  hover: background: linear-gradient(135deg, #854F6C, #DFB6B2)
+         color: #190019
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FOOTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- Border-top: 1px solid rgba(251,228,216,0.08)
+- Background: transparent (inherits #190019 base)
+- Three column layout:
+  Left:   email + LinkedIn — DM Sans 300, 0.75rem, #DFB6B2
+  Centre: "Airin John" wordmark — Cormorant Garamond 400, #FBE4D8
+  Right:  "© 2025 Airin John" — DM Sans 300, 0.7rem, #DFB6B2
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+GLOBAL RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+- border-radius: 0 on ALL buttons, cards, inputs
+- No white or light section backgrounds anywhere
+- Section padding: minimum 128px top and bottom (py-32)
+- All borders: rgba white or rgba cream at 6–10% opacity only
+- No pure black (#000000) anywhere — use #190019 as the darkest value
+- ParticleSystem: set particle colour to #854F6C, opacity 0.12
+- Ensure WCAG AA contrast: #FBE4D8 on #190019 passes (it does — 
+  contrast ratio ~12:1)
+- On mobile (under 768px): reduce all orb sizes by 60%, 
+  reduce blur by 40%
+- Do not change any routing, backend, admin system, or data logic
+
+Confirm each section is complete when done and flag anything 
+that cannot be changed without breaking existing functionality.

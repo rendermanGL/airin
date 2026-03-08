@@ -3,6 +3,7 @@ import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import OrbBackground from "@/components/OrbBackground";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
 import Portfolio from "@/pages/Portfolio";
@@ -40,8 +41,11 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Router />
+        <div className="bg-page-gradient min-h-screen relative">
+          <OrbBackground />
+          <Toaster />
+          <Router />
+        </div>
       </TooltipProvider>
     </QueryClientProvider>
   );

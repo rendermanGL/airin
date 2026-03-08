@@ -105,7 +105,33 @@ This is a modern portfolio website for Airin John, a Brand Marketing Manager wit
 - **Server**: Port 5000 (mapped to external port 80)
 - **Development**: Port 24678 (mapped to external port 3000)
 
+## Design System
+
+### Color Palette
+- `--col-void: #190019` (deepest dark, base background)
+- `--col-deep: #2B124C` (deep purple, primary dark bg)
+- `--col-mid: #522B5B` (mid purple, gradients)
+- `--col-rose: #854F6C` (dusty rose, accents/labels)
+- `--col-blush: #DFB6B2` (blush, body text/secondary)
+- `--col-cream: #FBE4D8` (cream, headings/primary text on dark)
+
+### Typography
+- Headings: Cormorant Garamond (300, 400, 600)
+- Body/Nav: DM Sans (300, 400, 500)
+- All text on dark: cream (#FBE4D8), secondary: blush (#DFB6B2)
+
+### Visual Elements
+- OrbBackground: 5 floating orbs with CSS drift animations (fixed, full-page)
+- ParticleSystem: Three.js particles in #854F6C at 0.12 opacity
+- Global: radial-gradient background from #2B124C to #190019
+- Cards: rgba(43,18,76,0.4) with rgba cream borders at 8% opacity
+- All border-radius: 0 (sharp corners throughout)
+- Buttons: gradient or outlined with uppercase tracking
+
 ## Recent Changes
+- March 8, 2026: Complete visual redesign with deep purple/plum color palette, orb system, Cormorant Garamond + DM Sans typography
+- March 8, 2026: Added Google Analytics GA4 (G-6DHC4RNDG2), Open Graph tags, favicon, meta description
+- March 8, 2026: Fixed email/LinkedIn links to be clickable, updated footer copy
 - June 22, 2025: Updated Skills.tsx with authentic marketing expertise, leadership skills, and removed emoji headers
 - June 22, 2025: Fixed ContentWritingSamples.tsx card layout with equal heights and bottom-pinned Read buttons
 - June 22, 2025: Updated ContentWritingSamples.tsx with authentic Wild & The Moon content titles and removed descriptions
