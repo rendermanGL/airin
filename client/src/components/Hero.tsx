@@ -10,8 +10,6 @@ const fadeUp = {
 };
 
 export default function Hero() {
-  const cursorRef   = useRef<HTMLDivElement>(null);
-  const spotRef     = useRef<HTMLDivElement>(null);
   const fbPx1Ref    = useRef<HTMLDivElement>(null);
   const fbPx2Ref    = useRef<HTMLDivElement>(null);
   const fbPortRef   = useRef<HTMLDivElement>(null);
@@ -30,35 +28,15 @@ export default function Hero() {
   useEffect(() => {
     const onMove = (e: MouseEvent) => {
       mouse.current = { x: e.clientX, y: e.clientY };
-
-      if (cursorRef.current) {
-        cursorRef.current.style.left = e.clientX + 'px';
-        cursorRef.current.style.top  = e.clientY + 'px';
-      }
     };
 
     document.addEventListener('mousemove', onMove);
-
-    const interactives = document.querySelectorAll(
-      'a, button, .hero-word, .stat-tile, .portrait-circle, .frame-b'
-    );
-    const grow  = () => cursorRef.current?.classList.add('big');
-    const shrink = () => cursorRef.current?.classList.remove('big');
-    interactives.forEach(el => {
-      el.addEventListener('mouseenter', grow);
-      el.addEventListener('mouseleave', shrink);
-    });
 
     const tick = () => {
       const { x: mx, y: my } = mouse.current;
       const cx = window.innerWidth  / 2;
       const cy = window.innerHeight / 2;
       const dx = mx - cx, dy = my - cy;
-
-      if (spotRef.current) {
-        spotRef.current.style.left = mx + 'px';
-        spotRef.current.style.top  = my + 'px';
-      }
 
       layers.current.forEach(l => {
         l.sx += (dx * l.speedX - l.sx) * 0.08;
@@ -91,10 +69,6 @@ export default function Hero() {
     return () => {
       document.removeEventListener('mousemove', onMove);
       cancelAnimationFrame(rafId.current);
-      interactives.forEach(el => {
-        el.removeEventListener('mouseenter', grow);
-        el.removeEventListener('mouseleave', shrink);
-      });
     };
   }, []);
 
@@ -108,8 +82,6 @@ export default function Hero() {
         overflow: 'hidden',
       }}
     >
-      <div id="hud-cursor" ref={cursorRef} />
-      <div className="hud-spotlight" ref={spotRef} />
       <div className="hud-grid-bg" />
 
       <div className="hero-grid">

@@ -15,6 +15,7 @@ import DocumentViewer from "@/pages/DocumentViewer";
 import AdminLogin from "@/pages/AdminLogin";
 import AdminDashboard from "@/pages/AdminDashboard";
 import { motion, AnimatePresence } from "framer-motion";
+import HudCursor from "@/components/HudCursor";
 
 function Router() {
   return (
@@ -40,6 +41,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
+        <HudCursor />
         <Toaster />
         <Router />
       </TooltipProvider>
