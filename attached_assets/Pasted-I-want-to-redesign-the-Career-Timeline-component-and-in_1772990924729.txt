@@ -1,0 +1,42 @@
+I want to redesign the Career Timeline component and integrate it into the existing About section of my portfolio website (airinjohn.com). The site uses React + TypeScript, Tailwind CSS, and Framer Motion.
+
+DESIGN SYSTEM TO MATCH:
+- Background: #03000A (void) — no light backgrounds
+- Accent colours: #7B5EA7 (deep violet), #A378FF (bright violet), #C4A8FF (light lavender)
+- Text primary: #F0ECFF, Text secondary: #8B85A0, HUD labels: #4A4560
+- Font: Space Grotesk only (weights 300, 400, 500)
+- border-radius: 0 everywhere — no rounded corners
+- Glass panels: background rgba(255,255,255,0.04), border 1px solid rgba(255,255,255,0.07), backdrop-filter blur(12px)
+- Glass hover: background rgba(255,255,255,0.07), border rgba(163,120,255,0.3)
+- All section labels prefixed with // e.g. "// CAREER TRAJECTORY"
+- Framer Motion entrance: opacity 0 → 1, y: 24 → 0, duration 0.7s, easeOut
+
+ABOUT SECTION LAYOUT (two-column):
+Left column (45%): existing About Me text content — bio paragraph, key stats, skills summary
+Right column (55%): the Career Timeline (replacing the old coloured-card version)
+
+TIMELINE REDESIGN — HUD/mission control style:
+- Vertical center spine: 1px line, rgba(163,120,255,0.2), with a top-to-bottom gradient fill that animates on scroll (the line "draws itself" downward as user scrolls into view)
+- Each timeline node: small diamond shape (8px rotated square) in #A378FF on the spine
+- Cards: full glassmorphism panel (no border-radius), left-aligned, connected to spine with a 1px horizontal connector line in rgba(163,120,255,0.15)
+- Year badge: styled as HUD data readout — Space Grotesk 500, 0.65rem, uppercase, #A378FF, with a thin border rgba(163,120,255,0.3), no border-radius, padding 2px 8px
+- Role title: Space Grotesk 300, 0.95rem, #F0ECFF
+- Company name: Space Grotesk 300, 0.8rem, #8B85A0, uppercase, letter-spacing 0.15em
+- Left accent: instead of coloured left border, use a very subtle left glow — box-shadow: inset 2px 0 0 rgba(163,120,255,0.4)
+- Each card animates in on scroll with Framer Motion: staggered, slide from right + fade in, 0.15s delay between cards
+- NO coloured backgrounds per card — all cards use the same glass panel style
+
+TIMELINE ENTRIES (in order, newest first):
+1. 2023 – Present | Marketing & Communications Manager | Black Sheep Coffee
+2. 2023 | Brand Marketing Manager | Kitopi LLC
+3. 2020 – 2023 | Brand & Communications Manager | Wild & The Moon
+4. 2020 | Community Manager | Letswork
+5. 2019 – 2020 | Management Trainee | Al Tamimi & Company
+6. 2017 – 2019 | Events Intern | Fitze
+
+Section label above timeline (HUD style): // CAREER TRAJECTORY
+Small sub-label below it: Space Grotesk 300, 0.65rem, #4A4560, uppercase — "PROFESSIONAL CHRONOLOGY · 2017 – PRESENT"
+
+Make sure the two-column About layout stacks to single column on mobile, timeline below bio.
+Keep all existing About section content and only add/replace the timeline column.
+Do not touch routing, admin system, backend, or any other section.
