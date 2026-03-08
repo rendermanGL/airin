@@ -21,7 +21,10 @@ export default function Navbar() {
         const sectionHeight = element.offsetHeight;
         const sectionId = section.getAttribute("id") || "";
 
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+        if (
+          scrollPosition >= sectionTop &&
+          scrollPosition < sectionTop + sectionHeight
+        ) {
           setActiveSection(sectionId);
         }
       });
@@ -43,7 +46,7 @@ export default function Navbar() {
     { href: "/#about", label: "About", type: "anchor" },
     { href: "/#skills", label: "Skills", type: "anchor" },
     { href: "/portfolio", label: "Portfolio", type: "route" },
-    { href: "/#contact", label: "Contact", type: "anchor" },
+    // { href: "/#contact", label: "Contact", type: "anchor" },
   ];
 
   return (
@@ -56,11 +59,17 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <Link href="/" className="flex items-center gap-3">
-          <span className="text-[#0A0A0F] text-[0.9rem] font-medium tracking-[0.1em]" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <span
+            className="text-[#0A0A0F] text-[0.9rem] font-medium tracking-[0.1em]"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
             AJ
           </span>
           <span className="w-px h-4 bg-[#E8E8EC]" />
-          <span className="text-[#8A8A96] text-[0.65rem] uppercase tracking-[0.25em] font-light" style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+          <span
+            className="text-[#8A8A96] text-[0.65rem] uppercase tracking-[0.25em] font-light"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}
+          >
             AIRIN JOHN
           </span>
         </Link>
@@ -70,11 +79,27 @@ export default function Navbar() {
           className="md:hidden focus:outline-none text-[#4A4A56]"
           aria-label="Toggle menu"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
             {isOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="M6 18L18 6M6 6l12 12"
+              />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="1.5"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             )}
           </svg>
         </button>
@@ -97,14 +122,14 @@ export default function Navbar() {
               >
                 {item.label}
               </a>
-            )
+            ),
           )}
           <a
             href="#contact"
             className="border border-[rgba(0,0,0,0.12)] text-[#0A0A0F] px-4 py-1.5 text-[0.7rem] uppercase tracking-[0.15em] font-medium hover:text-[#A378FF] hover:border-[rgba(163,120,255,0.4)] transition-all duration-300"
             style={{ fontFamily: "'Space Grotesk', sans-serif" }}
           >
-            HIRE ME
+            CONTACT
           </a>
         </nav>
       </div>
@@ -138,14 +163,14 @@ export default function Navbar() {
                   >
                     {item.label}
                   </a>
-                )
+                ),
               )}
               <a
                 href="#contact"
                 onClick={closeMenu}
                 className="border border-[rgba(0,0,0,0.12)] text-[#0A0A0F] px-4 py-2 text-[0.7rem] uppercase tracking-[0.15em] font-medium text-center hover:text-[#A378FF] hover:border-[rgba(163,120,255,0.4)] transition-all duration-300 w-fit"
               >
-                HIRE ME
+                CONTACT
               </a>
             </div>
           </motion.nav>
