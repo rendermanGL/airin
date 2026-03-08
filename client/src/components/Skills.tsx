@@ -96,13 +96,7 @@ export default function Skills() {
         position: "relative",
       }}
     >
-      <div
-        style={{
-          maxWidth: "1100px",
-          margin: "0 auto",
-          padding: "0 40px",
-        }}
-      >
+      <div className="container mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
