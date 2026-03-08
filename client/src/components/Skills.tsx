@@ -1,111 +1,312 @@
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
-import { marketingSkills, leadershipSkills, tools } from "@/lib/skills";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+
+const capabilities = [
+  {
+    id: "CAP_01",
+    title: "Strategic Brand Management",
+    proof:
+      "Built and scaled brand identity for Black Sheep Coffee across UAE, aligning multi-channel campaigns with business growth goals.",
+    tags: ["Brand Strategy", "Positioning", "Identity"],
+  },
+  {
+    id: "CAP_02",
+    title: "Integrated Campaign Execution",
+    proof:
+      "Led end-to-end campaign delivery across digital, social, OOH and PR — driving measurable reach and engagement for F&B brands in GCC.",
+    tags: ["Campaign Management", "Multi-Channel"],
+  },
+  {
+    id: "CAP_03",
+    title: "Performance Marketing & ROI",
+    proof:
+      "Managed paid media budgets and reported performance against KPIs to C-suite stakeholders, optimising spend for maximum returns.",
+    tags: ["Paid Media", "KPI Reporting", "Analytics"],
+  },
+  {
+    id: "CAP_04",
+    title: "Influencer & Creator Strategy",
+    proof:
+      "Sourced, negotiated and managed creator partnerships across key UAE lifestyle and food verticals to amplify brand storytelling.",
+    tags: ["Influencer Relations", "Content Strategy"],
+  },
+  {
+    id: "CAP_05",
+    title: "Stakeholder & Budget Management",
+    proof:
+      "Cross-functional collaborator working with operations, product, and senior leadership to align marketing with commercial objectives.",
+    tags: ["Leadership", "Budget Planning", "Partnerships"],
+  },
+  {
+    id: "CAP_06",
+    title: "Brand Storytelling & Content",
+    proof:
+      "Crafted purpose-led brand narratives across copy, social, and long-form content — building emotional resonance with target audiences.",
+    tags: ["Copywriting", "Content Strategy", "Narrative"],
+  },
+];
+
+const tools = [
+  "Meta Business Suite",
+  "Power BI",
+  "Salesforce",
+  "Mailchimp",
+  "Asana",
+  "Google Business Profile",
+  "CRM Systems",
+  "Canva",
+  "Figma",
+  "Microsoft Office",
+  "Social Media Management Tools",
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
 
 export default function Skills() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, amount: 0.3 });
-  const [shouldAnimate, setShouldAnimate] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (isInView) {
-      setShouldAnimate(true);
-    }
-  }, [isInView]);
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
 
   return (
-    <section id="skills" className="py-[140px]" ref={ref}>
-      <div className="container mx-auto px-6">
-        <motion.div 
-          className="mb-16"
+    <section
+      id="skills"
+      style={{
+        padding: "140px 0",
+        position: "relative",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "0 40px",
+        }}
+      >
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: "easeOut" }}
         >
-          <span className="hud-label block mb-4">// CAPABILITIES</span>
-          <h2 className="section-title mb-6">My Skills</h2>
-          <div className="gradient-line mb-6"></div>
-          <p className="max-w-2xl text-[0.9rem] font-light text-[#8B85A0] leading-[1.85]">A combination of marketing expertise and leadership skills that drives impactful brand strategies and successful multi-channel campaigns.</p>
+          <p
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "0.65rem",
+              fontWeight: 300,
+              color: "#4A4560",
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
+            // CAPABILITIES
+          </p>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "clamp(2rem, 4vw, 3.5rem)",
+              fontWeight: 300,
+              color: "#F0ECFF",
+              letterSpacing: "-0.02em",
+              marginBottom: "64px",
+            }}
+          >
+            What I bring to the table
+          </h2>
         </motion.div>
-        
-        <div className="grid md:grid-cols-2 gap-12 max-w-4xl">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <h3 className="font-light text-xl text-[#F0ECFF] mb-8">Marketing Expertise</h3>
-            
-            {marketingSkills.map((skill, index) => (
-              <div className="py-4 border-b border-[rgba(255,255,255,0.04)]" key={skill.name}>
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-[0.85rem] text-[#8B85A0]">{skill.name}</span>
-                  <span className="data-readout">{skill.percentage}%</span>
-                </div>
-                <div className="skill-bar">
-                  <div 
-                    className="skill-progress"
-                    style={{ 
-                      width: shouldAnimate ? `${skill.percentage}%` : '0%',
-                      transitionDelay: `${index * 0.1}s`
+
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
+            gap: "2px",
+          }}
+        >
+          {capabilities.map((cap) => (
+            <motion.div
+              key={cap.id}
+              variants={cardVariants}
+              style={{
+                background: "rgba(255, 255, 255, 0.04)",
+                border: "1px solid rgba(255, 255, 255, 0.07)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                borderRadius: 0,
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
+                padding: "28px 32px",
+                display: "flex",
+                flexDirection: "column" as const,
+                gap: "10px",
+                transition: "all 400ms ease",
+                cursor: "default",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget;
+                el.style.background = "rgba(255, 255, 255, 0.07)";
+                el.style.borderColor = "rgba(163, 120, 255, 0.3)";
+                el.style.boxShadow = "0 0 40px rgba(123, 94, 167, 0.15)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget;
+                el.style.background = "rgba(255, 255, 255, 0.04)";
+                el.style.borderColor = "rgba(255, 255, 255, 0.07)";
+                el.style.boxShadow = "inset 0 1px 0 rgba(255,255,255,0.06)";
+              }}
+            >
+              <p
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: "0.6rem",
+                  fontWeight: 300,
+                  color: "#4A4560",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {cap.id}
+              </p>
+
+              <p
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: "0.9rem",
+                  fontWeight: 500,
+                  color: "#F0ECFF",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                {cap.title}
+              </p>
+
+              <p
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: "0.8rem",
+                  fontWeight: 300,
+                  color: "#8B85A0",
+                  lineHeight: 1.75,
+                  borderLeft: "2px solid rgba(163, 120, 255, 0.3)",
+                  paddingLeft: "12px",
+                  marginTop: "4px",
+                }}
+              >
+                {cap.proof}
+              </p>
+
+              <div
+                style={{
+                  display: "flex",
+                  gap: "6px",
+                  flexWrap: "wrap" as const,
+                  marginTop: "6px",
+                }}
+              >
+                {cap.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    style={{
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontSize: "0.6rem",
+                      fontWeight: 400,
+                      color: "#A378FF",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase" as const,
+                      opacity: 0.7,
                     }}
-                  ></div>
-                </div>
+                  >
+                    · {tag}
+                  </span>
+                ))}
               </div>
-            ))}
-          </motion.div>
-          
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <h3 className="font-light text-xl text-[#F0ECFF] mb-8">Leadership & Management</h3>
-            
-            {leadershipSkills.map((skill, index) => (
-              <div className="py-4 border-b border-[rgba(255,255,255,0.04)]" key={skill.name}>
-                <div className="flex justify-between items-center mb-3">
-                  <span className="text-[0.85rem] text-[#8B85A0]">{skill.name}</span>
-                  <span className="data-readout">{skill.percentage}%</span>
-                </div>
-                <div className="skill-bar">
-                  <div 
-                    className="skill-progress"
-                    style={{ 
-                      width: shouldAnimate ? `${skill.percentage}%` : '0%',
-                      transitionDelay: `${index * 0.1}s`
-                    }}
-                  ></div>
-                </div>
-              </div>
-            ))}
-          </motion.div>
-        </div>
-        
-        <motion.div 
-          className="mt-16"
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          style={{
+            marginTop: "48px",
+            paddingTop: "40px",
+            borderTop: "1px solid rgba(255, 255, 255, 0.07)",
+          }}
         >
-          <h3 className="font-light text-xl text-[#F0ECFF] mb-6">Tools & Technologies</h3>
-          
-          <div className="flex flex-wrap gap-3">
+          <p
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "0.6rem",
+              fontWeight: 300,
+              color: "#4A4560",
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
+            // TOOLS & TECHNOLOGIES
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "8px",
+            }}
+          >
             {tools.map((tool) => (
-              <motion.span 
+              <span
                 key={tool}
-                className="glass-panel-static px-4 py-2 text-[0.8rem] text-[#8B85A0]"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4 }}
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  padding: "5px 14px",
+                  background: "transparent",
+                  border: "1px solid rgba(255, 255, 255, 0.07)",
+                  fontSize: "0.65rem",
+                  fontWeight: 300,
+                  color: "#4A4560",
+                  letterSpacing: "0.08em",
+                  borderRadius: 0,
+                  transition: "all 250ms ease",
+                  cursor: "default",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.borderColor = "rgba(163, 120, 255, 0.3)";
+                  el.style.color = "#8B85A0";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.borderColor = "rgba(255, 255, 255, 0.07)";
+                  el.style.color = "#4A4560";
+                }}
               >
                 {tool}
-              </motion.span>
+              </span>
             ))}
           </div>
         </motion.div>

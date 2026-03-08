@@ -1,0 +1,422 @@
+# REPLIT INSTRUCTIONS — Skills Section Redesign
+## Replace percentage bars with Capability Cards layout
+**Project:** airinjohn.com  
+**File to edit:** `client/src/components/Skills.tsx`  
+**Date:** March 2026
+
+---
+
+## CONTEXT
+
+The current Skills section displays two columns of skills with percentage bars and numbers (e.g. "Strategic Brand Management — 95%"). This is being replaced with a **Capability Cards** layout — a 2×3 grid of glassmorphism cards, each showing a skill name, a one-line proof statement, and category tags. No numbers, no bars.
+
+**Design system rules that apply here:**
+- Font: Space Grotesk only, no exceptions
+- No rounded corners (`border-radius: 0` everywhere)
+- No light backgrounds — all dark (`#03000A` base)
+- Card style: glassmorphism panels (`rgba(255,255,255,0.04)` background, `rgba(255,255,255,0.07)` border)
+- Hover: `rgba(255,255,255,0.07)` background + `rgba(163,120,255,0.3)` border + `0 0 40px rgba(123,94,167,0.15)` box-shadow
+- Animations: Framer Motion `{ opacity: 0, y: 24 }` → `{ opacity: 1, y: 0 }`, duration 0.7s, ease "easeOut"
+- Section label prefix: `//`
+- Do NOT touch routing, backend, database, admin system, or any other component
+
+---
+
+## STEP 1 — Open the file
+
+Open `client/src/components/Skills.tsx`
+
+---
+
+## STEP 2 — Replace the entire file contents
+
+Delete everything in `Skills.tsx` and replace with the following:
+
+```tsx
+import { motion } from "framer-motion";
+
+const capabilities = [
+  {
+    id: "CAP_01",
+    title: "Strategic Brand Management",
+    proof:
+      "Built and scaled brand identity for Black Sheep Coffee across UAE, aligning multi-channel campaigns with business growth goals.",
+    tags: ["Brand Strategy", "Positioning", "Identity"],
+  },
+  {
+    id: "CAP_02",
+    title: "Integrated Campaign Execution",
+    proof:
+      "Led end-to-end campaign delivery across digital, social, OOH and PR — driving measurable reach and engagement for F&B brands in GCC.",
+    tags: ["Campaign Management", "Multi-Channel"],
+  },
+  {
+    id: "CAP_03",
+    title: "Performance Marketing & ROI",
+    proof:
+      "Managed paid media budgets and reported performance against KPIs to C-suite stakeholders, optimising spend for maximum returns.",
+    tags: ["Paid Media", "KPI Reporting", "Analytics"],
+  },
+  {
+    id: "CAP_04",
+    title: "Influencer & Creator Strategy",
+    proof:
+      "Sourced, negotiated and managed creator partnerships across key UAE lifestyle and food verticals to amplify brand storytelling.",
+    tags: ["Influencer Relations", "Content Strategy"],
+  },
+  {
+    id: "CAP_05",
+    title: "Stakeholder & Budget Management",
+    proof:
+      "Cross-functional collaborator working with operations, product, and senior leadership to align marketing with commercial objectives.",
+    tags: ["Leadership", "Budget Planning", "Partnerships"],
+  },
+  {
+    id: "CAP_06",
+    title: "Brand Storytelling & Content",
+    proof:
+      "Crafted purpose-led brand narratives across copy, social, and long-form content — building emotional resonance with target audiences.",
+    tags: ["Copywriting", "Content Strategy", "Narrative"],
+  },
+];
+
+const tools = [
+  "Meta Business Suite",
+  "Power BI",
+  "Salesforce",
+  "Mailchimp",
+  "Asana",
+  "Google Business Profile",
+  "CRM Systems",
+  "Canva",
+  "Figma",
+  "Microsoft Office",
+  "Social Media Management Tools",
+];
+
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+export default function Skills() {
+  return (
+    <section
+      id="skills"
+      style={{
+        padding: "140px 0",
+        position: "relative",
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1100px",
+          margin: "0 auto",
+          padding: "0 40px",
+        }}
+      >
+        {/* Section header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+        >
+          <p
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "0.65rem",
+              fontWeight: 300,
+              color: "var(--text-dim, #4A4560)",
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
+            // CAPABILITIES
+          </p>
+          <h2
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "clamp(2rem, 4vw, 3.5rem)",
+              fontWeight: 300,
+              color: "var(--text-primary, #F0ECFF)",
+              letterSpacing: "-0.02em",
+              marginBottom: "64px",
+            }}
+          >
+            What I bring to the table
+          </h2>
+        </motion.div>
+
+        {/* Capability cards grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "2px",
+          }}
+        >
+          {capabilities.map((cap) => (
+            <motion.div
+              key={cap.id}
+              variants={cardVariants}
+              style={{
+                background: "rgba(255, 255, 255, 0.04)",
+                border: "1px solid rgba(255, 255, 255, 0.07)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                borderRadius: 0,
+                boxShadow: "inset 0 1px 0 rgba(255,255,255,0.06)",
+                padding: "28px 32px",
+                display: "flex",
+                flexDirection: "column" as const,
+                gap: "10px",
+                transition: "all 400ms ease",
+                cursor: "default",
+              }}
+              onMouseEnter={(e) => {
+                const el = e.currentTarget;
+                el.style.background = "rgba(255, 255, 255, 0.07)";
+                el.style.borderColor = "rgba(163, 120, 255, 0.3)";
+                el.style.boxShadow = "0 0 40px rgba(123, 94, 167, 0.15)";
+              }}
+              onMouseLeave={(e) => {
+                const el = e.currentTarget;
+                el.style.background = "rgba(255, 255, 255, 0.04)";
+                el.style.borderColor = "rgba(255, 255, 255, 0.07)";
+                el.style.boxShadow = "inset 0 1px 0 rgba(255,255,255,0.06)";
+              }}
+            >
+              {/* Card index */}
+              <p
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: "0.6rem",
+                  fontWeight: 300,
+                  color: "var(--text-dim, #4A4560)",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {cap.id}
+              </p>
+
+              {/* Capability title */}
+              <p
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: "0.9rem",
+                  fontWeight: 500,
+                  color: "var(--text-primary, #F0ECFF)",
+                  letterSpacing: "0.02em",
+                }}
+              >
+                {cap.title}
+              </p>
+
+              {/* Proof statement */}
+              <p
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  fontSize: "0.8rem",
+                  fontWeight: 300,
+                  color: "var(--text-secondary, #8B85A0)",
+                  lineHeight: 1.75,
+                  borderLeft: "2px solid rgba(163, 120, 255, 0.3)",
+                  paddingLeft: "12px",
+                  marginTop: "4px",
+                }}
+              >
+                {cap.proof}
+              </p>
+
+              {/* Tags */}
+              <div
+                style={{
+                  display: "flex",
+                  gap: "6px",
+                  flexWrap: "wrap" as const,
+                  marginTop: "6px",
+                }}
+              >
+                {cap.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    style={{
+                      fontFamily: "'Space Grotesk', sans-serif",
+                      fontSize: "0.6rem",
+                      fontWeight: 400,
+                      color: "var(--accent-2, #A378FF)",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase" as const,
+                      opacity: 0.7,
+                    }}
+                  >
+                    · {tag}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Tools & Technologies */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+          style={{
+            marginTop: "48px",
+            paddingTop: "40px",
+            borderTop: "1px solid rgba(255, 255, 255, 0.07)",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "'Space Grotesk', sans-serif",
+              fontSize: "0.6rem",
+              fontWeight: 300,
+              color: "var(--text-dim, #4A4560)",
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              marginBottom: "16px",
+            }}
+          >
+            // TOOLS & TECHNOLOGIES
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "8px",
+            }}
+          >
+            {tools.map((tool) => (
+              <span
+                key={tool}
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  padding: "5px 14px",
+                  background: "transparent",
+                  border: "1px solid rgba(255, 255, 255, 0.07)",
+                  fontSize: "0.65rem",
+                  fontWeight: 300,
+                  color: "var(--text-dim, #4A4560)",
+                  letterSpacing: "0.08em",
+                  borderRadius: 0,
+                  transition: "all 250ms ease",
+                  cursor: "default",
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.borderColor = "rgba(163, 120, 255, 0.3)";
+                  el.style.color = "var(--text-secondary, #8B85A0)";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.borderColor = "rgba(255, 255, 255, 0.07)";
+                  el.style.color = "var(--text-dim, #4A4560)";
+                }}
+              >
+                {tool}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+```
+
+---
+
+## STEP 3 — Check for CSS variable availability
+
+The component uses CSS variables (`--text-primary`, `--text-secondary`, `--text-dim`, `--accent-2`). These should already be defined in `index.css`. Verify the following exist in `index.css` under `:root`:
+
+```css
+--text-primary: #F0ECFF;
+--text-secondary: #8B85A0;
+--text-dim: #4A4560;
+--accent-2: #A378FF;
+```
+
+If any are missing, add them. Do not change existing values.
+
+---
+
+## STEP 4 — Mobile responsiveness
+
+The grid is `repeat(2, 1fr)` on desktop. Add a responsive breakpoint so it stacks to a single column on mobile. If the project uses Tailwind for media queries, the inline grid style can be handled with a conditional or a className. 
+
+If the existing Skills component used a className-based approach for responsive grids, match that pattern. The simplest inline approach is to add this to the grid container:
+
+```tsx
+// Add this state at the top of the component:
+const [isMobile, setIsMobile] = React.useState(false);
+
+React.useEffect(() => {
+  const check = () => setIsMobile(window.innerWidth < 768);
+  check();
+  window.addEventListener("resize", check);
+  return () => window.removeEventListener("resize", check);
+}, []);
+
+// Then use it on the grid:
+gridTemplateColumns: isMobile ? "1fr" : "repeat(2, 1fr)",
+```
+
+Make sure to add `import React from "react"` at the top if it isn't already there.
+
+---
+
+## STEP 5 — Verify
+
+After saving, check the following:
+
+- [ ] The Skills section no longer shows any percentage numbers or progress bars
+- [ ] Six capability cards render in a 2×3 grid
+- [ ] Each card has: index label (CAP_01 etc.), title, proof statement with left border, category tags
+- [ ] Cards animate in on scroll (staggered fade up)
+- [ ] Hover state changes card background and border to violet
+- [ ] Tools row renders below the grid as small outlined chips
+- [ ] No rounded corners anywhere
+- [ ] Section still sits in correct position on the homepage (between About and Testimonials, or wherever it currently lives)
+- [ ] Admin routes `/admin/login` and `/admin/dashboard` still work — do a quick check
+
+---
+
+## WHAT WAS NOT CHANGED
+
+- Routing (`App.tsx`) — untouched
+- Backend / Drizzle ORM — untouched
+- Admin system — untouched
+- All other components (Navbar, Hero, About, Testimonials, Contact, Footer) — untouched
+- `tailwind.config.ts` — untouched
+- `index.css` global variables — only verified, not changed
+
+---
+
+## CONTENT NOTE
+
+The proof statements in `CAP_01` through `CAP_06` are placeholder copy based on Airin's known experience. Airin should review and edit these to ensure they accurately reflect real campaigns, outcomes, and specifics from her actual work history before the site goes live.
