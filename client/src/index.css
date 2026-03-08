@@ -359,9 +359,32 @@ body { cursor: none; }
   mix-blend-mode: multiply;
 }
 
+.hero-grid {
+  position: relative; z-index: 2;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 480px;
+  align-items: center;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 7%;
+  gap: 0;
+}
+
 .portrait-zone {
-  position: absolute; right: 5%; top: 50%;
-  transform: translateY(-50%); z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.hero-text-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 9vh;
+  padding-top: 120px;
 }
 
 .frame-b {
@@ -549,10 +572,18 @@ body { cursor: none; }
 }
 
 @media (max-width: 768px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    padding: 0 5%;
+  }
+  .hero-text-col {
+    padding-top: 100px;
+    padding-bottom: 40px;
+    order: 2;
+  }
   .portrait-zone {
-    position: relative; right: auto; top: auto;
-    transform: none; display: flex; justify-content: center;
-    margin-top: 100px; margin-bottom: 40px;
+    order: 1;
+    padding-top: 100px;
   }
   .frame-b { width: 280px; height: 280px; }
   .frame-b .portrait-circle { width: 170px; height: 170px; }

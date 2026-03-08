@@ -112,8 +112,66 @@ export default function Hero() {
       <div className="hud-spotlight" ref={spotRef} />
       <div className="hud-grid-bg" />
 
-      <div className="portrait-zone">
-        <div className="frame-b" id="frame-b-el">
+      <div className="hero-grid">
+
+        <div className="hero-text-col">
+
+          <motion.div
+            className="hud-label"
+            style={{ marginBottom: '20px' }}
+            variants={fadeUp} initial="hidden" animate="visible" custom={0.1}
+          >
+            // Brand Marketing Manager
+          </motion.div>
+
+          <motion.div
+            className="word-hero-wrap"
+            variants={fadeUp} initial="hidden" animate="visible" custom={0.22}
+          >
+            <span className="hero-word">
+              Airin
+              <span className="word-tag">// Strategist</span>
+            </span>
+            <span className="hero-word">
+              John
+              <span className="word-tag">// Brand Builder</span>
+            </span>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp} initial="hidden" animate="visible" custom={0.34}
+          >
+            <div className="sep-iris" />
+
+            <div className="stat-strip">
+              <div className="stat-tile">
+                <span className="stat-val" style={{ color: '#A378FF' }}>6+</span>
+                <span className="stat-lbl">Years</span>
+              </div>
+              <div className="stat-tile">
+                <span className="stat-val">UAE</span>
+                <span className="stat-lbl">Market</span>
+              </div>
+              <div className="stat-tile">
+                <span className="stat-val">GCC</span>
+                <span className="stat-lbl">Region</span>
+              </div>
+              <div className="stat-tile">
+                <span className="stat-val" style={{ fontSize: '0.68rem' }}>F&amp;B · Life · Tech</span>
+                <span className="stat-lbl">Sectors</span>
+              </div>
+            </div>
+
+            <div className="cta-row">
+              <a href="/portfolio" className="btn-primary" ref={btn1Ref}>View Work</a>
+              <a href="#contact"   className="btn-ghost"   ref={btn2Ref}>Contact</a>
+            </div>
+          </motion.div>
+
+        </div>
+
+        <div className="portrait-zone">
+          <div className="frame-b" id="frame-b-el">
 
           <div className="pulse-ring" />
           <div className="pulse-ring" />
@@ -238,81 +296,23 @@ export default function Hero() {
           </div>
 
         </div>
+        </div>
+
       </div>
 
-      <div
-        style={{
-          position: 'relative', minHeight: '100vh', zIndex: 2,
-          display: 'flex', flexDirection: 'column',
-          justifyContent: 'flex-end', padding: '0 8% 9%',
-        }}
-      >
-        <motion.div
-          className="hud-label"
-          style={{ marginBottom: '20px' }}
-          variants={fadeUp} initial="hidden" animate="visible" custom={0.1}
-        >
-          // Brand Marketing Manager
-        </motion.div>
-
-        <motion.div
-          className="word-hero-wrap"
-          variants={fadeUp} initial="hidden" animate="visible" custom={0.22}
-        >
-          <span className="hero-word">
-            Airin
-            <span className="word-tag">// Strategist</span>
+      <div style={{
+        position: 'absolute', bottom: '48px', right: '7%',
+        textAlign: 'right', zIndex: 10,
+      }}>
+        <div className="hud-label" style={{ justifyContent: 'flex-end', marginBottom: '8px' }}>
+          // Open to new roles
+        </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'flex-end' }}>
+          <span className="dot-online" />
+          <span style={{ fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8A8A96', fontFamily: "'Space Grotesk', sans-serif" }}>
+            Available
           </span>
-          <span className="hero-word">
-            John
-            <span className="word-tag">// Brand Builder</span>
-          </span>
-        </motion.div>
-
-        <motion.div
-          style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', position: 'relative', zIndex: 10 }}
-          variants={fadeUp} initial="hidden" animate="visible" custom={0.34}
-        >
-          <div>
-            <div className="sep-iris" />
-
-            <div className="stat-strip">
-              <div className="stat-tile">
-                <span className="stat-val" style={{ color: '#A378FF' }}>6+</span>
-                <span className="stat-lbl">Years</span>
-              </div>
-              <div className="stat-tile">
-                <span className="stat-val">UAE</span>
-                <span className="stat-lbl">Market</span>
-              </div>
-              <div className="stat-tile">
-                <span className="stat-val">GCC</span>
-                <span className="stat-lbl">Region</span>
-              </div>
-              <div className="stat-tile">
-                <span className="stat-val" style={{ fontSize: '0.68rem' }}>F&amp;B · Life · Tech</span>
-                <span className="stat-lbl">Sectors</span>
-              </div>
-            </div>
-
-            <div className="cta-row">
-              <a href="/portfolio" className="btn-primary" ref={btn1Ref}>View Work</a>
-              <a href="#contact"   className="btn-ghost"   ref={btn2Ref}>Contact</a>
-            </div>
-          </div>
-
-          <div style={{ textAlign: 'right', paddingBottom: '4px' }}>
-            <div className="hud-label" style={{ justifyContent: 'flex-end', marginBottom: '8px' }}>
-              // Open to new roles
-            </div>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'flex-end' }}>
-              <span className="dot-online" />
-              <span style={{ fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8A8A96', fontFamily: "'Space Grotesk', sans-serif" }}>
-                Available
-              </span>
-            </div>
-          </div>
-        </motion.div>
+        </div>
       </div>
 
     </section>
