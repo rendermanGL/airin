@@ -1,87 +1,320 @@
-import { motion } from "framer-motion";
-import ParticleSystem from "./ParticleSystem";
+import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+
+const fadeUp = {
+  hidden:  { opacity: 0, y: 26 },
+  visible: (delay: number) => ({
+    opacity: 1, y: 0,
+    transition: { duration: 0.85, ease: 'easeOut', delay }
+  })
+};
 
 export default function Hero() {
+  const cursorRef   = useRef<HTMLDivElement>(null);
+  const spotRef     = useRef<HTMLDivElement>(null);
+  const fbPx1Ref    = useRef<HTMLDivElement>(null);
+  const fbPx2Ref    = useRef<HTMLDivElement>(null);
+  const fbPortRef   = useRef<HTMLDivElement>(null);
+  const btn1Ref     = useRef<HTMLAnchorElement>(null);
+  const btn2Ref     = useRef<HTMLAnchorElement>(null);
+
+  const layers = useRef([
+    { ref: fbPx1Ref,  sx: 0, sy: 0, speedX: 0.025, speedY: 0.020 },
+    { ref: fbPx2Ref,  sx: 0, sy: 0, speedX: 0.015, speedY: 0.012 },
+    { ref: fbPortRef, sx: 0, sy: 0, speedX: 0.007, speedY: 0.006 },
+  ]);
+
+  const mouse = useRef({ x: 0, y: 0 });
+  const rafId = useRef<number>(0);
+
+  useEffect(() => {
+    const onMove = (e: MouseEvent) => {
+      mouse.current = { x: e.clientX, y: e.clientY };
+
+      if (cursorRef.current) {
+        cursorRef.current.style.left = e.clientX + 'px';
+        cursorRef.current.style.top  = e.clientY + 'px';
+      }
+    };
+
+    document.addEventListener('mousemove', onMove);
+
+    const interactives = document.querySelectorAll(
+      'a, button, .hero-word, .stat-tile, .portrait-circle, .frame-b'
+    );
+    const grow  = () => cursorRef.current?.classList.add('big');
+    const shrink = () => cursorRef.current?.classList.remove('big');
+    interactives.forEach(el => {
+      el.addEventListener('mouseenter', grow);
+      el.addEventListener('mouseleave', shrink);
+    });
+
+    const tick = () => {
+      const { x: mx, y: my } = mouse.current;
+      const cx = window.innerWidth  / 2;
+      const cy = window.innerHeight / 2;
+      const dx = mx - cx, dy = my - cy;
+
+      if (spotRef.current) {
+        spotRef.current.style.left = mx + 'px';
+        spotRef.current.style.top  = my + 'px';
+      }
+
+      layers.current.forEach(l => {
+        l.sx += (dx * l.speedX - l.sx) * 0.08;
+        l.sy += (dy * l.speedY - l.sy) * 0.08;
+        if (l.ref.current) {
+          l.ref.current.style.transform = `translate(${l.sx}px, ${l.sy}px)`;
+        }
+      });
+
+      [btn1Ref, btn2Ref].forEach(bRef => {
+        const btn = bRef.current;
+        if (!btn) return;
+        const r    = btn.getBoundingClientRect();
+        const bx   = r.left + r.width  / 2;
+        const by   = r.top  + r.height / 2;
+        const dist = Math.sqrt((mx - bx) ** 2 + (my - by) ** 2);
+        if (dist < 90) {
+          const pull = (90 - dist) / 90;
+          btn.style.transform = `translate(${(mx - bx) * pull * 0.38}px, ${(my - by) * pull * 0.38}px)`;
+        } else {
+          btn.style.transform = '';
+        }
+      });
+
+      rafId.current = requestAnimationFrame(tick);
+    };
+
+    rafId.current = requestAnimationFrame(tick);
+
+    return () => {
+      document.removeEventListener('mousemove', onMove);
+      cancelAnimationFrame(rafId.current);
+      interactives.forEach(el => {
+        el.removeEventListener('mouseenter', grow);
+        el.removeEventListener('mouseleave', shrink);
+      });
+    };
+  }, []);
+
   return (
-    <section id="hero" className="relative min-h-screen overflow-hidden flex items-end pb-[12%]">
-      <ParticleSystem />
+    <section
+      id="hero"
+      style={{
+        position: 'relative',
+        minHeight: '100vh',
+        background: '#FFFFFF',
+        overflow: 'hidden',
+      }}
+    >
+      <div id="hud-cursor" ref={cursorRef} />
+      <div className="hud-spotlight" ref={spotRef} />
+      <div className="hud-grid-bg" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col lg:flex-row items-end lg:items-end justify-between">
-          <motion.div
-            className="lg:w-1/2 order-2 lg:order-1"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+      <div className="portrait-zone">
+        <div className="frame-b" id="frame-b-el">
+
+          <div className="pulse-ring" />
+          <div className="pulse-ring" />
+          <div className="pulse-ring" />
+
+          <div className="px-layer" ref={fbPx1Ref} style={{ position: 'absolute', inset: 0 }}>
+            <svg className="hud-svg" viewBox="0 0 380 380">
+              <g className="rot-cw18">
+                <path className="arc-seg arc-seg-iris" d="M 190,10 A 180,180 0 0 1 370,190" />
+                <path className="arc-seg arc-seg-dim"  d="M 370,190 A 180,180 0 0 1 190,370" />
+                <path className="arc-seg arc-seg-iris" d="M 190,370 A 180,180 0 0 1 10,190" />
+                <path className="arc-seg arc-seg-dim"  d="M 10,190 A 180,180 0 0 1 190,10" />
+              </g>
+              <circle className="arc-seg-thin rot-ccw30" cx="190" cy="190" r="155" />
+            </svg>
+          </div>
+
+          <div className="px-layer" ref={fbPx2Ref} style={{ position: 'absolute', inset: 0 }}>
+            <svg className="hud-svg" viewBox="0 0 380 380">
+              <path className="t-bracket" d="M 50,70 L 50,50 L 70,50" />
+              <path className="t-bracket" d="M 310,50 L 330,50 L 330,70" />
+              <path className="t-bracket" d="M 50,310 L 50,330 L 70,330" />
+              <path className="t-bracket" d="M 310,330 L 330,330 L 330,310" />
+              <circle className="arc-seg arc-seg-dim" cx="190" cy="190" r="125" strokeDasharray="12 5" />
+              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="190" y1="60"  x2="190" y2="72" />
+              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="190" y1="308" x2="190" y2="320" />
+              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="60"  y1="190" x2="72"  y2="190" />
+              <line stroke="rgba(163,120,255,0.4)" strokeWidth="0.7" x1="308" y1="190" x2="320" y2="190" />
+            </svg>
+          </div>
+
+          <div className="portrait-circle" ref={fbPortRef}>
+            <img
+              src="/airin-portrait.jpg"
+              alt="Airin John"
+              onError={(e) => {
+                const img = e.currentTarget;
+                img.style.display = 'none';
+                const fallback = img.nextElementSibling as HTMLElement;
+                if (fallback) fallback.style.display = 'flex';
+              }}
+            />
+            <div className="portrait-fallback" style={{ display: 'none' }}>
+              <span>AJ</span>
+            </div>
+          </div>
+
+          <svg
+            style={{ position: 'absolute', inset: 0, zIndex: 21, pointerEvents: 'none' }}
+            viewBox="0 0 380 380"
           >
-            <span className="hud-label block mb-4">// BRAND MARKETING MANAGER</span>
+            <circle cx="190" cy="190" r="117" fill="none" stroke="rgba(163,120,255,0.35)" strokeWidth="1" />
+            <circle cx="190" cy="190" r="120" fill="none" stroke="rgba(163,120,255,0.1)"  strokeWidth="0.5" strokeDasharray="4 8" />
+          </svg>
 
-            <h1
-              className="font-light text-[#0A0A0F] tracking-[-0.03em] leading-[0.95] mb-6"
-              style={{ fontSize: "clamp(3.5rem, 8vw, 8rem)" }}
+          <div className="callout-b cb-1"
+            style={{ position: 'absolute', top: '63px', left: '63px', width: 0, height: 0, overflow: 'visible' }}>
+            <svg
+              style={{ position: 'absolute', top: '-70px', left: '-155px', overflow: 'visible', display: 'block' }}
+              width="160" height="75"
             >
-              Airin John
-            </h1>
-
-            <div className="gradient-line mb-6" />
-
-            <p className="font-light text-[0.9rem] text-[#4A4A56] mb-8">
-              Strategic marketer. Brand builder. Multi-channel architect.
-            </p>
-
-            <div className="flex items-center gap-6 mb-10 flex-wrap">
-              <div className="flex flex-col">
-                <span className="hud-label mb-1">EXPERIENCE</span>
-                <span className="data-readout">6+ YRS</span>
-              </div>
-              <div className="w-px h-8 bg-[#E8E8EC]" />
-              <div className="flex flex-col">
-                <span className="hud-label mb-1">MARKET</span>
-                <span className="data-readout">UAE & GCC</span>
-              </div>
-              <div className="w-px h-8 bg-[#E8E8EC]" />
-              <div className="flex flex-col">
-                <span className="hud-label mb-1">SECTORS</span>
-                <span className="data-readout">F&B · LIFESTYLE · TECH</span>
-              </div>
+              <polyline points="155,70 55,0 0,0" />
+            </svg>
+            <div className="cb-terminus"
+              style={{ position: 'absolute', top: 'calc(-70px - 2px)', left: '-157px' }} />
+            <div className="cb-label"
+              style={{ position: 'absolute', top: 'calc(-70px - 24px)', left: '-157px', transform: 'translateX(-100%)', textAlign: 'right' }}>
+              <span className="cb-cat">ROLE</span>
+              Brand Marketing Mgr
             </div>
+          </div>
 
-            <div className="flex gap-4">
-              <a href="/portfolio" className="cta-primary inline-block">
-                VIEW WORK
-              </a>
-              <a href="#contact" className="cta-secondary inline-block">
-                CONTACT
-              </a>
+          <div className="callout-b cb-2"
+            style={{ position: 'absolute', top: '140px', left: '63px', width: 0, height: 0, overflow: 'visible' }}>
+            <svg
+              style={{ position: 'absolute', top: '-40px', left: '-155px', overflow: 'visible', display: 'block' }}
+              width="160" height="50"
+            >
+              <polyline points="155,40 55,0 0,0" />
+            </svg>
+            <div className="cb-terminus"
+              style={{ position: 'absolute', top: 'calc(-40px - 2px)', left: '-157px' }} />
+            <div className="cb-label"
+              style={{ position: 'absolute', top: 'calc(-40px - 24px)', left: '-157px', transform: 'translateX(-100%)', textAlign: 'right' }}>
+              <span className="cb-cat">COMPANY</span>
+              Black Sheep Coffee
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            className="lg:w-5/12 order-1 lg:order-2 mb-12 lg:mb-0 flex justify-center lg:justify-end"
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-          >
-            <div className="relative w-[280px] md:w-[340px] lg:w-[380px]" style={{ aspectRatio: "3/4" }}>
-              <img
-                src="https://www.dropbox.com/scl/fi/n0yvq47kjbut8x5x9931m/airin-john-website.jpg?rlkey=aw7zepv90hq4wpkprpimp2g5a&st=0v4vpze4&raw=1"
-                alt="Airin John"
-                className="w-full h-full object-cover"
-                style={{
-                  filter: "contrast(1.05) brightness(0.95) saturate(0.85)",
-                }}
-              />
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background:
-                    "linear-gradient(to right, rgba(255,255,255,0.6) 0%, transparent 30%), linear-gradient(to top, rgba(255,255,255,0.7) 0%, transparent 40%)",
-                }}
-              />
+          <div className="callout-b cb-3"
+            style={{ position: 'absolute', bottom: '140px', left: '63px', width: 0, height: 0, overflow: 'visible' }}>
+            <svg
+              style={{ position: 'absolute', bottom: '-40px', left: '-155px', overflow: 'visible', display: 'block' }}
+              width="160" height="50"
+            >
+              <polyline points="155,0 55,40 0,40" />
+            </svg>
+            <div className="cb-terminus"
+              style={{ position: 'absolute', bottom: 'calc(-40px - 2px)', left: '-157px' }} />
+            <div className="cb-label"
+              style={{ position: 'absolute', bottom: 'calc(-40px - 24px)', left: '-157px', transform: 'translateX(-100%)', textAlign: 'right' }}>
+              <span className="cb-cat">MARKET</span>
+              UAE · GCC
             </div>
-          </motion.div>
+          </div>
+
+          <div className="callout-b cb-4"
+            style={{ position: 'absolute', bottom: '63px', left: '63px', width: 0, height: 0, overflow: 'visible' }}>
+            <svg
+              style={{ position: 'absolute', bottom: '-70px', left: '-155px', overflow: 'visible', display: 'block' }}
+              width="160" height="75"
+            >
+              <polyline points="155,0 55,70 0,70" />
+            </svg>
+            <div className="cb-terminus"
+              style={{ position: 'absolute', bottom: 'calc(-70px - 2px)', left: '-157px' }} />
+            <div className="cb-label"
+              style={{ position: 'absolute', bottom: 'calc(-70px - 24px)', left: '-157px', transform: 'translateX(-100%)', textAlign: 'right' }}>
+              <span className="cb-cat">EXP</span>
+              6+ Years GCC
+            </div>
+          </div>
+
         </div>
       </div>
+
+      <div
+        style={{
+          position: 'relative', minHeight: '100vh', zIndex: 2,
+          display: 'flex', flexDirection: 'column',
+          justifyContent: 'flex-end', padding: '0 8% 9%',
+        }}
+      >
+        <motion.div
+          className="hud-label"
+          style={{ marginBottom: '20px' }}
+          variants={fadeUp} initial="hidden" animate="visible" custom={0.1}
+        >
+          // Brand Marketing Manager
+        </motion.div>
+
+        <motion.div
+          className="word-hero-wrap"
+          variants={fadeUp} initial="hidden" animate="visible" custom={0.22}
+        >
+          <span className="hero-word">
+            Airin
+            <span className="word-tag">// Strategist</span>
+          </span>
+          <span className="hero-word">
+            John
+            <span className="word-tag">// Brand Builder</span>
+          </span>
+        </motion.div>
+
+        <motion.div
+          style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', position: 'relative', zIndex: 10 }}
+          variants={fadeUp} initial="hidden" animate="visible" custom={0.34}
+        >
+          <div>
+            <div className="sep-iris" />
+
+            <div className="stat-strip">
+              <div className="stat-tile">
+                <span className="stat-val" style={{ color: '#A378FF' }}>6+</span>
+                <span className="stat-lbl">Years</span>
+              </div>
+              <div className="stat-tile">
+                <span className="stat-val">UAE</span>
+                <span className="stat-lbl">Market</span>
+              </div>
+              <div className="stat-tile">
+                <span className="stat-val">GCC</span>
+                <span className="stat-lbl">Region</span>
+              </div>
+              <div className="stat-tile">
+                <span className="stat-val" style={{ fontSize: '0.68rem' }}>F&amp;B · Life · Tech</span>
+                <span className="stat-lbl">Sectors</span>
+              </div>
+            </div>
+
+            <div className="cta-row">
+              <a href="/portfolio" className="btn-primary" ref={btn1Ref}>View Work</a>
+              <a href="#contact"   className="btn-ghost"   ref={btn2Ref}>Contact</a>
+            </div>
+          </div>
+
+          <div style={{ textAlign: 'right', paddingBottom: '4px' }}>
+            <div className="hud-label" style={{ justifyContent: 'flex-end', marginBottom: '8px' }}>
+              // Open to new roles
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', justifyContent: 'flex-end' }}>
+              <span className="dot-online" />
+              <span style={{ fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#8A8A96', fontFamily: "'Space Grotesk', sans-serif" }}>
+                Available
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
     </section>
   );
 }
