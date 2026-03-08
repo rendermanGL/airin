@@ -1,58 +1,117 @@
+import { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'wouter';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 
-import { motion } from "framer-motion";
-import { Link } from "wouter";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import HudOverlay from "@/components/HudOverlay";
+type KPI = { value: string; label: string };
 
-const campaigns = [
+type Campaign = {
+  fileId: string;
+  status: string;
+  type: string;
+  image: string;
+  title: string;
+  subtitle: string;
+  context: string;
+  objectives: string[];
+  channels: string[];
+  results?: string[];
+  kpis: KPI[];
+};
+
+const campaigns: Campaign[] = [
   {
-    title: "Brand Campaign",
-    subtitle: "Chin Chin",
-    description: "Conceptualized and executed a vibrant marketing campaign featuring the tagline, \"Chin Chin, So Nice, You Gotta Say it Twice!\", brought to life through engaging content - brand video campaigns and curated brand jingle - and media strategies. <strong>To be launched in 2025</strong>.",
-    image: "/multi-channel-marketing/chin-chin-brand-campaign.jpeg",
+    fileId: 'FILE_BS_001',
+    status: 'IN DEVELOPMENT',
+    type: 'Multi-Channel Brand Campaign',
+    image: '/multi-channel-marketing/chin-chin-brand-campaign.jpeg',
+    title: 'Brand Campaign',
+    subtitle: 'Chin Chin',
+    context:
+      'Conceptualized and executed a vibrant marketing campaign featuring the tagline, "Chin Chin, So Nice, You Gotta Say it Twice!", brought to life through engaging content — brand video campaigns and curated brand jingle — and media strategies. To be launched in 2025.',
     objectives: [
-      "Drive brand awareness and engagement through unique, memorable brand campaigns",
-      "Elevate brand presence by using creative and media-driven strategies",
-      "Improve reach and impact of the campaign through communication mediums that are new to the brand"
+      'Drive brand awareness and engagement through unique, memorable brand campaigns',
+      'Elevate brand presence by using creative and media-driven strategies',
+      'Improve reach and impact of the campaign through communication mediums that are new to the brand',
     ],
     channels: [
-      "Radio Jingle",
-      "Video Campaign & Paid Ads",
-      "Social Media",
-      "Influencer Marketing",
-      "WhatsApp Campaign",
-      "Press Release",
-      "In-store Collaterals"
-    ]
+      'Radio Jingle',
+      'Video Campaign & Paid Ads',
+      'Social Media',
+      'Influencer Marketing',
+      'WhatsApp Campaign',
+      'Press Release',
+      'In-store Collaterals',
+    ],
+    kpis: [
+      { value: '2025', label: 'Launch' },
+      { value: '07', label: 'Channels' },
+      { value: 'Brand', label: 'Campaign' },
+    ],
   },
   {
-    title: "Chin Chin",
-    subtitle: "CSR: Ramadan Campaign",
-    description: "Launched a Ramadan initiative encouraging aimed at fostering community engagement, featuring a curated Ramadan Box accompanied with a voucher redeemable at select stores, integrating social impact with customer value.",
-    image: "/portfolio-images/brand-storytelling.png",
+    fileId: 'FILE_BS_002',
+    status: 'COMPLETE',
+    type: 'CSR Storytelling Campaign',
+    image: '/portfolio-images/brand-storytelling.png',
+    title: 'CSR: Ramadan Campaign',
+    subtitle: 'Chin Chin',
+    context:
+      'Launched a Ramadan initiative encouraging community engagement, featuring a curated Ramadan Box accompanied with a voucher redeemable at select stores, integrating social impact with customer value.',
     objectives: [
-      "Align the brand with the spirit of the season through meaningful CSR activities",
-      "Strengthen brand image and visibility through targeted social media campaigns, influencer partnerships, and robust PR efforts"
+      'Align the brand with the spirit of the season through meaningful CSR activities',
+      'Strengthen brand image and visibility through targeted social media campaigns, influencer partnerships, and robust PR efforts',
     ],
     channels: [
-      "Video Campaign & Paid Ads",
-      "Social Media",
-      "Influencer Marketing",
-      "WhatsApp Campaign",
-      "Press Release",
-      "In-store Collaterals"
+      'Video Campaign & Paid Ads',
+      'Social Media',
+      'Influencer Marketing',
+      'WhatsApp Campaign',
+      'Press Release',
+      'In-store Collaterals',
     ],
     results: [
-      "Over <strong>23k vouchers</strong> distributed, with over <strong>2% conversion</strong> (redemptions in-stores)",
-      "More than <strong>9 million impressions</strong> across digital platforms",
-      "Attained <strong>11</strong> press and <strong>media coverages</strong>",
-      "Over <strong>600 stories</strong> on social media"
-    ]
-  }
+      'Over 23k vouchers distributed, with over 2% conversion (redemptions in-stores)',
+      'More than 9 million impressions across digital platforms',
+      'Attained 11 press and media coverages',
+      'Over 600 stories on social media',
+    ],
+    kpis: [
+      { value: '23k+', label: 'Vouchers' },
+      { value: '9M+', label: 'Impressions' },
+      { value: '11', label: 'PR Hits' },
+    ],
+  },
 ];
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (delay: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: 'easeOut', delay },
+  }),
+};
+
 export default function BrandStorytelling() {
+  useEffect(() => {
+    const reveals = document.querySelectorAll('.case-reveal');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    reveals.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -60,103 +119,140 @@ export default function BrandStorytelling() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <HudOverlay />
       <Navbar />
-      
-      <section className="pt-24 pb-8">
-        <div className="container mx-auto px-6">
-          <motion.div 
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            <nav className="text-sm mb-4">
-              <Link href="/" className="text-[#4A4A56] hover:text-[#A378FF] transition-colors">Home</Link>
-              <span className="mx-2 text-[#8A8A96]">/</span>
-              <Link href="/portfolio" className="text-[#4A4A56] hover:text-[#A378FF] transition-colors">Portfolio</Link>
-              <span className="mx-2 text-[#8A8A96]">/</span>
-              <span className="text-[#0A0A0F] font-medium">Brand Storytelling & Multi-Channel Marketing</span>
-            </nav>
-            <h1 className="section-title mb-4">
-              Brand Storytelling & Multi-Channel Marketing
-            </h1>
-            <div className="gradient-line mb-6"></div>
-          </motion.div>
-        </div>
-      </section>
 
-      <section className="py-[140px] pt-12">
-        <div className="container mx-auto px-6">
-          <div className="space-y-16">
-            {campaigns.map((campaign, index) => (
-              <motion.div
-                key={index}
-                className="flex flex-col lg:flex-row gap-12 items-stretch"
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.2 }}
+      <main className="strat-page story-page">
+        <div className="hud-grid-bg" />
+
+        <section className="strat-wrap">
+          <header className="strat-head">
+            <motion.div variants={fadeUp} initial="hidden" animate="visible" custom={0.05}>
+              <nav className="strat-breadcrumb">
+                <Link href="/">Home</Link>
+                <span className="sep">/</span>
+                <Link href="/portfolio">Portfolio</Link>
+                <span className="sep">/</span>
+                <span style={{ color: '#0A0A0F' }}>Brand Storytelling</span>
+              </nav>
+
+              <div className="strat-label">// Case Files · Brand Storytelling</div>
+              <h1 className="strat-title">Brand Storytelling & Multi-Channel Marketing</h1>
+              <p className="strat-sub">
+                Campaign narratives designed to build brand equity, drive community connection,
+                and amplify reach across multiple channels. Each file documents the strategic
+                framework, channel architecture, and measurable impact.
+              </p>
+
+              <div className="strat-meta">
+                <div className="strat-meta-tile">
+                  <span className="strat-meta-val" style={{ color: '#A378FF' }}>
+                    02 Files
+                  </span>
+                  <span className="strat-meta-lbl">Campaigns</span>
+                </div>
+                <div className="strat-meta-tile">
+                  <span className="strat-meta-val">Chin Chin</span>
+                  <span className="strat-meta-lbl">Brand</span>
+                </div>
+                <div className="strat-meta-tile">
+                  <span className="strat-meta-val">UAE</span>
+                  <span className="strat-meta-lbl">Market</span>
+                </div>
+                <div className="strat-meta-tile">
+                  <span className="strat-meta-val">Multi-Channel</span>
+                  <span className="strat-meta-lbl">Approach</span>
+                </div>
+              </div>
+            </motion.div>
+          </header>
+
+          <section className="strat-list">
+            {campaigns.map((c, index) => (
+              <div
+                key={c.fileId}
+                className="case-file case-reveal"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <motion.div 
-                  className={`flex-1 ${index % 2 === 1 ? 'lg:order-2' : ''}`}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.2 + 0.1 }}
-                >
-                  <div className="overflow-hidden h-full">
-                    <img 
-                      src={campaign.image}
-                      alt={`${campaign.title} - ${campaign.subtitle}`}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </motion.div>
+                <div className="case-corner tl" />
+                <div className="case-corner tr" />
 
-                <motion.div 
-                  className={`flex-1 glass-panel p-8 ${index % 2 === 1 ? 'lg:order-1' : ''}`}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.2 + 0.2 }}
-                >
-                  <h3 className="text-2xl font-light text-[#0A0A0F] mb-4">{campaign.title}</h3>
-                  <h4 className="text-xl text-[#4A4A56] mb-4">{campaign.subtitle}</h4>
-                  <p className="text-[0.9rem] text-[#4A4A56] mb-6 leading-[1.85] font-light" dangerouslySetInnerHTML={{ __html: campaign.description }}></p>
-                  
-                  <div className="space-y-4">
-                    <div>
-                      <h5 className="font-medium text-[#0A0A0F] mb-2">Objectives:</h5>
-                      <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
-                        {campaign.objectives.map((objective, objIndex) => (
-                          <li key={objIndex}>{objective}</li>
-                        ))}
-                      </ul>
+                <div className="case-top">
+                  <span className="case-file-id">
+                    <span className="fid">{c.fileId}</span>
+                  </span>
+                  <span className="case-status">● {c.status}</span>
+                </div>
+
+                <div className={`case-grid ${index % 2 === 1 ? 'reverse' : ''}`}>
+                  <div className="case-media">
+                    <div className="case-image-wrap">
+                      <img src={c.image} alt={c.title} className="case-image" />
+                      <div className="case-scan" />
                     </div>
-                    
-                    <div>
-                      <h5 className="font-medium text-[#0A0A0F] mb-2">Channels:</h5>
-                      <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
-                        {campaign.channels.map((channel, channelIndex) => (
-                          <li key={channelIndex}>{channel}</li>
-                        ))}
-                      </ul>
+                    <div className="case-pills">
+                      <span className="case-pill featured">{c.type}</span>
+                      <span className="case-pill">{c.subtitle}</span>
                     </div>
-                    
-                    {campaign.results && (
-                      <div>
-                        <h5 className="font-medium text-[#0A0A0F] mb-2">Results:</h5>
-                        <ul className="list-disc list-inside text-[#4A4A56] space-y-1 text-[0.9rem] marker:text-[#A378FF]">
-                          {campaign.results.map((result, resIndex) => (
-                            <li key={resIndex} dangerouslySetInnerHTML={{ __html: result }}></li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
                   </div>
-                </motion.div>
-              </motion.div>
+
+                  <div className="case-body">
+                    <div className="case-type">{c.type}</div>
+                    <h3 className="case-title">{c.title}</h3>
+                    <p className="case-subtitle">{c.subtitle}</p>
+
+                    <div className="case-sections">
+                      <div className="case-block">
+                        <div className="case-block-label">Context</div>
+                        <p className="case-copy">{c.context}</p>
+                      </div>
+
+                      <div className="case-block">
+                        <div className="case-block-label">Strategic Objectives</div>
+                        <div className="case-list">
+                          {c.objectives.map((obj, i) => (
+                            <div key={i} className="case-list-item">{obj}</div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="case-block">
+                        <div className="case-block-label">
+                          {c.results ? 'Channel System' : 'Planned Channel System'}
+                        </div>
+                        <div className="case-pills-row">
+                          {c.channels.map((ch, i) => (
+                            <span key={i} className="case-pill">{ch}</span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {c.results && (
+                        <div className="case-block">
+                          <div className="case-block-label">Results</div>
+                          <div className="case-list">
+                            {c.results.map((res, i) => (
+                              <div key={i} className="case-list-item">{res}</div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="case-kpis">
+                      {c.kpis.map((kpi) => (
+                        <div key={kpi.label} className="case-kpi">
+                          <span className="case-kpi-val">{kpi.value}</span>
+                          <span className="case-kpi-lbl">{kpi.label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
             ))}
-          </div>
-        </div>
-      </section>
+          </section>
+        </section>
+      </main>
 
       <Footer />
     </motion.div>

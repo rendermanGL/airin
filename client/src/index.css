@@ -1591,3 +1591,229 @@ body { cursor: none; }
     border-bottom: none;
   }
 }
+
+.engage-page,
+.story-page,
+.awards-page,
+.writing-page {
+  position: relative;
+  min-height: 100vh;
+  background: #FFFFFF;
+  overflow: hidden;
+}
+
+.engage-page .hud-grid-bg,
+.story-page .hud-grid-bg,
+.awards-page .hud-grid-bg,
+.writing-page .hud-grid-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,0,0,0.038) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.038) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.case-status.dev {
+  color: #E6A817;
+  border-color: rgba(230,168,23,0.3);
+  background: rgba(230,168,23,0.06);
+}
+
+.case-status.verified {
+  color: #3B82F6;
+  border-color: rgba(59,130,246,0.3);
+  background: rgba(59,130,246,0.06);
+}
+
+.channel-pills {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.year-divider {
+  padding: 14px 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.year-divider:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.year-label {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #A378FF;
+  margin-bottom: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.year-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.year-item {
+  position: relative;
+  padding-left: 16px;
+  font-size: 0.88rem;
+  font-weight: 300;
+  line-height: 1.75;
+  color: #4A4A56;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.year-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.75em;
+  width: 6px;
+  height: 1px;
+  background: #A378FF;
+}
+
+.award-year-row {
+  padding: 14px 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.award-year-row:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.award-year-label {
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #A378FF;
+  margin-bottom: 6px;
+}
+
+.doc-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.doc-tile {
+  position: relative;
+  border: 1px solid rgba(0,0,0,0.07);
+  background: rgba(0,0,0,0.015);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition:
+    border-color 300ms ease,
+    background 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease;
+}
+
+.doc-tile:hover {
+  border-color: rgba(163,120,255,0.28);
+  background: rgba(0,0,0,0.025);
+  box-shadow: 0 0 40px rgba(163,120,255,0.06);
+  transform: translateY(-2px);
+}
+
+.doc-tile-id {
+  font-size: 0.42rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #A378FF;
+  margin-bottom: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.doc-tile-cat {
+  font-size: 0.42rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8A8A96;
+  border: 1px solid #E8E8EC;
+  padding: 3px 7px;
+  display: inline-block;
+  margin-bottom: 10px;
+  align-self: flex-start;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.doc-tile-title {
+  font-size: 0.96rem;
+  font-weight: 300;
+  line-height: 1.4;
+  color: #0A0A0F;
+  margin-bottom: 16px;
+  flex-grow: 1;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.doc-tile:hover .doc-tile-title {
+  color: #A378FF;
+  transition: color 180ms ease;
+}
+
+.doc-tile-cta {
+  font-size: 0.52rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #A378FF;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+  font-family: 'Space Grotesk', sans-serif;
+  transition: gap 200ms ease;
+}
+
+.doc-tile:hover .doc-tile-cta {
+  gap: 10px;
+}
+
+.writing-cat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.writing-cat-icon {
+  width: 20px;
+  height: 20px;
+  color: #A378FF;
+}
+
+.writing-cat-title {
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: #0A0A0F;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.writing-section {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 760px) {
+  .doc-tiles {
+    grid-template-columns: 1fr;
+  }
+}
